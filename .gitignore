@@ -9,6 +9,8 @@
 nbproject/
 
 # Magento
+app/etc/1
+app/etc/local.xml.19.bak
 app/etc/local.xml
 app/etc/enterprise.xml
 app/etc/local.xml.07-08-15.runingwithoutmemcache.bak
