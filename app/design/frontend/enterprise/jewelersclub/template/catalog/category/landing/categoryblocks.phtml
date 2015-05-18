@@ -1,0 +1,40 @@
+<?php
+// If there are sub categories
+$categories = $this->getCurrentChildCategories();
+
+// tuhn:
+// $categories is normal an object, it will be an array when Flat Catalog is enabled
+// I let the Fatal error happens if it is not an object or array
+$categoryCount = is_array($categories) ? count($categories) : $categories->count();
+
+if (!empty($categoryCount)):
+?>
+<div class="featured-products top-sellers category-gallery">
+    <div class="gallery-holder">
+        <a id="prev-category" class="prev" href="#">prev</a>
+        <a id="next-category" class="next" href="#">next</a>
+        <div class="list_carousel">
+            <ul class="category-grid">
+                <?php
+                //Loop through categories
+                foreach ($categories as $category):
+                    $thumbUrl = Mage::getBaseUrl('media').'catalog/category/'.$category->getThumbnail();
+                ?>
+                <li>
+                    <div class="image">
+                        <a href="<?php echo $this->getCategoryUrl($category)?>">
+                        <?php if ($category->getThumbnail()): ?>
+                            <img src="<?php echo $thumbUrl; ?>"/>
+                        <?php else: ?>
+                            <img src="<?php echo $this->getSkinUrl(); ?>images/img-20.png"/>
+                        <?php endif; ?>
+                    </div>
+                    <span><?php echo $category->getName(); ?></span>
+                    </a>
+                </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    </div>
+</div>
+<?php endif; ?>

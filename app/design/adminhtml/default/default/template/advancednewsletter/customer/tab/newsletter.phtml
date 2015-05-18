@@ -1,0 +1,65 @@
+<?php
+/**
+ * aheadWorks Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://ecommerce.aheadworks.com/AW-LICENSE.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This package designed for Magento enterprise edition
+ * aheadWorks does not guarantee correct work of this extension
+ * on any other Magento edition except Magento enterprise edition.
+ * aheadWorks does not provide extension support in case of
+ * incorrect edition usage.
+ * =================================================================
+ *
+ * @category   AW
+ * @package    AW_Advancednewsletter
+ * @version    2.3.2
+ * @copyright  Copyright (c) 2010-2012 aheadWorks Co. (http://www.aheadworks.com)
+ * @license    http://ecommerce.aheadworks.com/AW-LICENSE.txt
+ */
+?><?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     default_default
+ * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<div class="entry-edit">
+    <h4><?php echo $this->__('Subscriptions') ?></h4>
+    <input type="hidden" id="an_segment_changed" name="an_segments_changed" value="0" />
+    <?php foreach ($this->getSegments() as $segment): ?>
+    <div class="an-segments-block">
+        <input onclick="$('an_segment_changed').value = 1" <?php if ($this->isChecked($segment)): ?> checked="checked" <?php endif; ?> type="checkbox" class="an_segments_check" value="<?php echo $segment->getCode(); ?>" id="<?php echo $segment->getCode(); ?>" name="segments_codes[]" />
+        <label for="<?php echo $segment->getCode(); ?>"><?php echo $segment->getTitle(); ?></label>
+    </div>
+    <?php endforeach; ?>
+</div>
+<div style="clear:both"></div>
+<?php echo $this->getChildHtml('grid') ?>

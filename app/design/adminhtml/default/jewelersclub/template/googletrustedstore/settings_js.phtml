@@ -1,0 +1,53 @@
+<?php
+/**
+ * @category   Oro
+ * @package    Oro_GoogleTrustedStore
+ */
+?>
+
+<script type="text/javascript">
+//<![CDATA[
+var gtsNotificationDone = false;
+var settingIds = new Array(
+    'google_trustedstore_account_id',
+    'google_trustedstore_ftp_username',
+    'google_trustedstore_ftp_password',
+    'google_trustedstore_cancellation_feed_filename',
+    'google_trustedstore_shipment_feed_filename'
+);
+Event.observe(document, 'dom:loaded', function(){
+    for (var i = 0; i < settingIds.length; i++) {
+        $(settingIds[i]).observe('change', function() {
+            if (!gtsNotificationDone) {
+                for (var k = 0; k < settingIds.length; k++) {
+                    $(settingIds[k]).addClassName('gts-warning');
+                }
+                alert('<?php echo $this->__('Please verify that FTP username, password, Cancellation Feed file name, and Shipment Feed file name are the same within a given Google Trusted Store Merchant ID'); ?>');
+            }
+            gtsNotificationDone = true;
+        });
+    }
+})
+
+function verifyGoogleTrustedStoresSettings(url)
+{
+    new Ajax.Request(url, {
+        parameters: {
+            user: $$('#google_trustedstore_ftp_username')[0].value,
+            password: $$('#google_trustedstore_ftp_password')[0].value,
+            passive: $$('#google_trustedstore_ftp_mode')[0].value,
+        },
+        onSuccess: function(response) {
+            alert(response.responseText);
+        },
+        onError: function() {
+            alert('<?php echo $this->__('There was an internal error verifying the FTP setting'); ?>');
+        }
+    });
+}
+
+//]]>
+</script>
+<style type="text/css">
+    .gts-warning {border: 1px solid red !important;}
+</style>

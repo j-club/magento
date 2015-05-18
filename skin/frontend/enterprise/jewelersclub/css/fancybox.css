@@ -1,0 +1,132 @@
+
+#fancybox-loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    margin-top: -20px;
+    margin-left: -20px;
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 1104;
+    display: none;
+}
+#fancybox-loading div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 480px;
+    background-image: url(../images/fancybox/fancybox.png);
+}
+#fancybox-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1100;
+    display: none;
+}
+#fancybox-tmp {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    overflow: auto;
+    display: none;
+}
+#fancybox-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    z-index: 1101;
+    outline: none;
+    display: none;
+    background: #eef4f9;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+#fancybox-outer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #eef4f9;
+}
+#fancybox-content {
+    width: 0;
+    height: 0;
+    padding: 0;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+    z-index: 1102;
+    border: 0px solid #fff;
+}
+#fancybox-hide-sel-frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: 1101;
+}
+#fancybox-close {
+    position: absolute;
+    top: -2px;
+    right: -4px;
+    width: 21px;
+    height: 21px;
+    background: transparent url(../images/fancybox/bg-close.png);
+    cursor: pointer;
+    z-index: 1103;
+    display: none;
+}
+#fancybox-error {
+    color: #444;
+    font: normal 12px/20px Arial;
+    padding: 14px;
+    margin: 0;
+}
+#fancybox-img {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    border: none;
+    outline: none;
+    line-height: 0;
+    vertical-align: top;
+}
+#fancybox-frame {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+#fancybox-left, #fancybox-right {
+    position: absolute;
+    bottom: 0px;
+    height: 100%;
+    width: 35%;
+    cursor: pointer;
+    outline: none;
+    background: transparent url(../images/fancybox/blank.gif);
+    z-index: 1102;
+    display: none;
+}
+#fancybox-left {
+    left: 0px;
+}
+#fancybox-right {
+    right: 0px;
+}
+.fancybox-bg {
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    width: 20px;
+    height: 20px;
+    z-index: 1001;
+}

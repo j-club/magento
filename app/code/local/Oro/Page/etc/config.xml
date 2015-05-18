@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Oro_Page>
+            <version>0.1.0</version>
+        </Oro_Page>
+    </modules>
+    <global>
+        <models>
+            <page>
+                <rewrite>
+                    <block_html_topmenu>Oro_Page_Block_Html_Topmenu</block_html_topmenu>
+                </rewrite>
+            </page>
+        </models>
+        <helpers>
+            <oro_page>
+                <class>Oro_Page_Helper</class>
+            </oro_page>
+        </helpers>
+    </global>
+    <frontend>
+        <secure_url>
+            <udratings>/udratings/</udratings>
+            <membership>/membership/</membership>
+            <reward>/reward/</reward>
+            <udropship>/udropship/</udropship>
+        </secure_url>
+    </frontend>
+</config>

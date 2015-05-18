@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/**
+ * @category   Oro
+ * @package    Oro_Asset
+ * @copyright  Copyright (c) 2014 Oro Inc. DBA MageCore (http://www.magecore.com)
+ */
+-->
+<config>
+    <modules>
+        <Oro_Asset>
+            <version>1.0.0</version>
+        </Oro_Asset>
+    </modules>
+
+    <global>
+        <models>
+            <oro_asset>
+                <class>Oro_Asset_Model</class>
+                <resourceModel>oro_asset_resource</resourceModel>
+            </oro_asset>
+            <oro_asset_resource>
+                <class>Oro_Asset_Model_Resource</class>
+            </oro_asset_resource>
+        </models>
+        <helpers>
+            <oro_asset>
+                <class>Oro_Asset_Helper</class>
+            </oro_asset>
+        </helpers>
+        <blocks>
+            <oro_asset>
+                <class>Oro_Asset_Block</class>
+            </oro_asset>
+            <page>
+                <rewrite>
+                    <html_head>Oro_Asset_Block_Html_Head</html_head>
+                </rewrite>
+            </page>
+        </blocks>
+        <resources>
+            <oro_asset_setup>
+                <setup>
+                    <module>Oro_Asset</module>
+                </setup>
+            </oro_asset_setup>
+        </resources>
+        <cache>
+            <types>
+                <oro_asset translate="label description">
+                    <label>Media Assets Optimization</label>
+                    <description>Media Assets merge files (merge.xml).</description>
+                    <tags>ORO_ASSET_MERGE</tags>
+                </oro_asset>
+            </types>
+        </cache>
+    </global>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Oro_Asset before="Mage_Adminhtml">Oro_Asset_Adminhtml</Oro_Asset>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <translate>
+            <modules>
+                <Oro_Asset>
+                    <files>
+                        <default>Oro_Asset.csv</default>
+                    </files>
+                </Oro_Asset>
+            </modules>
+        </translate>
+        <events>
+            <clean_media_cache_after>
+                <observers>
+                    <oro_asset>
+                        <class>oro_asset/observer</class>
+                        <method>cleanMediaCacheAfter</method>
+                    </oro_asset>
+                </observers>
+            </clean_media_cache_after>
+        </events>
+    </adminhtml>
+
+    <default>
+        <dev>
+            <oro_asset>
+                <enabled>1</enabled>
+                <style>2</style>
+                <auto_increment>1</auto_increment>
+                <css_version>1</css_version>
+                <js_version>1</js_version>
+                <updated_at />
+            </oro_asset>
+        </dev>
+    </default>
+</config>

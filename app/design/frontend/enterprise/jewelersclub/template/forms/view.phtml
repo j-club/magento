@@ -1,0 +1,46 @@
+<?php
+/**
+ * Magpleasure Ltd.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE-CE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magpleasure.com/LICENSE-CE.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This package designed for Magento COMMUNITY edition
+ * Magpleasure does not guarantee correct work of this extension
+ * on any other Magento edition except Magento COMMUNITY edition.
+ * Magpleasure does not provide extension support in case of
+ * incorrect edition usage.
+ * =================================================================
+ *
+ * @category   Magpleasure
+ * @package    Magpleasure_Forms
+ * @version    1.0.5
+ * @copyright  Copyright (c) 2011-2012 Magpleasure Ltd. (http://www.magpleasure.com)
+ * @license    http://www.magpleasure.com/LICENSE-CE.txt
+ */
+/** @var Magpleasure_Forms_Block_List $this */
+?>
+<div class="forms">
+    <div class="a-left"><h3><?php echo $this->escapeHtml($this->getForm()->getName()); ?></h3></div>
+    <div class="fixed"></div>
+    <div class="form-content">
+        <?php if ($content = $this->getContentHtml()): ?>
+            <?php echo $content; ?>
+        <?php else: ?>
+            <p><?php echo $this->__("Content of post is not found."); ?></p>
+        <?php endif; ?>
+    </div>
+    <div class="buttons-set">
+        <p class="back-link"><a href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>"><small>&laquo; </small><?php echo $this->__('Back') ?></a></p>
+    </div>
+</div>
+
+
+

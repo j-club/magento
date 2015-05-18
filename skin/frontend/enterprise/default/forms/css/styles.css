@@ -1,0 +1,79 @@
+/**
+ * MagPleasure Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magpleasure.com/LICENSE.txt
+ *
+ * @category   Magpleasure
+ * @package    Magpleasure_Forms
+ * @copyright  Copyright (c) 2011-2012 Magpleasure Co. (http://www.magpleasure.com)
+ * @license    http://www.magpleasure.com/LICENSE.txt
+ */
+
+.forms .note ul li , .forms .note ol li { margin-left: 20px; }
+.forms .note ul li { list-style: disc; }
+.forms .note ol li { list-style: decimal; }
+.forms .buttons { text-align: center; padding: 10px 0; width: 100%; }
+.forms .note { margin-bottom: 20px; }
+.forms .form-content input.input-text{ width: 100%; }
+.forms .form-content select.input-text{ width: 100%; }
+.forms .form-content textarea.input-text{ width: 100%; }
+.forms .form-content input.input-text.other {
+    width: 400px;
+    margin-top: 5px;
+    display: none;
+}
+
+.forms .form-content dd { margin-bottom: 10px; }
+
+.forms .form-content dt { margin-bottom: 5px; }
+.forms .form-content dt label { font-weight: bold; }
+.forms .form-content input.radiobox, .forms .form-content input.checkbox { margin-right: 5px; }
+
+.forms .a-left {
+    float:  left;
+}
+.forms .a-right {
+    float:  right;
+}
+
+.forms div.clear {
+    clear: both;
+
+}
+
+.forms .export {
+    margin-top: 3px;
+}
+
+.forms .grid {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.forms .elements .hint {
+    font-style: italic;
+}
+
+.forms .required em {
+    color: #ff0000;
+    font-weight: normal;
+
+}
+
+.forms table.form-list.clickable tr:hover td {
+    background-color: #ffffe7;
+    cursor: pointer;
+}
+
+.forms .form-content {
+    margin-top: 20px;
+}
+
+.fixed {
+    clear: both;
+}

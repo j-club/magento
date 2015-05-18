@@ -1,0 +1,67 @@
+/**
+ * MagPleasure Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magpleasure.com/LICENSE.txt
+ *
+ * @category   Magpleasure
+ * @package    Magpleasure_Forms
+ * @copyright  Copyright (c) 2011-2012 Magpleasure Co. (http://www.magpleasure.com)
+ * @license    http://www.magpleasure.com/LICENSE.txt
+ */
+
+.mp-forms .clear {
+    clear: both;
+}
+
+.form-fields  .field-box-top {margin:1.5em 0; }
+.form-fields  .field-box {
+    border:1px solid #cddddd; padding:1em;  background:#e7efef; margin:1.5em 0;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    cursor: move;
+}
+
+.form-fields  .field-header {border:0; width:100%; background:#e7efef; border-bottom:1em solid #e7efef; }
+.form-fields  .field-header .input-text,
+.form-fields  .field-header .select {width:95%; }
+.form-fields  .field-header th {padding:2px; }
+.form-fields  .field-header td {padding:5px 2px; }
+
+.form-fields  .field-box  .border {width:615px; }
+
+.form-fields th {white-space:nowrap; }
+.form-fields  .field-question  {width:200px; }
+.form-fields  .field-period  {width:80px; }
+.form-fields  .field-type  {width:120px; }
+.form-fields  .field-price  {width:80px; }
+.form-fields  .field-visible { width: 190px; }
+.form-fields  label {
+    white-space: nowrap;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.form-fields .file input.input-text.ext  {
+    width: 40%;
+}
+
+.form-fields .grid table.border td {
+    background: none !important;
+}
+
+.form-fields .field-box .grid table.options {
+    width: 300px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -moz-box-shadow: 0px 0px 1px #666666;
+    -webkit-box-shadow: 0px 0px 1px #666666;
+    box-shadow: 0px 0px 1px #666666;
+
+}

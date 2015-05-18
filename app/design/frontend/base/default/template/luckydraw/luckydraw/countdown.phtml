@@ -1,0 +1,49 @@
+<?php 
+	/**
+	 * Lucky Draw Main Page template
+	 * 
+	 * @see Magestore_Luckydraw_Block_Luckydraw
+	 */
+?>
+
+<?php $program = $this->getProgram() ?>
+<?php if ($program->getStatus() <= Magestore_Luckydraw_Model_Program::STATUS_PROCESSING): ?>
+<div class="luckydraw-countdown">
+	<div class="luckydraw-counting">
+		<div class="countdown-label">
+			<?php if ($program->getStatus() == Magestore_Luckydraw_Model_Program::STATUS_PENDING): ?>
+				<?php $timeLeft = $this->getTimeLeft($program->getStartTimeObj()) ?>
+				<?php echo $this->__('Wait for Start') ?>
+			<?php elseif ($program->getStatus() == Magestore_Luckydraw_Model_Program::STATUS_PROCESSING): ?>
+				<?php $timeLeft = $this->getTimeLeft($program->getEndTimeObj()) ?>
+				<?php echo $this->__('Time left to play') ?>
+			<?php endif ?>
+		</div>
+		<div id="luckydraw-countdown">
+			<div class="countdown">
+				<span class="year">
+					<span class="value"></span><!--
+					--><span class="label"><?php echo $this->__('y') ?>,</span><!--
+					--><span class="labels"><?php echo $this->__('y') ?>,</span>
+				</span>
+				<span class="month">
+					<span class="value"></span><!--
+					--><span class="label"><?php echo $this->__('m') ?>,</span><!--
+					--><span class="labels"><?php echo $this->__('m') ?>,</span>
+				</span>
+				<span class="day">
+					<span class="value"></span><!--
+					--><span class="label"><?php echo $this->__('d') ?>,</span><!--
+					--><span class="labels"><?php echo $this->__('d') ?>,</span>
+				</span>
+				<span class="hour"><span class="value"></span><span class="label">:</span></span><!--
+				--><span class="minute"><span class="value"></span><span class="label">:</span></span><!--
+				--><span class="second"><span class="value"></span></span>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	var luckydrawCount = new LuckyDrawCountdown('luckydraw-countdown',<?php echo $timeLeft ?>,<?php echo time() ?>);
+</script>
+<?php endif ?>

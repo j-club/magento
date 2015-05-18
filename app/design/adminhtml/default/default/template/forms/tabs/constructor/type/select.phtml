@@ -1,0 +1,140 @@
+<?php
+/**
+ * Magpleasure Ltd.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE-CE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magpleasure.com/LICENSE-CE.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This package designed for Magento COMMUNITY edition
+ * Magpleasure does not guarantee correct work of this extension
+ * on any other Magento edition except Magento COMMUNITY edition.
+ * Magpleasure does not provide extension support in case of
+ * incorrect edition usage.
+ * =================================================================
+ *
+ * @category   Magpleasure
+ * @package    Magpleasure_Forms
+ * @version    1.0.5
+ * @copyright  Copyright (c) 2011-2012 Magpleasure Ltd. (http://www.magpleasure.com)
+ * @license    http://www.magpleasure.com/LICENSE-CE.txt
+ */
+?>
+<script type="text/javascript">
+//<![CDATA[
+FieldTemplateSelect = ''+
+        '<table class="options"  cellpadding="0" cellspacing="0">'+
+        '<input type="hidden" class="required-field-select-type-rows" name="validation_{{field_id}}_result" value="" >'+
+        '<tbody id="select_option_type_row_{{field_id}}">'+
+        '</tbody>'+
+        '<tfoot>'+
+        '<tr>'+
+        '<td  class="a-left"><input type="checkbox" name="<?php echo $this->getFieldName() ?>[{{field_id}}][enable_other]" id="<?php echo $this->getFieldId() ?>_{{field_id}}_enable_other" ><label for="<?php echo $this->getFieldId() ?>_{{field_id}}_enable_other"><?php echo $this->_helper()->__("Enable \"Other Answer\""); ?></label></td>'+
+        '<td  class="a-right"><?php echo $this->getAddButtonHtml() ?></td>'+
+        '</tr>'+
+        '</tfoot>'+
+    '</table>';
+
+FieldTemplateSelectRow = '<tr id="<?php echo $this->getFieldId() ?>_{{id}}_select_{{option_id}}">'+
+            '<td>'+
+            '<input type="hidden" name="<?php echo $this->getFieldName() ?>[{{id}}][values][{{option_id}}][option_id]" value="{{option_id}}">'+
+            '<input type="hidden" name="<?php echo $this->getFieldName() ?>[{{id}}][values][{{option_id}}][field_id]" value="{{field_id}}">'+
+            '<input type="hidden" id="<?php echo $this->getFieldId() ?>_{{id}}_select_{{option_id}}_is_delete" name="<?php echo $this->getFieldName() ?>[{{id}}][values][{{option_id}}][is_delete]" value="">'+
+            '<input type="text" class="required-entry input-text select-type-title" id="<?php echo $this->getFieldId() ?>_{{id}}_select_{{option_id}}_title" name="<?php echo $this->getFieldName() ?>[{{id}}][values][{{option_id}}][title]" value="{{title}}"></td>'+
+            '<td class="last a-right"><span title="Delete row"><?php echo $this->getDeleteButtonHtml() ?></span></td>'+
+        '</tr>';
+
+selectFieldType = {
+    div : 'select_option_type_row',
+    itemCount : 0,
+    templateSyntax : /(^|.|\r|\n)({{(\w+)}})/,
+    templateText : FieldTemplateSelectRow,
+    option_id: 0,
+    add : function(data) {
+
+        this.template = new Template(this.templateText, this.templateSyntax);
+
+        if (data.target || data.srcElement) {//data is Event (work in IE and Firefox)
+            element = $(Event.findElement(data, 'button'));
+            fieldId = element.readAttribute('id').sub('add_select_row_button_', '');
+            data = {};
+            data.field_type_id = '-1';
+            data.option_id = this.itemCount;
+        } else {
+            fieldId = data.structure_id;
+            data.field_id = data.structure_id;
+            if (data.option_id > this.option_id){
+                this.option_id = data.option_id;
+            }
+            this.itemCount = this.option_id + 1;
+        }
+
+        data.id  = fieldId;
+
+        Element.insert($(this.div+'_'+data.id), {'bottom':this.template.evaluate(data)});
+
+        this.itemCount++;
+        this.bindRemoveButtons();
+    },
+    remove : function(event){
+        var element = $(Event.findElement(event, 'tr'));
+
+        if(element){
+            $(element.readAttribute('id')+'_is_delete').value = '1';
+            element.addClassName('no-display');
+            element.addClassName('ignore-validate');
+            element.hide();
+        }
+    },
+    bindRemoveButtons : function(){
+        var buttons = $$('.delete-select-row');
+        for(var i=0;i<buttons.length;i++){
+            if(!$(buttons[i]).binded){
+                $(buttons[i]).binded = true;
+                Event.observe(buttons[i], 'click', this.remove.bind(this));
+            }
+        }
+    },
+    bindAddButton : function()
+    {
+        var buttons = $$('.add-select-row');
+        for(var i=0;i<buttons.length;i++){
+            if(!$(buttons[i]).binded){
+                $(buttons[i]).binded = true;
+                Event.observe(buttons[i], 'click', this.add.bind(this));
+            }
+        }
+    }
+}
+
+if ($('field_panel_type_select')) {
+    $('field_panel_type_select').remove();
+}
+
+selectFieldType.bindRemoveButtons();
+
+Validation.addAllThese([
+    ['required-field-select-type-rows', '<?php echo $this->_helper()->__('Please add rows to option.') ?>', function(v, elm) {
+            var optionContainerElm = elm.up('div.grid');
+            var selectTypesFlag = false;
+            selectTypeElements = $$('#'+optionContainerElm.id+' .select-type-title');
+            selectTypeElements.each(function(elm){
+                if (elm.id && elm.up('tr').visible()) {
+                    selectTypesFlag = true;
+                }
+            });
+            elm.advaiceContainer = optionContainerElm.id+'_advice';
+        return selectTypesFlag;
+}]]);
+
+if($('add_select_row_button')){
+    Event.observe('add_select_row_button', 'click', selectFieldType.add.bind(selectFieldType));
+}
+//]]>
+</script>

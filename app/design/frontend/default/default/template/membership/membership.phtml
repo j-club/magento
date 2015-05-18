@@ -1,0 +1,86 @@
+<div class="page-title">
+	<h1><?php echo $this->__('Welcome To Our Membership Program') ?></h1>
+</div>
+
+<?php
+	echo($this->getWelcomeMessage());
+?>
+<br><br>
+<div class="membership-steps clearfix" id="membership-signup-steps">
+	<ol>
+		<li class="step1 first"><span class="number">Step 1</span><span>Select the right package.</span></li>
+		<li class="step2"><span class="number">Step 2</span><span>Order Info/Payment option.</span></li>
+		<li class="step3 last"><span class="number">Step 3</span><span>Start to buy products with membership price.</span></li>
+	</ol>
+</div>
+	
+	
+	<br><br>
+
+
+<?php $packages = $this->getPackages()?>
+<?php //echo $this->getPagerHtml(); ?>
+<?php if($packages->getSize()){?>
+<table class="packages-table" id="packages-table">
+    <thead>
+        <tr >
+			<th width="25%" class="first"><?php echo $this->__('Plan') ?></th>
+            <th width="10%"><?php echo $this->__('Duration') ?></th>
+            <th><?php echo $this->__('Description') ?></th>
+           
+            <th width="8%"><?php echo $this->__('Price') ?></th>
+			 <th width="15%"><?php echo $this->__('View Detail') ?></th>
+			<th width="16%"><?php echo $this->__('Sign Up') ?></th>
+        </tr>
+    </thead>
+    <tbody>
+		<?php foreach($packages as $package){ ?>
+		<tr onclick="window.location.href='<?php echo $this->getViewUrl($package) ?>'">
+			<td class="first"><?php echo $package->getPackageName() ?></td>
+			<td><?php echo $package->getDuration()?> <?php echo $this->__('month(s)')?></td>
+			<td><?php echo $package->getDescription() ?></td>
+			
+			<td><?php echo $this->helper('core')->currency($package->getPackagePrice())?></td>
+			<td><span class="action"><a href="<?php echo $this->getViewUrl($package) ?>"><?php echo $this->__('View Detail');?></a></span></td>
+			<?php 
+				$customerId = Mage::getModel('customer/session')->getCustomer()->getId();
+				if($customerId) {	
+					$memberId = Mage::helper('membership')->getMemberId($customerId);
+					if($memberId) {
+						$memberpackage = Mage::helper('membership')->isSignedUpPackage($memberId,$package->getId());
+						if($memberpackage) {
+							if($memberpackage->getStatus()==1)
+								$buyButton = 2;
+							else $buyButton = 1;	
+						} else $buyButton = 1;
+					} else $buyButton = 1;
+				} else $buyButton = 1;	
+				
+			switch($buyButton) {
+			case 1: ?>
+			<!-- Sign Up Now -->
+			<td><span class='action'><a href='<?php echo Mage::getUrl('membership/index/addToCartUrl',array('productId'=>$package->getProductId()))?>'>Sign Up Now</a></span></td>
+			<!-- Signed Up -->
+			<?php break;
+				case 2: ?>
+			<td>
+				<span class="action"><a href="<?php echo $this->getUrl('*/plan/index') ?>"><?php echo $this->__('Signed Up')?></a></span>
+				<div>&nbsp;</div>
+				<?php if($memberpackage->getEndTime()) {
+					$endTime = $this->formatDate($memberpackage->getEndTime(),'medium',false);
+				?>
+				<p><?php echo $this->__('Expire on %s',$endTime) ?></p>
+				<?php } ?>
+			</td>
+			<?php break; } ?>
+		</tr>
+		<?php }?>
+	</tbody>
+</table>
+<script type="text/javascript">
+	decorateTable('packages-table');
+</script>
+<?php } else {?>
+	<h4><?php echo $this->__('There is no package available') ?></h4>
+<?php }?>
+<?php //echo $this->getPagerHtml(); ?>

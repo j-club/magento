@@ -1,0 +1,48 @@
+<?php
+/**
+ *
+ * @category   MageCore
+ * @copyright  Copyright (c) 2014 Oro Inc. DBA MageCore (http://www.magecore.com)
+ */
+?>
+<div class="recent-orders">
+<?php $_orders = $this->getOrders(); ?>
+    <h2 class="table-caption"><?php echo $this->__('Recent Orders') ?><?php if( sizeof($_orders->getItems()) > 0 ): ?> <span class="separator">|</span> <a href="<?php echo $this->getUrl('sales/order/history') ?>"><?php echo $this->__('View All') ?></a><?php endif; ?></h2>
+    <?php echo $this->getChildHtml()?>
+<?php if( sizeof($_orders->getItems()) > 0 ): ?>
+<div class="data-table-holder">
+    <div class="data-table" id="my-orders-table">
+        <div class="thead">
+            <div class="tr-col">
+                 <div class="th-col"><?php echo $this->__('Order #') ?></div>
+                 <div class="th-col"><?php echo $this->__('Date') ?></div>
+                 <div class="th-col col-ship"><?php echo $this->__('Ship To') ?></div>
+                 <div class="th-col"><span class="nobr"><?php echo $this->__('Order Total') ?></span></div>
+                 <div class="th-col col-status"><?php echo $this->__('Status') ?></div>
+                 <div class="th-col">&nbsp;</div>
+            </div>
+        </div>
+        <div class="tbody">
+            <?php foreach ($_orders as $_order): ?>
+                <div class="tr-col">
+                    <div class="td-col"><?php echo $_order->getRealOrderId() ?></div>
+                    <div class="td-col"><span class="nobr"><?php echo $this->formatDate($_order->getCreatedAtStoreDate()) ?></span></div>
+                    <div class="td-col col-ship"><?php echo $_order->getShippingAddress() ? $this->escapeHtml($_order->getShippingAddress()->getName()) : '&nbsp;' ?></div>
+                    <div class="td-col"><?php echo $_order->formatPrice($_order->getGrandTotal()) ?></div>
+                    <div class="td-col col-status"><em><?php echo $_order->getStatusLabel() ?></em></div>
+                    <div class="td-col">
+                        <a href="<?php echo $this->getViewUrl($_order) ?>" class="nobr"><?php echo $this->__('View') ?></a>
+                        <?php if ($this->helper('sales/reorder')->canReorder($_order)) : ?>
+                            <span class="separator">|</span> <a href="<?php echo $this->getReorderUrl($_order) ?>" class="nobr"><?php echo $this->__('Reorder') ?></a>
+                        <?php endif ?>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</div>
+    <script type="text/javascript">decorateTable('my-orders-table')</script>
+<?php else: ?>
+    <p><?php echo $this->__('You have placed no orders.'); ?></p>
+<?php endif; ?>
+</div>

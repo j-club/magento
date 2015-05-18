@@ -1,0 +1,44 @@
+<?php
+/**
+ *
+ * @category   MageCore
+ * @copyright  Copyright (c) 2014 Oro Inc. DBA MageCore (http://www.magecore.com)
+ */
+?><?php
+?>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<div class="page-head">
+    <h3><?php echo $this->__('Newsletter Subscription') ?></h3>
+</div>
+
+<script type="text/javascript">
+    function anCheckAllCheckboxes(curElem)
+    {
+        curElem.value = Math.abs(curElem.value-1);
+        checked = curElem.value == 1 ? true : false;
+        $$('.an_segments_check').each(function(elem){
+            elem.checked = checked;
+        });
+    }
+</script>
+<form action="<?php echo $this->getUpdateLink(); ?>" method="post" >
+<p><?php echo $this->__('Your subscriptions:') ?></p>
+<table class="data-table subscriptions-table">
+    <thead>
+        <tr class="first last">
+            <th width="10px"><input type="checkbox" id="an_select_all_checkboxes" value="0" onclick="anCheckAllCheckboxes(this)"/></th>
+            <th><?php echo $this->__('Select All') ?></th>
+        </tr>
+    </thead>
+    <?php foreach($this->getSegments() as $segment): ?>
+    <tr class="last">
+        <td><input <?php if ($this->isChecked($segment)): ?> checked="checked" <?php endif; ?> type="checkbox" class="an_segments_check" value="<?php echo $segment->getCode(); ?>" id="<?php echo $segment->getCode(); ?>" name="segments_codes[]" /></td>
+        <td><label for="<?php echo $segment->getCode(); ?>"><?php echo $segment->getTitle(); ?></label></td>
+    </tr>
+    <?php endforeach; ?>
+</table>
+<input type="hidden" value="<?php echo $this->getSubscriber()->getEmail() ?>" name="email" />
+<div class="an-buttons">
+    <button class="button form-button" type="submit"><span><span><?php echo $this->__('Update status') ?></span></span></button>
+</div>
+</form>

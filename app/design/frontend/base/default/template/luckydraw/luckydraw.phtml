@@ -1,0 +1,402 @@
+<?php 
+	/**
+	 * Lucky Draw Main Page template
+	 * 
+	 * @see Magestore_Luckydraw_Block_Luckydraw
+	 */
+?>
+<?php $program = $this->getProgram() ?>
+<?php $currentCode = $this->getCurrentCode() ?>
+<?php $codeLength = $currentCode ? strlen($currentCode) : $program->getCodeLength() ?>
+
+<div class="wrap-luckydraw">
+	<div class="luckydraw-main">
+		<div class="main-content">
+			<div class="main-left">
+				<h1 class="title"><?php echo $program->getName() ?></h1>
+				<div class="sub-content">
+					<?php echo $this->getShortDescription() ?>
+				</div>
+				<div class="character">
+					<img src="<?php echo Mage::getBaseUrl('media') ?>luckydraw/images/character.png" width="216" height="217" />
+				</div>
+			</div>
+			<div class="main-right">
+				<div class="light-product">
+					<?php if ($this->getAwardImageUrl()): ?>
+					<img src="<?php echo $this->getAwardImageUrl() ?>" />
+					<?php endif ?>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="luckydraw-footer">
+		<div class="luckydraw-statistic">
+			<div class="luckydraw-time-left" style="width: 250px;">
+				<?php echo $this->getChildHtml('luckydraw.countdown') ?>
+				<?php echo $this->getChildHtml('luckydraw.statistic') ?>
+			</div>
+			<div class="luckydraw-users-static">
+				<?php $registered = $program->getRegisteredUser() ?>
+				<?php $minUser = max($program->getMinUser(),$registered,1) ?>
+				<?php $percent = intval(100 * $registered / $minUser) ?>
+				<?php $endWidth = $percent ? 8 : 0 ?>
+				<?php $labelPos = $percent ? max($percent-6.4,0) : -3 ?>
+				<div class="luckydraw-current-used">
+					<span style="position: absolute; left: <?php echo $labelPos ?>%; top: 0; width: 150px;"><p><?php echo $registered ?></p><?php echo $this->__('Joined') ?></span>
+				</div>
+				<div><img style="margin-left:5px; position:absolute;left: <?php echo $labelPos ?>%; top:25px;" src="<?php echo $this->getSkinUrl('images/luckydraw/arrow-bottom.png') ?>" /></div>
+				<span class="title-left">0</span>
+				<div class="luckydraw-fullbar">
+					<div class="luckydraw-usedbar">
+						<img src="<?php echo $this->getSkinUrl('images/luckydraw/userbar-left.png') ?>" style="width: <?php echo $endWidth ?>px;height:12px; float:left;" />
+						<img src="<?php echo $this->getSkinUrl('images/luckydraw/userbar-middle.png') ?>" style="width: <?php echo max($percent-6.4,0) ?>%; height: 12px; float: left;" />
+						<img src="<?php echo $this->getSkinUrl('images/luckydraw/userbar-right.png') ?>" style="width: <?php echo $endWidth ?>px;height: 12px; float:left;" />
+					</div>
+				</div>
+				<span class="title-right"><?php echo $minUser ?></span>
+			<?php if ($lastPlayer = $this->getLastPlayer()): ?>
+                <div class="luckydraw-last-player">
+                    <label><?php echo $this->__('Latest Player') ?>:</label>
+                    <label><?php echo $lastPlayer->getName() ?></label>
+                    <p>
+                        <a href="#" onclick="showFirstListPlayer(1,10); return false;" title="<?php echo $this->__('All Players') ?>"><?php echo $this->__('All Players') ?></a>
+                    </p>
+                    <script type="text/javascript">
+                        function showFirstListPlayer(pageNumber, sizeOfPage) {
+                            var listUrl = '<?php echo $this->getUrl('*/*/players',array('id' => $program->getId())) ?>';
+                            listUrl += '?p=' + pageNumber + '&limit=' + sizeOfPage;
+                            TINY.box.show(listUrl,1,0,0,1);
+                        }
+                        function showListPlayer(pageNumber, sizeOfPage) {
+                            $$('#luckydraw-all-player .pager .pager-action').each(function(el){
+                                el.hide();
+                            });
+                            $('luckydraw-please-wait-captcha').show();
+                            var listUrl = '<?php echo $this->getUrl('*/*/players',array('id' => $program->getId())) ?>';
+                            listUrl += '?p=' + pageNumber + '&limit=' + sizeOfPage;
+                            new Ajax.Updater('tinycontent',listUrl,{method: 'get'});
+                        }
+                    </script>
+                </div>
+            <?php endif ?>
+            </div>
+		</div>
+		<div class="digital-draw" style="width: <?php echo 109 * $codeLength ?>px;">
+			<ul id="digital-draw-code">
+				<?php for($_i = 0; $_i < $codeLength; $_i++): ?>
+				<li class="<?php echo ($currentCode && !$this->getSessionCode()) ? 'active' : 'unactive' ?>" id="digital-draw-code-<?php echo $_i ?>">
+					<a href="#" onclick="return false;">
+						<span class="digital"><?php echo ($currentCode && !$this->getSessionCode()) ? substr($currentCode,$_i,1) : '?' ?></span>
+					</a>
+				</li>
+				<?php endfor ?>
+			</ul>
+			<script type="text/javascript">
+				decorateGeneric($('digital-draw-code').select('li'),['first','last']);
+			</script>
+		</div>
+		<div class="wrap-footer">
+			<div class="luckydraw-action">
+				<label>
+					<?php $label = '' ?>
+					<?php $action = '' ?>
+					<?php if ($program->getStatus() == Magestore_Luckydraw_Model_Program::STATUS_PROCESSING): ?>
+						<?php if ($currentCode): ?>
+                            <?php if ($this->codeIsActived()): ?>
+                                <?php echo $this->__('Click on Refer button to refer your friends and earn more draw codes') ?>
+                                <?php $label = $this->__('Refer') ?>
+                                <?php $action = 'showReferFriendForm' ?>
+                            <?php else: ?>
+                                <?php echo $this->__('Your code has not been activated. Please check your email for the activation link. (Click on Resend button to receive activation email)') ?>
+                                <?php $label = $this->__('Resend') ?>
+                                <?php $action = 'resendActivateEmail' ?>
+                            <?php endif ?>
+						<?php else: ?>
+							<?php echo $this->__('Click on Start button to receive your lucky draw code') ?>
+							<?php $label = $this->__('Start') ?>
+						<?php endif ?>
+					<?php elseif ($program->getStatus() == Magestore_Luckydraw_Model_Program::STATUS_PENDING
+							|| $program->getStatus() == Magestore_Luckydraw_Model_Program::STATUS_DIALING
+							|| $program->getStatus() == Magestore_Luckydraw_Model_Program::STATUS_PAUSED): ?>
+						<?php echo $this->__('Lucky draw is not available at this time, click to view our terms and conditions') ?>
+						<?php $action = 'showTermNCondition' ?>
+					<?php elseif (!$currentCode): ?>
+						<?php if ($this->getIsCustomerLogin()): ?>
+							<?php echo $this->__('Play is not available at this time, click to view our terms and conditions') ?>
+							<?php $action = 'showTermNCondition' ?>
+						<?php else: ?>
+							<?php echo $this->__('Please log in to view more details') ?>
+							<?php $action = 'loginToSystem' ?>
+						<?php endif ?>
+					<?php elseif ($program->getStatus() == Magestore_Luckydraw_Model_Program::STATUS_COMPLETE): ?>
+						<?php echo $this->__('Click on this button to view your draw codes') ?>
+						<?php $action = 'showProgramDetail' ?>
+					<?php endif ?>
+				</label>
+				<button id="btn-action-luckydraw" class="btn-action-luckydraw">
+					<span><span>&nbsp;</span></span>
+				</button>
+				<div class="button-start"><?php echo $label ?></div>
+				<?php if (!$currentCode && $program->getStatus() == Magestore_Luckydraw_Model_Program::STATUS_PROCESSING): ?>
+					<script type="text/javascript">
+						var luckydraw = new Luckydraw('digital-draw-code',<?php echo $codeLength ?>,'btn-action-luckydraw','<?php echo $this->getUrl('*/*/register',array('id' => $program->getId())) ?>',100);
+					</script>
+					<?php if (0 && $this->getIsCustomerLogin()): // all customer need show form register ?>
+						<script type="text/javascript">
+							$('btn-action-luckydraw').observe('click',function(event){
+								if (this.hasClassName('disable')) return false;
+								this.addClassName('disable');
+								luckydraw.dial();
+							});
+						</script>
+					<?php else: ?>
+						<div id="luckydraw-register-form-container" style="display: none;">
+							<?php echo $this->getChildHtml('luckydraw.registerform') ?>
+						</div>
+						<script type="text/javascript">
+							var luckydrawRegisterFormHtml = $('luckydraw-register-form-container').innerHTML;
+							$('luckydraw-register-form-container').innerHTML = '';
+							var luckydrawRegisterForm = false;
+							function showRegiterDrawForm(){
+								if (this.hasClassName('disable')) return false;
+								TINY.box.show(luckydrawRegisterFormHtml);
+                                var scripts = luckydrawRegisterFormHtml.extractScripts();
+                                for (var i=0; i<scripts.length; i++) {
+                                    var script = scripts[i];
+                                    if (script.search('new Varien.DOB')) {
+                                        window.eval(script);
+                                    }
+                                }
+								luckydrawRegisterForm = new VarienForm('luckydraw-register-form',true);
+                            <?php if ($this->requiredAddress()): ?>
+                                new RegionUpdater('account:country_id', 'account:region', 'account:region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'postcode');
+                            <?php endif ?>
+								if (Prototype.Browser.IE){
+									setTimeout(function(){
+										var pageTitle = $('tinycontent').down('.page-title');
+										if (pageTitle){
+											var absoluteWidth = $('tinycontent').getWidth();
+											if (absoluteWidth > pageTitle.getWidth()){
+												absoluteWidth -= 27;
+												pageTitle.style.width = absoluteWidth + 'px';
+											}
+										}
+									},1800);
+								}
+							}
+                            $('btn-action-luckydraw').observe('click',showRegiterDrawForm);
+                            $$('#digital-draw-code li.unactive').each(function(el){
+                                el.observe('click',showRegiterDrawForm);
+                            });
+							function submitRegisterForm(){
+								if (luckydrawRegisterForm.validator.validate() == false) return false;
+								if ($('btn-action-luckydraw').hasClassName('disable')){
+									TINY.box.hide();
+									return false;
+								}
+								$('luckydraw-register-button').hide();
+								$('luckydraw-please-wait-register').show();
+								$('btn-action-luckydraw').addClassName('disable');
+								luckydraw.dial(refreshDrawPage);
+							}
+							function refreshDrawPage(response){
+								$('luckydraw-please-wait-register').hide();
+								$('luckydraw-register-button').show();
+								//window.location.reload();
+							}
+						</script>
+					<?php endif ?>
+				<?php elseif ($this->getSessionCode()): ?>
+					<script type="text/javascript">
+						var luckydraw = new Luckydraw('digital-draw-code',<?php echo $codeLength ?>,'btn-action-luckydraw','<?php echo $this->getUrl('*/*/register',array('id' => $program->getId())) ?>',100);
+						luckydraw.startDial();
+						Event.observe(window,'load',function(){
+							luckydraw.stopDial('<?php echo $this->getSessionCode() ?>');
+						});
+					</script>
+				<?php endif ?>
+				<script type="text/javascript">
+					$('btn-action-luckydraw').observe('mouseover',function(event){
+						if (this.hasClassName('disable')) return false;
+						this.addClassName('over');
+					});
+					$('btn-action-luckydraw').observe('mouseout',function(event){
+						this.removeClassName('over');
+					});
+				</script>
+			</div>
+		</div>
+		<div class="luckydraw-footer-links">
+			<ul class="bottom-links" id="luckydraw-bottom-links">
+			<?php if ($this->getIsRegistered()): ?>
+				<li>
+					<div id="luckydraw-program-detail" style="display: none;">
+						<?php //echo $this->getChildHtml('luckydraw.statistic') ?>
+						<div id="luckydraw-registered-code">
+							<div class="page-title">
+								<h2><?php echo $this->__('My draw codes') ?></h2>
+                                <div title="<?php echo $this->__('Close') ?>" class="closepopup" onclick="TINY.box.hide();"></div>
+							</div>
+							<div class="box-content">
+								<div class="list-codes">
+									<p><?php echo $this->getCodesHtml() ?></p>
+								</div>
+								<?php if ($program->getCreditRate()>0.0001): ?>
+								<div class="code-redeem">
+									<?php echo $this->__('Each failed code can be redeemed for %s when you purchase product on our site!',$this->formatCurrency($program->getCreditRate())) ?>
+								</div>
+								<?php endif ?>
+							</div>
+						</div>
+					</div>
+					<a href="#" onclick="showProgramDetail();return false;"><span><?php echo $this->__('My draw codes') ?></span></a>
+					<script type="text/javascript">
+						var programDetailHtml = false;
+						function showProgramDetail(){
+							if (programDetailHtml == false){
+								programDetailHtml = $('luckydraw-program-detail').innerHTML;
+								$('luckydraw-program-detail').innerHTML = '';
+							}
+							TINY.box.show(programDetailHtml);
+							if (Prototype.Browser.IE){
+								setTimeout(function(){
+									var pageTitle = $('tinycontent').down('.page-title');
+									if (pageTitle){
+										var absoluteWidth = $('tinycontent').getWidth();
+										if (absoluteWidth > pageTitle.getWidth()){
+											absoluteWidth -= 27;
+											pageTitle.style.width = absoluteWidth + 'px';
+										}
+									}
+								},1800);
+							}
+						}
+					</script>
+				</li>
+			<?php endif ?>
+				<li>
+					<div id="luckydraw-term-n-condition" style="display: none;">
+                        <div id="terms-and-conditions">
+    						<div class="page-title">
+    							<h2><?php echo $this->__('Terms & Conditions') ?></h2>
+                               <div title="<?php echo $this->__('Close') ?>" class="closepopup" onclick="TINY.box.hide();"></div>
+    						</div>
+    						<div class="box-content">
+    							<?php echo $this->getTermHtml() ?>
+    						</div>
+                        </div>
+					</div>
+					<a href="#" onclick="showTermNCondition();return false;"><span><?php echo $this->__('Terms & Conditions') ?></span></a>
+					<script type="text/javascript">
+						var termNConditionHtml = false;
+						function showTermNCondition(){
+							if (termNConditionHtml == false){
+								termNConditionHtml = $('luckydraw-term-n-condition').innerHTML;
+								$('luckydraw-term-n-condition').innerHTML = '';
+							}
+							TINY.box.show(termNConditionHtml);
+							if (Prototype.Browser.IE){
+								setTimeout(function(){
+									var pageTitle = $('tinycontent').down('.page-title');
+									if (pageTitle){
+										var absoluteWidth = $('tinycontent').getWidth();
+										if (absoluteWidth > pageTitle.getWidth()){
+											absoluteWidth -= 27;
+											pageTitle.style.width = absoluteWidth + 'px';
+										}
+									}
+								},1800);
+							}
+						}
+					</script>
+				</li>
+			<?php if ($program->getStatus() == Magestore_Luckydraw_Model_Program::STATUS_PROCESSING && $this->getIsRegistered() && $this->codeIsActived()): ?>
+				<li>
+					<div id="luckydraw-refer-friend" style="display: none;">
+						<?php echo $this->getChildHtml('luckydraw.referfriend') ?>
+					</div>
+					<a href="#" onclick="showReferFriendForm(); return false;"><span><?php echo $this->__('Refer friends to earn more draw codes') ?></span></a>
+					<script type="text/javascript">
+						var referFriendFormHtml = false;
+						var luckydrawSocialForm = false;
+						var gplus = undefined;
+						var gplusNewLoad = false;
+						function showReferFriendForm(){
+							if (referFriendFormHtml == false){
+								referFriendFormHtml = $('luckydraw-refer-friend').innerHTML;
+								$('luckydraw-refer-friend').innerHTML = '';
+								gplusNewLoad = true;
+							}
+							TINY.box.show(referFriendFormHtml);
+							new VarienForm('luckydraw-email-form',true);
+							luckydrawSocialForm = new VarienForm('luckydraw-social-form',true);
+							if (Prototype.Browser.IE){
+								(function(){
+									var po = document.createElement('g:plus');
+									if (typeof gplus == "undefined") gplus = $$('#luckydraw-refer .google-plus-share [action="share"]')[0];
+									if (typeof gplus == "undefined") return false;
+									po.action = gplus.action;
+									po.height = gplus.height;
+									po.href = gplus.href;
+									var s = $$('#luckydraw-refer .google-plus-share')[0];
+									s.innerHTML = '';
+									s.appendChild(po);
+								})();
+								setTimeout(function(){
+									var pageTitle = $('tinycontent').down('.page-title');
+									if (pageTitle){
+										var absoluteWidth = $('tinycontent').getWidth();
+										if (absoluteWidth > pageTitle.getWidth()){
+											absoluteWidth -= 27;
+											pageTitle.style.width = absoluteWidth + 'px';
+										}
+									}
+									if (gplusNewLoad){
+										(function() {
+											var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+											po.src = 'https://apis.google.com/js/plusone.js';
+											var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+										})();
+										gplusNewLoad = false;
+									} else {
+										gapi.plus.go();
+									}
+								},1800);
+							} else {
+								if (gplusNewLoad/* || (document.all && !document.querySelector)*/){
+									(function() {
+										var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+										po.src = 'https://apis.google.com/js/plusone.js';
+										var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+									})();
+									gplusNewLoad = false;
+								} else {
+									gapi.plus.go();
+								}
+							}
+						}
+					</script>
+				</li>
+			<?php endif ?>
+			</ul>
+			<script type="text/javascript">
+				decorateList('luckydraw-bottom-links',true);
+			<?php if (!$currentCode): ?>
+				function loginToSystem(){
+					window.location.href = '<?php echo $this->getUrl('*/*/login',array('id' => $program->getId())) ?>';
+				}
+            <?php elseif (!$this->codeIsActived()): ?>
+                function resendActivateEmail(){
+                    window.location.href = '<?php echo $this->getUrl('*/*/resend',array('id' => $program->getId(), 'code' => $currentCode)) ?>';
+                }
+			<?php endif ?>
+			<?php if ($action): ?>
+				$('btn-action-luckydraw').observe('click',<?php echo $action ?>);
+			<?php endif ?>
+			</script>
+		</div>
+	</div>
+</div>
+<div id="luckydraw-preload-digital"></div>
+<div id="luckydraw-preload-button"></div>

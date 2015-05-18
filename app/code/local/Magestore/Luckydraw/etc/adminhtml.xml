@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<config>
+	<menu>
+		<luckydraw module="luckydraw" translate="title">
+			<title>Lucky Draw</title>
+			<sort_order>71</sort_order>               
+			<children>
+				<program module="luckydraw" translate="title">
+					<title>Manage Programs</title>
+					<sort_order>0</sort_order>
+					<action>luckydrawadmin/adminhtml_program</action>
+				</program>
+				<code module="luckydraw" translate="title">
+					<title>Lucky Draw Codes</title>
+					<sort_order>10</sort_order>
+					<action>luckydrawadmin/adminhtml_code</action>
+				</code>
+				<settings module="luckydraw" translate="title">
+					<title>Settings</title>
+					<sort_order>1000</sort_order>
+					<action>adminhtml/system_config/edit/section/luckydraw</action>
+				</settings>
+			</children>
+		</luckydraw>
+	</menu>
+	<acl>
+		<resources>
+			<all>
+				<title>Allow Everything</title>
+			</all>
+			<admin>
+				<children>
+					<system>
+						<children>
+							<config>
+								<children>
+									<luckydraw module="luckydraw" translate="title">
+										<title>Luckydraw</title>
+										<sort_order>71</sort_order>									
+									</luckydraw>								
+								</children>
+							</config>
+						</children>
+					</system>
+					<luckydraw module="luckydraw" translate="title">
+						<title>Luckydraw</title>
+						<sort_order>71</sort_order>               
+						<children>
+							<program module="luckydraw" translate="title">
+								<title>Manage programs</title>
+								<sort_order>0</sort_order>
+							</program>
+							<code module="luckydraw" translate="title">
+								<title>Lucky Draw Codes</title>
+								<sort_order>10</sort_order>
+							</code>
+							<settings module="luckydraw" translate="title">
+								<title>Settings</title>
+								<sort_order>1000</sort_order>
+							</settings>
+						</children>
+					</luckydraw>
+				</children>
+			</admin>
+		</resources>
+	</acl>
+</config>

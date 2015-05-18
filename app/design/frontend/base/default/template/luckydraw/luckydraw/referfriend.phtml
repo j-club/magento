@@ -1,0 +1,131 @@
+<?php 
+	/**
+	 * Lucky Draw Refer friend Page template
+	 * 
+	 * @see Magestore_Luckydraw_Block_Luckydraw_Referfriend
+	 */
+?>
+
+<div id="luckydraw-refer">
+	<div class="page-title">
+		<h2><?php echo $this->__('Refer to Friend') ?></h2>
+        <div title="<?php echo $this->__('Close') ?>" class="closepopup" onclick="TINY.box.hide();"></div>
+	</div>
+	<label><?php echo $this->getReferDescription() ?></label><br />
+	<strong>
+		<a href="<?php echo $this->getPersonalUrl() ?>"><?php echo $this->getPersonalUrl() ?></a>
+	</strong>
+	<ul class="form-list">
+		<li class="fields">
+			<div class="luckydraw-column luckydraw-left-column">
+				<div class="fieldset">
+					<h2 class="legend">
+						<?php echo $this->__('Invite by Email') ?>
+					</h2>
+					<form id="luckydraw-email-form" method="post" action="<?php echo $this->getUrl('*/*/email',array('id' => $this->getProgram()->getId())) ?>">
+					<ul>
+						<li>
+							<label><?php echo $this->__('From') ?>:</label>&nbsp;
+							<a href="mailto:<?php echo $this->getAccountEmail() ?>"><?php echo $this->getAccountEmail() ?></a>
+						</li>
+						<li>
+							<label for="luckydraw-email-address"><?php echo $this->__("Enter your friends' emails separated by comma") ?>:</label>
+							<div class="input-box">
+								<input type="text" class="input-text required-entry" id="luckydraw-email-address" name="emails" style="width: 277px;" value="<?php echo $this->getEmailFormData()->getEmails() ?>"/>
+							</div>
+						</li>
+						<li>
+							<span>
+								<label><?php echo $this->__("Or retrieve contacts from") ?></label>&nbsp;
+								<a href="#" onclick="retrieveContacts('gmail'); return false;" title="<?php echo $this->__('get contacts from gmail') ?>"><?php echo $this->__('Gmail') ?></a>,
+								<a href="#" onclick="retrieveContacts('yahoo'); return false;" title="<?php echo $this->__('get contacts from yahoo') ?>"><?php echo $this->__('Yahoo') ?></a>
+							</span>
+						</li>
+						<li>
+							<label for="luckydraw-email-subject"><?php echo $this->__("Subject") ?>:</label>
+							<div class="input-box">
+								<input type="text" class="input-text required-entry" id="luckydraw-email-subject" name="email_subject" style="width: 277px;" value="<?php echo $this->getEmailFormData()->getEmailSubject() ? $this->getEmailFormData()->getEmailSubject() : $this->getDefaultEmailSubject() ?>"/>
+							</div>
+						</li>
+						<li>
+							<label for="luckydraw-email-content"><?php echo $this->__("Your message (use suggested or write your own)") ?>:</label>
+							<div class="input-box">
+								<textarea id="luckydraw-email-content" name="email_content" class="required-entry" style="height: 157px;width: 277px;"><?php echo $this->getEmailFormData()->getEmailContent() ? $this->getEmailFormData()->getEmailContent() : $this->getDefaultEmailContent() ?></textarea>
+							</div>
+						</li>
+					</ul>
+					<div class="luckydraw-buttons-set" style="margin:0px 22px 22px;text-align: right;">
+						<button class="button" title="<?php echo $this->__('Send Email') ?>" type="submit">
+							<span><span><?php echo $this->__('Send Email') ?></span></span>
+						</button>
+					</div>
+					</form>
+					<script type="text/javascript">
+						function retrieveContacts(mailSv){
+							var mailCfg = <?php echo $this->getJsonEmail() ?>;
+							var popUrl = mailCfg[mailSv];
+							if (popUrl) popWin(popUrl,mailSv,showPopupPosition(500,360)+',resizable=yes,scrollbars=yes');
+						}
+					</script>
+				</div>
+			</div>
+			<div class="luckydraw-column luckydraw-right-column">
+				<div class="fieldset">
+					<h2 class="legend">
+						<?php echo $this->__('Invite friends from Social networks') ?>
+					</h2>
+					<ul>
+						<li>
+							<label><?php echo $this->__('Invite friends from Google+') ?></label>
+							<div class="input-box">
+								<div class="google-plus-share">
+									<g:plus action="share" height="24" href="<?php echo $this->getPersonalUrl() ?>"></g:plus>
+								</div>
+							</div>
+						</li>
+					</ul>
+					<!--p class="title" style="margin-top: 58px;">
+						<?php echo $this->__('Invite friends from Facebook or Twitter') ?>
+					</p-->
+					<form id="luckydraw-social-form" method="post">
+					<ul>
+						<li>
+							<label for="luckydraw-facebook-content"><?php echo $this->__('Invite friends from Facebook or Twitter') ?></label>
+							<div class="input-box">
+								<textarea id="luckydraw-facebook-content" class="required-entry" style="height: 157px;width: 277px;"><?php echo $this->getDefaultSharingContent() ?></textarea>
+							</div>
+						</li>
+					</ul>
+					</form>
+					<div class="luckydraw-buttons-set" style="margin-right: 22px;text-align: right;">
+						<button type="button" class="button facebook" title="<?php echo $this->__('Post on Facebook') ?>" onclick="postOnFacebook();">
+							<span class="span">
+								<span><?php echo $this->__('Post on Facebook') ?></span>
+							</span>
+						</button>
+						<span>&nbsp;</span>
+						<button type="button" class="button tweeter" title="<?php echo $this->__('Tweet') ?>" onclick="luckydrawTweet();">
+							<span class="span">
+								<span><?php echo $this->__('Tweet on Twitter') ?></span>
+							</span>
+						</button>
+					</div>
+					<script type="text/javascript">
+						function postOnFacebook(){
+							if (luckydrawSocialForm.validator.validate()){
+								popWin('<?php echo $this->getFbLoginUrl() ?>','facebook',showPopupPosition(500,270)+',resizable=yes,scrollbars=yes');
+							}
+						}
+						function luckydrawTweet(){
+							if (luckydrawSocialForm.validator.validate()){
+								var tweetUrl = 'https://twitter.com/intent/tweet?original_referer=<?php echo urlencode($this->getPersonalUrl()) ?>source=tweetbutton&text=';
+								tweetUrl += encodeURIComponent($('luckydraw-facebook-content').value);
+								popWin(tweetUrl,'tweet',showPopupPosition(480,320)+',resizable=yes,scrollbars=yes');
+							}
+						}
+					</script>
+				</div>
+			</div>
+		</li>
+	</ul>
+</div>

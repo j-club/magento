@@ -1,0 +1,197 @@
+/* ======================================================================================= */
+/* merged skin/frontend/enterprise/default/itoris/layerednavigation/styles.css             */
+/* ======================================================================================= */
+/*.block.itoris_laynav {border:0;padding:0; }
+.block.itoris_laynav .block-title {border:0;padding:0;}
+.itoris_laynav .block-title {background: url(../../../default/itoris/layerednavigation/images/title-bg.png) no-repeat scroll left center transparent;}
+.itoris_laynav .block-title div {background: url("../../../default/itoris/layerednavigation/images/title-bg-right.png") no-repeat scroll right center transparent; height:20px;padding:3px 6px; }
+.block.itoris_laynav .block-title strong {color:white; font-size:12px; font-weight: bold; line-height: 19px;text-transform: uppercase;}
+.itoris_laynav .block-subtitle {color: #333333; font-size: 12px; font-weight: bold; margin: 0; height:25px;  padding:0;background:url(../../../default/itoris/layerednavigation/images/subtitle-bg.png) no-repeat scroll left center transparent;}
+.itoris_laynav .block-subtitle div {padding: 4px 6px 5px;background:url(../../../default/itoris/layerednavigation/images/subtitle-bg-right.png) no-repeat scroll right 0 transparent; height:15px;line-height: 15px;}*/
+
+/* {background:url(../../../default/itoris/layerednavigation/images/subtitle-button-bg-right.png) no-repeat scroll right center transparent; border:0;float: right;padding-right:7px;}
+.itoris_laynav .block-subtitle button:active{position:relative; top:1px; left:1px;}
+.itoris_laynav .block-subtitle button span {background:url(../../../default/itoris/layerednavigation/images/subtitle-button-bg.png) no-repeat scroll left center transparent;border:0;font-size:11px; line-height:16px; height:16px;padding:0;}
+.itoris_laynav .block-subtitle button span span{background: none;margin:0;padding-left:7px;text-transform: none;color:white;}*/
+
+/*.block.itoris_laynav .block-content {background-color: #f0f0f0;padding:0;}
+.itoris_laynav .block-content dt,
+.itoris_laynav .block-content dd {padding:0 10px;}
+.itoris_laynav .block-content dt {padding-left:27px;border-top:1px solid #d8dadc;padding-top:1px;cursor: pointer;}
+.itoris_laynav .block-content dd {margin-bottom:5px;}
+.itoris_laynav .block-content dt.ln-opened{background:url(../../../default/itoris/layerednavigation/images/open-filter-icon.png) no-repeat scroll 11px 4px transparent;}
+.itoris_laynav .block-content dt.ln-closed{background:url(../../../default/itoris/layerednavigation/images/closed-filter-icon.png) no-repeat scroll 11px 4px transparent;}
+.itoris_laynav .block-content dd .ln-tree .ln-tree{margin-left:15px;}*/
+
+.itoris_laynav .price-range .scale {background: #6985a1;height:2px;}
+.itoris_laynav .price-range .control {height:5px;position: relative;padding:13px 5px 5px 5px;}
+.itoris_laynav .price-range .pointer {height:13px; width:11px;position: absolute;top:5px;left:0px;background: url(../../../default/itoris/layerednavigation/images/pointer.png)}
+.itoris_laynav .price-range .range {height:8px; position:absolute; top:5px; left:0px; width:100%; background: #e2f1f6;}
+
+.itoris_laynav .clear-filter-button{background:url(../../../default/itoris/layerednavigation/images/clear-filter-button.png); width:9px; height:9px; float:right; border:0;margin-top:3px;cursor:pointer;outline: none;}
+.itoris_laynav .clear-filter-button:active{position:relative; top:1px; left:1px;}
+
+.ln-loader-back {background-color: #000000; height: 100%; left: 0; opacity: 0.7;filter:alpha(opacity=70); position: fixed; top: 0; width: 100%; z-index: 1000; }
+.ln-loader-image {background-image: url("../../../default/itoris/layerednavigation/images/loader.gif"); height: 11px; left: 50%; margin-left: -22px; margin-top: -6px; position: fixed; top: 47%; width: 43px; z-index: 1001; }
+.ln-loader-title {color: #FFFFFF; font-size: 16px; height: 20px; position: fixed; text-align: center; top: 49%; width: 100%; z-index: 1001;}
+
+/* laynav styling */
+@font-face {
+    font-family: 'open_sansbold';
+    src: url('../../../default/itoris/layerednavigation/fonts/opensans-bold-webfont.eot');
+    src: url('fonts/opensans-bold-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../../../default/itoris/layerednavigation/fonts/opensans-bold-webfont.woff') format('woff'),
+    url('../../../default/itoris/layerednavigation/fonts/opensans-bold-webfont.ttf') format('truetype'),
+    url('fonts/opensans-bold-webfont.svg#open_sansbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'open_sansregular';
+    src: url('../../../default/itoris/layerednavigation/fonts/opensans-regular-webfont.eot');
+    src: url('fonts/opensans-regular-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../../../default/itoris/layerednavigation/fonts/opensans-regular-webfont.woff') format('woff'),
+    url('../../../default/itoris/layerednavigation/fonts/opensans-regular-webfont.ttf') format('truetype'),
+    url('fonts/opensans-regular-webfont.svg#open_sansregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'open_sanssemibold';
+    src: url('../../../default/itoris/layerednavigation/fonts/opensans-semibold-webfont.eot');
+    src: url('fonts/opensans-semibold-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../../../default/itoris/layerednavigation/fonts/opensans-semibold-webfont.woff') format('woff'),
+    url('../../../default/itoris/layerednavigation/fonts/opensans-semibold-webfont.ttf') format('truetype'),
+    url('fonts/opensans-semibold-webfont.svg#open_sanssemibold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+.itoris_laynav .block-title div,
+.itoris_laynav .block-title {
+    background: none;
+    padding: 0;
+    height: auto;
+}
+.itoris_laynav .block-title {padding: 0 0 10px;}
+.block.itoris_laynav .block-title strong {
+    color: #2f2f2f;
+    padding: 0 0 0 25px;
+    background: url("../../../default/itoris/layerednavigation/images/ico-title.png") 0 5px no-repeat;
+    text-transform: uppercase;
+    font: 15px/18px "open_sanssemibold", Arial, Helvetica, sans-serif;
+}
+.itoris_laynav .block-subtitle {
+    margin: 0 0 10px;
+    color: #666;
+    font: 14px/16px "open_sanssemibold", Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+}
+.itoris_laynav .block-subtitle,
+.itoris_laynav .block-subtitle div {
+    background: none;
+    padding: 0;
+    height: auto;
+}
+.itoris_laynav .block-subtitle button {margin: 0 0 10px;}
+.itoris_laynav .block-subtitle button span,
+.itoris_laynav .block-subtitle button {
+    width: 100%;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+.itoris_laynav .block-content dt {
+    color: #666;
+    text-transform: uppercase;
+    font: 12px/18px "open_sansbold", Arial, Helvetica, sans-serif;
+    padding: 17px 0 0;
+}
+#narrow-by-list dd label {padding: 0 4px 0 0;}
+.block dl dd li input[type="checkbox"] {margin: 2px 6px 0 0;}
+.block dl dd {padding: 0;}
+.itoris_laynav span.hide,
+.itoris_laynav span.show {
+    display: inline-block;
+    color: #507fa6;
+    font: 11px/16px "open_sansbold", Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    padding: 0 12px 0 19px;
+    background: url("../../../default/itoris/layerednavigation/images/bullet-5.png") 100% 5px no-repeat;
+    cursor: pointer;
+}
+.itoris_laynav span.hide {background: url("../../../default/itoris/layerednavigation/images/bullet-5.png") 100% -144px no-repeat;}
+@media handheld, only screen and (max-width:767px) {
+    .itoris_laynav .block-title {
+        background: #f0f3f3;
+        padding: 12px 16px 10px;
+    }
+    .block.itoris_laynav .block-title strong {
+        color: #666;
+        padding: 0;
+        background: none;
+        font: 16px/18px "open_sanssemibold", Arial, Helvetica, sans-serif;
+        word-spacing: 3px;
+    }
+    .itoris_laynav .block-content {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        padding: 0 15px;
+        background: #fff;
+        z-index: 999;
+        box-shadow: 0 8px 10px rgba(0, 0, 0, 0.15);
+        -webkit-box-shadow: 0 8px 10px rgba(0, 0, 0, 0.15);
+        -moz-box-shadow: 0 8px 10px rgba(0, 0, 0, 0.15);
+    }
+    .itoris_laynav .opener-mobile {
+        display: block;
+        float: right;
+        text-indent: -9999px;
+        overflow: hidden;
+        width: 24px;
+        height: 11px;
+        position: relative;
+        border: solid #666;
+        border-width: 3px 0;
+    }
+    .itoris_laynav .opener-mobile:after {
+        position: absolute;
+        top: 4px;
+        left: 0;
+        content: "";
+        width: 24px;
+        height: 3px;
+        background: #666;
+    }
+    .itoris_laynav .block-subtitle,
+    .itoris_laynav span.hide,
+    .itoris_laynav span.show {display: none;}
+    .itoris_laynav .block-content {padding: 0;}
+    #narrow-by-list {
+        padding: 0 0 8px;
+        overflow: hidden;
+    }
+    .itoris_laynav .block-content dt {
+        border-top: 1px solid #f2f2f2;
+        padding: 12px 7px 0 33px;
+        font: 17px/20px "open_sanssemibold", Arial, Helvetica, sans-serif;
+        background: url("../../../default/itoris/layerednavigation/images/bullet-1.png") 20px 17px no-repeat;
+        margin: 15px 0 0;
+    }
+    .itoris_laynav .block-content dt:first-child {
+        border: 0;
+        margin: 0;
+    }
+    .itoris_laynav .block-content dt.ln-closed {
+        background: url("../../../default/itoris/layerednavigation/images/bullet-1-inactive.png") 17px 19px no-repeat;
+    }
+    .itoris_laynav .block-content dd {
+        padding: 0 32px;
+    }
+    .itoris_laynav .block-content dt.last {padding: 12px 7px 12px 33px;}
+}

@@ -1,0 +1,50 @@
+<?php  $_order = $this->getOrder() ?>
+
+<div class="data-table" id="my-orders-table" summary="<?php echo $this->__('Items Ordered') ?>">
+    <div class="thead">
+        <div class="th first"><?php echo $this->__('Items') ?></div>
+        <div class="th desc">&nbsp;</div>
+        <div class="th qty-col"><?php echo $this->__('Qty') ?></div>
+        <div class="th unit-price"><?php echo $this->__('Price') ?></div>
+        <div class="th subtotal"><?php echo $this->__('Subtotal') ?></div>
+    </div>
+    <div class="tbody">
+        <?php $_items = $_order->getItemsCollection(); ?>
+        <?php $_index = 0; ?>
+            <?php $_count = $_items->count(); ?>
+        <?php foreach ($_items as $_item): ?>
+        <?php if ($_item->getParentItem()) continue; ?>
+            <?php echo $this->getItemHtml($_item) ?>
+            <?php if($this->helper('giftmessage/message')->getIsMessagesAvailable('order_item', $_item) && $_item->getGiftMessageId()): ?>
+            <div class="tr" style="display:none;">
+                <?php $_giftMessage=$this->helper('giftmessage/message')->getGiftMessageForEntity($_item); ?>
+                <div class="td gift-message-row" colspan="7">
+                    <a href="#" title="<?php echo $this->__('Close') ?>" onclick="return giftMessageToogle('<?php echo $_item->getId() ?>');" class="btn-close"><?php echo $this->__('Close') ?></a>
+                    <dl class="gift-message">
+                        <dt><strong><?php echo $this->__('From:') ?></strong> <?php echo $this->escapeHtml($_giftMessage->getRecipient()) ?></dt>
+                        <dt><strong><?php echo $this->__('To:') ?></strong> <?php echo $this->escapeHtml($_giftMessage->getSender()) ?></dt>
+                        <dd><?php echo $this->helper('giftmessage/message')->getEscapedGiftMessage($_item) ?></dd>
+                    </dl>
+                </div>
+            </div>
+            <?php endif ?>
+        <?php endforeach; ?>
+    </div>
+    <div class="tfoot">
+    <?php echo $this->getChildHtml('order_totals') ?>
+        <?php if ($points = Mage::helper('oro_earnpoints')->getPointsForOrder($_order)): ?>
+        <div class="tr">
+            <div class="earn a-right">
+                <?php echo $this->__('+ Earned'); ?>
+                <span><?php echo $points ?></span>
+                <?php echo $this->__('Points'); ?>
+            </div>
+        </div>
+        <?php endif; ?>
+    </div>
+    <div class="buttons-set">
+        <p class="back-link"><a href="<?php echo $this->getParentBlock()->getBackUrl() ?>"><span><?php echo $this->getParentBlock()->getBackTitle() ?></span></a></p>
+    </div>
+</div>
+<script type="text/javascript">decorateTable('my-orders-table', {'tbody' : ['odd', 'even'], 'tbody tr' : ['first', 'last']})</script>
+

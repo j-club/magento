@@ -1,0 +1,43 @@
+<?php 
+/**
+ * ITORIS
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the ITORIS's Magento Extensions License Agreement
+ * which is available through the world-wide-web at this URL:
+ * http://www.itoris.com/magento-extensions-license.html
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to sales@itoris.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade the extensions to newer
+ * versions in the future. If you wish to customize the extension for your
+ * needs please refer to the license agreement or contact sales@itoris.com for more information.
+ *
+ * @category   ITORIS
+ * @package    ITORIS_LAYEREDNAVIGATION
+ * @copyright  Copyright (c) 2012 ITORIS INC. (http://www.itoris.com)
+ * @license    http://www.itoris.com/magento-extensions-license.html  Commercial License
+ */
+?>
+<?php /** @var $this Itoris_LayeredNavigation_Block_Layer_MultiFilter_Category_Tree */ ?>
+<ol class="ln-tree">
+<?php foreach($this->getItems() as $_item) { ?>
+	<?php /** @var $_item Mage_Catalog_Model_Category */
+		if ($_item->getProductCount() <= 0) {
+			continue;
+		}
+	?>
+    <li>
+		<input type="checkbox" class="itoris_laynav_checkbox" id="item_<?php echo $_item->getEntityId() ?>"
+			   <?php if ($_item->getInState()) { ?> checked="checked" <?php } ?>
+			   name="<?php echo $_item->getFilter()->getRequestVar() ?>[]" value="<?php echo $_item->getEntityId() ?>" />
+		<label><a <?php if ($_item->getIsAnchor()) { ?> onclick="LayNav.categoryClick(this); return false;" <?php } ?> href="<?php echo $_item->getUrl() ?>"><?php echo $_item->getName() ?></a></label>
+        (<?php echo $_item->getProductCount() ?>)
+		<?php echo $this->getLayerHtml($_item); ?>
+    </li>
+<?php } ?>
+</ol>

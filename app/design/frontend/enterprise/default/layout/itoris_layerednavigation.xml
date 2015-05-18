@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<layout>
+	<catalog_category_itoris_layerednavigation translate="label">
+		<label>Catalog Category (Anchor)</label>
+		<!--<update name="catalog_category_layered" />-->
+		<!--<remove name="content" />-->
+		<remove name="enterprisecatalog.leftnav" />
+		<remove name="catalog.leftnav" />
+		<remove name="catalogsearch.leftnav" />
+		<remove name="enterprisesearch.leftnav" />
+
+		<reference name="left">
+			<block type="itoris_layerednavigation/layer_view" name="catalog.itoris_leftnav"
+				   as="enterprisecatalog.leftnav" after="currency" />
+		</reference>
+
+		<reference name="head">
+			<action method="addJs"><js>itoris/layerednavigation/layerednavigation.js</js></action>
+			<action method="addCss"><css>itoris/layerednavigation/styles.css</css></action>
+			<action method="addItem">
+				<type>skin_css</type>
+				<name>itoris/layerednavigation/styles-ie7.css</name>
+				<params/>
+				<if>lt IE 8</if>
+			</action>
+		</reference>
+
+		<reference name="content">
+			<block type="core/text" name="itoris_layerednavigation_anchor" before="-" >
+				<action method="setText"><t><![CDATA[<span id="itoris_layerednavigation_anchor"></span>]]></t></action>
+			</block>
+		</reference>
+		
+		<reference name="product_list_toolbar">
+			<action method="setTemplate"><t>itoris/layerednavigation/product/list/toolbar.phtml</t></action>
+		</reference>
+		
+		<reference name="product_list_toolbar_pager">
+			<action method="setTemplate"><t>itoris/layerednavigation/product/list/toolbar/pager.phtml</t></action>
+		</reference>
+
+	</catalog_category_itoris_layerednavigation>
+</layout>

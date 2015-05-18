@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+
+<layout>
+<!-- 
+	<productvideo_admin_adminhtml_videos_index>
+		<block type="core/text_list" name="root">
+			<block type="productvideo/adminhtml_catalog_product_edit_tab_videos" name="catalog.product.edit.tab.videos" />
+		</block>
+	</productvideo_admin_adminhtml_videos_index>
+ -->
+<!-- 
+    <adminhtml_catalog_product_new>
+        <reference name="product_tabs">
+            <block type="adminhtml/catalog_product_edit_tabs" name="product_tabs">
+                <action method="addTab">
+                    <name>niveus_youtube_videos</name>
+                    <block>productvideo/adminhtml_catalog_product_edit_tab_videos</block>
+                </action>
+            </block>
+        </reference>
+    </adminhtml_catalog_product_new>
+
+    <adminhtml_catalog_product_edit>
+        <reference name="product_tabs">
+            <block type="adminhtml/catalog_product_edit_tabs" name="product_tabs">
+                <action method="addTab">
+                    <name>niveus_youtube_videos</name>
+                    <block>productvideo/adminhtml_catalog_product_edit_tab_videos</block>
+                </action>
+            </block>
+        </reference>
+    </adminhtml_catalog_product_edit>
+ -->
+</layout>

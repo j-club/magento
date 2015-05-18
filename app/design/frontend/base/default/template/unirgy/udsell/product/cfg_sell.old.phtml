@@ -1,0 +1,190 @@
+<?php
+    $_hlp = Mage::helper('udsell');
+    $lHlp = Mage::helper('udprod');
+    $_udHlp = Mage::helper('udropship');
+    $_helper = $this->helper('catalog/output');
+    $_product = $this->getParentBlock()->getProduct();
+    $_isMultiPrice = Mage::helper('udropship')->isModuleActive('Unirgy_DropshipMultiPrice');
+    $_isVendorProductShipping = Mage::helper('udmulti')->isVendorProductShipping();
+    $_mvData = new Varien_Object(Mage::registry('sell_yours_data_'.$_product->getId()));
+    $_pId = $_product->getId();
+    $stateOptions = Mage::getSingleton('udmultiprice/source')->setPath('vendor_product_state')->toOptionHash();
+    $cfgAttrs = Mage::helper('udprod')->getConfigurableAttributes($_product, !$_product->getId());
+?>
+
+<form id="udsell-sell-<?php echo $_pId?>" method="post" action="<?php echo $this->getUrl('udsell/index/sellPost', array('id'=>$_product->getId()))?>">
+<div class="product-sell-option generic-box" id="udsell-sell-options">
+	<h3><span class="count">1</span><?php echo $this->__('Add Product Options') ?></h3>
+	<div id="udsell_product_cfg_sell" class="row-options-container">
+		<div class="row-option" style="display:none" id="udsell_product_cfg_sell_row_template">
+	         <div class="form-add">
+	         	<span class="count">$ROW</span>
+	            <ul class="form-list">
+	            <li>
+	            <div class="fields">
+	                <div class="label-field">
+	                    <label><?php echo $_hlp->__('Options') ?> <span class="required">*</span></label><br />
+	                </div>
+	                <div class="field">
+	
+	                <?php foreach ($cfgAttrs as $cfgAttr): ?>
+	                    <select id="attribute$ROW-<?php echo $_product->getId()?>-<?php echo $cfgAttr->getAttributeId() ?>" name="udsell_cfgsell[$ROW][<?php echo $cfgAttr->getAttributeCode() ?>]" class="validate-select super-attribute-select-$ROW-<?php echo $_product->getId()?>" style="width:100%">
+	                    <option alt="<?php echo $cfgAttr->getAttributeCode() ?>" value=""><?php echo $this->htmlEscape($_hlp->__('- Select '.$this->htmlEscape($cfgAttr->getFrontend()->getLabel()).' -')) ?></option>
+	                    <?php /*foreach ($cfgAttr->getSource()->getAllOptions() as $_option): ?>
+	                        <?php if(empty($_option['value'])) continue; ?>
+	                        <option alt="<?php echo $cfgAttr->getAttributeCode() ?>" value="<?php echo $_option['value'] ?>"><?php echo $this->htmlEscape($_option['label']) ?></option>
+	                    <?php endforeach*/ ?>
+	                    </select>
+	                <?php endforeach ?>
+	
+	                </div>
+	                
+	            </div>
+	            </li>
+	            <li>
+	            <div class="fields">
+	                <div class="label-field">
+	                    <label for="udsell_cfgsell_$ROW_state"><?php echo $_hlp->__('Condition') ?> <span class="required">*</span></label><br />
+	                </div>
+	                <div class="field">
+	                <select id="udsell_cfgsell_$ROW_state" name="udsell_cfgsell[$ROW][state]" class="validate-select" style="width:100%">
+	                    <option alt="state" value=""><?php echo $this->htmlEscape($_hlp->__('- Select Option -')) ?></option>
+	                    <?php foreach ($stateOptions as $_value=>$_label): ?>
+	                        <option alt="state" value="<?php echo $_value ?>"><?php echo $this->htmlEscape($_label) ?></option>
+	                    <?php endforeach ?>
+	                </select>
+	                </div>
+	            </div>
+	            </li>
+	            <li>
+	            <div class="fields">
+	                <div class="label-field">&nbsp;</div>
+	                <div class="field" style="width:400px;">
+	                    <label for="udsell_cfgsell_$ROW_state_descr"><span class="small"><?php echo $_hlp->__('Additional details about Condition') ?></span></label>
+	                    <textarea name="udsell_cfgsell[$ROW][state_descr]" title="<?php echo $_hlp->__('Additional details about Condition') ?>" id="udsell_cfgsell_$ROW_state_descr">$STATE_DESCR</textarea>
+	                </div>
+	            </div>
+	            </li>
+	            <li>
+	            <div class="fields">
+	                <div class="label-field">
+	                    <label for="udsell_cfgsell_$ROW_vendor_price"><?php echo $_hlp->__('Your Price') ?> <span class="required">*</span></label>
+	                </div>
+	                <div class="field">
+	                    <input name="udsell_cfgsell[$ROW][vendor_price]" value="$VENDOR_PRICE" title="<?php echo $_hlp->__('Price') ?>" id="udsell_cfgsell_$ROW_vendor_price" type="text" class="input-text required-entry" />
+	                </div>
+	            </div>
+	            </li>
+	            <li>
+	            <div class="fields">
+	                <div class="label-field">
+	                    <label for="udsell_cfgsell_$ROW_stock_qty"><?php echo $_hlp->__('Qty') ?> <span class="required">*</span></label>
+	                </div>
+	                <div class="field">
+	                    <input name="udsell_cfgsell[$ROW][stock_qty]" value="$STOCK_QTY" title="<?php echo $_hlp->__('Qty') ?>" id="udsell_cfgsell_$ROW_stock_qty" type="text" class="input-text required-entry" />
+	                </div>
+	            </div>
+	            </li>
+	            </ul>
+	        </div>
+		</div>
+	</div>
+	<button type="button" class="form-button" id="udsell_product_cfg_sell_add" style="margin-left:28px;"><span><?php echo $this->__('+ Add Another Option') ?></span></button>
+</div>
+<div class="product-sell-option generic-box" id="udsell-sell-freeshipping">
+
+<h3><span class="count">2</span><?php echo $this->__('Free Shipping') ?></h3>
+
+<input type="checkbox" id="freeshipping" name="freeshipping" value="1" <?php if ($_mvData->getFreeshipping()): ?>checked="checked"<?php endif?> /> <label for="freeshipping"><?php echo $this->__('Allow free shipping for this product')?></label>
+
+</div>
+
+<div class="buttons-set">
+    <button type="submit" title="<?php echo $this->__('Submit') ?>" class="form-button"><span><?php echo $this->__('Submit') ?></span></button>
+    <p class="required"><?php echo $this->__('* Required Fields') ?></p>
+</div>
+
+</form>
+<script type="text/javascript">
+//<![CDATA[
+    var dataForm = new VarienForm('udsell-sell-<?php echo $_pId?>', true);
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+(function ()
+{
+    var lastRowNum = 1;
+    var section = $('udsell_product_cfg_sell');
+
+    function processOptionHtml(html, code, value)
+    {
+        html = html.replace(new RegExp('<option alt="'+code+'" value="?'+value+'"?>', 'i'), '<option alt="'+code+'" value="'+value+'" selected="selected">');
+        html = html.replace(new RegExp('<option value="?'+value+'"?> alt="'+code+'"', 'i'), '<option value="?'+value+'"?> alt="'+code+'" selected="selected"');
+        return html;
+    }
+    function addRow(inData, inCfgData)
+    {
+        var rowHtml = $('udsell_product_cfg_sell_row_template').innerHTML
+        var data = {
+            vendor_sku: '',
+            <?php if (Mage::helper('udmulti')->isVendorProductShipping()): ?>
+            shipping_price: '',
+            <?php endif ?>
+            <?php if ($_isMultiPrice): ?>
+                vendor_price: '',
+                vendor_title: '',
+                state_descr: '',
+                state: '',
+                state_descr: '',
+            <?php endif ?>
+            stock_qty: ''
+        }
+        Object.extend(data, inData);
+        var cfgData = {};
+        <?php foreach ($cfgAttrs as $cfgAttr): ?>
+        cfgData['<?php echo $cfgAttr->getAttributeCode() ?>'] = '';
+        <?php endforeach ?>
+        Object.extend(cfgData, inCfgData);
+        data.row = lastRowNum++;
+        rowHtml = processOptionHtml(rowHtml, 'state', data.state);
+        <?php foreach ($cfgAttrs as $cfgAttr): ?>
+        rowHtml = processOptionHtml(rowHtml, '<?php echo $cfgAttr->getAttributeCode() ?>', cfgData['<?php echo $cfgAttr->getAttributeCode() ?>']*1);
+        <?php endforeach ?>
+        for (i in data) {
+            value = data[i] || ''
+            if ((i=='stock_qty' || i=='weight' || i=='vendor_price') && data[i]) value *= 1;
+            if (i!=='row' && Prototype.Browser.IE) value = '"'+value+'"'
+            rowHtml = rowHtml.replace(new RegExp('\\$'+i.toUpperCase(), 'g'), value)
+        }
+        section.insert(rowHtml)
+        //var trs = tbody.childElements()
+        var tr = section.childElements().last();
+        tr.addClassName(lastRowNum%2 ? 'odd' : 'even')
+        var del = $(tr).select('button');
+        if (del && del.length>0) {
+            del = del[0];
+            $(del).observe('click', function(e) { e.stop(); $(del.parentNode.parentNode).remove() })
+        }
+        var spConfig<?php echo $_product->getId()?>, unirgyConfig<?php echo $_product->getId()?> = <?php echo $this->getJsonConfig() ?>;
+        spConfig<?php echo $_product->getId()?> = new UnirgyProductConfig(unirgyConfig<?php echo $_product->getId()?>, {skinBaseUrl: '<?php echo $lHlp->getSkinBaseUrl()?>', productId: '<?php echo $_product->getId()?>', saPrefix: data.row+'-<?php echo $_product->getId()?>-', saSelectClass: 'super-attribute-select-'+data.row+'-<?php echo $_product->getId()?>', noPreselect: true, usePerAttrChooseText: true});
+        <?php foreach ($cfgAttrs as $cfgAttr): ?>
+            if (cfgData['<?php echo $cfgAttr->getAttributeCode() ?>']) {
+                spConfig<?php echo $_product->getId()?>.setStateConfigureById(null, '<?php echo $cfgAttr->getAttributeId() ?>', cfgData['<?php echo $cfgAttr->getAttributeCode() ?>']);
+            }
+        <?php endforeach ?>
+    }
+
+    $('udsell_product_cfg_sell_add').observe('click', function(e) { e.stop(); addRow() })
+
+<?php if(($cfgMvData = $_mvData->getData('udsell_cfgsell')) && is_array($cfgMvData)): ?>
+<?php foreach ($cfgMvData as $_mvd): if (isset($_mvd['udmulti']) && is_array($_mvd['udmulti'])): ?>
+    addRow(<?php echo Zend_Json::encode($_mvd['udmulti']) ?>, <?php echo Zend_Json::encode($_mvd) ?>);
+<?php endif; endforeach; ?>
+<?php else: ?>
+    addRow({}, {});
+<?php endif ?>
+})()
+//]]>
+</script>

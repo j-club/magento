@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Oro_Sociable>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Be_Sociable />
+            </depends>
+        </Oro_Sociable>
+    </modules>
+</config>

@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * {magecore_license_notice}
+ *
+ * @category   Oro
+ * @package    Oro_LayeredNavigation
+ * @copyright  {magecore_copyright}
+ * @license    {magecore_license}
+ */
+-->
+<config>
+    <modules>
+        <Oro_LayeredNavigation>
+            <version>1.0.0</version>
+        </Oro_LayeredNavigation>
+    </modules>
+    <global>
+        <blocks>
+            <oro_layerednavigation>
+                <class>Oro_LayeredNavigation_Block</class>
+            </oro_layerednavigation>
+            <itoris_layerednavigation>
+                <rewrite>
+                    <layer_view>Oro_LayeredNavigation_Block_Layer_View</layer_view>
+                </rewrite>
+            </itoris_layerednavigation>
+        </blocks>
+        <helpers>
+            <oro_layerednavigation>
+                <class>Oro_LayeredNavigation_Helper</class>
+            </oro_layerednavigation>
+        </helpers>
+        <models>
+            <oro_layerednavigation>
+                <class>Oro_LayeredNavigation_Model</class>
+                <resourceModel>oro_layerednavigation_resource</resourceModel>
+            </oro_layerednavigation>
+            <oro_layerednavigation_resource>
+                <class>Oro_LayeredNavigation_Model_Resource</class>
+            </oro_layerednavigation_resource>
+        </models>
+    </global>
+</config>

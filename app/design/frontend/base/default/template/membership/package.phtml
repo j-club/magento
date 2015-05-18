@@ -1,0 +1,78 @@
+<?php $package = $this->getPackage()?>
+<div class="page-title">
+	<h1><?php echo $this->__($package->getPackageName()) ?></h1>
+</div>
+<table width="100%">
+<tr>
+   <td width="300px">
+<?php
+	echo($package->getDescription());
+?>
+	</td>
+<?php 
+	$customerId = Mage::getModel('customer/session')->getCustomer()->getId();
+	if($customerId) {	
+		$memberId = Mage::helper('membership')->getMemberId($customerId);
+		if($memberId) {
+			$memberpackage = Mage::helper('membership')->isSignedUpPackage($memberId,$package->getId());
+			if($memberpackage) {
+				if($memberpackage->getStatus()==1)
+					$showSignUpButton = 0;
+				else $showSignUpButton = 1;	
+			} else $showSignUpButton = 1;
+		} else $showSignUpButton = 1;
+	} else $showSignUpButton = 1;	
+	if($showSignUpButton==1) {
+?>		
+	<td align="left" style="vertical-align:middle">
+		<a href="<?php echo Mage::getUrl('membership/index/addToCartUrl', array('productId'=>$package->getProductId())) ?>"><img  src="<?php echo Mage::getBaseUrl("media").'membership-signup.png'; ?>" border="0"/></a>
+	</td>
+<?php } ?>		
+</tr>
+</table>
+<br><br>
+<div class="membership-steps clearfix" id="membership-signup-steps">
+	<ol>
+		<li class="step1 first"><span class="number">Step 1</span><span>See how much money the package save for you.</span></li>
+		<li class="step2"><span class="number">Step 2</span><span>Signup with this package.</span></li>
+		<li class="step3 last"><span class="number">Step 3</span><span>Get the product you want.</span></li>
+	</ol>
+</div>
+	
+	
+	<br><br>
+
+
+<?php $products = $this->getProductCollection() ?>
+
+<?php if(count($products)){?>
+<?php echo $this->getPagerHtml() ?>
+<table class="packages-table" id="packages-table">
+    <thead>
+        <tr>
+			<th class="first"><?php echo $this->__('Product') ?></th>
+            <th><?php echo $this->__('Product Regular Price') ?></th>
+            <th><?php echo $this->__('Produt Price for Membership ') ?></th>
+            <th><?php echo $this->__('You Saved') ?></th>
+            <th><?php echo $this->__('View Product') ?></th>
+        </tr>
+    </thead>
+    <tbody>
+		<?php foreach($products as $product){ ?>
+        <?php $membershipPrice = $this->helper('membership')->getMembershipPrice($product->getId(), $package)?>
+		<tr onclick="window.location.href='<?php echo $this->getViewUrl($product) ?>'">
+			<td class="first"><?php echo $product->getName() ?></td>
+			<td><?php echo $this->helper('core')->currency($product->getPrice())?></td>
+			<td><?php echo $this->helper('core')->currency($membershipPrice) ?></td>
+            <td><?php echo $this->helper('core')->currency($product->getPrice() - $membershipPrice) ?></td>
+			<td><span class="action"><a href="<?php echo $this->getViewUrl($product) ?>"><?php echo $this->__('Buy Now') ?></span></a></td>
+		</tr>
+		<?php }?>
+	</tbody>
+</table>
+<script type="text/javascript">
+	decorateTable('packages-table');
+</script>
+<?php echo $this->getPagerHtml() ?>
+<?php }?>
+

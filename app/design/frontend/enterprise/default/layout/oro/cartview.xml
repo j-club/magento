@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * {magecore_license_notice}
+ *
+ * @category   Oro
+ * @package    Oro_CartView
+ * @copyright  {magecore_copyright}
+ * @license    {magecore_license}
+ */
+-->
+<layout version="0.1.0">
+    <checkout_cart_index>
+        <reference name="checkout.cart">
+            <block type="cms/block" name="cart.help" as="cart-help">
+                <action method="setBlockId"><block_id>cart_help</block_id></action>
+            </block>
+        </reference>
+    </checkout_cart_index>
+</layout>

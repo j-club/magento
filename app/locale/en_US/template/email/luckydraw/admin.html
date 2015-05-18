@@ -1,0 +1,44 @@
+<!--@subject Lucky draw program "{{var program.getName()}}" @-->
+<!--@vars
+{"store url=\"\"":"Store Url",
+"skin url=\"images/logo_email.gif\" _area='frontend'":"Email Logo Image",
+"var program.getName()":"Lucky Draw Program Name",
+"store url=\"customer/account/\"":"Customer Account Url",
+"htmlescape var=$admin_name":"Admin Name"}
+@-->
+
+<!--@styles
+body,td { color:#2f2f2f; font:13px/1.35em Verdana, Arial, Helvetica, sans-serif; }
+@-->
+
+<div style="font:13px/1.35em Verdana, Arial, Helvetica, sans-serif;">
+    <table cellspacing="0" cellpadding="0" border="0" width="98%" style="margin-top:10px; font:13px/1.35em Verdana, Arial, Helvetica, sans-serif; margin-bottom:10px;">
+        <tr>
+            <td align="center" valign="top">
+                <!-- [ header starts here] -->
+                <table cellspacing="0" cellpadding="0" border="0" width="650">
+                    <tr>
+                        <td valign="top">
+                            <a href="{{store url=""}}"><img src="{{skin url="images/logo_email.gif" _area='frontend'}}" alt="{{var store.getFrontendName()}}"  style="margin-bottom:10px;" border="0"/></a></td>
+                    </tr>
+                </table>
+
+                <!-- [ middle starts here] -->
+                <table cellspacing="0" cellpadding="0" border="0" width="650">
+                    <tr>
+                        <td valign="top">
+                            <p><strong>Dear {{htmlescape var=$admin_name}}</strong>,<br/>
+                            {{if program.isComplete()}}
+                            The lucky draw program "{{var program.getName()}}" has been processed automatically. You can log in to the <a href="{{var admin_url}}" title="admin page">admin page</a> to check the program detail.
+                            {{else}}
+                            The registration time of the lucky draw program "{{var program.getName()}}" is up. Now this program is waiting for you to process. Please log in to the <a href="{{var admin_url}}" title="admin page">admin page</a> to draw and complete it.
+                            {{/if}}
+                            <br/>
+							<p>Thank you,<br/><strong>{{var store.getFrontendName()}}</strong></p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>

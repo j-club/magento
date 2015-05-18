@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <membership_adminhtml_group_index>
+        <reference name="content">
+            <block type="membership/adminhtml_group" name="group" />
+        </reference>
+    </membership_adminhtml_group_index>
+	
+	<membership_adminhtml_package_index>
+        <reference name="content">
+            <block type="adminhtml/store_switcher" name="store_switcher" as="store_switcher">
+                <action method="setUseConfirm"><params>0</params></action>
+            </block>
+            <block type="membership/adminhtml_package" name="package" />
+        </reference>
+    </membership_adminhtml_package_index>
+    
+    <membership_adminhtml_package_edit>
+        <reference name="left">
+            <block type="adminhtml/store_switcher" name="store_switcher" before="-" />
+        </reference>
+    </membership_adminhtml_package_edit>
+	
+	<membership_adminhtml_member_index>
+        <reference name="content">
+            <block type="membership/adminhtml_member" name="member" />
+        </reference>
+    </membership_adminhtml_member_index>
+	
+	<membership_adminhtml_membership_index>
+        <reference name="content">
+            <block type="membership/adminhtml_membership" name="membership" />
+        </reference>
+    </membership_adminhtml_membership_index>
+	
+	<membership_adminhtml_memberpackage_index>
+        <reference name="content">
+            <block type="membership/adminhtml_memberpackage" name="memberpackage" />
+        </reference>
+    </membership_adminhtml_memberpackage_index>
+	
+	<membership_adminhtml_group_products>
+		<block type="core/text_list" name="root">
+			<block type="membership/adminhtml_group_edit_tab_product" name="group.edit.tab.product"/>
+            <block type="adminhtml/widget_grid_serializer" name="related_grid_serializer">
+				<action method="initSerializerBlock">
+					<grid_block_name>group.edit.tab.product</grid_block_name>
+					<data_callback>getSelectedProducts</data_callback>
+					<hidden_input_name>group_product</hidden_input_name>
+					<reload_param_name>oproduct</reload_param_name>
+				</action>
+				<action method="addColumnInputName">
+					<input_name>position</input_name>
+				</action>
+            </block>
+		</block>
+	</membership_adminhtml_group_products>
+	
+	<membership_adminhtml_group_productsgrid>
+		<block type="core/text_list" name="root">
+			<block type="membership/adminhtml_group_edit_tab_product" name="group.edit.tab.product"/>
+		</block>
+	</membership_adminhtml_group_productsgrid>
+	
+	<membership_adminhtml_package_groups>
+		<block type="core/text_list" name="root">
+			<block type="membership/adminhtml_package_edit_tab_group" name="package.edit.tab.group"/>
+            <block type="adminhtml/widget_grid_serializer" name="related_grid_serializer">
+				<action method="initSerializerBlock">
+					<grid_block_name>package.edit.tab.group</grid_block_name>
+					<data_callback>getSelectedGroups</data_callback>
+					<hidden_input_name>package_group</hidden_input_name>
+					<reload_param_name>ogroup</reload_param_name>
+				</action>
+				<action method="addColumnInputName">
+					<input_name>position</input_name>
+				</action>
+            </block>
+		</block>
+	</membership_adminhtml_package_groups>
+	
+	<membership_adminhtml_package_groupsgrid>
+		<block type="core/text_list" name="root">
+			<block type="membership/adminhtml_package_edit_tab_group" name="package.edit.tab.group"/>
+		</block>
+	</membership_adminhtml_package_groupsgrid>
+	
+	<membership_adminhtml_package_products>
+		<block type="core/text_list" name="root">
+			<block type="membership/adminhtml_package_edit_tab_product" name="package.edit.tab.product.select" template="membership/package_product.phtml" />
+			<block type="membership/adminhtml_package_edit_tab_product" name="package.edit.tab.product"/>
+            <block type="adminhtml/widget_grid_serializer" name="related_grid_serializer">
+				<action method="initSerializerBlock">
+					<grid_block_name>package.edit.tab.product</grid_block_name>
+					<data_callback>getSelectedProducts</data_callback>
+					<hidden_input_name>package_product</hidden_input_name>
+					<reload_param_name>oproduct</reload_param_name>
+				</action>
+				<action method="addColumnInputName">
+					<input_name>position</input_name>
+				</action>
+            </block>
+		</block>
+	</membership_adminhtml_package_products>
+	
+	<membership_adminhtml_package_productsgrid>
+		<block type="core/text_list" name="root">
+			<block type="membership/adminhtml_package_edit_tab_product" name="package.edit.tab.product"/>
+		</block>
+	</membership_adminhtml_package_productsgrid>
+	
+	<!--start change -->
+	<membership_adminhtml_package_members>
+		<block type="core/text_list" name="root">			
+			<block type="membership/adminhtml_package_edit_tab_member" name="package.edit.tab.member"/>	
+			<block type="adminhtml/widget_grid_serializer" name="related_grid_serializer">
+				<action method="initSerializerBlock">
+					<grid_block_name>package.edit.tab.member</grid_block_name>
+					<data_callback>getSelectedMembers</data_callback>
+					<hidden_input_name>package_member</hidden_input_name>
+					<reload_param_name>omember</reload_param_name>
+				</action>
+				<action method="addColumnInputName">
+					<input_name>position</input_name>
+				</action>
+            </block>
+		</block>
+	</membership_adminhtml_package_members>
+	
+	<membership_adminhtml_package_membersgrid>
+		<block type="core/text_list" name="root">
+			<block type="membership/adminhtml_package_edit_tab_member" name="package.edit.tab.member"/>
+		</block>
+	</membership_adminhtml_package_membersgrid>	
+	
+	<membership_adminhtml_member_package>
+		<block type="core/text_list" name="root">			
+			<block type="membership/adminhtml_member_edit_tab_package" name="member.edit.tab.package"/>			
+			<block type="adminhtml/widget_grid_serializer" name="related_grid_serializer">
+				<action method="initSerializerBlock">
+					<grid_block_name>member.edit.tab.package</grid_block_name>
+					<data_callback>getSelectedPackages</data_callback>
+					<hidden_input_name>member_package</hidden_input_name>
+					<reload_param_name>opackage</reload_param_name>
+				</action>
+				<action method="addColumnInputName">
+					<input_name>position</input_name>
+				</action>
+            </block>
+		</block>
+	</membership_adminhtml_member_package>	
+	
+	<membership_adminhtml_member_packagegrid>
+		<block type="core/text_list" name="root">
+			<block type="membership/adminhtml_member_edit_tab_package" name="member.edit.tab.package"/>		
+		</block>
+	</membership_adminhtml_member_packagegrid>	
+	<!-- end change -->
+	
+	<membership_adminhtml_paymenthistory_index>
+		<reference name="content">
+			 <block type="membership/adminhtml_paymenthistory" name="paymenthistory" />
+		</reference>
+	</membership_adminhtml_paymenthistory_index>
+	
+</layout>

@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * {magecore_license_notice}
+ *
+ * @category   Oro
+ * @package    Oro_ProductQuickView
+ * @copyright  {magecore_copyright}
+ * @license    {magecore_license}
+ */
+-->
+<layout version="0.1.0">
+    <catalog_category_layered>
+        <reference name="product_list">
+            <block type="oro_productquickview/popup" name="oro_productquickview_popup" template="oro/productquickview/popup.phtml">
+                <block type="catalog/product_view_media" name="product.info.media" as="media" template="oro/productquickview/popup/media.phtml"/>
+            </block>
+        </reference>
+        <reference name="head">
+            <action method="addItem"><type>skin_js</type><name>js/oro/productquickview/binding.js</name></action>
+        </reference>
+    </catalog_category_layered>
+    <catalog_category_default>
+        <reference name="product_list">
+            <block type="oro_productquickview/popup" name="oro_productquickview_popup" template="oro/productquickview/popup.phtml">
+                <block type="catalog/product_view_media" name="product.info.media" as="media" template="oro/productquickview/popup/media.phtml"/>
+            </block>
+        </reference>
+        <reference name="head">
+            <action method="addItem"><type>skin_js</type><name>js/oro/productquickview/binding.js</name></action>
+        </reference>
+    </catalog_category_default>
+    <catalogsearch_result_index>
+        <reference name="search_result_list">
+            <block type="oro_productquickview/popup" name="oro_productquickview_popup" template="oro/productquickview/popup.phtml">
+                <block type="catalog/product_view_media" name="product.info.media" as="media" template="oro/productquickview/popup/media.phtml"/>
+            </block>
+        </reference>
+        <reference name="head">
+            <action method="addItem"><type>skin_js</type><name>js/oro/productquickview/binding.js</name></action>
+        </reference>
+    </catalogsearch_result_index>
+    <catalogsearch_advanced_result>
+        <reference name="search_result_list">
+            <block type="oro_productquickview/popup" name="oro_productquickview_popup" template="oro/productquickview/popup.phtml">
+                <block type="catalog/product_view_media" name="product.info.media" as="media" template="oro/productquickview/popup/media.phtml"/>
+            </block>
+        </reference>
+        <reference name="head">
+            <action method="addItem"><type>skin_js</type><name>js/oro/productquickview/binding.js</name></action>
+        </reference>
+    </catalogsearch_advanced_result>
+    <productquickview_index_index>
+        <block type="oro_productquickview/popup" name="productquickview_popup" template="oro/productquickview/popup.phtml">
+            <block type="catalog/product_view_media" name="product.info.media" as="media" template="oro/productquickview/popup/media.phtml"/>
+        </block>
+    </productquickview_index_index>
+</layout>

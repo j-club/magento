@@ -1,0 +1,44 @@
+<?php
+/**
+ * Magpleasure Ltd.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE-CE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magpleasure.com/LICENSE-CE.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This package designed for Magento COMMUNITY edition
+ * Magpleasure does not guarantee correct work of this extension
+ * on any other Magento edition except Magento COMMUNITY edition.
+ * Magpleasure does not provide extension support in case of
+ * incorrect edition usage.
+ * =================================================================
+ *
+ * @category   Magpleasure
+ * @package    Magpleasure_Forms
+ * @version    1.0.5
+ * @copyright  Copyright (c) 2011-2012 Magpleasure Ltd. (http://www.magpleasure.com)
+ * @license    http://www.magpleasure.com/LICENSE-CE.txt
+ */
+?>
+<script type="text/javascript">
+FieldTemplateFile = '<table class="border" cellpadding="0" cellspacing="0">'+
+        '<tr class="headings">'+
+            '<th class="type-title"><?php echo $this->_helper()->__('Allowed File Extensions') ?></th>'+
+            '<th class="last"><?php echo $this->_helper()->__('Maximum Image Size') ?></th>'+
+        '</tr>'+
+        '<tr>'+
+            '<td><input class="input-text" type="text" name="<?php echo $this->getFieldName() ?>[{{field_id}}][file][file_extension]" value="{{file_extension}}"></td>'+
+            '<td class="type-last last" nowrap><input class="input-text ext" type="text" name="<?php echo $this->getFieldName() ?>[{{field_id}}][file][image_size_x]" value="{{image_size_x}}"> <?php echo $this->_helper()->__('x') ?> <input class="input-text ext" type="text" name="<?php echo $this->getFieldName() ?>[{{field_id}}][file][image_size_y]" value="{{image_size_y}}"> <?php echo $this->_helper()->__('px.') ?><br/><?php echo $this->_helper()->__('leave blank if its not an image') ?></td>'+
+        '</tr>'+
+    '</table>';
+
+if ($('field_panel_type_file')) {
+    $('field_panel_type_file').remove();
+}
+</script>

@@ -1,0 +1,364 @@
+<?php
+/**
+ * Magpleasure Ltd.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE-CE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magpleasure.com/LICENSE-CE.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This package designed for Magento COMMUNITY edition
+ * Magpleasure does not guarantee correct work of this extension
+ * on any other Magento edition except Magento COMMUNITY edition.
+ * Magpleasure does not provide extension support in case of
+ * incorrect edition usage.
+ * =================================================================
+ *
+ * @category   Magpleasure
+ * @package    Magpleasure_Forms
+ * @version    1.0.5
+ * @copyright  Copyright (c) 2011-2012 Magpleasure Ltd. (http://www.magpleasure.com)
+ * @license    http://www.magpleasure.com/LICENSE-CE.txt
+ */
+?>
+<?php echo $this->getTemplatesHtml() ?>
+<?php /** @var Magpleasure_Forms_Block_Adminhtml_Forms_Edit_Tabs_Constructor_Field $this */ ?>
+<script type="text/javascript">
+//<![CDATA[
+var firstStepTemplate = '<div class="field-box" id="field_{{id}}">'+
+            '<table id="<?php echo $this->getFieldId() ?>_{{id}}" class="field-header" cellpadding="0" cellspacing="0">'+
+            '<input type="hidden" id="<?php echo $this->getFieldId() ?>_{{id}}_is_delete" name="<?php echo $this->getFieldName() ?>[{{id}}][is_delete]" value="" />'+
+            '<input type="hidden" id="<?php echo $this->getFieldId() ?>_{{id}}_sort_order" name="<?php echo $this->getFieldName() ?>[{{id}}][sort_order]" value="{{sort_order}}" />'+
+            '<input type="hidden" id="<?php echo $this->getFieldId() ?>_{{id}}_previous_type" name="<?php echo $this->getFieldName() ?>[{{id}}][previous_type]" value="{{type}}" />'+
+            '<input type="hidden" id="<?php echo $this->getFieldId() ?>_{{id}}_previous_group" name="<?php echo $this->getFieldName() ?>[{{id}}][previous_group]" value="" />'+
+            '<input type="hidden" id="<?php echo $this->getFieldId() ?>_{{id}}_id" name="<?php echo $this->getFieldName() ?>[{{id}}][id]" value="{{id}}" />'+
+            '<input type="hidden" id="<?php echo $this->getFieldId() ?>_{{id}}_form_id" name="<?php echo $this->getFieldName() ?>[{{id}}][form_id]" value="<?php echo $this->getFormId(); ?>" />'+
+            '<input type="hidden" id="<?php echo $this->getFieldId() ?>_{{id}}_field_id" name="<?php echo $this->getFieldName() ?>[{{id}}][field_id]" value="{{field_id}}" />'+
+            '<thead>'+
+                '<tr>'+
+                    '<th class="field-question"><?php echo $this->_helper()->__('Question') ?> <span class="required">*</span></th>'+
+                    '<th class="field-type"><?php echo $this->_helper()->__('Input Type') ?> <span class="required">*</span></th>'+
+                    '<th class="field-req"><?php echo $this->jsQuoteEscape($this->_helper()->__('Is Required')) ?></th>'+
+                    '<th class="field-visible">&nbsp;</th>'+
+                    '<th class="a-right"><?php echo $this->jsQuoteEscape($this->getDeleteButtonHtml()) ?></th>'+
+                '</tr>'+
+            '</thead>'+
+            '<tr>'+
+                '<td><input type="text" class="required-entry input-text" id="<?php echo $this->getFieldId() ?>_{{id}}_question" name="<?php echo $this->getFieldName() ?>[{{id}}][question]" value="{{question}}"></td>'+
+                '<td><?php echo $this->getTypeSelectHtml() ?></td>'+
+                '<td><?php echo $this->getRequireSelectHtml() ?></td>'+
+                '<td><input type="checkbox" name="<?php echo $this->getFieldName() ?>[{{id}}][display_on_front]" id="<?php echo $this->getFieldId() ?>_{{id}}_display_on_front" ><label for="<?php echo $this->getFieldId() ?>_{{id}}_display_on_front"><?php echo $this->_helper()->__('Display in List'); ?></label></td>'+
+                '<td>&nbsp;</td>'+
+            '</tr><tr>'+
+                '<td colspan="3">'+
+                    '<label for="<?php echo $this->getFieldId() ?>_{{id}}_hint"><?php echo $this->_helper()->__('Hint'); ?></label><br />'+
+                    '<input type="text" class="input-text" id="<?php echo $this->getFieldId() ?>_{{id}}_hint" name="<?php echo $this->getFieldName() ?>[{{id}}][hint]" value="{{hint}}">'+
+                '</td>'+
+                '<td><input type="checkbox" name="<?php echo $this->getFieldName() ?>[{{id}}][display_in_post]" id="<?php echo $this->getFieldId() ?>_{{id}}_display_in_post" ><label for="<?php echo $this->getFieldId() ?>_{{id}}_display_in_post"><?php echo $this->_helper()->__('Display in Post'); ?></label></td>'+
+                '<td>&nbsp;</td>'+
+            '</tr></table><div id="field_{{id}}_type_placer"></div></div>';
+
+var sortable;
+
+var formField = {
+    div : $('fields_container_top'),
+    templateSyntax : /(^|.|\r|\n)({{(\w+)}})/,
+    templateText : firstStepTemplate,
+    itemCount : 1,
+    maxId: <?php echo $this->getMaxId(); ?>,
+    add : function(data) {
+        this.template = new Template(this.templateText, this.templateSyntax);
+
+        if(!data.structure_id){
+            data = {};
+            data.id  = ++this.maxId;
+            data.type = '';
+            data.field_id = 0;
+
+        } else {
+            data.id = data.structure_id;
+            data.field_id = data.structure_id;
+        }
+
+        Element.insert(this.div, {'after':this.template.evaluate(data)});
+
+        //set selected type
+        if (data.type) {
+            $A($('<?php echo $this->getFieldId() ?>_'+data.id+'_type').options).each(function(field){
+                if (field.value==data.type) {
+                    field.selected = true;
+                }
+            });
+        }
+
+
+        //set selected is_require
+        if (data.is_require) {
+            $A($('<?php echo $this->getFieldId() ?>_'+data.id+'_is_require').options).each(function(field){
+                if (field.value==data.is_require) field.selected = true;
+            });
+        }
+
+        if (data.display_on_front){
+            if (data.display_on_front == 1){
+                $('<?php echo $this->getFieldId() ?>_'+data.id+'_display_on_front').checked = true;
+            }
+        }
+
+        if (data.display_in_post){
+            if (data.display_in_post == 1){
+                $('<?php echo $this->getFieldId() ?>_'+data.id+'_display_in_post').checked = true;
+            }
+        }
+
+        this.itemCount++;
+        this.bindRemoveButtons();
+        this.setOrdering();
+        
+        // Set sortable items
+        sortable = Sortable.create('fields_container', {
+                                            elements : $$('.form-fields div.field-box'),
+                                            handles: $$('.form-fields div.field-box'),
+                                            onChange: function(item){
+                                                formField.setOrdering();
+                                            }
+                                        });
+
+        formFieldType.bindSelectInputType();
+    },
+    remove : function(event){
+        var element = $(Event.findElement(event, 'div'));
+        if(element){
+            $(element.readAttribute('id')+'_'+'is_delete').value = '1';
+            element.addClassName('no-display');
+            element.addClassName('ignore-validate');
+            element.hide();
+        }
+    },
+    bindRemoveButtons : function(){
+        var buttons = $$('div.form-fields .delete-form-field');
+        for(var i=0;i<buttons.length;i++){
+            if(!$(buttons[i]).binded){
+                $(buttons[i]).binded = true;
+                Event.observe(buttons[i], 'click', this.remove.bind(this));
+            }
+        }
+        var inputs = $$('div.form-fields button', 'div.form-fields input', 'div.form-fields select', 'div.form-fields textarea');
+        <?php if ($this->isReadonly()):?>
+        for (var i=0, l = inputs.length; i < l; i ++) {
+            inputs[i].disabled = true;
+            if (inputs[i].tagName.toLowerCase()=='button') {
+                inputs[i].addClassName('disabled');
+            }
+        }
+        <?php else: ?>
+            inputs.each(function(el) { Event.observe(el, 'change', el.setHasChanges.bind(el));  } )
+        <?php endif;?>
+    },
+    setOrdering : function(){
+        var i = 1;
+        $$('div.form-fields .field-box').each((function(element){
+            if ($(element.readAttribute('id') + '_' + 'is_delete').value != '1'){
+                $(element.readAttribute('id') + '_' + 'sort_order').value = i;
+                i++;
+            }
+        }).bind(formField));
+    }
+};
+
+
+var formFieldType = {
+    templateSyntax : /(^|.|\r|\n)({{(\w+)}})/,
+    loadStepTwo : function(event){
+        var element = $(Event.findElement(event, 'select'));
+
+        var group = '';
+        var previousGroupElm = $(element.readAttribute('id').sub('_type', '_previous_group'));
+
+        switch(element.getValue()){
+            case 'field':
+            case 'textarea':
+                template = FieldTemplateText;
+                group = 'text';
+                break;
+            case 'file':
+                template = FieldTemplateFile;
+                group = 'file';
+                break;
+            case 'dropdown':
+            case 'radiobox':
+            case 'checkbox':
+            case 'multiselect':
+                template = FieldTemplateSelect;
+                group = 'select';
+                break;
+            case 'date':
+            case 'datetime':
+            case 'time':
+                template = FieldTemplateDate;
+                group = 'date';
+                break;
+            default:
+                template = '';
+                group = 'unknown';
+                break;
+        }
+
+        if (previousGroupElm.getValue() != group) {
+            if ($(element.readAttribute('id')+'_'+previousGroupElm.getValue())) {
+                formElm = $(element.readAttribute('id')+'_'+previousGroupElm.getValue()).descendants();
+                formElm.each(function(elm){
+                    if (elm.tagName == 'input' || elm.tagName == 'select') {
+                        elm.name = '__delete__'+elm.readAttribute('name');
+                    }
+                });
+
+                $(element.readAttribute('id')+'_'+previousGroupElm.getValue()).addClassName('no-display');
+                $(element.readAttribute('id')+'_'+previousGroupElm.getValue()).addClassName('ignore-validate');
+                $(element.readAttribute('id')+'_'+previousGroupElm.getValue()).hide();
+            }
+
+            previousGroupElm.value = group;
+
+            if ($(element.readAttribute('id')+'_'+group)) {
+                formElm = $(element.readAttribute('id')+'_'+group).descendants();
+                formElm.each(function(elm){
+                    if (elm.match('input') || elm.match('select')) {
+                        elm.name = elm.readAttribute('name').sub('__delete__', '');
+                    }
+                });
+                $(element.readAttribute('id')+'_'+group).removeClassName('no-display');
+                $(element.readAttribute('id')+'_'+group).removeClassName('ignore-validate');
+                $(element.readAttribute('id')+'_'+group).show();
+
+            } else {
+                template = '<div id="'+element.readAttribute('id')+'_'+group+'" class="grid tier form-list '+group+'">'+template+'</div><div id="'+element.readAttribute('id')+'_'+group+'_advice"></div';
+                this.secondTemplate = new Template(template, this.templateSyntax);
+
+                data = {};
+                if (!data.field_id) {
+                    data = {};
+                    data.field_id = $(element.readAttribute('id').sub('_type', '_id')).getValue();
+                }
+
+                Element.insert(element.readAttribute('id').sub('_type', '')+'_type_placer', {'after':this.secondTemplate.evaluate(data)});
+
+
+
+                switch(element.getValue()){
+                    case 'dropdown':
+                    case 'radiobox':
+                    case 'checkbox':
+                    case 'multiselect':
+                        selectFieldType.bindAddButton();
+
+
+                        break;
+                }
+            }
+        }
+    },
+    addAdditionalData : function(data){
+
+        if(!data.id){
+            data.id = data.structure_id;
+            data.field_id = data.structure_id;
+        }
+
+        switch(data.type){
+            case 'dropdown':
+            case 'radiobox':
+            case 'checkbox':
+            case 'multiselect':
+                template = FieldTemplateSelect;
+                group = 'select';
+                break;
+            case 'file':
+                template = FieldTemplateFile;
+                group = 'file';
+                break;
+            case 'date':
+            case 'datetime':
+            case 'time':
+                template = FieldTemplateDate;
+                group = 'date';
+                break;
+        }
+
+        $('<?php echo $this->getFieldId() ?>_'+data.id+'_previous_group').value = group;
+
+        template = '<div id="<?php echo $this->getFieldId() ?>_{{id}}_type_'+group+'" class="grid tier form-list">'+template+'</div><div id="<?php echo $this->getFieldId() ?>_{{id}}_type_'+group+'_advice"></div>';
+
+
+
+
+        this.secondTemplate = new Template(template, this.templateSyntax);
+
+        Element.insert($('<?php echo $this->getFieldId() ?>_'+data.field_id + '_type_placer'), {'after':this.secondTemplate.evaluate(data)});
+
+        if (data.enable_other){
+            if (data.enable_other == 1){
+                $('<?php echo $this->getFieldId() ?>_'+data.id+'_enable_other').checked = true;
+            }
+        }
+
+        switch(data.type){
+            case 'dropdown':
+            case 'radiobox':
+            case 'checkbox':
+            case 'multiselect':
+                data.values.each(function(value) {
+                    value.items_count = data.values.length;
+                    value.structure_id = data.id;
+                    selectFieldType.add(value);
+                });
+                selectFieldType.bindAddButton();
+                break;
+            <?php ///TODO Bind file data  ?>
+        }
+    },
+    bindSelectInputType : function(){
+        var types = $$('.select-form-field-type');
+        for(var i=0;i<types.length;i++){
+            if(!$(types[i]).binded){
+                $(types[i]).binded = true;
+                Event.observe(types[i], 'change', function(event){
+                    formFieldType.loadStepTwo(event);
+                });
+            }
+        }
+    }
+};
+
+formField.bindRemoveButtons();
+
+if($('<?php echo $this->getAddButtonId() ?>')){
+    Event.observe('<?php echo $this->getAddButtonId() ?>', 'click', formField.add.bind(formField));
+}
+
+//validation for selected input type
+Validation.addAllThese([
+    ['required-field-select', '<?php echo $this->_helper()->__('Select type of field') ?>', function(v, elm) {
+        if (elm.getValue() == '') {
+            return false;
+        }
+        return true;
+}]]);
+
+//adding data to templates
+<?php foreach ($this->getFields() as $field): ?>
+    <?php /** @var Magpleasure_Forms_Model_Structure $field  */ ?>
+    formField.add(<?php echo $field->toJson(); ?>);
+    <?php if ($field->hasAdditionalData()): ?>
+    formFieldType.addAdditionalData(<?php echo $field->toJson(); ?>);
+    <?php endif; ?>
+<?php endforeach; ?>
+
+//]]>
+</script>
+<div><input type="hidden" name="affect_form_fields" value="1" /></div>

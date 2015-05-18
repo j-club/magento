@@ -1,0 +1,62 @@
+<?php
+/**
+ * @category    design
+ * @package     monster_default
+ * @copyright   Copyright (c) 2011 Monster Market. (http://www.monstermarket.com)
+ */
+?>
+<?php $r = Mage::app()->getRequest(); ?>
+<?php if (!$r->getParam('q') && !Mage::registry('current_category')): ?>
+<?php
+    $cHlp = Mage::helper('udropship/catalog');
+    $_topCategories = $cHlp->getSortedCategoryChildren($cHlp->getStoreRootCategory(), 'name', true)
+        ->addAttributeToFilter('include_in_menu', 1);
+    $tcCnt = count($_topCategories);
+    $tcRowCnt = ceil($tcCnt/3);
+    $tcRowCnt = $tcRowCnt>1 ? $tcRowCnt : 1;
+    $sess = Mage::getSingleton('udropship/session');
+    $searchUrlKey = $sess->getData('udsell_search_type') ? 'mysellSearch' : 'sellSearch';
+?>
+<div class="sell-yours-index-box">
+	<div class="search-bar">
+		<form id="udsell-search-form" action="<?php echo $this->getUrl('udsell/index/'.$searchUrlKey) ?>" method="get" class="input-box-container">
+			<h2><?php echo $this->__('Find')?></h2>
+			<div class="input-box">
+				<input type="text" name='q' value='<?php echo $r->getParam('q') ?>' class="input-text required-entry"/>
+			</div>
+			<button class="form-button" onclick="udsellSearchForm.submit()"><span><?php echo $this->__('Go')?></span></button>
+		</form>
+
+<script type="text/javascript">
+//<![CDATA[
+    var udsellSearchForm = new VarienForm('udsell-search-form', true);
+//]]>
+</script>
+
+		<a href="<?php echo $this->getUrl('udprod/vendor/products/') ?>" class="create-new "><?php echo $this->__("Didn't find what you're looking for? <span>Create your product</span>")?></a>
+        
+	</div>
+
+	<div class="browse-categories-container generic-box">
+		<h3><?php echo $this->__("<span>Or,</span> Browse by Category")?></h3>
+		<div class="browse-categories col3-set">
+            <?php $idx=0; foreach ($_topCategories as $topCat): $idx++;?>
+            <?php if ($idx%$tcRowCnt==1 || $tcRowCnt==1):?>
+			<ul class="col-<?php echo (int)ceil($idx/$tcRowCnt)?>">
+            <?php endif ?>
+				<li class="<?php if ($topCat->getId()==$r->getParam('c')) echo 'active' ?>"><a href="<?php echo $this->getUrl('udsell/index/'.$searchUrlKey, array('c'=>$topCat->getId())) ?>"><?php echo htmlspecialchars($topCat->getName())?></a></li>
+            <?php if ($idx%$tcRowCnt==0 || $idx==$tcCnt):?>
+			</ul>
+            <?php endif ?>
+            <?php endforeach ?>
+		</div>
+	</div>
+	
+	
+	<p class="create-product-text-cta generic-box"><?php echo $this->__("Didn't find what you're looking for?")?>&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo $this->getUrl('udprod/vendor/products/') ?>"><button  class="form-button"><span><?php echo $this->__("Create your product")?></span></button></a></p>
+	</div>
+</div>
+
+<?php else: ?>
+    <?php echo $this->getChildHtml('search_result_list'); ?>
+<?php endif ?>

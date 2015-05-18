@@ -1,0 +1,97 @@
+<?php
+    $_hlp = Mage::helper('udsell');
+    $_udHlp = Mage::helper('udropship');
+    $_helper = $this->helper('catalog/output');
+    $_product = $this->getParentBlock()->getProduct();
+    $_pId = $_product->getId();
+?>
+
+<form id="udsell-sell-<?php echo $_pId?>" method="post" action="<?php echo $this->getSellPostUrl()?>">
+
+<?php
+$syForm = $this->getSyForm();
+$fieldSets = $syForm->getElements();
+foreach ($fieldSets as $fieldSet):
+$elements = $fieldSet->getElements()->getIterator();
+$topElements = $fieldSet->getTopColumn();
+$bottomElements = $fieldSet->getBottomColumn();
+$lcElements = $fieldSet->getLeftColumn();
+$rcElements = $fieldSet->getRightColumn();
+?>
+<div class="generic-box">
+<div class="box-head"><h3><?php echo $fieldSet->getLegend() ?></h3></div>
+<table style="width:100%" class="col2-table">
+<col width="50%" />
+<col width="50%" />
+<tbody>
+
+<?php if (!empty($topElements)): ?>
+<tr>
+<td colspan="2">
+<ul class="form-list">
+<?php foreach($topElements as $wideElement): ?>
+<li id="<?php echo $wideElement.'-container'?>" class="wide" <?php if ($this->isHidden($wideElement)) echo 'style="display: none;"' ?>>
+<?php echo $this->getChildElement($wideElement)->getLabelHtml(); ?> <br />
+<?php echo $this->getChildElement($wideElement)->getElementHtml() ?>
+</li>
+<?php endforeach ?>
+</ul>
+</td></tr>
+<?php endif ?>
+
+<tr><td>
+<?php if (!empty($lcElements)): ?>
+<ul class="form-list">
+<?php foreach($lcElements as $lcElement): ?>
+<li id="<?php echo $lcElement.'-container'?>">
+<?php echo $this->getChildElement($lcElement)->getLabelHtml(); ?> <br />
+<?php echo $this->getChildElement($lcElement)->getElementHtml() ?>
+</li>
+<?php endforeach ?>
+</ul>
+<?php endif ?>
+</td><td>
+
+<?php if (!empty($lcElements)): ?>
+<ul class="form-list">
+<?php foreach($rcElements as $rcElement): ?>
+<li id="<?php echo $lcElement.'-container'?>">
+<?php echo $this->getChildElement($rcElement)->getLabelHtml(); ?> <br />
+<?php echo $this->getChildElement($rcElement)->getElementHtml() ?>
+</li>
+<?php endforeach ?>
+</ul>
+<?php endif ?>
+</td></tr>
+
+<?php if (!empty($bottomElements)): ?>
+<tr>
+<td colspan="2">
+<ul class="form-list">
+<?php foreach($bottomElements as $wideElement): ?>
+<li id="<?php echo $wideElement.'-container'?>" class="wide" <?php if ($this->isHidden($wideElement)) echo 'style="display: none;"' ?>>
+<?php echo $this->getChildElement($wideElement)->getLabelHtml(); ?> <br />
+<?php echo $this->getChildElement($wideElement)->getElementHtml() ?>
+</li>
+<?php endforeach ?>
+</ul>
+</td></tr>
+<?php endif ?>
+
+
+</tbody></table>
+
+</div>
+<?php endforeach ?>
+
+<div class="buttons-set">
+    <button type="submit" title="<?php echo $this->__('Submit') ?>" class="button"><span><?php echo $this->__('Submit') ?></span></button>
+        <p class="required"><?php echo $this->__('* Required Fields') ?></p>
+    </div>
+</form>
+
+<script type="text/javascript">
+//<![CDATA[
+    var dataForm = new VarienForm('udsell-sell-<?php echo $_pId?>', true);
+//]]>
+</script>

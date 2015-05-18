@@ -1,0 +1,25 @@
+<?php
+/**
+ *
+ * @category   MageCore
+ * @copyright  Copyright (c) 2014 Oro Inc. DBA MageCore (http://www.magecore.com)
+ */
+/* @var $this Enterprise_TargetRule_Block_Checkout_Cart_Crosssell */
+?>
+<?php if ($this->hasItems()):?>
+    <div class="crosssell">
+        <h2><?php echo $this->__('People who bought items in your cart also bought') ?></h2>
+        <ul>
+            <?php foreach ($this->getItemCollection() as $_item): ?>
+                <li class="item">
+                    <a class="product-image" href="<?php echo $this->getProductUrl($_item) ?>"><img src="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail')->resize(75); ?>" width="75" alt="<?php echo $this->escapeHtml($_item->getName()) ?>" title="<?php echo $this->escapeHtml($_item->getName()) ?>" /></a>
+                    <div class="product-shop">
+                        <h3 class="product-name"><a href="<?php echo $this->getProductUrl($_item) ?>"><?php echo $this->escapeHtml($_item->getName()) ?></a></h3>
+                        <?php echo $this->getReviewsSummaryHtml($_item,'short'); ?>
+                        <?php echo $this->getPriceHtml($_item, true) ?>
+                    </div>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+<?php endif;?>

@@ -1,0 +1,37 @@
+<?php
+/**
+ *
+ * @category   MageCore
+ * @copyright  Copyright (c) 2014 Oro Inc. DBA MageCore (http://www.magecore.com)
+ */
+?>
+<?php
+/**
+ * Shopping cart totals template
+ *
+ * @see Mage_Checkout_Block_Cart_Totals
+ * @var $this Mage_Checkout_Block_Cart_Totals
+ */
+?>
+<?php if ($this->canApplyMsrp()): ?>
+    <div class="cart-msrp-totals"><?php echo $this->__('ORDER TOTAL WILL BE DISPLAYED BEFORE YOU SUBMIT THE ORDER'); ?></div>
+<?php else: ?>
+    <div class="shopping-cart-holder">
+        <table id="shopping-cart-totals-table">
+            <col />
+            <col width="1" />
+            <tfoot>
+            <?php echo $this->renderTotals('footer'); ?>
+            <tr>
+                <td class="earn-td" colspan="2">
+                    <div class="earn"><?php echo $this->__('+ Earn <span>%d</span> Points',
+                            Mage::getBlockSingleton('oro_earnpoints/rate')->getPointsForTotals($this->getTotals())) ?></div>
+                </td>
+            </tr>
+            </tfoot>
+            <tbody>
+            <?php echo $this->renderTotals(); ?>
+            </tbody>
+        </table>
+    </div>
+<?php endif; ?>

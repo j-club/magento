@@ -1,0 +1,14 @@
+<form action="<?php echo $this->getFormActionUrl() ?>" method="post" id="newsletter-validate-detail">
+    <div class="form-subscribe">
+    <div class="form-subscribe-header">
+        <label for="newsletter"><?php echo $this->__('Get access to exclusive online deals') ?></label>
+    </div>
+        <div class="v-fix"><input name="email" type="text" id="newsletter" value="<?php echo $this->__('Enter your email') ?>" onclick="this.value=='<?php echo $this->__('Enter your email address') ?>'?this.value='':''" onblur="this.value==''?this.value='<?php echo $this->__('Enter your email address') ?>':''" class="input-text required-entry validate-email" /></div>
+        <button type="submit" class="button" title="<?php echo $this->__('Subscribe') ?>"><span><span><?php echo $this->__('Subscribe') ?></span></span></button>
+    </div>
+</form>
+<script type="text/javascript">
+//<![CDATA[
+    var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+//]]>
+</script>

@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category   Oro
+ * @package    Oro_GoogleTrustedStore
+ */
+-->
+<layout version="0.1.0">
+    <default>
+        <reference name="after_body_start">
+            <block type="googletrustedstore/badge" name="google_trustedstore_badge" template="googletrustedstore/badge.phtml"/>
+        </reference>
+    </default>
+    <checkout_onepage_success>
+        <reference name="content">
+            <block type="googletrustedstore/orderConfirmation_Onepage" name="googletrustedstore.onepage.success" template="googletrustedstore/order_confirmation.phtml"/>
+        </reference>
+    </checkout_onepage_success>
+    <checkout_multishipping_success>
+        <reference name="content">
+            <block type="googletrustedstore/orderConfirmation_Multishipping" name="googletrustedstore.multishipping.success">
+                <block type="googletrustedstore/orderConfirmation_Onepage" name="googletrustedstore.item.success" template="googletrustedstore/order_confirmation.phtml"/>
+            </block>
+        </reference>
+    </checkout_multishipping_success>
+</layout>

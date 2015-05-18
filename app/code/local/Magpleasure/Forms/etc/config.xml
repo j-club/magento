@@ -1,0 +1,280 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Magpleasure_Forms>
+            <version>1.0.5</version>
+        </Magpleasure_Forms>
+    </modules>
+    <frontend>
+        <routers>
+            <forms>
+                <use>standard</use>
+                <args>
+                    <module>Magpleasure_Forms</module>
+                    <frontName>forms</frontName>
+                </args>
+            </forms>
+        </routers>
+		<layout>
+			<updates>
+				<forms>
+					<file>forms.xml</file>
+				</forms>
+			</updates>
+		</layout>
+		<translate>
+			<modules>
+				<Magpleasure_Forms>
+					<files>
+						<default>Magpleasure_Forms.csv</default>
+					</files>
+				</Magpleasure_Forms>
+			</modules>
+		</translate>   
+    </frontend>
+    <admin>
+        <routers>
+			<forms_admin>
+				<use>admin</use>
+				<args>
+					<module>Magpleasure_Forms</module>
+					<frontName>forms_admin</frontName>
+				</args>
+			</forms_admin>
+        </routers>
+    </admin>
+    <adminhtml>
+		<menu>
+            <cms>
+                <children>
+                    <forms module="forms">
+                        <title>Forms</title>
+                        <sort_order>80</sort_order>               
+                        <children>
+                            <new module="forms">
+                                <title>New Form</title>
+                                <sort_order>10</sort_order>
+                                <action>forms_admin/adminhtml_forms/new</action>
+                            </new>
+                            <forms module="forms">
+                                <title>Form Manager</title>
+                                <sort_order>20</sort_order>
+                                <action>forms_admin/adminhtml_forms/index</action>
+                            </forms>
+                            <bin module="forms">
+                                <title>Rubbish Bin</title>
+                                <sort_order>30</sort_order>
+                                <action>forms_admin/adminhtml_rubbish/index</action>
+                            </bin>
+                            <configuration module="forms">
+                                <title>Configuration</title>
+                                <sort_order>40</sort_order>
+                                <action>adminhtml/system_config/edit/section/forms/</action>
+                            </configuration>
+                        </children>
+                    </forms>                    
+                </children>
+            </cms>            
+		</menu>
+		<acl>
+			<resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+				<admin>
+					<children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <forms>
+                                            <title>Magpleasure - Forms</title>
+                                        </forms>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                        <cms>
+                            <children>
+                                <forms module="forms">
+                                    <title>Forms</title>
+                                    <sort_order>80</sort_order>               
+                                    <children>
+                                        <new module="forms">
+                                            <title>New Form</title>
+                                            <sort_order>10</sort_order>
+                                        </new>
+                                        <forms module="forms">
+                                            <title>Form Manager</title>
+                                            <sort_order>20</sort_order>
+                                        </forms>
+                                        <bin module="forms">
+                                            <title>Rubbish Bin</title>
+                                            <sort_order>30</sort_order>
+                                        </bin>
+                                    </children>
+                                </forms>                                   
+                            </children>                                                                
+                        </cms>
+						<system>
+							<children>
+								<config>
+									<children>
+										<forms>
+											<title>MagPleasure - Forms</title>
+										</forms>
+									</children>
+								</config>
+							</children>
+						</system>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+		<layout>
+			<updates>
+				<forms>
+					<file>forms.xml</file>
+				</forms>
+			</updates>
+		</layout>
+		<translate>
+			<modules>
+				<Magpleasure_Forms>
+					<files>
+						<default>Magpleasure_Forms.csv</default>
+					</files>
+				</Magpleasure_Forms>
+			</modules>
+		</translate>        
+    </adminhtml>   
+    <global>
+        <template>
+            <email>
+                <forms_notify_admin_template translate="label" module="forms">
+                    <label>Forms - Admin Notification</label>
+                    <file>forms/notify_admin.html</file>
+                    <type>html</type>
+                </forms_notify_admin_template>
+            </email>
+        </template>
+        <models>
+            <forms>
+                <class>Magpleasure_Forms_Model</class>
+                <resourceModel>forms_mysql4</resourceModel>
+            </forms>
+            <forms_mysql4>
+                <class>Magpleasure_Forms_Model_Mysql4</class>
+                <entities>
+                    <form>
+                        <table>mp_form</table>
+                    </form>
+                    <store>
+                        <table>mp_form_store</table>
+                    </store>
+                    <structure>
+                        <table>mp_form_structure</table>
+                    </structure>
+                    <list>
+                        <table>mp_form_list</table>
+                    </list>
+                    <value>
+                        <table>mp_form_list_value</table>
+                    </value>
+                </entities>
+            </forms_mysql4>
+        </models>
+        <resources>
+            <forms_setup>
+                <setup>
+                    <module>Magpleasure_Forms</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </forms_setup>
+            <forms_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </forms_write>
+            <forms_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </forms_read>
+        </resources>
+        <blocks>
+            <forms>
+                <class>Magpleasure_Forms_Block</class>
+            </forms>
+        </blocks>
+        <helpers>
+            <forms>
+                <class>Magpleasure_Forms_Helper</class>
+            </forms>
+        </helpers>
+        <forms>
+            <fields>
+                <custom>
+                    <groups>
+                        <text translate="label" module="forms">
+                            <label>Text</label>
+                            <render>forms/adminhtml_forms_edit_tabs_constructor_type_text</render>
+                            <types>
+                                <field translate="label" module="forms">
+                                    <label>Field</label>
+                                </field>
+                                <textarea translate="label" module="forms">
+                                    <label>Area</label>
+                                </textarea>
+                            </types>
+                        </text>
+                        <!--<file translate="label" module="forms">-->
+                            <!--<label>File</label>-->
+                            <!--<render>forms/adminhtml_forms_edit_tabs_constructor_type_file</render>-->
+                            <!--<types>-->
+                                <!--<file translate="label" module="forms">-->
+                                    <!--<label>File</label>-->
+                                <!--</file>-->
+                            <!--</types>-->
+                        <!--</file>-->
+                        <select translate="label" module="forms">
+                            <label>Select</label>
+                            <render>forms/adminhtml_forms_edit_tabs_constructor_type_select</render>
+                            <types>
+                                <dropdown translate="label" module="forms">
+                                    <label>Drop-down</label>
+                                </dropdown>
+                                <radiobox translate="label" module="forms">
+                                    <label>Radio Buttons</label>
+                                </radiobox>
+                                <checkbox translate="label" module="forms">
+                                    <label>Checkbox</label>
+                                </checkbox>
+                                <multiselect translate="label" module="forms">
+                                    <label>Multiple Select</label>
+                                </multiselect>
+                            </types>
+                        </select>
+                        <!--<date translate="label" module="forms">-->
+                            <!--<label>Date</label>-->
+                            <!--<render>forms/adminhtml_forms_edit_tabs_constructor_type_date</render>-->
+                            <!--<types>-->
+                                <!--<date translate="label" module="forms">-->
+                                    <!--<label>Date</label>-->
+                                <!--</date>-->
+                                <!--<datetime translate="label" module="forms">-->
+                                    <!--<label>Date &amp; Time</label>-->
+                                <!--</datetime>-->
+                                <!--<time translate="label" module="forms">-->
+                                    <!--<label>Time</label>-->
+                                <!--</time>-->
+                            <!--</types>-->
+                        <!--</date>-->
+                    </groups>
+                </custom>
+            </fields>
+        </forms>
+    </global>
+</config>

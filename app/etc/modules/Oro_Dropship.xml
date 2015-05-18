@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Oro_Dropship>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Unirgy_Dropship/>
+                <Unirgy_DropshipMicrosite/>
+                <Unirgy_DropshipMicrositePro/>
+            </depends>
+        </Oro_Dropship>
+    </modules>
+</config>

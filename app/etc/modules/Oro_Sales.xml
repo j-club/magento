@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * PDF creation model rewrite
+ *
+ * @category   Oro
+ * @package    Oro_Sales
+ * @copyright  Copyright (c) 2014 Oro Inc. DBA MageCore (http://www.magecore.com)
+ */
+-->
+<config>
+    <modules>
+        <Oro_Sales>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Unirgy_Dropship />
+            </depends>
+        </Oro_Sales>
+    </modules>
+</config>

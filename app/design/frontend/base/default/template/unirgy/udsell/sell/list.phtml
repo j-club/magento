@@ -1,0 +1,95 @@
+<?php
+/**
+ * @category    design
+ * @package     monster_default
+ * @copyright   Copyright (c) 2012 Monster Market. (http://www.monstermarket.com)
+ */
+?>
+<?php
+    $r = Mage::app()->getRequest();
+    $cHlp = Mage::helper('udropship/catalog');
+    $ccHlp = Mage::helper('udsell');
+    $curCat = Mage::registry('current_category');
+    $_productCollection=$this->getLoadedProductCollection();
+    $_helper = $this->helper('catalog/output');
+    $sess = Mage::getSingleton('udropship/session');
+    $searchUrlKey = $sess->getData('udsell_search_type') ? 'mysellSearch' : 'sellSearch';
+    $myPids = $sess->getVendor()->getVendorTableProductIds();
+?>
+<div class="sell-yours-index-box sell-yours-list">
+	<div class="search-bar generic-box">
+		<form action="<?php echo $this->getUrl('udsell/index/'.$searchUrlKey, array('c'=>$r->getParam('c'))) ?>" method="get" class="input-box-container">
+			<h2><?php echo $this->__('Find')?></h2>
+			<div class="input-box">
+				<input type="text" name='q' value='<?php echo $r->getParam('q') ?>' class="input-text required-entry"/>
+			</div>
+			<button class="form-button" onclick="udsellSearchForm.submit()"><span><?php echo $this->__('Go')?></span></button>
+        </form>
+
+<script type="text/javascript">
+//<![CDATA[
+    var udsellSearchForm = new VarienForm('udsell-search-form', true);
+//]]>
+</script>
+
+		<a href="<?php echo $this->getUrl('udprod/vendor/products/') ?>" class="create-new"><?php echo $this->__("Didn't find what you're looking for? <span>Create your product</span>")?></a>
+        
+	</div>
+	<div class="col2-left-layout">
+		<div class="sidebar col-left">
+            <?php if ($curCat):
+                $subCats = $cHlp->getCategoryChildren($curCat);
+            ?>
+			<div class="block block-sellyours-cat-list">
+				<div class="block-title"><?php echo $this->__('Categories')?></div>
+				<div class="block-content">
+					<dl>
+						<dt><?php echo htmlspecialchars($curCat->getName())?></dt>
+                        <?php if (count($subCats)):?>
+						<dd>
+                            <?php foreach ($subCats as $subCat): ?>
+							<ol>
+								<li><a href="<?php echo $this->getUrl('udsell/index/'.$searchUrlKey, array('_current'=>true, 'c'=>$subCat->getId()))?>"><?php echo htmlspecialchars($subCat->getName())?></a></li>
+							</ol>
+                            <?php endforeach ?>
+						</dd>
+                        <?php endif ?>
+					</dl>
+				</div>
+			</div>
+            <?php endif ?>
+		</div>
+		<div class="col-main">
+			<div class="page-title category-title">
+                <h2>
+                <?php if ($r->getParam('q') && $curCat): ?>
+        		<?php echo $ccHlp->__('Search Results for "%s" in category "%s"', htmlspecialchars($r->getParam('q')), htmlspecialchars($curCat->getName()))?>
+                <?php elseif ($curCat): ?>
+                <?php echo $ccHlp->__('Browsing category "%s"', htmlspecialchars($curCat->getName()))?>
+                <?php elseif ($r->getParam('q')): ?>
+                <?php echo $ccHlp->__('Search Results for "%s"', htmlspecialchars($r->getParam('q')))?>
+                <?php endif?>
+                </h2>
+			</div>
+
+            <?php if(!$_productCollection->count()): ?>
+            <p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+            <?php else: ?>
+
+            <?php echo $this->getToolbarHtml() ?>
+
+			<ol class="products-list" id="products-list">
+            <?php $_iterator = 0; ?>
+            <?php foreach ($_productCollection as $_product): ?>
+	            <li class="item odd">
+	            	<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(80,80); ?>" width="80" height="80" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"></a>
+	            	<h2 class="product-name"><a href="<?php echo $ccHlp->getSellUrl($_product)?>" title="<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h2>
+	            	<button type="button" title="<?php echo $this->__('Sell Yours')?>" class="form-button btn-sellyours" onclick="setLocation('<?php echo $this->getUrl('udsell/index/sell', array('id'=>$_product->getId())) ?>')"><span><?php echo in_array($_product->getId(), $myPids) ? $this->__('Edit My Offer') : $this->__('Sell Yours')?></span></button>
+	        	</li>
+            <?php endforeach ?>
+	        </ol>
+<script type="text/javascript">decorateGeneric($('products-list').childElements())</script>
+            <?php endif ?>
+		</div>
+	</div>
+</div>

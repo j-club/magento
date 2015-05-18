@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * ImportExport
+ *
+ * @category   Oro
+ * @package    Oro_ImportExport
+ * @copyright  Copyright (c) 2014 Oro Inc. DBA MageCore (http://www.magecore.com)
+*/
+-->
+<config>
+    <modules>
+        <Oro_ImportExport>
+            <version>0.1.0</version>
+        </Oro_ImportExport>
+    </modules>
+    <global>
+        <models>
+            <importexport>
+                <rewrite>
+                    <export_entity_product>Oro_ImportExport_Model_Export_Entity_Product</export_entity_product>
+                </rewrite>
+            </importexport>
+        </models>
+    </global>
+</config>

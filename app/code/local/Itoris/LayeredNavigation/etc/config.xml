@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<Itoris_LayeredNavigation>
+			<version>1.1.14</version>
+		</Itoris_LayeredNavigation>
+	</modules>
+
+	<admin>
+		<routers>
+			<itoris_layerednavigation>
+				<use>admin</use>
+				<args>
+					<module>Itoris_LayeredNavigation</module>
+					<frontName>itoris_layerednavigation</frontName>
+				</args>
+			</itoris_layerednavigation>
+		</routers>
+	</admin>
+
+	<adminhtml>
+		<layout>
+			<updates>
+				<itoris_layerednavigation>
+					<file>itoris_layerednavigation.xml</file>
+				</itoris_layerednavigation>
+			</updates>
+		</layout>
+		<translate>
+			<modules>
+				<Itoris_LayeredNavigation>
+					<files>
+						<default>Itoris_LayeredNavigation.csv</default>
+					</files>
+				</Itoris_LayeredNavigation>
+			</modules>
+		</translate>
+		<menu>
+		  <system>
+			  <children>
+				<itoris_extensions>
+					<children>
+						<itoris_layerednavigation translate="title" module="itoris_layerednavigation">
+							<title>Layered Navigation</title>
+							<action>itoris_layerednavigation/admin_settings</action>
+						</itoris_layerednavigation>
+					</children>
+				</itoris_extensions>
+			  </children>
+		  </system>
+		</menu>
+		<acl>
+			<resources>
+				<admin>
+					<children>
+						<system>
+							<children>
+								<itoris_extensions>
+									<children>
+										<itoris_layerednavigation translate="title" module="itoris_layerednavigation">
+											<title>Layered Navigation</title>
+										</itoris_layerednavigation>
+									</children>
+								</itoris_extensions>
+							</children>
+						</system>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+	</adminhtml>
+
+	<frontend>
+
+		<routers>
+			<catalog>
+				<args>
+					<modules>
+						<itoris_layerednavigation before="Mage_Catalog">Itoris_LayeredNavigation</itoris_layerednavigation>
+					</modules>
+				</args>
+			</catalog>
+			<catalogsearch>
+				<args>
+					<modules>
+						<itoris_layerednavigation before="Mage_CatalogSearch">Itoris_LayeredNavigation_CatalogSearch</itoris_layerednavigation>
+					</modules>
+				</args>
+			</catalogsearch>
+		</routers>
+
+		<layout>
+			<updates>
+				<itoris_layerednavigation>
+					<file>itoris_layerednavigation.xml</file>
+				</itoris_layerednavigation>
+			</updates>
+		</layout>
+
+		<translate>
+			<modules>
+				<Itoris_LayeredNavigation>
+					<files>
+						<default>Itoris_LayeredNavigation.csv</default>
+					</files>
+				</Itoris_LayeredNavigation>
+			</modules>
+		</translate>
+
+		<events>
+			<controller_action_layout_load_before>
+				<observers>
+					<itoris_layerednavigation_replace_layered_navigation>
+						<class>itoris_layerednavigation/observer</class>
+						<method>addLayeredNavigationHandle</method>
+					</itoris_layerednavigation_replace_layered_navigation>
+				</observers>
+			</controller_action_layout_load_before>
+		</events>
+
+	</frontend>
+
+	<global>
+		<blocks>
+			<itoris_layerednavigation>
+				<class>Itoris_LayeredNavigation_Block</class>
+			</itoris_layerednavigation>
+		</blocks>
+
+		<models>
+			<itoris_layerednavigation>
+				<class>Itoris_LayeredNavigation_Model</class>
+				<resourceModel>itoris_layerednavigation_resource</resourceModel>
+			</itoris_layerednavigation>
+
+			<itoris_layerednavigation_resource>
+				<class>Itoris_LayeredNavigation_Model_Mysql4</class>
+			</itoris_layerednavigation_resource>
+			<enterprise_search>
+				<rewrite>
+					<adapter_httpStream>Itoris_LayeredNavigation_Model_Enterprise_Adapter_HttpStream</adapter_httpStream>
+					<adapter_phpExtension>Itoris_LayeredNavigation_Model_Enterprise_Adapter_PhpExtension</adapter_phpExtension>
+				</rewrite>
+			</enterprise_search>
+		</models>
+
+
+		<helpers>
+			<itoris_layerednavigation>
+				<class>Itoris_LayeredNavigation_Helper</class>
+			</itoris_layerednavigation>
+		</helpers>
+
+		<resources>
+            <itoris_layerednavigation_setup>
+                <setup>
+                    <module>Itoris_LayeredNavigation</module>
+                    <class>Itoris_LayeredNavigation_Model_Mysql4_Setup</class>
+                </setup>
+				<connection>
+                    <use>core_setup</use>
+                </connection>
+            </itoris_layerednavigation_setup>
+
+			<itoris_layerednavigation_write>
+		        <connection>
+		          <use>core_write</use>
+		        </connection>
+	        </itoris_layerednavigation_write>
+
+	       <itoris_layerednavigation_read>
+		        <connection>
+		          <use>core_read</use>
+		        </connection>
+	       </itoris_layerednavigation_read>
+        </resources>
+	</global>
+</config>

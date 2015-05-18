@@ -1,0 +1,266 @@
+<?php 
+	/**
+	 * Lucky Draw Register template
+	 * 
+	 * @see Magestore_Luckydraw_Block_Luckydraw_Registerform
+	 */
+?>
+<?php $program = $this->getProgram() ?>
+
+<div class="page-title">
+	<h2><?php echo $this->__('Register for the program') ?></h2>
+    <div title="<?php echo $this->__('Close') ?>" class="closepopup" onclick="TINY.box.hide();"></div>
+</div>
+<form id="luckydraw-register-form" method="post" action="<?php echo $this->getUrl('*/*/register',array('id' => $program->getId())) ?>">
+	<ul class="form-list">
+    <?php if (!$this->getIsCustomerLogin()): ?>
+		<li>
+			<strong><a href="<?php echo $this->getUrl('*/*/login',array('id' => $program->getId())) ?>">
+				<?php echo $this->__('If you have an account, please log in to the system') ?>
+			</a></strong>
+		</li>
+    <?php else: ?>
+        <li>
+            <input type="hidden" name="customer_id" value="<?php echo $this->getCustomer()->getId() ?>"/>
+        </li>
+    <?php endif ?>
+		<li class="fields">
+            <div class="customer-name">
+                <div class="field name-firstname">
+                    <label class="required" for="firstname"><em>*</em><?php echo $this->__('First Name') ?></label>
+                    <div class="input-box">
+                        <input type="text" class="input-text required-entry" id="firstname" name="firstname" value="<?php echo $this->getFormData()->getData('firstname') ?>"/>
+                    </div>
+                </div>
+                <div class="field name-lastname">
+                    <label class="required" for="lastname"><em>*</em><?php echo $this->__('Last Name') ?></label>
+                    <div class="input-box">
+                        <input type="text" class="input-text required-entry" id="lastname" name="lastname" value="<?php echo $this->getFormData()->getData('lastname') ?>"/>
+                    </div>
+                </div>
+            </div>
+		</li>
+		<li class="fields">
+            <div class="field">
+                <label for="register-email" class="required"><em>*</em><?php echo $this->__('Email') ?></label>
+                <div class="input-box">
+                    <input type="text" class="input-text required-entry validate-email" id="register-email" name="email" value="<?php echo $this->getFormData()->getEmail() ?>" onchange="checkEmailRegister('<?php echo $this->getCheckCustomerEmailUrl() ?>');"/>
+                    <span id="luckydraw-please-wait-email" style="display: none;" class="opc-please-wait">
+                        <img src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>" class="v-middle" alt="" />
+                        &nbsp;<?php echo $this->__('Checking email address') ?>...
+                    </span>
+                    <div id="luckydraw_message_hidden_email" class="luckydraw_message" style="display: none;"></div>
+                </div>
+            </div>
+        <?php if ($this->getNationalIdField()): ?>
+            <div class="field">
+                <label for="national_id"<?php if ($this->reqNationalIdField()): ?> class="required"<?php endif ?>>
+                    <?php if ($this->reqNationalIdField()): ?><em>*</em><?php endif ?>
+                    <?php echo $this->__('National Identification') ?>
+                </label>
+                <div class="input-box">
+                    <input type="text" class="input-text<?php if ($this->reqNationalIdField()): ?> required-entry<?php endif ?>" id="national_id" name="national_id" value="<?php echo $this->getFormData()->getData('national_id') ?>"/>
+                </div>
+            </div>
+        <?php endif ?>
+		</li>
+    <?php $_dob = $this->getLayout()->createBlock('luckydraw/widget_dob') ?>
+    <?php if ($_dob->isEnabled()): ?>
+        <li><?php echo $_dob->setDate($this->getFormData()->getData('dob'))->toHtml() ?></li>
+    <?php endif ?>
+    <?php $_taxvat = $this->getLayout()->createBlock('luckydraw/widget_taxvat') ?>
+    <?php if ($_taxvat->isEnabled()): ?>
+        <li><?php echo $_taxvat->setTaxvat($this->getFormData()->getData('taxvat'))->toHtml() ?></li>
+    <?php endif ?>
+    <?php $_gender = $this->getLayout()->createBlock('luckydraw/widget_gender') ?>
+    <?php if ($_gender->isEnabled()): ?>
+        <li><?php echo $_gender->setGender($this->getFormData()->getData('gender'))->toHtml() ?></li>
+    <?php endif ?>
+    <?php if (!$this->getIsCustomerLogin()): ?>
+        <li class="fields">
+            <div class="field">
+                <label for="password" class="required"><em>*</em><?php echo $this->__('Password') ?></label>
+                <div class="input-box">
+                    <input type="password" name="password" id="password" title="<?php echo $this->__('Password') ?>" class="input-text required-entry validate-password" />
+                </div>
+            </div>
+            <div class="field">
+                <label for="confirmation" class="required"><em>*</em><?php echo $this->__('Confirm Password') ?></label>
+                <div class="input-box">
+                    <input type="password" name="confirmation" title="<?php echo $this->__('Confirm Password') ?>" id="confirmation" class="input-text required-entry validate-cpassword" />
+                </div>
+            </div>
+        </li>
+    <?php endif ?>
+<?php if ($this->requiredAddress()): ?>
+    <?php if ($this->customerHasAddresses()): ?>
+        <li class="wide">
+            <label for="customer-address-select"><?php echo $this->__('Select an address from your address book or enter a new address.') ?></label>
+            <div class="input-box">
+                <?php echo $this->getAddressesHtmlSelect('account') ?>
+            </div>
+        </li>
+    <?php endif ?>
+        <li id="account-new-address-form" <?php if ($this->customerHasAddresses()): ?> style="display:none;"<?php endif; ?>>
+            <fieldset>
+                <input type="hidden" name="account[address_id]" value="<?php echo $this->getAddress()->getId() ?>" id="account:address_id" />
+                <ul>
+                    <li class="wide">
+                        <label for="account:street1" class="required"><em>*</em><?php echo $this->__('Address') ?></label>
+                        <div class="input-box">
+                            <input type="text" title="<?php echo $this->__('Street Address') ?>" name="account[street][]" id="account:street1" value="<?php echo $this->htmlEscape($this->getAddress()->getStreet(1)) ?>" class="input-text required-entry" />
+                        </div>
+                    </li>
+            <?php for ($_i=2, $_n=$this->helper('customer/address')->getStreetLines(); $_i<=$_n; $_i++): ?>
+                    <li class="wide">
+                        <label></label>
+                        <div class="input-box">
+                            <input type="text" title="<?php echo $this->__('Street Address %s', $_i) ?>" name="account[street][]" id="account:street<?php echo $_i?>" value="<?php echo $this->htmlEscape($this->getAddress()->getStreet($_i)) ?>" class="input-text" />
+                        </div>
+                    </li>
+            <?php endfor ?>
+                    <li class="fields">
+                        <div class="field">
+                            <label for="account:city" class="required"><em>*</em><?php echo $this->__('City') ?></label>
+                            <div class="input-box">
+                                <input type="text" title="<?php echo $this->__('City') ?>" name="account[city]" value="<?php echo $this->htmlEscape($this->getAddress()->getCity()) ?>" class="input-text required-entry" id="customer:city" />
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="account:region_id" class="required"><em>*</em><?php echo $this->__('State/Province') ?></label>
+                            <div class="input-box">
+                                <select id="account:region_id" name="account[region_id]" title="<?php echo $this->__('State/Province') ?>" class="validate-select" style="display:none;">
+                                    <option value=""><?php echo $this->__('Please select region, state or province') ?></option>
+                                </select>
+                                <script type="text/javascript">
+                                //<![CDATA[
+                                    $('account:region_id').setAttribute('defaultValue',  "<?php echo $this->getAddress()->getRegionId() ?>");
+                                //]]>
+                                </script>
+                                <input type="text" id="account:region" name="account[region]" value="<?php echo $this->htmlEscape($this->getAddress()->getRegion()) ?>"  title="<?php echo $this->__('State/Province') ?>" class="input-text" style="display:none;" />
+                            </div>
+                        </div>
+                    </li>
+                    <li class="fields">
+                        <div class="field">
+                            <label for="account:postcode" class="required"><em>*</em><?php echo $this->__('Zip/Postal Code') ?></label>
+                            <div class="input-box">
+                                <input type="text" title="<?php echo $this->__('Zip/Postal Code') ?>" name="account[postcode]" id="account:postcode" value="<?php echo $this->htmlEscape($this->getAddress()->getPostcode()) ?>" class="input-text validate-zip-international required-entry" />
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="account:country_id" class="required"><em>*</em><?php echo $this->__('Country') ?></label>
+                            <div class="input-box">
+                                <?php echo $this->getCountryHtmlSelect('account') ?>
+                            </div>
+                        </div>
+                    </li>
+                    <li lang="fields">
+                        <div class="field">
+                            <label for="account:telephone" class="required"><em>*</em><?php echo $this->__('Telephone') ?></label>
+                            <div class="input-box">
+                                <input type="text" name="account[telephone]" value="<?php echo $this->htmlEscape($this->getAddress()->getTelephone()) ?>" title="<?php echo $this->__('Telephone') ?>" class="input-text required-entry" id="account:telephone" />
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="account:fax"><?php echo $this->__('Fax') ?></label>
+                            <div class="input-box">
+                                <input type="text" name="account[fax]" value="<?php echo $this->htmlEscape($this->getAddress()->getFax()) ?>" title="<?php echo $this->__('Fax') ?>" class="input-text" id="account:fax" />
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </fieldset>
+        </li>
+<?php endif ?>
+	<?php if ($this->isCaptchaEnabled()): ?>
+		<li>
+			<label class="required" for="account_captcha"><em>*</em><?php echo $this->__('Verification') ?></label>
+			<div class="input-box">
+				<img src="<?php echo $this->getUrl('*/*/imagecaptcha',array('time' => time(),'id' => $program->getId())) ?>" id="account_captcha_image" />
+				<span id="luckydraw-please-wait-captcha" style="display: none;" class="opc-please-wait">
+					<img src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>" class="v-middle" alt="" />
+					&nbsp;<?php echo $this->__('Getting new captcha') ?>...
+				</span>
+				<a href="#" onclick="refreshCaptchaImage();return false;" id="luckydraw-captcha-link"><?php echo $this->__("Refresh") ?></a>
+			</div>
+		</li>
+		<li>
+            <label></label>
+			<div class="input-box">
+				<input id="account_captcha" class="input-text required-entry" type="text" title="<?php echo $this->__('Captcha code') ?>" name="account_captcha" />
+			</div>
+		</li>
+	<?php endif ?>
+	</ul>
+	<div class="buttons-set">
+		<button id="luckydraw-register-button" class="button" title="<?php echo $this->__('Submit') ?>" type="button" onclick="submitRegisterForm()">
+			<span><span><?php echo $this->__('Submit') ?></span></span>
+		</button>
+		<span id="luckydraw-please-wait-register" style="display:none;" class="opc-please-wait">
+			<img src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>" class="v-middle" alt="" /> &nbsp; <?php echo $this->__('Loading') ?>...
+		</span>
+	</div>
+</form>
+<script type="text/javascript">
+<?php if ($this->requiredAddress()): ?>
+    if ($('account-address-select')){
+		$('account-address-select').value = "<?php echo $this->getAddress()->getId() ?>";
+		lsRequestTrialNewAddress($('account-address-select').value);
+	}
+    function lsRequestTrialNewAddress(addressId){
+		if(addressId == ""){
+			$('account-new-address-form').show();
+		}else{	
+			$('account-new-address-form').hide();
+		}
+	}
+<?php endif ?>
+    function checkEmailRegister(requestUrl) {
+		var email_address = $('register-email').value;
+		var requestUrl = requestUrl + 'email_address/' + email_address;
+		$('luckydraw-please-wait-email').show();
+		$('luckydraw_message_hidden_email').hide();
+		new Ajax.Updater(
+			'luckydraw_message_hidden_email',
+			requestUrl,
+			{
+				method:'get',
+				onComplete: function() {endCheckEmailRegister();},
+				onSuccess:  '',
+				onFailure: ''
+			}
+		);
+	}
+    function endCheckEmailRegister() {
+		$('luckydraw-please-wait-email').hide();
+		$('luckydraw_message_hidden_email').show();
+		if($('is_valid_email').value == '0')
+			$('register-email').value = '';
+	}
+<?php if ($this->isCaptchaEnabled()): ?>
+function refreshCaptchaImage(){
+	var url = '<?php echo $this->getUrl('*/*/refreshcaptcha',array('id' => $program->getId())) ?>';
+	$('account_captcha_image').hide();
+	$('luckydraw-captcha-link').hide();
+	$('luckydraw-please-wait-captcha').show();
+	new Ajax.Request(url,{
+		method: 'get',
+		onSuccess: function(transport){
+			imageCapcha = new Image();
+			imageCapcha.src = transport.responseText;
+			$('account_captcha_image').src = imageCapcha.src;
+			$('luckydraw-please-wait-captcha').hide();
+			$('account_captcha_image').show();
+			$('luckydraw-captcha-link').show();
+		},
+		onException: function (xhr, e){
+            $('luckydraw-please-wait-captcha').hide();
+			$('account_captcha_image').show();
+			$('luckydraw-captcha-link').show();
+			 alert('Exception: ' + e);
+        }
+	});
+}
+<?php endif ?>
+</script>

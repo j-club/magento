@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/**
+ * {magecore_license_notice}
+ *
+ * @category   Oro
+ * @package    Oro_Configurable
+ * @copyright  {magecore_copyright}
+ * @license    {magecore_license}
+ */
+-->
+<config>
+    <modules>
+        <Oro_Configurable>
+            <version>1.0.0</version>
+        </Oro_Configurable>
+    </modules>
+
+    <global>
+        <models>
+            <oro_configurable>
+                <class>Oro_Configurable_Model</class>
+                <resourceModel>oro_configurable_resource</resourceModel>
+            </oro_configurable>
+
+            <oro_configurable_resource>
+                <class>Oro_Configurable_Model_Resource</class>
+            </oro_configurable_resource>
+
+            <!--
+            <catalog>
+                <rewrite>
+                    <product_type_configurable>Oro_Configurable_Model_Product_Type_Configurable</product_type_configurable>
+                </rewrite>
+            </catalog>
+            -->
+
+            <catalog_resource>
+                <rewrite>
+                    <product_type_configurable>Oro_Configurable_Model_Resource_Product_Type_Configurable</product_type_configurable>
+                    <!--product_type_configurable_attribute_collection>Oro_Configurable_Model_Resource_Product_Type_Configurable_Attribute_Collection</product_type_configurable_attribute_collection-->
+                </rewrite>
+            </catalog_resource>
+        </models>
+
+        <helpers>
+            <oro_configurable>
+                <class>Oro_Configurable_Helper</class>
+            </oro_configurable>
+        </helpers>
+
+        <catalog>
+            <product>
+                <type>
+                    <configurable>
+                        <model>oro_configurable/product_type_configurable</model>
+                    </configurable>
+                </type>
+            </product>
+        </catalog>
+
+        <events>
+            <catalog_product_load_after>
+                <observers>
+                    <oro_configurable>
+                        <class>oro_configurable/observer</class>
+                        <method>addMinMaxPrices</method>
+                    </oro_configurable>
+                </observers>
+            </catalog_product_load_after>
+            <catalog_product_collection_load_after>
+                <observers>
+                    <oro_configurable>
+                        <class>oro_configurable/observer</class>
+                        <method>loadAllCofigurableUsedProducts</method>
+                    </oro_configurable>
+                </observers>
+            </catalog_product_collection_load_after>
+        </events>
+    </global>
+</config>

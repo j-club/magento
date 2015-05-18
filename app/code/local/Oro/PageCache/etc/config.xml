@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Oro_PageCache>
+            <version>0.1.0</version>
+        </Oro_PageCache>
+    </modules>
+    <global>
+        <models>
+            <oro_pagecache>
+                <class>Oro_PageCache_Model</class>
+            </oro_pagecache>
+            <enterprise_pagecache_resource>
+                <rewrite>
+                    <crawler>Oro_PageCache_Model_Resource_Crawler</crawler>
+                </rewrite>
+            </enterprise_pagecache_resource>
+            <enterprise_pagecache>
+                <rewrite>
+                    <crawler>Oro_PageCache_Model_Crawler</crawler>
+                </rewrite>
+            </enterprise_pagecache>
+        </models>
+    </global>
+</config>

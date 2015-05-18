@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+			<action method="addCss"><stylesheet>css/aw_advancednewsletter.css</stylesheet></action>
+        </reference>
+    </default>
+    <adminhtml_system_config_edit>
+        <reference name="js">
+            <block type="core/template" template="advancednewsletter/js.phtml" name="formconfiguration" />
+        </reference>
+    </adminhtml_system_config_edit>
+    <advancednewsletter_admin_adminhtml_subscriber_index>
+        <reference name="content">
+            <block type="advancednewsletter/adminhtml_subscriber" name="advancednewsletter.subscriber" />
+        </reference>
+    </advancednewsletter_admin_adminhtml_subscriber_index>
+    <advancednewsletter_admin_adminhtml_synchronization_index>
+        <reference name="content">
+            <block type="advancednewsletter/adminhtml_synchronization" name="advancednewsletter.synchronization" template="advancednewsletter/sync/main.phtml"/>
+        </reference>
+    </advancednewsletter_admin_adminhtml_synchronization_index>
+    <advancednewsletter_admin_adminhtml_synchronization_edit>
+        <reference name="content">
+            <block type="advancednewsletter/adminhtml_synchronization" name="advancednewsletter.synchronization"/>
+        </reference>
+    </advancednewsletter_admin_adminhtml_synchronization_edit>
+    <advancednewsletter_admin_adminhtml_segment_index>
+        <reference name="content">
+            <block type="advancednewsletter/adminhtml_segment" name="advancednewsletter.segment" />
+        </reference>
+    </advancednewsletter_admin_adminhtml_segment_index>
+    <advancednewsletter_admin_adminhtml_template_index>
+        <reference name="content">
+            <block type="advancednewsletter/adminhtml_template" name="advancednewsletter.template" />
+        </reference>
+    </advancednewsletter_admin_adminhtml_template_index>
+    <advancednewsletter_admin_adminhtml_template_edit>
+        <update handle="editor"/>
+        <reference name="content">
+            <block type="advancednewsletter/adminhtml_template_edit" name="an.template_edit" template="advancednewsletter/template/edit.phtml"/>
+        </reference>
+    </advancednewsletter_admin_adminhtml_template_edit>
+    <advancednewsletter_admin_adminhtml_smtp_index>
+        <reference name="content">
+            <block type="advancednewsletter/adminhtml_smtp" name="advancednewsletter.smtp" />
+        </reference>
+    </advancednewsletter_admin_adminhtml_smtp_index>
+    <advancednewsletter_admin_adminhtml_queue_index>
+        <reference name="content">
+            <block type="advancednewsletter/adminhtml_queue" name="advancednewsletter.queue" />
+        </reference>
+    </advancednewsletter_admin_adminhtml_queue_index>
+    <advancednewsletter_admin_adminhtml_customer_index>
+        <reference name="content">
+            <block type="advancednewsletter/adminhtml_customer" name="exportCustomers" />
+        </reference>
+    </advancednewsletter_admin_adminhtml_customer_index>
+    <advancednewsletter_admin_adminhtml_automanagement_index>
+        <reference name="content">
+            <block type="advancednewsletter/adminhtml_automanagement" name="automanagement" />
+        </reference>
+    </advancednewsletter_admin_adminhtml_automanagement_index>
+</layout>

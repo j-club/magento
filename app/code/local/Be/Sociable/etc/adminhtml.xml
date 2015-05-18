@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+	<config>
+		<acl>
+			<resources>
+				<admin>
+					<children>
+						<system>
+							<children>
+								<config>
+									<children>
+										<besociable translate="title" module="sociable">
+											<title>BE Sociable Section</title>
+											<sort_order>0</sort_order>
+										</besociable>
+									</children>
+								</config>
+							</children>
+						</system>
+						<sociable translate="title" module="sociable">
+							<title>Sociable</title>
+							<sort_order>1000</sort_order>
+							<children>
+								<authorizefacebook translate="title">
+									<title>Authorize Facebook</title>
+									<sort_order>1</sort_order>
+								</authorizefacebook>
+							</children>
+						</sociable>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+	</config>

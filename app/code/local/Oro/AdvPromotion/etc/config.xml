@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Oro_AdvPromotion>
+            <version>0.2.0</version>
+        </Oro_AdvPromotion>
+    </modules>
+    <global>
+        <blocks>
+            <oro_advpromotion>
+                <class>Oro_AdvPromotion_Block</class>
+            </oro_advpromotion>
+        </blocks>
+        <resources>
+            <oro_advpromotion_setup>
+                <setup>
+                    <module>Oro_AdvPromotion</module>
+                </setup>
+            </oro_advpromotion_setup>
+        </resources>
+    </global>
+</config>

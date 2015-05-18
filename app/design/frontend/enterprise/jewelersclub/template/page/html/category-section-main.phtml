@@ -1,0 +1,34 @@
+<?php /** @var $this Oro_Category_Block_List */ ?>
+<?php /** @var $categories Mage_Catalog_Model_Resource_Category_Collection */ ?>
+<?php $categories = $this->getListCategories(); ?>
+<?php //$categories = $this->getTopCategories(); ?>
+<div class="section-images">
+    <?php foreach ($categories as $category): ?>
+        <div class="image-col">
+        <span>
+            <?php if ($category->getThumbnail()): ?>
+                <?php $_thumbUrl = Mage::getBaseUrl('media').'catalog/category/'.$category->getThumbnail(); ?>
+                <img src="<?php echo $_thumbUrl; ?>"/>
+            <?php else: ?>
+                <img src="<?php echo $this->getSkinUrl(); ?>images/img-20.png"/>
+            <?php endif; ?>
+            <a class="span" href="<?php echo $category->getUrl();?>"><?php echo $category->getName(); ?></a>
+        </span>
+            <?php
+            if ($subCategories = $category->getSubcategories()):
+                $i=1;
+                ?>
+                <div class="hover-block">
+                    <ul>
+                        <?php
+                        foreach ($subCategories as $_item):
+                            if ($i > 9) break;
+                            ?>
+                            <li><a href="<?php echo $_item->getUrl();?>"><?php echo $_item->getName(); ?></a></li>
+                            <?php $i++; endforeach; ?>
+                    </ul>
+                </div>
+            <?php endif; ?>
+        </div>
+    <?php endforeach; ?>
+</div>

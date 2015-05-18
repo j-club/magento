@@ -1,0 +1,50 @@
+<?php
+/**
+ * aheadWorks Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://ecommerce.aheadworks.com/AW-LICENSE.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This package designed for Magento enterprise edition
+ * aheadWorks does not guarantee correct work of this extension
+ * on any other Magento edition except Magento enterprise edition.
+ * aheadWorks does not provide extension support in case of
+ * incorrect edition usage.
+ * =================================================================
+ *
+ * @category   AW
+ * @package    AW_Advancednewsletter
+ * @version    2.3.2
+ * @copyright  Copyright (c) 2010-2012 aheadWorks Co. (http://www.aheadworks.com)
+ * @license    http://ecommerce.aheadworks.com/AW-LICENSE.txt
+ */
+?><?php
+?>
+<?php $this->setBlockUniqueId($this->getBlockUniqueId() + 1) ?>
+<div class="form-subscribe an-subscribe" id="advancednewsletter-subscribe">
+    <form action="<?php echo $this->getUrl('advancednewsletter/index/subscribe', array('_secure'=>Mage::app()->getStore(true)->isCurrentlySecure())) ?>" method="post" id="advancednewsletter-form-<?php echo $this->getBlockUniqueId() ?>">
+        <div class="block-content">
+            <div class="an-segments">
+                <?php echo $this->getChildHtml('advancednewsletter.options.'.Mage::getStoreConfig(AW_Advancednewsletter_Block_Subscribe::STYLES_PATH)); ?>
+            </div>
+            <div>
+                <?php echo $this->getChildHtml('advancednewsletter.subscriber.data') ?>
+            </div>
+            <div class="an-buttons">
+                <button type="submit" class="button"><span><span><?php echo $this->__('Subscribe') ?></span></span></button>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript">
+        //<![CDATA[
+        var advancednewsletterForm<?php echo $this->getBlockUniqueId() ?> = new VarienForm('advancednewsletter-form-<?php echo $this->getBlockUniqueId() ?>');
+        //]]>
+    </script>
+</div>

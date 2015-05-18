@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Oro_EarnPoints>
+            <version>0.1.0</version>
+        </Oro_EarnPoints>
+    </modules>
+    <global>
+        <models>
+            <oro_earnpoints>
+                <class>Oro_EarnPoints_Model</class>
+                <resourceModel>oro_earnpoints_resource</resourceModel>
+            </oro_earnpoints>
+            <oro_earnpoints_resource>
+                <class>Oro_EarnPoints_Model_Resource</class>
+            </oro_earnpoints_resource>
+        </models>
+        <blocks>
+            <oro_earnpoints>
+                <class>Oro_EarnPoints_Block</class>
+            </oro_earnpoints>
+        </blocks>
+        <helpers>
+            <oro_earnpoints>
+                <class>Oro_EarnPoints_Helper</class>
+            </oro_earnpoints>
+        </helpers>
+        <resources>
+            <oro_earnpoints_setup>
+                <setup>
+                    <module>Oro_EarnPoints</module>
+                </setup>
+            </oro_earnpoints_setup>
+        </resources>
+    </global>
+</config>

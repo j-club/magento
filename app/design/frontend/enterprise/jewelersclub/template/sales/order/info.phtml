@@ -1,0 +1,46 @@
+<?php /** @var $this Mage_Sales_Block_Order_Info */ ?>
+<?php $_order = $this->getOrder() ?>
+<div class="order-page">
+<div class="page-title title-buttons">
+    <h1><?php echo $this->__('Order #%s - %s', $_order->getRealOrderId(), $_order->getStatusLabel()) ?></h1>
+</div>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<?php echo $this->getStatusHistoryRssUrl($_order) ?>
+
+<?php if (!$_order->getIsVirtual()): ?>
+<div class="col2-set">
+    <div class="col-1">
+        <div class="info-box">
+            <h2 class="box-title"><?php echo $this->__('Billing Information') ?></h2>
+            <address class="box-content"><?php echo $_order->getBillingAddress()->format('html') ?></address>
+        </div>
+    </div>
+    <div class="col-2">
+        <div class="info-box">
+            <h2 class="box-title"><?php echo $this->__('Shipping Information') ?></h2>
+            <address class="box-content"><?php echo $_order->getShippingAddress()->format('html') ?></address>
+        </div>
+    </div>
+</div>
+<?php endif; ?>
+<div class="col2-set">
+    <div class="col-1">
+        <div class="info-box">
+            <h2 class="box-title"><?php echo $this->__('Shipping Method') ?></h2>
+            <div class="box-content">
+                <?php if ($_order->getShippingDescription()): ?>
+                    <?php echo $this->escapeHtml($_order->getShippingDescription()) ?>
+                <?php else: ?>
+                    <?php echo $this->helper('sales')->__('No shipping information available'); ?>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+    <div class="col-2">
+        <div class="info-box">
+            <h2 class="box-title"><?php echo $this->__('Payment Method') ?></h2>
+            <div class="box-content"><?php echo $this->getPaymentInfoHtml() ?></div>
+        </div>
+    </div>
+</div>
+</div>

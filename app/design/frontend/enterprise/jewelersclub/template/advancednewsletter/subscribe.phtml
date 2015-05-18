@@ -1,0 +1,29 @@
+<?php
+/**
+ *
+ * @category   MageCore
+ * @copyright  Copyright (c) 2014 Oro Inc. DBA MageCore (http://www.magecore.com)
+ */
+?><?php
+?>
+<?php $this->setBlockUniqueId($this->getBlockUniqueId() + 1) ?>
+<div class="form-subscribe an-subscribe" id="advancednewsletter-subscribe">
+    <form action="<?php echo $this->getUrl('advancednewsletter/index/subscribe', array('_secure'=>Mage::app()->getStore(true)->isCurrentlySecure())) ?>" method="post" id="advancednewsletter-form-<?php echo $this->getBlockUniqueId() ?>">
+        <div class="block-content">
+            <div class="an-segments">
+                <?php echo $this->getChildHtml('advancednewsletter.options.'.Mage::getStoreConfig(AW_Advancednewsletter_Block_Subscribe::STYLES_PATH)); ?>
+            </div>
+            <div class="holder-subscribe">
+                <?php echo $this->getChildHtml('advancednewsletter.subscriber.data') ?>
+                <div class="an-buttons">
+                    <button type="submit" class="button"><span><span><?php echo $this->__('Subscribe') ?></span></span></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript">
+        //<![CDATA[
+        var advancednewsletterForm<?php echo $this->getBlockUniqueId() ?> = new VarienForm('advancednewsletter-form-<?php echo $this->getBlockUniqueId() ?>');
+        //]]>
+    </script>
+</div>

@@ -1,0 +1,56 @@
+<?php
+/**
+ * aheadWorks Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://ecommerce.aheadworks.com/AW-LICENSE.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This package designed for Magento enterprise edition
+ * aheadWorks does not guarantee correct work of this extension
+ * on any other Magento edition except Magento enterprise edition.
+ * aheadWorks does not provide extension support in case of
+ * incorrect edition usage.
+ * =================================================================
+ *
+ * @category   AW
+ * @package    AW_FBIntegrator
+ * @version    2.2.0
+ * @copyright  Copyright (c) 2010-2012 aheadWorks Co. (http://www.aheadworks.com)
+ * @license    http://ecommerce.aheadworks.com/AW-LICENSE.txt
+ */
+?><?php if ($this->canShow()): ?>
+    <div class="aw-fb-like-block">
+        <?php $like = $this->getLikeConf(); ?>
+        <div class="fbintegrator-likebutton">
+            <div class="fb-like" id="<?php echo 'aw_fbi_' . $this->getBlockId(); ?>"></div>
+            <script type="text/javascript">
+                var aw_fbi_likebtn= $(<?php echo "'aw_fbi_" . $this->getBlockId() . "'"; ?>);
+                aw_fbi_likebtn.writeAttribute("data-send", "<?php echo $like['send']; ?>" );
+                aw_fbi_likebtn.writeAttribute("data-layout","<?php echo $like['laystyle']; ?>" );
+                aw_fbi_likebtn.writeAttribute("data-show-faces","<?php echo $like['face']; ?>" );
+                aw_fbi_likebtn.writeAttribute("data-width","<?php echo $like['width']; ?>");
+                aw_fbi_likebtn.writeAttribute("data-action","<?php echo $like['verb']; ?>");
+                aw_fbi_likebtn.writeAttribute("data-font","<?php echo $like['font']; ?>");
+                aw_fbi_likebtn.writeAttribute("data-colorscheme","<?php echo $like['color']; ?>");
+                aw_fbi_likebtn.writeAttribute("data-ref","");
+            </script>
+        </div>
+        <?php if (Mage::helper('fbintegrator/like')->canGetPoints()): ?>
+            <div class="fb-points">
+                <?php
+                $currentUrl = Mage::helper('core/url')->getCurrentUrl();
+                if (!Mage::helper('fbintegrator/like')->isAlreadyLiked($currentUrl)):
+                    ?>
+                    <?php echo $this->__("Like and get <b>%s</b> point(s)", Mage::helper('fbintegrator/like')->getPoints()); ?>
+                <?php endif; ?>
+            </div>
+        <?php endif; ?>
+    </div>
+<?php endif; ?>

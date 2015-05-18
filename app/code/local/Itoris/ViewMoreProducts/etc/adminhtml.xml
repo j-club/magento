@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+<config>
+	<menu>
+		<system>
+			<children>
+				<itoris_extensions>
+					<children>
+						<itoris_viewmoreproducts translate="title" module="itoris_viewmoreproducts">
+							<title>View More Products</title>
+							<action>itoris_viewmoreproducts/admin_configuration/index</action>
+							<sort_order>40</sort_order>
+						</itoris_viewmoreproducts>
+					</children>
+				</itoris_extensions>
+			</children>
+		</system>
+	</menu>
+	<acl>
+		<resources>
+			<admin>
+				<children>
+					<system>
+						<children>
+							<itoris_viewmoreproducts>
+								<children>
+									<itoris_viewmoreproducts translate="title" module="itoris_viewmoreproducts">
+										<title>View More Products</title>
+										<sort_order>40</sort_order>
+									</itoris_viewmoreproducts>
+								</children>
+							</itoris_viewmoreproducts>
+						</children>
+					</system>
+				</children>
+			</admin>
+		</resources>
+	</acl>
+</config>

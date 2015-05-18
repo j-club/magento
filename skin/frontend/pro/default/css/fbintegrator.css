@@ -1,0 +1,55 @@
+.fb-connect-container{margin:30px 0;}
+#fb-loader .loader{border:1px solid #ccc; padding:8px; text-align:center;background:#fff; width:120px;z-index:1000; position:fixed; top:45%; left:46%; -moz-opacity:0.8; opacity:0.8; filter:alpha(opacity=80);}
+
+.aw-fb-login-button  {
+    position: relative;
+    z-index: 1;
+    overflow: visible;
+    display: inline-block;
+    padding: 0.3em 0.6em 0.375em;
+    border: 1px solid #999;
+    border-bottom-color: #888;
+    margin: 0;
+    text-decoration: none;
+    text-align: center;
+    font: bold 11px/normal 'lucida grande', tahoma, verdana, arial, sans-serif;
+    white-space: nowrap;
+    cursor: pointer;
+
+    /* IE */
+    zoom: 1;
+    *display: inline;
+
+    border-color: #29447E #29447E #1A356E;
+    color: #fff;
+    background-color: #5B74A8;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#637bad), to(#5872a7));
+    background-image: -moz-linear-gradient(#637bad, #5872a7);
+    background-image: -o-linear-gradient(#637bad, #5872a7);
+    background-image: linear-gradient(#637bad, #5872a7);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#637bad', EndColorStr='#5872a7'); /* for IE 6 - 9 */
+    -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 #8a9cc2;
+    -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 #8a9cc2;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 #8a9cc2;
+}
+
+.aw-fb-login-button:hover,
+.aw-fb-login-button:focus,
+.aw-fb-login-button:active {
+    border-color: #777 #777 #666;
+}
+
+.aw-fb-login-button:active {
+    border-color: #29447E;
+    background: #4F6AA3;
+    filter: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+/* Firefox */
+.aw-fb-login-button::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+}

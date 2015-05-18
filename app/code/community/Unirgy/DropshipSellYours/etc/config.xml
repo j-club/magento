@@ -1,0 +1,206 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Unirgy LLC
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.unirgy.com/LICENSE-M1.txt
+ *
+ * @category   Unirgy
+ * @package    Unirgy_DropshipSellYours
+ * @copyright  Copyright (c) 2008-2009 Unirgy LLC (http://www.unirgy.com)
+ * @license    http:///www.unirgy.com/LICENSE-M1.txt
+ */
+
+-->
+<config>
+    <modules>
+        <Unirgy_DropshipSellYours>
+            <version>1.1.1</version>
+        </Unirgy_DropshipSellYours>
+    </modules>
+
+    <global>
+        <models>
+            <udsell>
+                <class>Unirgy_DropshipSellYours_Model</class>
+                <resourceModel>udsell_mysql4</resourceModel>
+            </udsell>
+            <udsell_mysql4>
+                <class>Unirgy_DropshipSellYours_Model_Mysql4</class>
+            </udsell_mysql4>
+            <customer>
+                <rewrite>
+                    <customer>Unirgy_DropshipSellYours_Model_Customer</customer>
+                </rewrite>
+            </customer>
+            <customer_entity>
+                <rewrite>
+                    <customer>Unirgy_DropshipSellYours_Model_EntityCustomer</customer>
+                </rewrite>
+            </customer_entity>
+        </models>
+
+        <resources>
+            <udsell_setup>
+                <setup>
+                    <module>Unirgy_DropshipSellYours</module>
+                    <class>Mage_Sales_Model_Mysql4_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </udsell_setup>
+            <udsell_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </udsell_write>
+            <udsell_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </udsell_read>
+        </resources>
+
+        <blocks>
+            <udsell>
+                <class>Unirgy_DropshipSellYours_Block</class>
+            </udsell>
+        <udropship>
+                <rewrite>
+                    <adminhtml_vendor_grid>Unirgy_DropshipSellYours_Block_Adminhtml_VendorGrid</adminhtml_vendor_grid>
+                </rewrite>
+            </udropship>
+        </blocks>
+
+        <helpers>
+            <udsell>
+                <class>Unirgy_DropshipSellYours_Helper</class>
+            </udsell>
+        </helpers>
+
+        <udropship>
+            <vendor>
+                <fields>
+                </fields>
+            </vendor>
+        </udropship>
+
+        <template>
+            <email>
+            </email>
+        </template>
+
+        <events>
+            <umicrosite_check_permission>
+                <observers>
+                    <udsell>
+                        <type>singleton</type>
+                        <class>udsell/observer</class>
+                        <method>umicrosite_check_permission</method>
+                    </udsell>
+                </observers>
+            </umicrosite_check_permission>
+            <controller_front_init_before>
+                <observers>
+                    <udsell>
+                        <type>singleton</type>
+                        <class>udsell/observer</class>
+                        <method>controller_front_init_before</method>
+                    </udsell>
+                </observers>
+            </controller_front_init_before>
+        </events>
+
+    </global>
+
+    <frontend>
+        <routers>
+            <udsell>
+                <use>standard</use>
+                <args>
+                    <module>Unirgy_DropshipSellYours</module>
+                    <frontName>udsell</frontName>
+                </args>
+            </udsell>
+        </routers>
+        <layout>
+            <updates>
+                <udsell>
+                    <file>udsell.xml</file>
+                </udsell>
+            </updates>
+        </layout>
+        <events>
+        </events>
+    </frontend>
+
+    <admin>
+        <routers>
+            <udselladmin>
+                <use>admin</use>
+                <args>
+                    <module>Unirgy_DropshipSellYours_Adminhtml</module>
+                    <frontName>udselladmin</frontName>
+                </args>
+            </udselladmin>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <udsell>
+                    <file>udsell.xml</file>
+                </udsell>
+            </updates>
+        </layout>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <udsell>
+                                            <title>Dropship Sell Yours</title>
+                                            <sort_order>52</sort_order>
+                                        </udsell>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <events>
+            <udropship_adminhtml_vendor_edit_prepare_form>
+                <observers>
+                    <udsell>
+                        <type>singleton</type>
+                        <class>udsell/observer</class>
+                        <method>udropship_adminhtml_vendor_edit_prepare_form</method>
+                    </udsell>
+                </observers>
+            </udropship_adminhtml_vendor_edit_prepare_form>
+        </events>
+    </adminhtml>
+
+    <default>
+        <udropship>
+	    </udropship>
+        <udsell>
+            <form>
+                    <fieldsets><![CDATA[[{"title":"","sort_order":"0","top_columns_def":[],"bottom_columns_def":[{"column_field":"udmulti.freeshipping","is_required":"1","sort_order":"0"},{"column_field":"udmulti.state","is_required":"1","use_limit_type":"1","limit_type":["simple","downloadable","virtual"],"sort_order":"10"},{"column_field":"udmulti.state_descr","use_limit_type":"1","limit_type":["simple","downloadable","virtual"],"sort_order":"30"},{"column_field":"udmulti.vendor_title","use_limit_type":"1","limit_type":["simple","downloadable","virtual"],"sort_order":"40"}],"left_columns_def":[{"column_field":"udmulti.vendor_price","is_required":"1","use_limit_type":"1","limit_type":["simple","downloadable","virtual"],"sort_order":"10"},{"column_field":"udmulti.stock_qty","is_required":"1","use_limit_type":"1","limit_type":["simple","downloadable","virtual"],"sort_order":"12"},{"column_field":"udmulti.vendor_sku","use_limit_type":"1","limit_type":["simple","downloadable","virtual"],"sort_order":"20"}],"right_columns_def":[{"column_field":"udmulti.special_price","use_limit_type":"1","limit_type":["simple","downloadable","virtual"],"sort_order":"0"},{"column_field":"udmulti.special_from_date","use_limit_type":"1","limit_type":["simple","downloadable","virtual"],"sort_order":"10"},{"column_field":"udmulti.special_to_date","use_limit_type":"1","limit_type":["simple","downloadable","virtual"],"sort_order":"20"}],"fields_extra":{"udmulti.freeshipping":{"use_limit_type":null,"limit_type":null},"udmulti.state":{"use_limit_type":"1","limit_type":["simple","downloadable","virtual"]},"udmulti.state_descr":{"use_limit_type":"1","limit_type":["simple","downloadable","virtual"]},"udmulti.vendor_title":{"use_limit_type":"1","limit_type":["simple","downloadable","virtual"]},"udmulti.vendor_price":{"use_limit_type":"1","limit_type":["simple","downloadable","virtual"]},"udmulti.stock_qty":{"use_limit_type":"1","limit_type":["simple","downloadable","virtual"]},"udmulti.vendor_sku":{"use_limit_type":"1","limit_type":["simple","downloadable","virtual"]},"udmulti.special_price":{"use_limit_type":"1","limit_type":["simple","downloadable","virtual"]},"udmulti.special_from_date":{"use_limit_type":"1","limit_type":["simple","downloadable","virtual"]},"udmulti.special_to_date":{"use_limit_type":"1","limit_type":["simple","downloadable","virtual"]}},"required_fields":["udmulti.freeshipping","udmulti.state","udmulti.vendor_price","udmulti.stock_qty"],"bottom_columns":["udmulti.freeshipping","udmulti.state","udmulti.state_descr","udmulti.vendor_title"],"left_columns":["udmulti.vendor_price","udmulti.stock_qty","udmulti.vendor_sku"],"right_columns":["udmulti.special_price","udmulti.special_from_date","udmulti.special_to_date"]}]]]></fieldsets>
+                <quick_create><![CDATA[{"columns_def":[{"column_field":"udmulti.state","is_required":"1","sort_order":"2"},{"column_field":"udmulti.state_descr","sort_order":"10"},{"column_field":"udmulti.stock_qty","is_required":"1","sort_order":"20"},{"column_field":"udmulti.vendor_sku","sort_order":"30"}],"fields_extra":{"udmulti.state":[],"udmulti.state_descr":[],"udmulti.stock_qty":[],"udmulti.vendor_sku":[]},"required_fields":["udmulti.state","udmulti.stock_qty"],"columns":["udmulti.state","udmulti.state_descr","udmulti.stock_qty","udmulti.vendor_sku"]}]]></quick_create>
+            </form>
+        </udsell>
+    </default>
+</config>

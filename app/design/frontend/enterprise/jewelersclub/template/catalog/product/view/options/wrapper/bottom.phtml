@@ -1,0 +1,13 @@
+<?php
+/**
+ *
+ * @category   MageCore
+ * @copyright  Copyright (c) 2014 Oro Inc. DBA MageCore (http://www.magecore.com)
+ */
+?>
+<div class="product-options-bottom">
+    <?php echo $this->getChildHtml('', true, true);?>
+    <?php if ($this->hasRequiredOptions() && !$this->getHideRequiredNotice()):?>
+        <!--<p class="required"><?php /*echo $this->__('* Required Fields') */?></p>-->
+    <?php endif;?>
+</div>

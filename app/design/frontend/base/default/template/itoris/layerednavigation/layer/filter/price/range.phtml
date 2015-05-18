@@ -1,0 +1,49 @@
+<?php 
+/**
+ * ITORIS
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the ITORIS's Magento Extensions License Agreement
+ * which is available through the world-wide-web at this URL:
+ * http://www.itoris.com/magento-extensions-license.html
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to sales@itoris.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade the extensions to newer
+ * versions in the future. If you wish to customize the extension for your
+ * needs please refer to the license agreement or contact sales@itoris.com for more information.
+ *
+ * @category   ITORIS
+ * @package    ITORIS_LAYEREDNAVIGATION
+ * @copyright  Copyright (c) 2012 ITORIS INC. (http://www.itoris.com)
+ * @license    http://www.itoris.com/magento-extensions-license.html  Commercial License
+ */
+?>
+<?php /** @var $this Itoris_LayeredNavigation_Block_Layer_Filter_Price_Range */
+
+	/** @var $coreHelper Mage_Core_Helper_Data */
+	//$coreHelper = Mage::helper('core');
+?>
+<div class="price-range">
+	<div class="control">
+		<div id="laynav_price_scale" class="scale"></div>
+		<div id="laynav_price_range" class="range"></div>
+		<div id="laynav_price_pointer_left" class="pointer pointer-left"></div>
+		<div id="laynav_price_pointer_right" class="pointer pointer-right" style="right:0px;"></div>
+	</div>
+
+	<div>
+		<?php $currencySymbol = Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol() ?>
+		<div class="price-label left"><?php echo $currencySymbol ?><span id="laynav_price_pointer_left_label"><?php echo $this->getFilter()->getMinPriceInt() ?></span></div>
+		<div class="price-label right"><?php echo $currencySymbol ?><span id="laynav_price_pointer_right_label"><?php echo $this->getFilter()->getMaxPriceInt() ?></span></div>
+		<div style="clear:both;"></div>
+	</div>
+
+	<input type="hidden" id="laynav_price_pointer_left_input" name="price[min]" value="<?php echo $this->getFilter()->getAppliedPriceMin() ?>" />
+	<input type="hidden" id="laynav_price_pointer_right_input" name="price[max]" value="<?php echo $this->getFilter()->getAppliedPriceMax() ?>" />
+
+</div>

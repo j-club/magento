@@ -1,0 +1,1773 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/**
+ * @category   Oro
+ * @package    Oro_Asset
+ * @copyright  Copyright (c) 2014 Oro Inc. DBA MageCore (http://www.magecore.com)
+ */
+-->
+<merge>
+    <js>
+        <front-enterprise-jewelersclub-default>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>js/package</path>
+            <filename>default</filename>
+            <handles>
+                <default />
+            </handles>
+            <files>
+                <prototype>
+                    <type>static</type>
+                    <path>js/prototype</path>
+                    <filename>prototype.js</filename>
+                    <remove type="js" file="prototype/prototype.js" />
+                </prototype>
+                <ccard>
+                    <type>static</type>
+                    <path>js/lib</path>
+                    <filename>ccard.js</filename>
+                    <remove type="js" file="lib/ccard.js" />
+                </ccard>
+                <validation>
+                    <type>static</type>
+                    <path>js/prototype</path>
+                    <filename>validation.js</filename>
+                    <remove type="js" file="prototype/validation.js" />
+                </validation>
+                <builder>
+                    <type>static</type>
+                    <path>js/scriptaculous</path>
+                    <filename>builder.js</filename>
+                    <remove type="js" file="scriptaculous/builder.js" />
+                </builder>
+                <effects>
+                    <type>static</type>
+                    <path>js/scriptaculous</path>
+                    <filename>effects.js</filename>
+                    <remove type="js" file="scriptaculous/effects.js" />
+                </effects>
+                <dragdrop>
+                    <type>static</type>
+                    <path>js/scriptaculous</path>
+                    <filename>dragdrop.js</filename>
+                    <remove type="js" file="scriptaculous/dragdrop.js" />
+                </dragdrop>
+                <controls>
+                    <type>static</type>
+                    <path>js/scriptaculous</path>
+                    <filename>controls.js</filename>
+                    <remove type="js" file="scriptaculous/controls.js" />
+                </controls>
+                <slider>
+                    <type>static</type>
+                    <path>js/scriptaculous</path>
+                    <filename>slider.js</filename>
+                    <remove type="js" file="scriptaculous/slider.js" />
+                </slider>
+                <js>
+                    <type>static</type>
+                    <path>js/varien</path>
+                    <filename>js.js</filename>
+                    <remove type="js" file="varien/js.js" />
+                </js>
+                <form>
+                    <type>static</type>
+                    <path>js/varien</path>
+                    <filename>form.js</filename>
+                    <remove type="js" file="varien/form.js" />
+                </form>
+                <menu>
+                    <type>static</type>
+                    <path>js/varien</path>
+                    <filename>menu.js</filename>
+                    <remove type="js" file="varien/menu.js" />
+                </menu>
+                <translate>
+                    <type>static</type>
+                    <path>js/mage</path>
+                    <filename>translate.js</filename>
+                    <remove type="js" file="mage/translate.js" />
+                </translate>
+                <cookies>
+                    <type>static</type>
+                    <path>js/mage</path>
+                    <filename>cookies.js</filename>
+                    <remove type="js" file="mage/cookies.js" />
+                </cookies>
+                <advancednewsletter>
+                    <type>static</type>
+                    <path>js/advancednewsletter</path>
+                    <filename>advancednewsletter.js</filename>
+                    <remove type="js" file="advancednewsletter/advancednewsletter.js" />
+                </advancednewsletter>
+                <onsale>
+                    <type>static</type>
+                    <path>js/aw_onsale</path>
+                    <filename>onsale.js</filename>
+                    <remove type="js" file="aw_onsale/onsale.js" />
+                </onsale>
+                <common>
+                    <type>static</type>
+                    <path>js/magpleasure</path>
+                    <filename>common.js</filename>
+                    <remove type="js" file="magpleasure/common.js" />
+                </common>
+                <domloaded>
+                    <type>static</type>
+                    <path>js/unirgy</path>
+                    <filename>domloaded.js</filename>
+                    <remove type="js" file="unirgy/domloaded.js" />
+                </domloaded>
+                <modal>
+                    <type>static</type>
+                    <path>js/unirgy</path>
+                    <filename>modal.js</filename>
+                    <remove type="js" file="unirgy/modal.js" />
+                </modal>
+                <banner-media>
+                    <type>static</type>
+                    <path>js/unirgy</path>
+                    <filename>banner_media.js</filename>
+                    <remove type="js" file="unirgy/banner_media.js" />
+                </banner-media>
+                <uslider>
+                    <type>static</type>
+                    <path>js/unirgy</path>
+                    <filename>slider.js</filename>
+                    <remove type="js" file="unirgy/slider.js" />
+                </uslider>
+                <jquery-1-10-2-min>
+                    <type>static</type>
+                    <path>js/jquery</path>
+                    <filename>jquery-1.10.2.min.js</filename>
+                    <remove type="js" file="jquery/jquery-1.10.2.min.js" />
+                </jquery-1-10-2-min>
+                <scripts>
+                    <path>js</path>
+                    <filename>scripts.js</filename>
+                    <remove type="skin_js" file="js/scripts.js" />
+                </scripts>
+                <gallery>
+                    <path>js</path>
+                    <filename>gallery.js</filename>
+                    <remove type="skin_js" file="js/gallery.js" />
+                </gallery>
+                <jquery-carouFredSel-6-2-1-packed>
+                    <path>js</path>
+                    <filename>jquery.carouFredSel-6.2.1-packed.js</filename>
+                    <remove type="skin_js" file="js/jquery.carouFredSel-6.2.1-packed.js" />
+                </jquery-carouFredSel-6-2-1-packed>
+                <catalogevent>
+                    <path>js/enterprise</path>
+                    <filename>catalogevent.js</filename>
+                    <remove type="skin_js" file="js/enterprise/catalogevent.js" />
+                </catalogevent>
+                <wishlist>
+                    <path>js/enterprise</path>
+                    <filename>wishlist.js</filename>
+                    <remove type="skin_js" file="js/enterprise/wishlist.js" />
+                </wishlist>
+                <open-close>
+                    <path>js</path>
+                    <filename>open-close.js</filename>
+                    <remove type="skin_js" file="js/open-close.js" />
+                </open-close>
+                <main>
+                    <path>js</path>
+                    <filename>main.js</filename>
+                    <remove type="skin_js" file="js/main.js" />
+                </main>
+                <clear>
+                    <path>js</path>
+                    <filename>clear.js</filename>
+                    <remove type="skin_js" file="js/clear.js" />
+                </clear>
+                <jquery-fitvids>
+                    <path>js</path>
+                    <filename>jquery.fitvids.js</filename>
+                    <remove type="skin_js" file="js/jquery.fitvids.js" />
+                </jquery-fitvids>
+                <main>
+                    <path>js</path>
+                    <filename>main.js</filename>
+                    <remove type="skin_js" file="js/main.js" />
+                </main>
+            </files>
+        </front-enterprise-jewelersclub-default>
+        <front-enterprise-jewelersclub-print>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>js/package</path>
+            <filename>print</filename>
+            <handles>
+                <print />
+            </handles>
+            <files>
+                <prototype>
+                    <type>static</type>
+                    <path>js/prototype</path>
+                    <filename>prototype.js</filename>
+                    <remove type="js" file="prototype/prototype.js" />
+                </prototype>
+                <translate>
+                    <type>static</type>
+                    <path>js/mage</path>
+                    <filename>translate.js</filename>
+                    <remove type="js" file="mage/translate.js" />
+                </translate>
+                <ccard>
+                    <type>static</type>
+                    <path>js/lib</path>
+                    <filename>ccard.js</filename>
+                    <remove type="js" file="lib/ccard.js" />
+                </ccard>
+                <validation>
+                    <type>static</type>
+                    <path>js/prototype</path>
+                    <filename>validation.js</filename>
+                    <remove type="js" file="prototype/validation.js" />
+                </validation>
+                <js>
+                    <type>static</type>
+                    <path>js/varien</path>
+                    <filename>js.js</filename>
+                    <remove type="js" file="varien/js.js" />
+                </js>
+            </files>
+        </front-enterprise-jewelersclub-print>
+        <front-enterprise-jewelersclub-catalog_product_compare>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>js/package</path>
+            <filename>catalog_product_compare</filename>
+            <handles>
+                <catalog_product_compare_index />
+                <membership_package_compare />
+            </handles>
+            <files>
+                <scriptaculous>
+                    <type>static</type>
+                    <path>js/scriptaculous</path>
+                    <filename>scriptaculous.js</filename>
+                    <remove type="js" file="scriptaculous/scriptaculous.js" />
+                </scriptaculous>
+                <product>
+                    <type>static</type>
+                    <path>js/varien</path>
+                    <filename>product.js</filename>
+                    <remove type="js" file="varien/product.js" />
+                </product>
+            </files>
+        </front-enterprise-jewelersclub-catalog_product_compare>
+        <front-enterprise-jewelersclub-catalog_product_view>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>js/package</path>
+            <filename>catalog_product_view</filename>
+            <handles>
+                <catalog_product_view />
+            </handles>
+            <files>
+                <product>
+                    <type>static</type>
+                    <path>js/varien</path>
+                    <filename>product.js</filename>
+                    <remove type="js" file="varien/product.js" />
+                </product>
+                <configurable>
+                    <type>static</type>
+                    <path>js/varien</path>
+                    <filename>configurable.js</filename>
+                    <remove type="js" file="varien/configurable.js" />
+                </configurable>
+                <calendar>
+                    <type>static</type>
+                    <path>js/calendar</path>
+                    <filename>calendar.js</filename>
+                    <remove type="js" file="calendar/calendar.js" />
+                </calendar>
+                <calendar-setup>
+                    <type>static</type>
+                    <path>js/calendar</path>
+                    <filename>calendar-setup.js</filename>
+                    <remove type="js" file="calendar/calendar-setup.js" />
+                </calendar-setup>
+                <jquery-carouFredSel-6-2-1-packed>
+                    <path>js</path>
+                    <filename>jquery.carouFredSel-6.2.1-packed.js</filename>
+                    <remove type="skin_js" file="js/jquery.carouFredSel-6.2.1-packed.js" />
+                </jquery-carouFredSel-6-2-1-packed>
+                <binding>
+                    <path>js/oro/productquickview</path>
+                    <filename>binding.js</filename>
+                    <remove type="skin_js" file="js/oro/productquickview/binding.js" />
+                </binding>
+                <amasty_bubble>
+                    <path>js/amasty/amconf</path>
+                    <filename>bubleTooltip.js</filename>
+                    <remove type="skin_js" file="js/amasty/amconf/bubleTooltip.js" />
+                </amasty_bubble>
+                <amasty>
+                    <path>js/amasty/amconf</path>
+                    <filename>configurable.js</filename>
+                    <remove type="skin_js" file="js/amasty/amconf/configurable.js" />
+                </amasty>
+                <amasty_custom>
+                    <path>js</path>
+                    <filename>configurable.js</filename>
+                    <remove type="skin_js" file="js/configurable.js" />
+                </amasty_custom>
+                <jquery-jqzoom-core>
+                    <path>js</path>
+                    <filename>jquery.jqzoom-core.js</filename>
+                    <remove type="skin_js" file="js/jquery.jqzoom-core.js" />
+                </jquery-jqzoom-core>
+                <amasty_plugin_1>
+                    <path>js/z_amasty/plugins</path>
+                    <filename>jquery.elevatezoom.js</filename>
+                    <remove type="skin_js" file="js/z_amasty/plugins/jquery.elevatezoom.js" />
+                </amasty_plugin_1>
+                <amasty_plugin_2>
+                    <path>js/z_amasty/plugins</path>
+                    <filename>jquery.mousewheel.js</filename>
+                    <remove type="skin_js" file="js/z_amasty/plugins/jquery.mousewheel.js" />
+                </amasty_plugin_2>
+                <amasty_plugin_3>
+                    <path>js/z_amasty/plugins</path>
+                    <filename>jquery.touchSwipe.min.js</filename>
+                    <remove type="skin_js" file="js/z_amasty/plugins/jquery.touchSwipe.min.js" />
+                </amasty_plugin_3>
+                <slider>
+                    <type>static</type>
+                    <path>js/scriptaculous</path>
+                    <filename>slider.js</filename>
+                    <remove type="js" file="scriptaculous/slider.js" />
+                </slider>
+            </files>
+        </front-enterprise-jewelersclub-catalog_product_view>
+        <front-enterprise-jewelersclub-catalog_product>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>js/package</path>
+            <filename>catalog_product</filename>
+            <handles>
+                <catalog_product_send />
+                <sendfriend_product_send />
+            </handles>
+            <files>
+                <product>
+                    <type>static</type>
+                    <path>js/varien</path>
+                    <filename>product.js</filename>
+                    <remove type="js" file="varien/product.js" />
+                </product>
+                <slider>
+                    <type>static</type>
+                    <path>js/scriptaculous</path>
+                    <filename>slider.js</filename>
+                    <remove type="js" file="scriptaculous/slider.js" />
+                </slider>
+            </files>
+        </front-enterprise-jewelersclub-catalog_product>
+        <front-enterprise-jewelersclub-calendar>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>js/package</path>
+            <filename>calendar</filename>
+            <handles>
+                <catalogsearch_advanced_index />
+                <calendar />
+                <udropship_vendor_index />
+                <udropship_vendor_preferences />
+            </handles>
+            <files>
+                <calendar>
+                    <type>static</type>
+                    <path>js/calendar</path>
+                    <filename>calendar.js</filename>
+                    <remove type="js" file="calendar/calendar.js" />
+                </calendar>
+                <calendar-setup>
+                    <type>static</type>
+                    <path>js/calendar</path>
+                    <filename>calendar-setup.js</filename>
+                    <remove type="js" file="calendar/calendar-setup.js" />
+                </calendar-setup>
+            </files>
+        </front-enterprise-jewelersclub-calendar>
+        <front-enterprise-jewelersclub-review_product_list>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>js/package</path>
+            <filename>review_product_list</filename>
+            <handles>
+                <review_product_list />
+            </handles>
+            <files>
+                <product>
+                    <type>static</type>
+                    <path>js/varien</path>
+                    <filename>product.js</filename>
+                    <remove type="js" file="varien/product.js" />
+                </product>
+                <configurable>
+                    <type>static</type>
+                    <path>js/varien</path>
+                    <filename>configurable.js</filename>
+                    <remove type="js" file="varien/configurable.js" />
+                </configurable>
+            </files>
+        </front-enterprise-jewelersclub-review_product_list>
+        <front-enterprise-jewelersclub-captcha>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>js/package</path>
+            <filename>captcha</filename>
+            <handles>
+                <customer_account_login />
+                <customer_account_forgotpassword />
+                <customer_account_create />
+            </handles>
+            <files>
+                <captcha>
+                    <type>static</type>
+                    <path>js/mage</path>
+                    <filename>captcha.js</filename>
+                    <remove type="js" file="mage/captcha.js" />
+                </captcha>
+            </files>
+        </front-enterprise-jewelersclub-captcha>
+        <front-enterprise-jewelersclub-checkout>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>js/package</path>
+            <filename>checkout</filename>
+            <handles>
+                <checkout_onepage_index />
+            </handles>
+            <files>
+                <captcha>
+                    <type>static</type>
+                    <path>js/mage</path>
+                    <filename>captcha.js</filename>
+                    <remove type="js" file="mage/captcha.js" />
+                </captcha>
+                <captcha>
+                    <type>static</type>
+                    <path>js/mage</path>
+                    <filename>captcha.js</filename>
+                    <remove type="js" file="mage/captcha.js" />
+                </captcha>
+                <captcha>
+                    <type>static</type>
+                    <path>js/mage</path>
+                    <filename>captcha.js</filename>
+                    <remove type="js" file="mage/captcha.js" />
+                </captcha>
+                <directpost>
+                    <type>static</type>
+                    <path>js/mage</path>
+                    <filename>directpost.js</filename>
+                    <remove type="js" file="mage/directpost.js" />
+                </directpost>
+                <centinel>
+                    <type>static</type>
+                    <path>js/mage</path>
+                    <filename>centinel.js</filename>
+                    <remove type="js" file="mage/centinel.js" />
+                </centinel>
+                <weee>
+                    <type>static</type>
+                    <path>js/varien</path>
+                    <filename>weee.js</filename>
+                    <remove type="js" file="varien/weee.js" />
+                </weee>
+            </files>
+        </front-enterprise-jewelersclub-checkout>
+        <front-enterprise-jewelersclub-centinel>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>js/package</path>
+            <filename>centinel</filename>
+            <handles>
+                <checkout_multishipping_overview />
+            </handles>
+            <files>
+                <centinel>
+                    <type>static</type>
+                    <path>js/mage</path>
+                    <filename>centinel.js</filename>
+                    <remove type="js" file="mage/centinel.js" />
+                </centinel>
+            </files>
+        </front-enterprise-jewelersclub-centinel>
+        <front-enterprise-jewelersclub-weee>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>js/package</path>
+            <filename>weee</filename>
+            <handles>
+                <checkout_cart_index />
+                <checkout_multishipping />
+                <customer_logged_in />
+            </handles>
+            <files>
+                <weee>
+                    <type>static</type>
+                    <path>js/varien</path>
+                    <filename>weee.js</filename>
+                    <remove type="js" file="varien/weee.js" />
+                </weee>
+            </files>
+        </front-enterprise-jewelersclub-weee>
+        <front-enterprise-jewelersclub-restriction_index_stub>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>js/package</path>
+            <filename>restriction_index_stub</filename>
+            <handles>
+                <restriction_index_stub />
+            </handles>
+            <files>
+                <prototype>
+                    <type>static</type>
+                    <path>js/prototype</path>
+                    <filename>prototype.js</filename>
+                    <remove type="js" file="prototype/prototype.js" />
+                </prototype>
+                <ccard>
+                    <type>static</type>
+                    <path>js/lib</path>
+                    <filename>ccard.js</filename>
+                    <remove type="js" file="lib/ccard.js" />
+                </ccard>
+                <validation>
+                    <type>static</type>
+                    <path>js/prototype</path>
+                    <filename>validation.js</filename>
+                    <remove type="js" file="prototype/validation.js" />
+                </validation>
+                <js>
+                    <type>static</type>
+                    <path>js/varien</path>
+                    <filename>js.js</filename>
+                    <remove type="js" file="varien/js.js" />
+                </js>
+                <translate>
+                    <type>static</type>
+                    <path>js/mage</path>
+                    <filename>translate.js</filename>
+                    <remove type="js" file="mage/translate.js" />
+                </translate>
+                <scripts>
+                    <path>js</path>
+                    <filename>scripts.js</filename>
+                    <remove type="skin_js" file="js/scripts.js" />
+                </scripts>
+            </files>
+        </front-enterprise-jewelersclub-restriction_index_stub>
+        <front-enterprise-jewelersclub-restriction_index_stub-lt-ie7>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>js/package</path>
+            <filename>restriction_index_stub.lt.ie7</filename>
+            <if>lt IE 7</if>
+            <handles>
+                <restriction_index_stub if="lt IE 7" />
+            </handles>
+            <files>
+                <iehover-fix>
+                    <path>js</path>
+                    <filename>iehover-fix.js</filename>
+                    <remove type="skin_js" file="js/iehover-fix.js" />
+                </iehover-fix>
+            </files>
+        </front-enterprise-jewelersclub-restriction_index_stub-lt-ie7>
+        <front-enterprise-jewelersclub-catalog_category_itoris_layerednavigation>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>js/package</path>
+            <filename>catalog_category_itoris_layerednavigation</filename>
+            <handles>
+                <catalog_category_itoris_layerednavigation />
+            </handles>
+            <files>
+                <layerednavigation>
+                    <type>static</type>
+                    <path>js/itoris/layerednavigation</path>
+                    <filename>layerednavigation.js</filename>
+                    <remove type="js" file="itoris/layerednavigation/layerednavigation.js" />
+                </layerednavigation>
+                <product>
+                    <type>static</type>
+                    <path>js/varien</path>
+                    <filename>product.js</filename>
+                    <remove type="js" file="varien/product.js" />
+                </product>
+                <configurable>
+                    <type>static</type>
+                    <path>js/varien</path>
+                    <filename>configurable.js</filename>
+                    <remove type="js" file="varien/configurable.js" />
+                </configurable>
+                <amasty_formlist>
+                    <path>js/amasty/amconf</path>
+                    <filename>formList.js</filename>
+                    <remove type="skin_js" file="js/amasty/amconf/formList.js" />
+                </amasty_formlist>
+                <amasty_conflist>
+                    <path>js/amasty/amconf</path>
+                    <filename>configurableList.js</filename>
+                    <remove type="skin_js" file="js/amasty/amconf/configurableList.js" />
+                </amasty_conflist>
+                <amasty_bubble>
+                    <path>js/amasty/amconf</path>
+                    <filename>bubleTooltip.js</filename>
+                    <remove type="skin_js" file="js/amasty/amconf/bubleTooltip.js" />
+                </amasty_bubble>
+            </files>
+        </front-enterprise-jewelersclub-catalog_category_itoris_layerednavigation>
+        <front-enterprise-jewelersclub-luckydraw_index_index>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>js/package</path>
+            <filename>luckydraw_index_index</filename>
+            <handles>
+                <luckydraw_index_index />
+            </handles>
+            <files>
+                <tinybox>
+                    <type>static</type>
+                    <path>js/tinybox</path>
+                    <filename>tinybox.js</filename>
+                    <remove type="js" file="tinybox/tinybox.js" />
+                </tinybox>
+                <luckydraw>
+                    <type>static</type>
+                    <path>js/magestore</path>
+                    <filename>luckydraw.js</filename>
+                    <remove type="js" file="magestore/luckydraw.js" />
+                </luckydraw>
+            </files>
+        </front-enterprise-jewelersclub-luckydraw_index_index>
+        <front-enterprise-jewelersclub-magpleasure_common_js>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>js/package</path>
+            <filename>magpleasure_common_js</filename>
+            <handles>
+                <magpleasure_common_js />
+            </handles>
+            <files>
+                <common>
+                    <type>static</type>
+                    <path>js/magpleasure</path>
+                    <filename>common.js</filename>
+                    <remove type="js" file="magpleasure/common.js" />
+                </common>
+            </files>
+        </front-enterprise-jewelersclub-magpleasure_common_js>
+        <front-enterprise-jewelersclub-magpleasure_widget_dialog>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>js/package</path>
+            <filename>magpleasure_widget_dialog</filename>
+            <handles>
+                <magpleasure_widget_dialog />
+            </handles>
+            <files>
+                <dialog>
+                    <type>static</type>
+                    <path>js/magpleasure/widget</path>
+                    <filename>dialog.js</filename>
+                    <remove type="js" file="magpleasure/widget/dialog.js" />
+                </dialog>
+            </files>
+        </front-enterprise-jewelersclub-magpleasure_widget_dialog>
+        <front-enterprise-jewelersclub-apply_jquery>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>js/package</path>
+            <filename>apply_jquery</filename>
+            <handles>
+                <apply_jquery />
+            </handles>
+            <files>
+                <jquery-1-8-2-min>
+                    <type>static</type>
+                    <path>js/magpleasure/libs/jquery</path>
+                    <filename>jquery-1.8.2.min.js</filename>
+                    <remove type="js" file="magpleasure/libs/jquery/jquery-1.8.2.min.js" />
+                </jquery-1-8-2-min>
+            </files>
+        </front-enterprise-jewelersclub-apply_jquery>
+        <front-enterprise-jewelersclub-apply_jquery_ui>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>js/package</path>
+            <filename>apply_jquery_ui</filename>
+            <handles>
+                <apply_jquery_ui />
+            </handles>
+            <files>
+                <jquery-ui-1-9-1-custom-min>
+                    <type>static</type>
+                    <path>js/magpleasure/libs/jquery/ui</path>
+                    <filename>jquery-ui-1.9.1.custom.min.js</filename>
+                    <remove type="js" file="magpleasure/libs/jquery/ui/jquery-ui-1.9.1.custom.min.js" />
+                </jquery-ui-1-9-1-custom-min>
+            </files>
+        </front-enterprise-jewelersclub-apply_jquery_ui>
+        <front-enterprise-jewelersclub-apply_angularjs>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>js/package</path>
+            <filename>apply_angularjs</filename>
+            <handles>
+                <apply_angularjs />
+            </handles>
+            <files>
+                <angular-min>
+                    <type>static</type>
+                    <path>js/magpleasure/libs/angularjs</path>
+                    <filename>angular.min.js</filename>
+                    <remove type="js" file="magpleasure/libs/angularjs/angular.min.js" />
+                </angular-min>
+            </files>
+        </front-enterprise-jewelersclub-apply_angularjs>
+        <front-enterprise-jewelersclub-apply_angularjs_dragdrop>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>js/package</path>
+            <filename>apply_angularjs_dragdrop</filename>
+            <handles>
+                <apply_angularjs_dragdrop />
+            </handles>
+            <files>
+                <angular-dragdrop-min>
+                    <type>static</type>
+                    <path>js/magpleasure/libs/angularjs/utils</path>
+                    <filename>angular-dragdrop.min.js</filename>
+                    <remove type="js" file="magpleasure/libs/angularjs/utils/angular-dragdrop.min.js" />
+                </angular-dragdrop-min>
+            </files>
+        </front-enterprise-jewelersclub-apply_angularjs_dragdrop>
+        <front-enterprise-jewelersclub-apply_angularjs_grid>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>js/package</path>
+            <filename>apply_angularjs_grid</filename>
+            <handles>
+                <apply_angularjs_grid />
+            </handles>
+            <files>
+                <ng-grid-min>
+                    <type>static</type>
+                    <path>js/magpleasure/libs/angularjs/utils</path>
+                    <filename>ng-grid.min.js</filename>
+                    <remove type="js" file="magpleasure/libs/angularjs/utils/ng-grid.min.js" />
+                </ng-grid-min>
+            </files>
+        </front-enterprise-jewelersclub-apply_angularjs_grid>
+        <front-enterprise-jewelersclub-apply_base64>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>js/package</path>
+            <filename>apply_base64</filename>
+            <handles>
+                <apply_base64 />
+            </handles>
+            <files>
+                <base64>
+                    <type>static</type>
+                    <path>js/magpleasure/libs/webtoolkit</path>
+                    <filename>base64.js</filename>
+                    <remove type="js" file="magpleasure/libs/webtoolkit/base64.js" />
+                </base64>
+            </files>
+        </front-enterprise-jewelersclub-apply_base64>
+        <front-enterprise-jewelersclub-apply_lightbox2>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>js/package</path>
+            <filename>apply_lightbox2</filename>
+            <handles>
+                <apply_lightbox2 />
+            </handles>
+            <files>
+                <lightbox-2-6-min>
+                    <type>static</type>
+                    <path>js/magpleasure/libs/lightbox2/js</path>
+                    <filename>lightbox-2.6.min.js</filename>
+                    <remove type="js" file="magpleasure/libs/lightbox2/js/lightbox-2.6.min.js" />
+                </lightbox-2-6-min>
+                <modernizr-custom>
+                    <type>static</type>
+                    <path>js/magpleasure/libs/lightbox2/js</path>
+                    <filename>modernizr.custom.js</filename>
+                    <remove type="js" file="magpleasure/libs/lightbox2/js/modernizr.custom.js" />
+                </modernizr-custom>
+            </files>
+        </front-enterprise-jewelersclub-apply_lightbox2>
+        <front-enterprise-jewelersclub-uwysiwyg_editor_js>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>js/package</path>
+            <filename>uwysiwyg_editor_js</filename>
+            <handles>
+                <uwysiwyg_editor_js />
+            </handles>
+            <files>
+                <events>
+                    <type>static</type>
+                    <path>js/mage/adminhtml</path>
+                    <filename>events.js</filename>
+                    <remove type="js" file="mage/adminhtml/events.js" />
+                </events>
+                <tools>
+                    <type>static</type>
+                    <path>js/mage/adminhtml</path>
+                    <filename>tools.js</filename>
+                    <remove type="js" file="mage/adminhtml/tools.js" />
+                </tools>
+                <ext-tree>
+                    <type>static</type>
+                    <path>js/extjs</path>
+                    <filename>ext-tree.js</filename>
+                    <remove type="js" file="extjs/ext-tree.js" />
+                </ext-tree>
+                <ext-tree-checkbox>
+                    <type>static</type>
+                    <path>js/extjs</path>
+                    <filename>ext-tree-checkbox.js</filename>
+                    <remove type="js" file="extjs/ext-tree-checkbox.js" />
+                </ext-tree-checkbox>
+                <setup>
+                    <type>static</type>
+                    <path>js/mage/adminhtml/wysiwyg/tiny_mce</path>
+                    <filename>setup.js</filename>
+                    <remove type="js" file="mage/adminhtml/wysiwyg/tiny_mce/setup.js" />
+                </setup>
+                <variables>
+                    <type>static</type>
+                    <path>js/mage/adminhtml</path>
+                    <filename>variables.js</filename>
+                    <remove type="js" file="mage/adminhtml/variables.js" />
+                </variables>
+                <browser>
+                    <type>static</type>
+                    <path>js/unirgy/media</path>
+                    <filename>browser.js</filename>
+                    <remove type="js" file="unirgy/media/browser.js" />
+                </browser>
+                <window>
+                    <type>static</type>
+                    <path>js/prototype</path>
+                    <filename>window.js</filename>
+                    <remove type="js" file="prototype/window.js" />
+                </window>
+            </files>
+        </front-enterprise-jewelersclub-uwysiwyg_editor_js>
+        <front-enterprise-jewelersclub-umicrosite_vendor_register>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>js/package</path>
+            <filename>umicrosite_vendor_register</filename>
+            <handles>
+                <umicrosite_vendor_register />
+            </handles>
+            <files>
+                <calendar>
+                    <type>static</type>
+                    <path>js/calendar</path>
+                    <filename>calendar.js</filename>
+                    <remove type="js" file="calendar/calendar.js" />
+                </calendar>
+                <calendar-en>
+                    <type>static</type>
+                    <path>js/calendar/lang</path>
+                    <filename>calendar-en.js</filename>
+                    <remove type="js" file="calendar/lang/calendar-en.js" />
+                </calendar-en>
+                <calendar-setup>
+                    <type>static</type>
+                    <path>js/calendar</path>
+                    <filename>calendar-setup.js</filename>
+                    <remove type="js" file="calendar/calendar-setup.js" />
+                </calendar-setup>
+            </files>
+        </front-enterprise-jewelersclub-umicrosite_vendor_register>
+        <front-enterprise-jewelersclub-_udprod_product_zoom>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>js/package</path>
+            <filename>_udprod_product_zoom</filename>
+            <handles>
+                <_udprod_product_zoom />
+            </handles>
+            <files>
+                <product-media>
+                    <type>static</type>
+                    <path>js/unirgy</path>
+                    <filename>product_media.js</filename>
+                    <remove type="js" file="unirgy/product_media.js" />
+                </product-media>
+            </files>
+        </front-enterprise-jewelersclub-_udprod_product_zoom>
+        <front-enterprise-jewelersclub-_udprod_product_zoom_configurable>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>js/package</path>
+            <filename>_udprod_product_zoom_configurable</filename>
+            <handles>
+                <_udprod_product_zoom_configurable />
+            </handles>
+            <files>
+                <product>
+                    <type>static</type>
+                    <path>js/unirgy</path>
+                    <filename>product.js</filename>
+                    <remove type="js" file="unirgy/product.js" />
+                </product>
+            </files>
+        </front-enterprise-jewelersclub-_udprod_product_zoom_configurable>
+        <front-enterprise-jewelersclub-_udprod_product_configurable>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>js/package</path>
+            <filename>_udprod_product_configurable</filename>
+            <handles>
+                <_udprod_product_configurable />
+            </handles>
+            <files>
+                <product-default>
+                    <type>static</type>
+                    <path>js/unirgy</path>
+                    <filename>product_default.js</filename>
+                    <remove type="js" file="unirgy/product_default.js" />
+                </product-default>
+            </files>
+        </front-enterprise-jewelersclub-_udprod_product_configurable>
+        <front-enterprise-jewelersclub-_udprod_vendor_product_edit>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>js/package</path>
+            <filename>_udprod_vendor_product_edit</filename>
+            <handles>
+                <_udprod_vendor_product_edit />
+            </handles>
+            <files>
+                <calendar>
+                    <type>static</type>
+                    <path>js/calendar</path>
+                    <filename>calendar.js</filename>
+                    <remove type="js" file="calendar/calendar.js" />
+                </calendar>
+                <calendar-setup>
+                    <type>static</type>
+                    <path>js/calendar</path>
+                    <filename>calendar-setup.js</filename>
+                    <remove type="js" file="calendar/calendar-setup.js" />
+                </calendar-setup>
+                <form>
+                    <type>static</type>
+                    <path>js/mage/adminhtml</path>
+                    <filename>form.js</filename>
+                    <remove type="js" file="mage/adminhtml/form.js" />
+                </form>
+                <events>
+                    <type>static</type>
+                    <path>js/mage/adminhtml</path>
+                    <filename>events.js</filename>
+                    <remove type="js" file="mage/adminhtml/events.js" />
+                </events>
+                <loader>
+                    <type>static</type>
+                    <path>js/mage/adminhtml</path>
+                    <filename>loader.js</filename>
+                    <remove type="js" file="mage/adminhtml/loader.js" />
+                </loader>
+                <tools>
+                    <type>static</type>
+                    <path>js/mage/adminhtml</path>
+                    <filename>tools.js</filename>
+                    <remove type="js" file="mage/adminhtml/tools.js" />
+                </tools>
+                <hash>
+                    <type>static</type>
+                    <path>js/mage/adminhtml</path>
+                    <filename>hash.js</filename>
+                    <remove type="js" file="mage/adminhtml/hash.js" />
+                </hash>
+                <accordion>
+                    <type>static</type>
+                    <path>js/mage/adminhtml</path>
+                    <filename>accordion.js</filename>
+                    <remove type="js" file="mage/adminhtml/accordion.js" />
+                </accordion>
+                <ext-tree>
+                    <type>static</type>
+                    <path>js/extjs</path>
+                    <filename>ext-tree.js</filename>
+                    <remove type="js" file="extjs/ext-tree.js" />
+                </ext-tree>
+                <fix-defer>
+                    <type>static</type>
+                    <path>js/extjs</path>
+                    <filename>fix-defer.js</filename>
+                    <remove type="js" file="extjs/fix-defer.js" />
+                </fix-defer>
+                <ext-tree-checkbox>
+                    <type>static</type>
+                    <path>js/extjs</path>
+                    <filename>ext-tree-checkbox.js</filename>
+                    <remove type="js" file="extjs/ext-tree-checkbox.js" />
+                </ext-tree-checkbox>
+            </files>
+        </front-enterprise-jewelersclub-_udprod_vendor_product_edit>
+        <front-enterprise-jewelersclub-udsell_index_sell>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>js/package</path>
+            <filename>udsell_index_sell</filename>
+            <handles>
+                <udsell_index_sell />
+            </handles>
+            <files>
+                <product>
+                    <type>static</type>
+                    <path>js/varien</path>
+                    <filename>product.js</filename>
+                    <remove type="js" file="varien/product.js" />
+                </product>
+                <calendar>
+                    <type>static</type>
+                    <path>js/calendar</path>
+                    <filename>calendar.js</filename>
+                    <remove type="js" file="calendar/calendar.js" />
+                </calendar>
+                <calendar-setup>
+                    <type>static</type>
+                    <path>js/calendar</path>
+                    <filename>calendar-setup.js</filename>
+                    <remove type="js" file="calendar/calendar-setup.js" />
+                </calendar-setup>
+            </files>
+        </front-enterprise-jewelersclub-udsell_index_sell>
+        <front-enterprise-jewelersclub-udc2c_product_type_configurable>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>js/package</path>
+            <filename>udc2c_product_type_configurable</filename>
+            <handles>
+                <UDC2C_PRODUCT_TYPE_configurable />
+            </handles>
+            <files>
+                <product>
+                    <type>static</type>
+                    <path>js/varien</path>
+                    <filename>product.js</filename>
+                    <remove type="js" file="varien/product.js" />
+                </product>
+                <product>
+                    <type>static</type>
+                    <path>js/unirgy</path>
+                    <filename>product.js</filename>
+                    <remove type="js" file="unirgy/product.js" />
+                </product>
+            </files>
+        </front-enterprise-jewelersclub-udc2c_product_type_configurable>
+        <front-enterprise-jewelersclub-msrp>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>js/package</path>
+            <filename>msrp</filename>
+            <handles>
+                <MAP_popup />
+            </handles>
+            <files>
+                <msrp>
+                    <path>js</path>
+                    <filename>msrp.js</filename>
+                    <remove type="skin_js" file="js/msrp.js" />
+                </msrp>
+            </files>
+        </front-enterprise-jewelersclub-msrp>
+        <front-enterprise-jewelersclub-paypal_review>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>js/package</path>
+            <filename>paypal_review</filename>
+            <handles>
+                <paypal_express_review />
+                <paypaluk_express_review />
+            </handles>
+            <files>
+                <review>
+                    <path>js/checkout</path>
+                    <filename>review.js</filename>
+                    <remove type="skin_js" file="js/checkout/review.js" />
+                </review>
+            </files>
+        </front-enterprise-jewelersclub-paypal_review>
+        <front-enterprise-jewelersclub-bundle>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>js/package</path>
+            <filename>bundle</filename>
+            <handles>
+                <PRODUCT_TYPE_bundle />
+            </handles>
+            <files>
+                <bundle>
+                    <path>js</path>
+                    <filename>bundle.js</filename>
+                    <remove type="skin_js" file="js/bundle.js" />
+                </bundle>
+            </files>
+        </front-enterprise-jewelersclub-bundle>
+        <front-enterprise-jewelersclub-x-791287a7>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>js/package</path>
+            <filename>x.791287a7</filename>
+            <handles>
+                <catalog_category_layered />
+                <catalogsearch_result_index />
+                <catalogsearch_advanced_result />
+            </handles>
+            <files>
+                <binding>
+                    <path>js/oro/productquickview</path>
+                    <filename>binding.js</filename>
+                    <remove type="skin_js" file="js/oro/productquickview/binding.js" />
+                </binding>
+            </files>
+        </front-enterprise-jewelersclub-x-791287a7>
+        <front-enterprise-jewelersclub-catalog_category_default>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>js/package</path>
+            <filename>catalog_category_default</filename>
+            <handles>
+                <catalog_category_default />
+            </handles>
+            <files>
+                <binding>
+                    <path>js/oro/productquickview</path>
+                    <filename>binding.js</filename>
+                    <remove type="skin_js" file="js/oro/productquickview/binding.js" />
+                </binding>
+                <jquery-carouFredSel-6-2-1-packed>
+                    <path>js</path>
+                    <filename>jquery.carouFredSel-6.2.1-packed.js</filename>
+                    <remove type="skin_js" file="js/jquery.carouFredSel-6.2.1-packed.js" />
+                </jquery-carouFredSel-6-2-1-packed>
+                <gallery>
+                    <path>js</path>
+                    <filename>gallery.js</filename>
+                    <remove type="skin_js" file="js/gallery.js" />
+                </gallery>
+            </files>
+        </front-enterprise-jewelersclub-catalog_category_default>
+        <front-enterprise-jewelersclub-cms_index_index>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>js/package</path>
+            <filename>cms_index_index</filename>
+            <handles>
+                <cms_index_index />
+            </handles>
+            <files>
+                <jquery-carouFredSel-6-2-1-packed>
+                    <path>js</path>
+                    <filename>jquery.carouFredSel-6.2.1-packed.js</filename>
+                    <remove type="skin_js" file="js/jquery.carouFredSel-6.2.1-packed.js" />
+                </jquery-carouFredSel-6-2-1-packed>
+                <gallery>
+                    <path>js</path>
+                    <filename>gallery.js</filename>
+                    <remove type="skin_js" file="js/gallery.js" />
+                </gallery>
+            </files>
+        </front-enterprise-jewelersclub-cms_index_index>
+    </js>
+    <css>
+        <front-enterprise-jewelersclub-catalog_product_view>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>css/package</path>
+            <filename>catalog_product_view</filename>
+            <handles>
+                <catalog_product_view />
+            </handles>
+            <files>
+                <calendar-win2k-1>
+                    <type>static</type>
+                    <path>js/calendar</path>
+                    <filename>calendar-win2k-1.css</filename>
+                    <remove type="js_css" file="calendar/calendar-win2k-1.css" />
+                </calendar-win2k-1>
+                <jquery-jqzoom>
+                    <path>css</path>
+                    <filename>jquery.jqzoom.css</filename>
+                    <remove type="skin_css" file="css/jquery.jqzoom.css" />
+                </jquery-jqzoom>
+            </files>
+        </front-enterprise-jewelersclub-catalog_product_view>
+        <front-enterprise-jewelersclub-calendar>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>css/package</path>
+            <filename>calendar</filename>
+            <handles>
+                <catalogsearch_advanced_index />
+                <calendar />
+                <udropship_vendor_index />
+                <udropship_vendor_preferences />
+                <umicrosite_vendor_register />
+                <udsell_index_sell />
+            </handles>
+            <files>
+                <calendar-win2k-1>
+                    <type>static</type>
+                    <path>js/calendar</path>
+                    <filename>calendar-win2k-1.css</filename>
+                    <remove type="js_css" file="calendar/calendar-win2k-1.css" />
+                </calendar-win2k-1>
+            </files>
+        </front-enterprise-jewelersclub-calendar>
+        <front-enterprise-jewelersclub-apply_jquery_ui>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>css/package</path>
+            <filename>apply_jquery_ui</filename>
+            <handles>
+                <apply_jquery_ui />
+            </handles>
+            <files>
+                <jquery-ui-1-9-1-magento>
+                    <type>static</type>
+                    <path>js/magpleasure/libs/jquery/ui/css</path>
+                    <filename>jquery-ui-1.9.1.magento.css</filename>
+                    <remove type="js_css" file="magpleasure/libs/jquery/ui/css/jquery-ui-1.9.1.magento.css" />
+                </jquery-ui-1-9-1-magento>
+            </files>
+        </front-enterprise-jewelersclub-apply_jquery_ui>
+        <front-enterprise-jewelersclub-apply_angularjs_grid>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>css/package</path>
+            <filename>apply_angularjs_grid</filename>
+            <handles>
+                <apply_angularjs_grid />
+            </handles>
+            <files>
+                <ng-grid-min>
+                    <type>static</type>
+                    <path>js/magpleasure/libs/angularjs/utils</path>
+                    <filename>ng-grid.min.css</filename>
+                    <remove type="js_css" file="magpleasure/libs/angularjs/utils/ng-grid.min.css" />
+                </ng-grid-min>
+            </files>
+        </front-enterprise-jewelersclub-apply_angularjs_grid>
+        <front-enterprise-jewelersclub-apply_lightbox2>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>css/package</path>
+            <filename>apply_lightbox2</filename>
+            <handles>
+                <apply_lightbox2 />
+            </handles>
+            <files>
+                <lightbox>
+                    <type>static</type>
+                    <path>js/magpleasure/libs/lightbox2/css</path>
+                    <filename>lightbox.css</filename>
+                    <remove type="js_css" file="magpleasure/libs/lightbox2/css/lightbox.css" />
+                </lightbox>
+            </files>
+        </front-enterprise-jewelersclub-apply_lightbox2>
+        <front-enterprise-jewelersclub-uwysiwyg_editor_js>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>css/package</path>
+            <filename>uwysiwyg_editor_js</filename>
+            <handles>
+                <uwysiwyg_editor_js />
+            </handles>
+            <files>
+                <ext-all>
+                    <type>static</type>
+                    <path>js/extjs/resources/css</path>
+                    <filename>ext-all.css</filename>
+                    <remove type="js_css" file="extjs/resources/css/ext-all.css" />
+                </ext-all>
+                <ytheme-magento>
+                    <type>static</type>
+                    <path>js/extjs/resources/css</path>
+                    <filename>ytheme-magento.css</filename>
+                    <remove type="js_css" file="extjs/resources/css/ytheme-magento.css" />
+                </ytheme-magento>
+                <default>
+                    <type>static</type>
+                    <path>js/prototype/windows/themes</path>
+                    <filename>default.css</filename>
+                    <remove type="js_css" file="prototype/windows/themes/default.css" />
+                </default>
+                <magento>
+                    <type>static</type>
+                    <path>js/prototype/windows/themes</path>
+                    <filename>magento.css</filename>
+                    <remove type="js_css" file="prototype/windows/themes/magento.css" />
+                </magento>
+                <magento>
+                    <path>lib/prototype/windows/themes</path>
+                    <filename>magento.css</filename>
+                    <remove type="skin_css" file="lib/prototype/windows/themes/magento.css" />
+                </magento>
+            </files>
+        </front-enterprise-jewelersclub-uwysiwyg_editor_js>
+        <front-enterprise-jewelersclub-_udprod_vendor_product_edit>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>css/package</path>
+            <filename>_udprod_vendor_product_edit</filename>
+            <handles>
+                <_udprod_vendor_product_edit />
+            </handles>
+            <files>
+                <calendar-win2k-1>
+                    <type>static</type>
+                    <path>js/calendar</path>
+                    <filename>calendar-win2k-1.css</filename>
+                    <remove type="js_css" file="calendar/calendar-win2k-1.css" />
+                </calendar-win2k-1>
+                <ext-all>
+                    <type>static</type>
+                    <path>js/extjs/resources/css</path>
+                    <filename>ext-all.css</filename>
+                    <remove type="js_css" file="extjs/resources/css/ext-all.css" />
+                </ext-all>
+                <ytheme-magento>
+                    <type>static</type>
+                    <path>js/extjs/resources/css</path>
+                    <filename>ytheme-magento.css</filename>
+                    <remove type="js_css" file="extjs/resources/css/ytheme-magento.css" />
+                </ytheme-magento>
+            </files>
+        </front-enterprise-jewelersclub-_udprod_vendor_product_edit>
+        <front-enterprise-jewelersclub-default>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>css/package</path>
+            <filename>default</filename>
+            <handles>
+                <default />
+            </handles>
+            <files>
+                <!--styles>
+                    <path>css</path>
+                    <filename>styles.css</filename>
+                    <remove type="skin_css" file="css/styles.css" />
+                </styles-->
+                <all>
+                    <path>css</path>
+                    <filename>all.css</filename>
+                    <remove type="skin_css" file="css/all.css" />
+                </all>
+                <bxslider>
+                    <path>css</path>
+                    <filename>bxslider.css</filename>
+                    <remove type="skin_css" file="css/bxslider.css" />
+                </bxslider>
+                <widgets>
+                    <path>css</path>
+                    <filename>widgets.css</filename>
+                    <remove type="skin_css" file="css/widgets.css" />
+                </widgets>
+                <aw-advancednewsletter>
+                    <path>css</path>
+                    <filename>aw_advancednewsletter.css</filename>
+                    <remove type="skin_css" file="css/aw_advancednewsletter.css" />
+                </aw-advancednewsletter>
+                <fbintegrator>
+                    <path>css</path>
+                    <filename>fbintegrator.css</filename>
+                    <remove type="skin_css" file="css/fbintegrator.css" />
+                </fbintegrator>
+                <product-onsale-label>
+                    <path>onsale/css</path>
+                    <filename>product_onsale_label.css</filename>
+                    <remove type="skin_css" file="onsale/css/product_onsale_label.css" />
+                </product-onsale-label>
+                <category-onsale-label>
+                    <path>onsale/css</path>
+                    <filename>category_onsale_label.css</filename>
+                    <remove type="skin_css" file="onsale/css/category_onsale_label.css" />
+                </category-onsale-label>
+                <membership>
+                    <path>css/magestore</path>
+                    <filename>membership.css</filename>
+                    <remove type="skin_css" file="css/magestore/membership.css" />
+                </membership>
+                <fstyles>
+                    <path>forms/css</path>
+                    <filename>styles.css</filename>
+                    <remove type="skin_css" file="forms/css/styles.css" />
+                </fstyles>
+                <fancybox>
+                    <path>css</path>
+                    <filename>fancybox.css</filename>
+                    <remove type="skin_css" file="css/fancybox.css" />
+                </fancybox>
+            </files>
+        </front-enterprise-jewelersclub-default>
+        <front-enterprise-jewelersclub-default-ie8>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>css/package</path>
+            <filename>default.ie8</filename>
+            <if>lt IE 8</if>
+            <handles>
+                <default if="lt IE 8" />
+                <print if="lt IE 8" />
+                <restriction_index_stub if="lt IE 8" />
+            </handles>
+            <files>
+                <styles-ie>
+                    <path>css</path>
+                    <filename>styles-ie.css</filename>
+                    <remove type="skin_css" file="css/styles-ie.css" />
+                </styles-ie>
+            </files>
+        </front-enterprise-jewelersclub-default-ie8>
+        <front-enterprise-jewelersclub-default_print>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>css/package</path>
+            <filename>default_print</filename>
+            <params>media="print"</params>
+            <handles>
+                <default />
+                <print />
+                <restriction_index_stub />
+            </handles>
+            <files>
+                <print>
+                    <path>css</path>
+                    <filename>print.css</filename>
+                    <remove type="skin_css" file="css/print.css" />
+                </print>
+            </files>
+        </front-enterprise-jewelersclub-default_print>
+        <front-enterprise-jewelersclub-print>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>css/package</path>
+            <filename>print</filename>
+            <handles>
+                <print />
+            </handles>
+            <files>
+                <!--styles>
+                    <path>css</path>
+                    <filename>styles.css</filename>
+                    <remove type="skin_css" file="css/styles.css" />
+                </styles-->
+                <widgets>
+                    <path>css</path>
+                    <filename>widgets.css</filename>
+                    <remove type="skin_css" file="css/widgets.css" />
+                </widgets>
+            </files>
+        </front-enterprise-jewelersclub-print>
+        <front-enterprise-jewelersclub-oauth>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>css/package</path>
+            <filename>oauth</filename>
+            <handles>
+                <oauth_root_handle_simple />
+            </handles>
+            <files>
+                <oauth-simple>
+                    <path>css</path>
+                    <filename>oauth-simple.css</filename>
+                    <remove type="skin_css" file="css/oauth-simple.css" />
+                </oauth-simple>
+            </files>
+        </front-enterprise-jewelersclub-oauth>
+        <front-enterprise-jewelersclub-restriction_index_stub>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>css/package</path>
+            <filename>restriction_index_stub</filename>
+            <handles>
+                <restriction_index_stub />
+            </handles>
+            <!--files>
+                <styles>
+                    <path>css</path>
+                    <filename>styles.css</filename>
+                    <remove type="skin_css" file="css/styles.css" />
+                </styles>
+            </files-->
+        </front-enterprise-jewelersclub-restriction_index_stub>
+        <front-enterprise-jewelersclub-catalog_category_itoris_layerednavigation>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>css/package</path>
+            <filename>catalog_category_itoris_layerednavigation</filename>
+            <handles>
+                <catalog_category_itoris_layerednavigation />
+            </handles>
+            <files>
+                <istyles>
+                    <path>itoris/layerednavigation</path>
+                    <filename>styles.css</filename>
+                    <remove type="skin_css" file="itoris/layerednavigation/styles.css" />
+                </istyles>
+            </files>
+        </front-enterprise-jewelersclub-catalog_category_itoris_layerednavigation>
+        <front-enterprise-jewelersclub-catalog_category_itoris_layerednavigation-lt-ie8>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>css/package</path>
+            <filename>catalog_category_itoris_layerednavigation.lt.ie8</filename>
+            <if>lt IE 8</if>
+            <handles>
+                <catalog_category_itoris_layerednavigation if="lt IE 8" />
+            </handles>
+            <files>
+                <styles-ie7>
+                    <path>itoris/layerednavigation</path>
+                    <filename>styles-ie7.css</filename>
+                    <remove type="skin_css" file="itoris/layerednavigation/styles-ie7.css" />
+                </styles-ie7>
+            </files>
+        </front-enterprise-jewelersclub-catalog_category_itoris_layerednavigation-lt-ie8>
+        <front-enterprise-jewelersclub-luckydraw_index_index>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>css/package</path>
+            <filename>luckydraw_index_index</filename>
+            <handles>
+                <luckydraw_index_index />
+            </handles>
+            <files>
+                <luckydraw>
+                    <path>css/magestore</path>
+                    <filename>luckydraw.css</filename>
+                    <remove type="skin_css" file="css/magestore/luckydraw.css" />
+                </luckydraw>
+                <style>
+                    <path>css/tinybox</path>
+                    <filename>style.css</filename>
+                    <remove type="skin_css" file="css/tinybox/style.css" />
+                </style>
+            </files>
+        </front-enterprise-jewelersclub-luckydraw_index_index>
+        <front-enterprise-jewelersclub-x-8fc604e9>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>css/package</path>
+            <filename>x.8fc604e9</filename>
+            <handles>
+                <luckydraw_index_gmail />
+                <luckydraw_index_yahoo />
+            </handles>
+            <files>
+                <luckydraw>
+                    <path>css/magestore</path>
+                    <filename>luckydraw.css</filename>
+                    <remove type="skin_css" file="css/magestore/luckydraw.css" />
+                </luckydraw>
+            </files>
+        </front-enterprise-jewelersclub-x-8fc604e9>
+        <front-enterprise-jewelersclub-magpleasure_widget_dialog>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>css/package</path>
+            <filename>magpleasure_widget_dialog</filename>
+            <handles>
+                <magpleasure_widget_dialog />
+            </handles>
+            <files>
+                <dialog>
+                    <path>magpleasure/css/widget</path>
+                    <filename>dialog.css</filename>
+                    <remove type="skin_css" file="magpleasure/css/widget/dialog.css" />
+                </dialog>
+            </files>
+        </front-enterprise-jewelersclub-magpleasure_widget_dialog>
+        <front-enterprise-jewelersclub-apply_glyphicons>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>css/package</path>
+            <filename>apply_glyphicons</filename>
+            <handles>
+                <apply_glyphicons />
+            </handles>
+            <files>
+                <glyphicons>
+                    <path>magpleasure/vendor/glyphicons/css</path>
+                    <filename>glyphicons.css</filename>
+                    <remove type="skin_css" file="magpleasure/vendor/glyphicons/css/glyphicons.css" />
+                </glyphicons>
+            </files>
+        </front-enterprise-jewelersclub-apply_glyphicons>
+        <front-enterprise-jewelersclub-apply_glyphicons-lt-eie7>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>css/package</path>
+            <filename>apply_glyphicons.lt.eie7</filename>
+            <if>lte IE 7</if>
+            <handles>
+                <apply_glyphicons if="lte IE 7" />
+            </handles>
+            <files>
+                <glyphicons-ie7-fix>
+                    <path>magpleasure/vendor/glyphicons/css</path>
+                    <filename>glyphicons-ie7-fix.css</filename>
+                    <remove type="skin_css" file="magpleasure/vendor/glyphicons/css/glyphicons-ie7-fix.css" />
+                </glyphicons-ie7-fix>
+            </files>
+        </front-enterprise-jewelersclub-apply_glyphicons-lt-eie7>
+        <front-enterprise-jewelersclub-udropship_vendor>
+            <type>skin</type>
+            <area>frontend</area>
+            <package>enterprise</package>
+            <theme>jewelersclub</theme>
+            <path>css/package</path>
+            <filename>udropship_vendor</filename>
+            <handles>
+                <udropship_vendor />
+            </handles>
+            <files>
+                <udropship>
+                    <path>css</path>
+                    <filename>udropship.css</filename>
+                    <remove type="skin_css" file="css/udropship.css" />
+                </udropship>
+            </files>
+        </front-enterprise-jewelersclub-udropship_vendor>
+    </css>
+</merge>

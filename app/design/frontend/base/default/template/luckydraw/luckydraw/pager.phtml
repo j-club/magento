@@ -1,0 +1,35 @@
+<?php 
+	/**
+	 * Lucky Draw Main Page template
+	 * 
+	 * @see Magestore_Luckydraw_Block_Luckydraw_Pager
+	 */
+?>
+
+<?php if($this->getCollection()->getSize() && $this->getLastPageNum()>1): ?>
+<div class="pager">
+    <div style="float: right;">
+        <?php if (!$this->isFirstPage()): ?>
+        <div class="pager-action" style="float: left;">
+            <a class="previous" href="#" title="<?php echo $this->__('Previous') ?>" onclick="showListPlayer(<?php echo $this->getCurrentPage() - 1 ?>,<?php echo $this->getLimit() ?>,'left'); return false;">
+                <?php echo $this->__('Previous') ?>
+            </a>
+        </div>
+        <?php endif;?>
+        <div id="luckydraw-please-wait-captcha" style="display: none;">
+            <span class="opc-please-wait">
+                <img src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>" class="v-middle" alt="" />
+                &nbsp;<?php echo $this->__('Loading') ?>...
+            </span>
+        </div>
+        <?php if (!$this->isLastPage()): ?>
+        <div class="pager-action" style="float: right;">
+            &nbsp;
+            <a class="next" href="#" onclick="showListPlayer(<?php echo $this->getCollection()->getCurPage()+1 ?>,<?php echo $this->getLimit() ?>,'right'); return false;" title="<?php echo $this->__('Next') ?>">
+                <?php echo $this->__('Next') ?>
+            </a>
+        </div>
+        <?php endif;?>
+    </div>
+</div>
+<?php endif ?>

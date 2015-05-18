@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <forms_admin_adminhtml_forms_index>
+        <reference name="content">
+            <block type="forms/adminhtml_forms" name="forms" as="forms" />
+        </reference>
+    </forms_admin_adminhtml_forms_index>
+
+    <forms_admin_adminhtml_rubbish_index>
+        <reference name="content">
+            <block type="forms/adminhtml_rubbish" name="forms" as="forms" />
+        </reference>
+    </forms_admin_adminhtml_rubbish_index>
+
+    <forms_admin_adminhtml_forms_edit>
+        <update handle="editor" />
+        <update handle="apply_dropdown" />
+        <update handle="apply_ajax_dropdown" />
+        <update handle="magpleasure_adminhtml_common_js" />
+        <reference name="head">
+            <action method="addCss"><styles>forms/css/styles.css</styles></action>
+            <action method="addJs"><script>scriptaculous/dragdrop.js</script></action>
+        </reference>
+    </forms_admin_adminhtml_forms_edit>
+    
+    <forms_admin_adminhtml_forms_new>
+        <update handle="forms_admin_adminhtml_forms_edit" />
+    </forms_admin_adminhtml_forms_new>
+</layout>

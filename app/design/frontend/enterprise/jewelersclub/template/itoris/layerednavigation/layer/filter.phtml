@@ -1,0 +1,56 @@
+<?php 
+/**
+ * ITORIS
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the ITORIS's Magento Extensions License Agreement
+ * which is available through the world-wide-web at this URL:
+ * http://www.itoris.com/magento-extensions-license.html
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to sales@itoris.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade the extensions to newer
+ * versions in the future. If you wish to customize the extension for your
+ * needs please refer to the license agreement or contact sales@itoris.com for more information.
+ *
+ * @category   ITORIS
+ * @package    ITORIS_LAYEREDNAVIGATION
+ * @copyright  Copyright (c) 2012 ITORIS INC. (http://www.itoris.com)
+ * @license    http://www.itoris.com/magento-extensions-license.html  Commercial License
+ */
+?>
+<?php
+/** Itoris_LayeredNavigation_Block_Layer_MultiFilter_Attribute */
+/** Itoris_LayeredNavigation_Block_Layer_MultiFilter_Category */
+/** Itoris_LayeredNavigation_Block_Layer_MultiFilter_Price */
+/** @var $_helper Oro_LayeredNavigation_Helper_Data */
+?>
+<?php $_helper = $this->helper('oro_layerednavigation'); ?>
+<ol  class=" <?php echo (count($this->getItems()) > $_helper->getFilterNavigationItemsCount()) ? 'accordion-filter' : '' ?>">
+<?php foreach($this->getItems() as $_item) { ?>
+	<?php /** @var $_item Mage_Catalog_Model_Layer_Filter_Item */
+		$id = $_item->getFilter()->getRequestVar().'_item_'.htmlentities($_item->getValue());
+	?>
+    <li>
+        <?php if ($_item->getCount() > 0) { ?>
+			<input type="checkbox" class="itoris_laynav_checkbox" id="<?php echo $id; ?>"
+				   <?php if ($_item->getInState() && !Mage::helper('itoris_layerednavigation')->getNotUseFilter()) { ?> checked="checked" <?php } ?>
+				   name="<?php echo $_item->getFilter()->getRequestVar() ?>[]" value="<?php echo htmlentities($_item->getValue()) ?>" />
+        	<label for="<?php echo $id; ?>"><?php echo $_item->getLabel() ?></label>
+        <?php } else { ?>
+			<input type="checkbox" disabled="disabled" id="<?php echo $id; ?>" />
+			<label for="<?php echo $id; ?>"><?php echo $_item->getLabel(); ?></label>
+		<?php } ?>
+        (<?php echo $_item->getCount() ?>)
+    </li>
+<?php } ?>
+</ol>
+
+<?php if (count($this->getItems()) > $_helper->getFilterNavigationItemsCount()): ?>
+    <span style="display: none;" class="hide"><?php echo $this->__('Show less'); ?></span>
+    <span class="show"><?php echo $this->__('Show more'); ?></span>
+<?php endif; ?>

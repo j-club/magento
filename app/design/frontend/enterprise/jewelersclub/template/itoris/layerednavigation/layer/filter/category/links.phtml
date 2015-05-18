@@ -1,0 +1,22 @@
+<?php
+/**
+ * @category   MageCore
+ * @package    enterprise_jewelersclub
+ * @copyright  Copyright (c) 2014 Oro Inc. DBA MageCore (http://www.magecore.com)
+ */
+?>
+<?php
+/** @var $this Itoris_LayeredNavigation_Block_Layer_Filter_Category_Links */
+/** @var $_helper Oro_LayeredNavigation_Helper_Data */
+?>
+<?php $_helper = $this->helper('oro_layerednavigation'); ?>
+<ol class="<?php echo (count($this->getItems()) > $_helper->getFilterNavigationItemsCount()) ? 'accordion-filter' : '' ?>">
+<?php /** @var $item Mage_Catalog_Model_Category */?>
+<?php foreach($this->getItems() as $item) { ?>
+	<?php /** @var $item Mage_Catalog_Model_Layer_Filter_Item */?>
+    <li>
+       	<label><a <?php if ($item->getIsAnchor()) { ?> onclick="LayNav.categoryClick(this); return false;"  <?php } ?> href="<?php echo $item->getUrl()?> "><?php echo $this->escapeHtml($item->getName()) ?></a></label>
+        (<?php echo $item->getProductCount() ?>)
+    </li>
+<?php } ?>
+</ol>

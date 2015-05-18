@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @category   Oro
+ * @package    Oro_GoogleTrustedStore
+ */
+-->
+<layout>
+    <adminhtml_sales_order_view>
+        <reference name="head">
+            <action method="addItem" ifconfig="google/trustedstore/enabled"><type>js_css</type><name>prototype/windows/themes/default.css</name></action>
+            <action method="addItem" ifconfig="google/trustedstore/enabled"><type>js_css</type><name>prototype/windows/themes/magento.css</name></action>
+        </reference>
+
+        <reference name="sales_order_edit">
+            <action method="updateButton" ifconfig="google/trustedstore/enabled">
+                <id>order_cancel</id>
+                <key>onclick</key>
+                <data><![CDATA[cancelConfirmationWindow.open('cancel')]]></data>
+            </action>
+            <action method="updateButton" ifconfig="google/trustedstore/enabled">
+                <id>order_edit</id>
+                <key>onclick</key>
+                <data><![CDATA[cancelConfirmationWindow.open('edit')]]></data>
+            </action>
+        </reference>
+
+        <reference name="content">
+            <block type="adminhtml/template" template="googletrustedstore/cancellation_confirmation_js.phtml" name='cancel_confirm_js' ifconfig="google/trustedstore/enabled">
+                <block name="form" type="googletrustedstore/adminhtml_orderCancellationConfirmation"/>
+            </block>
+            <block type="googletrustedstore/adminhtml_orderCreatedConfirmation" name="order_created_confirmation_js" template="googletrustedstore/order_confirmation.phtml" />
+        </reference>
+    </adminhtml_sales_order_view>
+</layout>

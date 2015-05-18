@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Oro_AdvPromotion>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Oro_Page />
+            </depends>
+        </Oro_AdvPromotion>
+    </modules>
+</config>

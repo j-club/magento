@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Oro_GoogleAnalytics>
+            <version>0.1.0</version>
+        </Oro_GoogleAnalytics>
+    </modules>
+    <!--<global>-->
+        <!--<blocks>-->
+            <!--<oro_googleanalytics>-->
+                <!--<class>Oro_GoogleAnalytics_Block</class>-->
+            <!--</oro_googleanalytics>-->
+        <!--</blocks>-->
+    <!--</global>-->
+    <global>
+        <blocks>
+            <googleanalytics>
+                <rewrite>
+                    <ga>Oro_GoogleAnalytics_Block_Ga</ga>
+                </rewrite>
+            </googleanalytics>
+        </blocks>
+    </global>
+</config>

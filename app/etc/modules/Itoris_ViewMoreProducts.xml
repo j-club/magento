@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Itoris_ViewMoreProducts>
+			<codePool>local</codePool>
+			<active>true</active>
+			<depends>
+				<Mage_Customer/>
+			</depends>
+		</Itoris_ViewMoreProducts>
+	</modules>
+</config>

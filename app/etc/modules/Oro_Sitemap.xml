@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Oro_Sitemap>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Sitemap/>
+            </depends>
+        </Oro_Sitemap>
+    </modules>
+</config>

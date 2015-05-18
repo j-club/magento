@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * PDF creation model rewrite
+ *
+ * @category   Oro
+ * @package    Oro_Sales
+ * @copyright  Copyright (c) 2014 Oro Inc. DBA MageCore (http://www.magecore.com)
+ */
+-->
+<config>
+    <modules>
+        <Oro_Sales>
+            <version>0.3.0</version>
+        </Oro_Sales>
+    </modules>
+    <global>
+        <models>
+            <udropship>
+                <rewrite>
+                    <pdf_shipment>Oro_Sales_Model_Pdf_Shipment</pdf_shipment>
+                </rewrite>
+            </udropship>
+        </models>
+        <resources>
+            <oro_sales_setup>
+                <setup>
+                    <module>Oro_Sales</module>
+                </setup>
+            </oro_sales_setup>
+        </resources>
+    </global>
+</config>

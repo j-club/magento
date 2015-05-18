@@ -1,0 +1,599 @@
+/* ======================================================================================= */
+/* merged skin/frontend/base/default/css/magestore/luckydraw.css                           */
+/* ======================================================================================= */
+/** Main Content */
+#luckydraw-content {
+	width: 615px;
+}
+
+#luckydraw-opc-register{
+	min-width: 360px;
+	padding: 10px;
+}
+
+#luckydraw-opc-register .users, #luckydraw-opc-register .days, #luckydraw-opc-register .price, #luckydraw-opc-register .winner{
+	font-weight: bold;
+	color: #1E7EC8;
+}
+
+#luckydraw-opc-register .statistic{
+	text-align: center;
+}
+#luckydraw-opc-register .statistic .prize-code{
+	font-size: 1.2em;
+}
+#luckydraw-opc-register .statistic .prize-days{
+	font-style: italic;
+}
+.luckydraw-fullbar{background:url("../../../../base/default/css/magestore/luckydraw/fullbar.png") no-repeat;
+height:12px;
+width:250px;
+position:absolute;
+top:40px;}
+
+/* Count Down */
+.luckydraw-countdown .countdown{
+	padding: 2px;
+	text-align: center;
+	font-size: 1.2em;
+	float:right;
+	width: 172px;
+}
+.luckydraw-countdown .countdown span{font-size:24px;}
+.luckydraw-countdown .countdown .value{
+	font-weight: bold;
+}
+
+/* Right Sidebar */
+#luckydraw-sidebar {
+	width: 265px;
+}
+	
+#luckydraw-sidebar .step, #luckydraw-sidebar p.box-content{
+	padding: 8px;
+}
+
+#luckydraw-sidebar .form-list textarea{
+	width: 318px;
+	height: 100px;
+}
+
+#luckydraw-sidebar .buttons-set{
+	padding-top: 7px;
+	border-top: 0px;
+	margin-top: 0px;
+}
+
+/* End Right Sidebar */
+
+
+/* Refer friend */
+#luckydraw-refer {
+	width: 730px;
+	float: left;
+}
+#tinycontent .page-title h2{
+  line-height:44px;
+  padding:0 0 0 25px;
+  color:#ccccff;
+  font-size:18px;
+  font-weight:bold;
+}
+#luckydraw-refer label{color:#333366;padding:0 0 0 25px;font-size:12px;}
+#luckydraw-refer strong a{color:#0099cc;font-weight:bold;padding:0 0 0 25px;font-size:12px;}
+#luckydraw-refer .fieldset h2.legend{
+border:none;background:url("../../../../base/default/css/magestore/luckydraw/legend.png") repeat-x;
+height:30px;line-height:24px;color:#fff;
+font-weight:bold;font-size:12px;
+padding:0 15px 0 10px;
+margin: 0px;
+float: left;
+position: relative;
+bottom: 16px;
+}
+#luckydraw-refer .luckydraw-column{
+	width: 351px;
+	float: left;
+}
+#luckydraw-buttons-set{margin-left:15px;}
+
+#luckydraw-refer .luckydraw-column .fieldset{
+	min-height: 440px;
+	margin:32px 0px 32px 12px;
+	padding-left:10px;
+	border:1px solid #c1c1c1;
+	background:#f3f3f3;
+}
+#luckydraw-refer .luckydraw-column ul {margin-top:32px;}
+#luckydraw-refer .luckydraw-column .fieldset button.send{background:none;border:none;}
+#luckydraw-refer .luckydraw-left-column .fieldset button.button span {background:url("../../../../base/default/css/magestore/luckydraw/popup-btn.png") no-repeat;padding:0 0 0 5px;height:36px;line-height:30px;color:#fff;border:none;}
+#luckydraw-refer .luckydraw-column .fieldset button.button span span{background-position:100% 0 ; padding-right:10px;}
+#luckydraw-refer .google-plus-share {
+	min-height: 30px;
+	margin: 10px 0px;
+}
+
+#luckydraw-refer .luckydraw-left-column{
+	margin-right: 20px;
+}
+
+.luckydraw-right-column .luckydraw-buttons-set button.button span{
+	height: 16px;
+}
+
+#luckydraw-refer .luckydraw-buttons-set .facebook span.span{
+	background: url('../../../../base/default/css/magestore/luckydraw/facebook.png') no-repeat #5F78AB -1px -1px;
+	padding: 0px 3px 4px 25px;
+	border: 1px solid #29447E;
+}
+
+#luckydraw-refer .luckydraw-buttons-set .facebook span.span span{
+	background: none;
+	padding: 0px 2px;
+}
+
+#luckydraw-refer .luckydraw-buttons-set .tweeter span.span{
+	-webkit-border-radius: 3px;
+	border: #CCC solid 1px;
+	padding: 0px 2px 4px 2px;
+	-moz-border-radius: 3px; border-radius: 3px;
+	background-image: -moz-linear-gradient(top, white, #DEDEDE);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(white), to(#DEDEDE));
+	background-image: -ms-linear-gradient(top, white, #DEDEDE);
+	background-image: linear-gradient(top, white, #DEDEDE);
+	background-image: -o-linear-gradient(top, white, #DEDEDE);
+}
+#luckydraw-refer .luckydraw-buttons-set button.tweeter span.span span{
+	background: url('../../../../base/default/css/magestore/luckydraw/tweet.png') no-repeat -26px 3px;
+	padding: 0px 3px 3px 24px;
+	color: #1E7EC8;
+	margin-left: 2px;
+}
+#luckydraw-register-form  .buttons-set  button.button{background:none;border:none;}
+#luckydraw-register-form  .buttons-set  button.button span{background:url("../../../../base/default/css/magestore/luckydraw/popup-btn.png") no-repeat;
+ padding:0 0 0 6px;height:37px;line-height:34px;border:none;
+ font-size:12px;
+ font-weight:normal;
+}
+#luckydraw-register-form  .buttons-set  button.button span span{background-position:100% 0 ; padding-right:10px;}
+/* End refer friend */
+
+
+/* Program's Main Page */
+/* header */
+.wrap-luckydraw{
+	/*background: url("../../../../base/default/css/magestore/luckydraw/luckydraw-main3.png") no-repeat scroll center top #00466e;*/
+	font-family: Arial;
+	position: relative;
+    background-position-y: -99px;
+}
+.luckydraw-header{
+	background: url("../../../../base/default/css/magestore/luckydraw/luckydraw-header4.png") repeat-x scroll center top;
+	height: 52px;
+	margin: 0 auto;
+}
+/* main content */
+.luckydraw-main{
+	height: 395px;	
+	border-bottom: 1px solid #013557;	
+	margin: 0 auto;
+	position: relative;
+	width: 100%
+}
+.luckydraw-main .main-content{
+	margin: 0 auto;
+}
+.luckydraw-main .light-product{
+    float: left;
+    margin-top: 73px;
+}
+.luckydraw-main .main-left{
+	float: left;
+	padding: 52px 0 0 52px;
+	position: relative;
+	text-align: right;
+	width: 375px;
+	height: 343px;
+	overflow: hidden;
+}
+.luckydraw-main .main-right {
+	float: right;
+	width: 444px;
+	height: 395px;
+	overflow: hidden;
+}
+.luckydraw-main .main-left .sub-content{
+	color: #fff;
+	font-size: 15px;
+	font-weight: bold;
+	text-shadow: 1px 0 1px #477895;
+	text-align: right;
+	position: relative;
+	z-index: 10;
+}
+.luckydraw-main .main-left h1.title{
+	color: #00c7ff;
+	font-size: 35px;
+	font-weight: bold;
+	text-shadow: 1px 0 1px #0285b3;	
+	margin: 0 0 5px;
+	position: relative;
+	z-index: 10;
+}
+.luckydraw-main .main-left .character{    
+    margin-left: 105px;
+    float: left;
+    position: absolute;
+    bottom: 0px;
+    left: 52px;    
+    z-index: 9;
+}
+/* footer */
+.luckydraw-action {
+	width: 624px;
+	margin: 0 auto;
+	background: url("../../../../base/default/css/magestore/luckydraw/bg-luckydraw-action.png") no-repeat left top;
+}
+.luckydraw-action label{
+    background: url("../../../../base/default/css/magestore/luckydraw/bg-label.png") no-repeat scroll right center transparent;
+    color: #F1B815;
+    float: left;
+    font-size: 14px;
+    height: 31px;
+    margin-top: 42px;
+    padding-right: 60px;
+    text-align: right;
+    width: 414px;
+}
+.luckydraw-footer .wrap-footer{
+	width: 557px;
+	margin: 0 auto 20px auto;
+	overflow: hidden;	
+}
+.luckydraw-footer{
+	background: url("../../../../base/default/css/magestore/luckydraw/bkg_footer.png") repeat scroll left top;
+	border-top: 1px solid #3e4356;
+	width: 100%;
+	padding: 10px 0px 20px 0px;
+	overflow: hidden;
+}
+.luckydraw-footer-links{
+	background: url("../../../../base/default/css/magestore/luckydraw/bkg_footer_link.png") no-repeat center center;
+	width: 742px;
+	margin: 0 auto;
+	height: 32px;
+	text-align: center;
+}
+.button-start{
+	float: right;
+	margin-right: 15px;
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 14px;
+	font-weight: bold;
+	text-shadow: 1px 0 1px #462d23;
+}
+.luckydraw-footer-links ul li{
+    background: url("../../../../base/default/css/magestore/luckydraw/bg-li-footer.png") no-repeat scroll right center transparent;
+    display: inline;
+    line-height: 30px;
+    list-style: none outside none;
+    margin-right: 5px;
+    padding-right: 10px;
+}
+.luckydraw-footer-links ul li.last{
+	background: none transparent;
+}
+.luckydraw-footer-links ul li a{
+	color: #a6a6a6;
+	font-size: 14px;
+	font-weight: normal;
+	text-decoration: none;
+}
+.luckydraw-action{
+	height: 110px;
+	width: 557px;
+	float: left;
+}
+.wrap-footer .btn-action-luckydraw{
+    background: url("../../../../base/default/css/magestore/luckydraw/luckydraw-btn-action.png") no-repeat scroll left top transparent;
+    border: 0 none;
+    cursor: pointer;
+    float: right;
+    height: 73px;
+    margin: 0;
+    overflow: visible;
+    padding: 0;
+    position: relative;
+    width: 79px;
+    z-index: 9;
+}
+.wrap-footer button.over{
+	background: url("../../../../base/default/css/magestore/luckydraw/luckydraw-btn-active.png") no-repeat scroll left 0 transparent;
+}
+.wrap-footer .luckydraw-action button.disable{
+	background: url("../../../../base/default/css/magestore/luckydraw/luckydraw-btn-disable.png") no-repeat scroll left 0 transparent;
+}
+.btn-action-luckydraw span {
+    padding: 0;
+}
+.btn-action-luckydraw span span {      
+    font-size: 0;
+    line-height: 0;
+    overflow: hidden;
+    text-indent: -9999em;
+}
+/* digital draw */
+.digital-draw{
+	overflow: hidden;
+	margin: 5px auto 12px auto;
+	background:url("../../../../base/default/css/magestore/luckydraw/bg-luckydraw-action.png") no-repeat scroll center top transparent;
+	padding-top:20px;
+}
+.digital-draw ul li a{
+	text-decoration: none;
+}
+.digital-draw ul li a span{
+    color: #000000;
+    font-family: 'Times New Roman';
+    font-size: 65px;
+    font-weight: bold;
+    position: relative;
+    bottom: 5px;
+}
+.digital-draw ul li{
+    display: inline;
+    float: left;
+    height: 78px;
+    margin-right: 12px;
+    padding: 10px;
+    text-align: center;
+    width: 77px;
+}
+.digital-draw ul li.active{
+	background: url("../../../../base/default/css/magestore/luckydraw/digital-enable.png") no-repeat;
+}
+.digital-draw ul li.active a {
+    cursor: default;
+}
+
+.digital-draw ul li.unactive{
+	background: url("../../../../base/default/css/magestore/luckydraw/digital-disable.png") no-repeat;
+    cursor: pointer;
+}
+/* tiny box */
+#tinycontent .form-list label{padding:0 0 0 20px;width: auto;}
+#tinycontent .form-list span label{font-weight:normal;}
+#tinycontent .form-list .input-box{padding:0 0 0 20px;width:302px;}
+#tinycontent .form-list .input-box  input.input-text{width:285px;height:25px;}
+#tinycontent{ text-align: left;}
+#tinycontent .required em {float:right;}
+#tinycontent .buttons-set button.button span span {color:#fff;}
+#tinycontent .luckydraw-buttons-set button.button span span {color:#fff;}
+#tinycontent #luckydraw-please-wait-register {float: right;}
+#tinybox{
+border:5px solid #1c1c1c ! important;
+padding:0 !important;}
+#tinycontent h1{background:url("../../../../base/default/css/magestore/luckydraw/popup-title.png") repeat-x;height:47px;padding:0 20px;}
+#tinycontent h1 a{color:#fff;text-decoration:none;font-size:14px;line-height:45px;}
+#tinycontent .page-title {background:url("../../../../base/default/css/magestore/luckydraw/popup-title.png") repeat-x;height:47px;border: none;padding: 0px 27px 0px 0px;width: auto;}
+#tinycontent .box-content {padding: 10px 26px 26px; overflow: hidden;}
+
+/* Count Down */
+.luckydraw-countdown {background:url("../../../../base/default/css/magestore/luckydraw/bkg-clock.png") no-repeat 0 0;height:100px;width:242px;color:#fff;}
+.luckydraw-countdown .luckydraw-counting {background:url("../../../../base/default/css/magestore/luckydraw/clock.png") no-repeat 20px 21px;height: 100px;width:242px;}
+.luckydraw-countdown .luckydraw-not-counting .countdown-label{
+	width: 96%;
+}
+.luckydraw-countdown .luckydraw-not-counting .countdown{
+	width: 96%;
+}
+.luckydraw-countdown .countdown-label{
+	font-size:16px;padding:15px 4px 0 0;float:right;
+	width:71%;
+	text-align:center;
+}
+.luckydraw-statistic{width:545px;margin:0 auto;}
+.luckydraw-time-left{float:left}
+.luckydraw-users-static{float:left;width:250px;height:135px;margin-left:10px;position:relative;}
+.luckydraw-users-static span{color:#f4c62b;font-size:16px;}
+.luckydraw-current-used span{font-size:18px;color:#fff;float:left;padding:0 0 0 7px;}
+.luckydraw-current-used span  p{ font-size:18px;font-weight:bold;color:#20afd4;float:left;padding-right:5px}
+span.title-left{position:absolute;left:-2px;top:50px;}
+span.title-right{position:absolute;left:242px;top:50px;}
+
+.luckydraw-users-static .luckydraw-last-player {font-size: 16px; position: relative; top: 75px; color: #fff; text-align: center;}
+.luckydraw-users-static .luckydraw-last-player p {text-align: right; font-size: 14px;}
+.luckydraw-users-static .luckydraw-last-player p a {color: #20AFD4;}
+#luckydraw-all-player {width: 555px;}
+
+#luckydraw-all-player .pager-title {border-bottom: 1px solid #E2E2E2; margin-bottom: 5px;}
+#luckydraw-all-player .pager {background: none; font-size: 13px; margin-top: 10px;}
+#luckydraw-all-player .data-table, #luckydraw-all-player .data-table th, #luckydraw-all-player .data-table td {border: none;}
+
+/** Register Form */
+#luckydraw-register-form .form-list{width: 557px;}
+#luckydraw-register-form .form-list .input-box{ padding: 0px 20px 0px 0px; width:308px;}
+#luckydraw-register-form .form-list label{padding:2px 15px 0px 20px;width: 168px;}
+#luckydraw-register-form .form-list .input-box input.input-text {width: 300px;}
+#luckydraw-register-form .form-list select {width: 305px;}
+#luckydraw-register-form .form-list .customer-dob .dob-day input.input-text, #luckydraw-register-form .form-list .customer-dob .dob-month input.input-text {width: 56px;}
+#luckydraw-register-form .form-list .customer-dob .dob-year input.input-text {width: 160px;}
+#luckydraw-register-form .error-msg, #luckydraw-register-form .success-msg {width: 210px; margin-top: 5px;}
+#luckydraw-register-form .buttons-set{margin: 2em 5em 2em 2em;width:490px;}
+#luckydraw-register-form strong a{color:#0099cc;font-weight:bold;padding:0 0 0 25px;font-size:12px;}
+
+/** List codes */
+#luckydraw-registered-code .list-codes{font-size: 1.3em;width: 450px;}
+#luckydraw-registered-code .list-codes .winner{font-weight: bold;color: #20AFD4;}
+#luckydraw-registered-code .code-redeem{font-style: italic;}
+
+/** Contact list */
+#luckydraw-contact-list select#contacts_list {width: 440px;}
+#luckydraw-contact-list .buttons-set {margin-top: 1em;}
+
+#terms-and-conditions {width: 730px;}
+
+/** Preload Image */
+#luckydraw-preload-digital {background: url("../../../../base/default/css/magestore/luckydraw/digital-enable.png") no-repeat; display: none !important;}
+#luckydraw-preload-button {background: url("../../../../base/default/css/magestore/luckydraw/luckydraw-btn-active.png") no-repeat; display: none !important;}
+
+/** Close Box */
+#tinycontent .page-title .closepopup {
+    background: url("../../../../base/default/css/magestore/luckydraw/close-popup.png") no-repeat;
+    position: relative; top: -35px; right: -15px;
+    width: 22px; height: 22px;
+    cursor: pointer; float: right;
+}
+
+
+
+/* style for extension */
+.luckydraw-main {
+    height: auto;
+    border: 0;
+    overflow: hidden;
+    padding: 0 0 10px;
+}
+.luckydraw-main .main-right {
+    width: 28%;
+    height: auto;
+}
+.luckydraw-main .light-product {margin: 0;}
+.luckydraw-main .light-product img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.luckydraw-main .main-left {
+    padding: 0;
+    width: 70%;
+    height: auto;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    text-align: left;
+}
+.luckydraw-main .main-left .character {
+    position: static;
+    margin: 0;
+    float: none;
+}
+.luckydraw-main .main-left h1.title {
+    color: #444;
+    text-shadow: none;
+    font: 35px/40px "open_sansbold", Arial, Helvetica, sans-serif;
+}
+.luckydraw-main .main-left .sub-content {
+    margin: 0 0 10px;
+    color: #444;
+    font: 15px/20px "open_sansregular", Arial, Helvetica, sans-serif;
+    text-shadow: none;
+    text-align: left;
+}
+.luckydraw-footer {
+    border: solid #dbdbdb;
+    border-width: 0 0 2px;
+    background: #f0f5f4;
+}
+.luckydraw-footer-links {
+    width: 47%;
+    height: auto;
+    background: rgba(224,235,237,0.5);
+}
+.luckydraw-footer-links ul li a {
+    color: #0084b1;
+    font-size: 16px;
+    line-height: 18px;
+}
+.luckydraw-action {
+    width: auto;
+    height: auto;
+}
+.luckydraw-countdown {color: #444;}
+.luckydraw-current-used span,
+.luckydraw-action label {color: #0084b1;}
+.button-start {
+    color: #444;
+    text-shadow: none;
+}
+.digital-draw {clear: both;}
+.luckydraw-countdown {
+    background: #faf4e4;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+@media handheld, only screen and (max-width:1240px) {
+    .luckydraw-main .main-left {
+        width: 58%;
+        text-align: left;
+    }
+    .luckydraw-main .main-left .sub-content {text-align: left;}
+    .luckydraw-main .main-right {
+        width: 40%;
+    }
+    .luckydraw-main .main-left .character {float: left;}
+}
+@media handheld, only screen and (max-width:767px) {
+    .luckydraw-main .main-left {
+        float: none;
+        width: 100%;
+        text-align: center;
+        padding: 0;
+    }
+    .luckydraw-main .main-left .sub-content {text-align: center;}
+    .luckydraw-main .main-right {
+        float: none;
+        width: 100%;
+    }
+    .luckydraw-main .main-left .character {
+        float: none;
+        margin: 0 auto 15px;
+    }
+    .luckydraw-main .light-product {
+        float: none;
+    }
+    .luckydraw-main .light-product img {
+        margin: 0 auto;
+        max-width: 100%;
+    }
+    .luckydraw-statistic {width: 100%;}
+    .luckydraw-users-static,
+    .luckydraw-time-left {
+        float: none;
+        margin: 0 auto 15px;
+    }
+    .luckydraw-action label {
+        width: 160px;
+        height: auto;
+        font-size: 12px;
+        text-align: center;
+    }
+    .button-start {clear: both;}
+    .luckydraw-action {
+        background: none;
+        display: inline-block;
+        float: none;
+    }
+    .luckydraw-footer .wrap-footer {text-align: center;}
+    .luckydraw-footer .wrap-footer,
+    .luckydraw-footer-links {width: 100%;}
+    .digital-draw {
+        width: auto !important;
+        background: none;
+        text-align: center;
+    }
+    .digital-draw ul li {
+        margin: 0 3px 9px 0;
+        display: inline-block;
+        float: none;
+    }
+}
+/* ======================================================================================= */
+/* merged skin/frontend/base/default/css/tinybox/style.css                                 */
+/* ======================================================================================= */
+#testdiv {width:600px; margin:0 auto; border:1px solid #ccc; padding:20px 25px; background:#fff}
+#tinybox {position:absolute; display:none; padding:10px; background:#fff url(images/preload.gif) no-repeat 50% 50%; border:10px solid #e3e3e3; z-index:2000}
+#tinymask {position:absolute; display:none; top:0; left:0; height:100%; width:100%; background:#000; z-index:1500}
+#tinycontent {background:#fff}
+

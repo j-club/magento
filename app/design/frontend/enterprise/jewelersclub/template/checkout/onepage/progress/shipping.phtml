@@ -1,0 +1,25 @@
+<?php
+/**
+ *
+ * @category   MageCore
+ * @copyright  Copyright (c) 2014 Oro Inc. DBA MageCore (http://www.magecore.com)
+ */
+?>
+<?php if ($this->getCheckout()->getStepData('shipping', 'complete')): ?>
+<?php $completeClass = $this->getCheckout()->getStepData('shipping', 'complete') ? 'complete' : ''; ?>
+<dt class="<?php echo $completeClass ?>">
+    <?php echo $this->__('Shipping Information') ?> <span class="changelink">
+
+    </span>
+</dt>
+<dd class="<?php echo $completeClass ?>">
+    <?php if ($this->getCheckout()->getStepData('shipping', 'complete')): ?>
+    <address><?php echo $this->getShipping()->format('html') ?></address>
+    <?php endif; ?>
+</dd>
+<?php else: ?>
+<dt>
+    <?php echo $this->__('Shipping Information') ?>
+</dt>
+<?php endif; ?>
+

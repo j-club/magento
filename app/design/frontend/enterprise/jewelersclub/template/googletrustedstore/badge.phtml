@@ -1,0 +1,39 @@
+<?php
+/**
+ * @category   Oro
+ * @package    Oro_GoogleTrustedStore
+ */
+
+/**
+ * Template to add Google provided JavaScript code on each page
+ */
+
+?>
+<!-- BEGIN: Google Trusted Store -->
+<script type="text/javascript">
+//<![CDATA[
+  var gts = gts || [];
+
+  gts.push(["id", "<?php echo $this->getAccountId(); // there is only digits, validation in config ?>"]);
+  gts.push(["locale", "<?php echo Mage::app()->getLocale()->getLocaleCode() ?>"]);
+<?php if ($this->getGoogleShoppingAccountId()): ?>
+  gts.push(["google_base_subaccount_id", "<?php echo $this->getGoogleShoppingAccountId() // could be only digits ?>"]);
+<?php endif; ?>
+<?php if ($this->hasGoogleShoppingItem()) : ?>
+  gts.push(["google_base_offer_id", <?php echo Mage::helper('core')->jsonEncode($this->getGoogleShoppingItemId()) ?>]);
+  gts.push(["google_base_country", "<?php echo $this->getGoogleShoppingCountry() // ISO code from config ?>"]);
+  gts.push(["google_base_language", "<?php echo $this->getGoogleShoppingLanguage() // ISO code from config ?>"]);
+<?php endif; ?>
+
+  (function() {
+    var scheme = (("https:" == document.location.protocol) ? "https://" : "http://");
+    var gts = document.createElement("script");
+    gts.type = "text/javascript";
+    gts.async = true;
+    gts.src = scheme + "www.googlecommerce.com/trustedstores/gtmp_compiled.js";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(gts, s);
+  })();
+//]]>
+</script>
+<!-- END: Google Trusted Store -->

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Oro_Onsale>
+            <version>0.1.0</version>
+        </Oro_Onsale>
+    </modules>
+    <global>
+        <helpers>
+            <onsale>
+                <rewrite>
+                    <data>Oro_Onsale_Helper_Data</data>
+                </rewrite>
+            </onsale>
+        </helpers>
+    </global>
+</config>

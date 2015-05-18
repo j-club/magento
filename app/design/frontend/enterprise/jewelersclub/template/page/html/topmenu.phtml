@@ -1,0 +1,78 @@
+
+<?php
+/**
+ * Top menu for store
+ *
+ * @see Oro_Page_Block_Html_Topmenu
+ */
+$itemsCollection = $this->getItemsCollection();
+$processor = $this->helper('cms')->getBlockTemplateProcessor();
+?>
+<?php $_menu = $this->getJcTopMenu() ?>
+<?php if ($_menu): ?>
+<div class="nav-container nav-container-tablet">
+    <div class="opener-navigation">
+        <a class="view-all" href="javascript:;"><span><?php echo $this->__('View all') ?></span></a>
+        <div class="block-content">
+            <div class="block-content-holder">
+                <ul>
+                    <?php echo $_menu ?>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <ul id="navigation">
+        <?php echo $_menu ?>
+    </ul>
+</div>
+<?php if ($itemsCollection->count()): ?>
+    <div class="subnav-container">
+        <ul>
+            <?php foreach ($itemsCollection as $item): ?>
+              <li><?php echo $processor->filter($item->getContent()); ?></li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+<?php endif ?>
+<?php endif ?>
+<script type="text/javascript">
+//<![CDATA[
+var dropElement = jQuery('div.block-content-holder');
+var menuItemElement = jQuery('div.opener-navigation>div.block-content>div.block-content-holder>ul>li');
+jQuery(document).ready(function() {
+    var originalDropWidth = dropElement.width();
+    jQuery('div.opener-navigation>a.view-all').click(function () {
+        dropElement.css('width', menuItemElement.css('width'));
+        if (jQuery('div.opener-navigation>div.block-content').is(':visible')) {
+            menuItemElement.each(function(index,element) {
+                jQuery(element).removeClass('active');
+            });
+        }
+    });
+    menuItemElement.children('a').each(function(index,element) {
+        jQuery(element).click(function () {
+            var dropHolderElement = jQuery(this).next('div.drop:first').children('div.drop-holder').children('div');
+            if (dropHolderElement.hasClass('col')) {
+                var holderWidth = parseInt(dropHolderElement.css('min-width')) + menuItemElement.width();
+                dropElement.css('width', holderWidth +'px');
+                dropElement.css('min-height', dropHolderElement.outerHeight() + 'px');
+            } else if (dropHolderElement.hasClass('col-frame')) {
+                var colElement = dropHolderElement.children('div.col-holder:first').children('div.col');
+                if (colElement.length < 3) {
+                    var holderWidth = parseInt(colElement.css('min-width')) * colElement.length;
+                    dropElement.css('width', holderWidth + menuItemElement.width() +'px');
+                    dropElement.css('min-height', colElement.outerHeight() + 'px');
+                } else {
+                    dropElement.css('width', originalDropWidth +'px');
+                    dropElement.css('min-height', colElement.outerHeight() * dropHolderElement.children('div.col-holder').length + 'px');
+                }
+            } else {
+                dropElement.css('width', menuItemElement.width() + 'px');
+                document.location = element.getAttribute('href');
+            }
+            return false;
+        });
+    });
+});
+//]]>
+</script>

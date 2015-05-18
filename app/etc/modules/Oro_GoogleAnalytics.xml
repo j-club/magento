@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Oro_GoogleAnalytics>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_GoogleAnalytics/>
+
+            </depends>
+        </Oro_GoogleAnalytics>
+    </modules>
+</config>

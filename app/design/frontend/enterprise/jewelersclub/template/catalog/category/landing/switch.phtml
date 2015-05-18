@@ -1,0 +1,16 @@
+<?php
+//remove landing page if
+if (!$this->isLanding()):
+?>
+    <script language="JavaScript">
+        jQuery(function(){
+            jQuery('span.opener-view-all').trigger('click');
+        });
+    </script>
+<?php endif; ?>
+<script language="JavaScript">
+    document.observe("layerednavigation:onSuccessSend", function() {
+        reinitCategoryControls();
+        jQuery('span.opener-view-all').trigger('click');
+    });
+</script>

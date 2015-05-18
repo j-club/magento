@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * {magecore_license_notice}
+ *
+ * @category   Oro
+ * @package    Oro_ProductQuickView
+ * @copyright  {magecore_copyright}
+ * @license    {magecore_license}
+ */
+-->
+<config>
+    <modules>
+        <Oro_ProductQuickView>
+            <version>1.0.0</version>
+        </Oro_ProductQuickView>
+    </modules>
+    <global>
+        <blocks>
+            <oro_productquickview>
+                <class>Oro_ProductQuickView_Block</class>
+            </oro_productquickview>
+        </blocks>
+        <models>
+            <oro_productquickview>
+                <class>Oro_ProductQuickView_Model</class>
+                <resourceModel>oro_productquickview_resource</resourceModel>
+            </oro_productquickview>
+            <oro_productquickview_resource>
+                <class>Oro_ProductQuickView_Model_Resource</class>
+            </oro_productquickview_resource>
+        </models>
+    </global>
+    <frontend>
+        <layout>
+            <updates>
+                <oro_productquickview>
+                    <file>oro/productquickview.xml</file>
+                </oro_productquickview>
+            </updates>
+        </layout>
+        <events>
+            <controller_action_predispatch_catalog_category_view>
+                <observers>
+                    <oro_productquickview_set_flag_to_controller>
+                        <class>oro_productquickview/observer</class>
+                        <method>initGalleryFlag</method>
+                    </oro_productquickview_set_flag_to_controller>
+                </observers>
+            </controller_action_predispatch_catalog_category_view>
+            <catalog_product_collection_load_before>
+                <observers>
+                    <oro_productquickview_add_media_attributes>
+                        <class>oro_productquickview/observer</class>
+                        <method>addMediaAttributesToCollection</method>
+                    </oro_productquickview_add_media_attributes>
+                </observers>
+            </catalog_product_collection_load_before>
+            <catalog_product_collection_load_after>
+                <observers>
+                    <oro_productquickview_add_media_gallery>
+                        <class>oro_productquickview/observer</class>
+                        <method>addMediaGalleryToCollection</method>
+                    </oro_productquickview_add_media_gallery>
+                </observers>
+            </catalog_product_collection_load_after>
+        </events>
+        <routers>
+            <quickview>
+                <use>standard</use>
+                <args>
+                    <module>Oro_ProductQuickView</module>
+                    <frontName>quickview</frontName>
+                </args>
+            </quickview>
+            <catalog>
+                <args>
+                    <modules>
+                        <oro_productquickview before="Mage_Catalog">Oro_ProductQuickView</oro_productquickview>
+                    </modules>
+                </args>
+            </catalog>
+        </routers>
+    </frontend>
+</config>

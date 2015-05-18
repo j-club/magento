@@ -1,0 +1,14 @@
+<div class="footer-container">
+    <div class="back-to-top"><a href="#"><?php echo $this->__('Back to Top') ?></a></div>
+    <div class="footer-wrap">
+        <div class="container">
+            <?php echo $this->getChildHtml('advancednewsletter.subscribe.block'); ?>
+            <?php echo $this->getChildHtml('popup.subscribe', false); ?>
+        </div>
+    </div>
+    <div class="footer">
+        <?php echo $this->getChildHtml('footer-block'); ?>
+        <address class="copyright"><?php echo $this->getCopyright() ?></address>
+    </div>
+    <?php echo $this->getChildHtml('footer-plugin'); ?>
+</div>

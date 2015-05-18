@@ -1,0 +1,183 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Be_Sociable>
+			<version>0.1.3</version>
+		</Be_Sociable>
+	</modules>
+	<global>
+		<helpers>
+			<sociable>
+				<class>Be_Sociable_Helper</class>
+			</sociable>
+		</helpers>
+		<blocks>
+			<sociable>
+				<class>Be_Sociable_Block</class>
+			</sociable>
+		</blocks>
+		<models>
+			<sociable>
+				<class>Be_Sociable_Model</class>
+				<resourceModel>sociable_mysql4</resourceModel>
+			</sociable>
+			<sociable_mysql4>
+				<class>Be_Sociable_Model_Mysql4</class>
+				<entities>
+					<log>
+						<table>be_sociable_log</table>
+					</log>
+					<cron>
+						<table>be_sociable_cron</table>
+					</cron>					
+				</entities>
+			</sociable_mysql4>
+		</models>
+		<events>
+			<checkout_onepage_controller_success_action>
+				<observers>
+					<checkout_onepage_controller_success_action>
+						<type>singleton</type>
+						<class>sociable/observer</class>
+						<method>handleSuccess</method>
+					</checkout_onepage_controller_success_action>
+				</observers>
+			</checkout_onepage_controller_success_action>
+			 
+		</events>
+		<resources>
+			<sociable_setup>
+				<setup>
+					<module>Be_Sociable</module>
+					<class>Be_Sociable_Model_Mysql4_Setup</class>
+				</setup>
+				<connection>
+					<use>core_setup</use>
+				</connection>
+			</sociable_setup>
+			<sociable_write>
+				<connection>
+					<use>core_write</use>
+				</connection>
+			</sociable_write>
+			<sociable_read>
+				<connection>
+					<use>core_read</use>
+				</connection>
+			</sociable_read>
+			
+		</resources>
+		
+		
+	</global>
+	
+	<admin>
+		<routers>
+			<adminhtml>				
+				<args>
+					<modules>
+						<besociable before="Mage_Adminhtml">Be_Sociable_Adminhtml</besociable>
+					</modules>					
+				</args>
+			</adminhtml>
+		</routers>
+	</admin>
+    <!-- 
+	<admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Be_Sociable before="Mage_Adminhtml">Be_Sociable</Be_Sociable>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+	 -->
+	
+	<adminhtml>
+		
+		
+		<acl>
+			<resources>
+				<admin>
+					<children>
+						<system>
+							<children>
+								<config>
+									<children>
+										<besociable translate="title" module="sociable">
+											<title>BE Sociable Section</title>
+											<sort_order>0</sort_order>
+										</besociable>
+									</children>
+								</config>
+							</children>
+						</system>
+						<sociable translate="title" module="sociable">
+							<title>Sociable</title>
+							<sort_order>1000</sort_order>
+							<children>
+								<authorizefacebook translate="title">
+									<title>Authorize Facebook</title>
+									<sort_order>1</sort_order>
+								</authorizefacebook>
+							</children>
+						</sociable>
+					</children>
+				</admin>
+			</resources>
+		</acl>		
+		<translate>
+			<modules>
+				<Be_Sociable>
+					<files>
+						<default>Be_Sociable.csv</default>
+					</files>
+				</Be_Sociable>
+			</modules>
+		</translate>
+	</adminhtml>
+	<crontab>
+		<jobs>
+			<sociable_processqueue>
+				<schedule>
+					<cron_expr>*/10 * * * *</cron_expr>
+				</schedule>
+				<run>
+					<model>sociable/observer::processQueue</model>
+				</run>
+			</sociable_processqueue>
+		</jobs>
+	</crontab>
+	<default>
+		<besociable>
+            <pinterest>
+            	<randomtext>Check Out Our Awesome Product</randomtext>
+                <newproductext>Check Out Our Latest Product</newproductext>  
+                <editedproductext>We Just Updated This Product</editedproductext>   
+                <soldproductext>Still In Stock But Selling Fast</soldproductext>                   
+            </pinterest>  
+            <gplus>
+            	<randomtext>Check Out Our Awesome Product</randomtext>
+                <newproductext>Check Out Our Latest Product</newproductext>  
+                <editedproductext>We Just Updated This Product</editedproductext>   
+                <soldproductext>Still In Stock But Selling Fast</soldproductext>                   
+            </gplus>    
+            <facebook>
+            	<randomtext>Check Out Our Awesome Product</randomtext>
+                <newproductext>Check Out Our Latest Product</newproductext>  
+                <editedproductext>We Just Updated This Product</editedproductext>   
+                <soldproductext>Still In Stock But Selling Fast</soldproductext>                   
+            </facebook>    
+            <twitter>
+            	<randomtext>Our Awesome Product</randomtext>
+                <newproductext>Our Latest Product</newproductext>  
+                <editedproductext>Product Update</editedproductext>   
+                <soldproductext>It's Hot</soldproductext>                   
+            </twitter>              
+        </besociable>
+        
+	</default>
+</config> 

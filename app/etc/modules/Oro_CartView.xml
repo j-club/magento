@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Oro_CartView>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Checkout/>
+            </depends>
+        </Oro_CartView>
+    </modules>
+</config>

@@ -1,0 +1,20 @@
+<?php
+$itemsCollection = $this->getItemsCollection();
+$processor = $this->helper('cms')->getBlockTemplateProcessor();
+if ($itemsCollection->count()):
+?>
+<div class="gallery-holder carousel">
+    <div class="gholder">
+        <a class="btn-prev" href="#"><?php echo $this->__('prev') ?></a>
+        <a class="btn-next" href="#"><?php echo $this->__('next') ?></a>
+        <div class="gmask">
+            <div class="slideset">
+                <?php foreach ($itemsCollection as $item): ?>
+                  <?php echo $processor->filter($item->getContent()); ?>
+                <?php endforeach; ?>
+          </div>
+        </div>
+        <div class="pagination"></div>
+    </div>
+</div>
+<?php endif; ?>

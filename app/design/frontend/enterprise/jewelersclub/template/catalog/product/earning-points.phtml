@@ -1,0 +1,15 @@
+<?php
+/**
+ * template for earn points output
+ *
+ * @category MageCore
+ * @package Oro_Onsale
+ * @copyright Copyright (c) 2014 Oro Inc. DBA MageCore (http://www.magecore.com)
+ */
+
+$_product = $this->_parentBlock ? $this->_parentBlock->getProduct() : $this->getProduct();
+?>
+
+<?php if ($_product instanceof Mage_Catalog_Model_Product && $earnPoints = $this->getPointsByProduct($_product)): ?>
+    <div class="earn"><?php echo $this->__('+ Earn <span>%d</span> Points', $earnPoints) ?></div>
+<?php endif; ?>

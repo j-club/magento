@@ -1,0 +1,33 @@
+<?php
+/**
+ * Category layered navigation
+ *
+ * @deprecated since 1.12.0.0
+ */
+?>
+<?php if($this->canShowBlock()): ?>
+<div class="block block-layered-nav slide">
+    <div class="block-title">
+        <strong><span><?php echo $this->__('Shop By') ?></span></strong>
+        <a class="opener-mobile" href="#">opener-mobile</a>
+    </div>
+    <?php echo $this->getStateHtml() ?>
+    <div class="block-content">
+    <?php if($this->canShowOptions()): ?>
+            <dl id="narrow-by-list" class="accordion">
+                <?php $_filters = $this->getFilters() ?>
+                <?php foreach ($_filters as $_filter): ?>
+                <?php if($_filter->getItemsCount()): ?>
+                    <dt class="opener"><?php echo $this->__($_filter->getName()) ?></dt>
+                    <dd class="content-open-block"><?php echo $_filter->getHtml() ?></dd>
+                <?php endif; ?>
+                <?php endforeach; ?>
+            </dl>
+            <script type="text/javascript">decorateDataList('narrow-by-list')</script>
+    <?php endif; ?>
+    <?php if ($this->getLayer()->getState()->getFilters()): ?>
+        <div class="actions"><a href="<?php echo $this->getClearUrl() ?>"><?php echo $this->__('Clear All') ?></a></div>
+    <?php endif; ?>
+    </div>
+</div>
+<?php endif; ?>

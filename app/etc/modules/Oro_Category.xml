@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Oro_Category>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Oro_AdvSlider/>
+            </depends>
+        </Oro_Category>
+    </modules>
+</config>

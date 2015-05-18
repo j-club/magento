@@ -1,0 +1,725 @@
+<?xml version="1.0"?>
+<config>
+	  <tabs>
+		<be_sociable translate="label" module="sociable">
+            <label>BE Sociable</label>
+            <sort_order>1</sort_order>
+        </be_sociable>
+	  </tabs>
+	  <sections>
+		<besociable translate="label" module="sociable">                    
+		<label>BE Sociable</label>
+		<tab>be_sociable</tab>
+		<frontend_type>text</frontend_type>
+		<sort_order>0</sort_order>
+		<show_in_default>1</show_in_default>
+		<show_in_website>1</show_in_website>
+		<show_in_store>1</show_in_store>     
+					<groups>
+		                <hint>
+		                    <frontend_model>sociable/system_config_promotion</frontend_model>
+		                    <sort_order>0</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+		                </hint>
+		            </groups>	       
+					<groups>
+					    <pinterest translate="label">
+	                    <label>Pinterest Settings</label>
+	                    <sort_order>1</sort_order>
+	                    <show_in_default>1</show_in_default>
+	                    <show_in_website>1</show_in_website>
+	                    <show_in_store>1</show_in_store>
+		                    <fields>    
+		                    	<pinterest_info>
+		                            <frontend_model>sociable/system_config_pinterestinfo</frontend_model>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                            <sort_order>1</sort_order>
+		                        </pinterest_info>
+		                    	<enabled translate="label">
+		                            <label>Enable Automatic posting to Pinterest</label>
+		                            <frontend_type>select</frontend_type>
+		                            <source_model>adminhtml/system_config_source_yesno</source_model>  
+		                            <sort_order>10</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                        </enabled>  
+		                        <email translate="label">
+		                            <label>Pinterest Email</label>
+		                            <frontend_type>text</frontend_type>		                             
+		                            <sort_order>11</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                            <depends><enabled>1</enabled></depends>
+		                        </email> 
+		                        <password translate="label">
+		                            <label>Pinterest Password</label>
+		                            <frontend_type>password</frontend_type>		                             
+		                            <sort_order>12</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                            <depends><enabled>1</enabled></depends>
+		                        </password> 
+		                        <boardid translate="label">
+		                            <label>Pinterest Board Id</label>
+		                            <frontend_type>text</frontend_type>	
+		                            <!-- <source_model>sociable/config_source_boardid</source_model> --> 	                             
+		                            <sort_order>14</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                            <depends><enabled>1</enabled></depends>
+		                        </boardid> 
+		                        <randompost translate="label">
+		                            <label>Random Post?</label>
+		                            <frontend_type>select</frontend_type>
+		                            <source_model>sociable/config_source_random</source_model>  
+		                            <sort_order>20</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                        </randompost>  
+		                        <randomtext translate="label">
+		                            <label>Random Product pre-text</label>
+		                            <frontend_type>text</frontend_type>		                             
+		                            <sort_order>21</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                        </randomtext>
+		                        <newproduct_enabled translate="label">
+		                            <label>Enable new product posting</label>
+		                            <frontend_type>select</frontend_type>
+		                            <source_model>adminhtml/system_config_source_yesno</source_model>  
+		                            <sort_order>30</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                        </newproduct_enabled>  
+		                        <newproductext translate="label">
+		                            <label>New Product pre-text</label>
+		                            <frontend_type>text</frontend_type>		                             
+		                            <sort_order>31</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                            <depends><newproduct_enabled>1</newproduct_enabled></depends>
+		                        </newproductext> 
+		                        <editedproduct_enabled translate="label">
+		                            <label>Enable edited product posting</label>
+		                            <frontend_type>select</frontend_type>
+		                            <source_model>adminhtml/system_config_source_yesno</source_model>  
+		                            <sort_order>40</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                        </editedproduct_enabled>
+		                        <editedproductext translate="label">
+		                            <label>Edited Product pre-text</label>
+		                            <frontend_type>text</frontend_type>		                             
+		                            <sort_order>41</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                            <depends><editedproduct_enabled>1</editedproduct_enabled></depends>
+		                        </editedproductext>
+		                        <soldproduct_enabled translate="label">
+		                            <label>Enable sold product posting</label>
+		                            <frontend_type>select</frontend_type>
+		                            <source_model>adminhtml/system_config_source_yesno</source_model>  
+		                            <sort_order>50</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                        </soldproduct_enabled>
+		                        <soldproductext translate="label">
+		                            <label>Sold Product pre-text</label>
+		                            <frontend_type>text</frontend_type>		                             
+		                            <sort_order>51</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                            <depends><soldproduct_enabled>1</soldproduct_enabled></depends>
+		                        </soldproductext>
+		                        <maxposts translate="label comment">
+		                            <label>Maximum number of daily posts</label>
+		                            <frontend_type>text</frontend_type>		                             
+		                            <sort_order>60</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                            <comment>Leave empty for unlimited</comment>
+		                        </maxposts>		                        
+		                        <defaulttext translate="label">
+		                            <label>Default product text </label>
+		                            <frontend_type>select</frontend_type>
+		                            <source_model>sociable/config_source_defaulttext</source_model>  
+		                            <sort_order>70</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                        </defaulttext>  
+		                        
+	                    	</fields>
+                		</pinterest> 
+                		<gplus translate="label">
+	                    <label>Google+ Settings</label>
+	                    <sort_order>2</sort_order>
+	                    <show_in_default>1</show_in_default>
+	                    <show_in_website>1</show_in_website>
+	                    <show_in_store>1</show_in_store>
+		                    <fields>  
+		                    	<gplus_info>
+		                            <frontend_model>sociable/system_config_gplusinfo</frontend_model>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                            <sort_order>1</sort_order>
+		                        </gplus_info>  
+		                    	<enabled translate="label">
+		                            <label>Enable Automatic posting to Google + Page</label>
+		                            <frontend_type>select</frontend_type>
+		                            <source_model>adminhtml/system_config_source_yesno</source_model>  
+		                            <sort_order>10</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                        </enabled>  
+		                        <email translate="label">
+		                            <label>Google+ Username</label>
+		                            <frontend_type>text</frontend_type>		                             
+		                            <sort_order>11</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                            <depends><enabled>1</enabled></depends>
+		                        </email> 
+		                        <password translate="label">
+		                            <label>Google+ Password</label>
+		                            <frontend_type>password</frontend_type>		                             
+		                            <sort_order>12</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                            <depends><enabled>1</enabled></depends>
+		                        </password> 
+		                        <profile translate="label">
+		                            <label>Post to profile page?</label>
+		                            <frontend_type>select</frontend_type>
+		                            <source_model>adminhtml/system_config_source_yesno</source_model>  	                             
+		                            <sort_order>13</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                            
+		                        </profile> 
+		                        <pageid translate="label comment">
+		                            <label>Google+ Page Id</label>
+		                            <frontend_type>text</frontend_type>			                            	                             
+		                            <sort_order>14</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                            <depends><profile>0</profile></depends>
+		                            <comment>If URL for your page is https://plus.google.com/u/0/b/117008619877691455570/ your Page ID is: 117008619877691455570. Leave Empty to publish to your profile.</comment>
+		                        </pageid> 
+		                        <randompost translate="label">
+		                            <label>Random Post?</label>
+		                            <frontend_type>select</frontend_type>
+		                            <source_model>sociable/config_source_random</source_model>  
+		                            <sort_order>20</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                        </randompost>  
+		                        <randomtext translate="label">
+		                            <label>Random Product pre-text</label>
+		                            <frontend_type>text</frontend_type>		                             
+		                            <sort_order>21</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                        </randomtext>
+		                       <newproduct_enabled translate="label">
+		                            <label>Enable new product posting</label>
+		                            <frontend_type>select</frontend_type>
+		                            <source_model>adminhtml/system_config_source_yesno</source_model>  
+		                            <sort_order>30</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                        </newproduct_enabled>  
+		                        <newproductext translate="label">
+		                            <label>New Product pre-text</label>
+		                            <frontend_type>text</frontend_type>		                             
+		                            <sort_order>31</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                            <depends><newproduct_enabled>1</newproduct_enabled></depends>
+		                        </newproductext> 
+		                        <editedproduct_enabled translate="label">
+		                            <label>Enable edited product posting</label>
+		                            <frontend_type>select</frontend_type>
+		                            <source_model>adminhtml/system_config_source_yesno</source_model>  
+		                            <sort_order>40</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                        </editedproduct_enabled>
+		                        <editedproductext translate="label">
+		                            <label>Edited Product pre-text</label>
+		                            <frontend_type>text</frontend_type>		                             
+		                            <sort_order>41</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                            <depends><editedproduct_enabled>1</editedproduct_enabled></depends>
+		                        </editedproductext>
+		                        <soldproduct_enabled translate="label">
+		                            <label>Enable sold product posting</label>
+		                            <frontend_type>select</frontend_type>
+		                            <source_model>adminhtml/system_config_source_yesno</source_model>  
+		                            <sort_order>50</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                        </soldproduct_enabled>
+		                        <soldproductext translate="label">
+		                            <label>Sold Product pre-text</label>
+		                            <frontend_type>text</frontend_type>		                             
+		                            <sort_order>51</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                            <depends><soldproduct_enabled>1</soldproduct_enabled></depends>
+		                        </soldproductext>
+		                        <maxposts translate="label comment">
+		                            <label>Maximum number of daily posts</label>
+		                            <frontend_type>text</frontend_type>		                             
+		                            <sort_order>60</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                            <comment>Leave empty for unlimited</comment>
+		                        </maxposts>		                        
+		                        <defaulttext translate="label">
+		                            <label>Default product text </label>
+		                            <frontend_type>select</frontend_type>
+		                            <source_model>sociable/config_source_defaulttext</source_model>  
+		                            <sort_order>70</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                        </defaulttext>  
+		                        <shortener translate="label">
+		                            <label>URL Shortener</label>
+		                            <frontend_type>select</frontend_type>	
+		                            <source_model>sociable/config_source_shortener</source_model>	                             
+		                            <sort_order>100</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                        </shortener>	
+		                        <shortener_login translate="label comment">
+		                            <label>Shortener Login </label>
+		                            <frontend_type>text</frontend_type>
+		                            <sort_order>110</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                            <comment><![CDATA[<strong>Bit.ly</strong> and <strong>J.mp</strong> require that you enter your username here. <strong>YOURLS</strong> requires that you enter your username and the domain/path of the install, in the form of <em>username@example.org</em>]]></comment>
+		                        </shortener_login>
+		                         <shortener_api_key translate="label comment">
+		                            <label>Shortener API Key</label>
+		                            <frontend_type>text</frontend_type>
+		                            <sort_order>120</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                            <comment><![CDATA[<strong>Bit.ly</strong> requires that you enter your account's API key here. You can find it on your <a href="http://bit.ly/account/">account</a> page. <strong>YOURLS</strong> requires that you enter your account password.]]></comment>
+		                        </shortener_api_key>
+	                    	</fields>
+                		</gplus> 
+                		<facebook translate="label">
+	                    <label>Facebook Settings</label>
+	                    <sort_order>3</sort_order>
+	                    <show_in_default>1</show_in_default>
+	                    <show_in_website>1</show_in_website>
+	                    <show_in_store>1</show_in_store>
+		                    <fields>    
+			                    <facebook_info>
+		                            <frontend_model>sociable/system_config_facebookinfo</frontend_model>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                            <sort_order>1</sort_order>
+		                        </facebook_info>
+		                    	<enabled translate="label comment">
+		                            <label>Enable Automatic posting to Facebook Page</label>
+		                            <frontend_type>select</frontend_type>
+		                            <source_model>adminhtml/system_config_source_yesno</source_model>  
+		                            <sort_order>10</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                        </enabled>  
+		                        <appid translate="label">
+		                            <label>Facebook App Id</label>
+		                            <frontend_type>text</frontend_type>		                             
+		                            <sort_order>11</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                            <depends><enabled>1</enabled></depends>
+		                        </appid> 
+		                        <appsecret translate="label">
+		                            <label>Facebook App Secret</label>
+		                            <frontend_type>text</frontend_type>		                             
+		                            <sort_order>12</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                            <depends><enabled>1</enabled></depends>
+		                        </appsecret>
+		                         <access_token translate="label">
+		                            <label>Access Token</label>
+		                            <frontend_type>text</frontend_type>		                             
+		                            <sort_order>13</sort_order>
+		                            <show_in_default>0</show_in_default>
+		                            <show_in_website>0</show_in_website>
+		                            <show_in_store>0</show_in_store>
+		                        </access_token>
+		                        <pageid translate="label comment">
+		                            <label>Facebook Page Id</label>
+		                            <frontend_type>text</frontend_type>	
+		                            <!-- <source_model>sociable/config_source_pageid</source_model>  -->		                            	                             
+		                            <sort_order>14</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                            <depends><enabled>1</enabled></depends>
+		                        </pageid> 
+		                        <randompost translate="label">
+		                            <label>Random Post?</label>
+		                            <frontend_type>select</frontend_type>
+		                            <source_model>sociable/config_source_random</source_model>  
+		                            <sort_order>20</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                        </randompost>  
+		                        <randomtext translate="label">
+		                            <label>Random Product pre-text</label>
+		                            <frontend_type>text</frontend_type>		                             
+		                            <sort_order>21</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                        </randomtext>
+		                        <newproduct_enabled translate="label">
+		                            <label>Enable new product posting</label>
+		                            <frontend_type>select</frontend_type>
+		                            <source_model>adminhtml/system_config_source_yesno</source_model>  
+		                            <sort_order>30</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                        </newproduct_enabled>  
+		                        <newproductext translate="label">
+		                            <label>New Product pre-text</label>
+		                            <frontend_type>text</frontend_type>		                             
+		                            <sort_order>31</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                            <depends><newproduct_enabled>1</newproduct_enabled></depends>
+		                        </newproductext> 
+		                        <editedproduct_enabled translate="label">
+		                            <label>Enable edited product posting</label>
+		                            <frontend_type>select</frontend_type>
+		                            <source_model>adminhtml/system_config_source_yesno</source_model>  
+		                            <sort_order>40</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                        </editedproduct_enabled>
+		                        <editedproductext translate="label">
+		                            <label>Edited Product pre-text</label>
+		                            <frontend_type>text</frontend_type>		                             
+		                            <sort_order>41</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                            <depends><editedproduct_enabled>1</editedproduct_enabled></depends>
+		                        </editedproductext>
+		                        <soldproduct_enabled translate="label">
+		                            <label>Enable sold product posting</label>
+		                            <frontend_type>select</frontend_type>
+		                            <source_model>adminhtml/system_config_source_yesno</source_model>  
+		                            <sort_order>50</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                        </soldproduct_enabled>
+		                        <soldproductext translate="label">
+		                            <label>Sold Product pre-text</label>
+		                            <frontend_type>text</frontend_type>		                             
+		                            <sort_order>51</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                            <depends><soldproduct_enabled>1</soldproduct_enabled></depends>
+		                        </soldproductext>
+		                        <maxposts translate="label comment">
+		                            <label>Maximum number of daily posts</label>
+		                            <frontend_type>text</frontend_type>		                             
+		                            <sort_order>60</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                            <comment>Leave empty for unlimited</comment>
+		                        </maxposts>		                        
+		                        <defaulttext translate="label">
+		                            <label>Default product text </label>
+		                            <frontend_type>select</frontend_type>
+		                            <source_model>sociable/config_source_defaulttext</source_model>  
+		                            <sort_order>70</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                        </defaulttext>  
+		                        <shortener translate="label">
+		                            <label>URL Shortener</label>
+		                            <frontend_type>select</frontend_type>	
+		                            <source_model>sociable/config_source_shortener</source_model>	                             
+		                            <sort_order>100</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                        </shortener>	
+		                        <shortener_login translate="label comment">
+		                            <label>Shortener Login </label>
+		                            <frontend_type>text</frontend_type>
+		                            <sort_order>110</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                            <comment><![CDATA[<strong>Bit.ly</strong> and <strong>J.mp</strong> require that you enter your username here. <strong>YOURLS</strong> requires that you enter your username and the domain/path of the install, in the form of <em>username@example.org</em>]]></comment>
+		                        </shortener_login>
+		                         <shortener_api_key translate="label comment">
+		                            <label>Shortener API Key</label>
+		                            <frontend_type>text</frontend_type>
+		                            <sort_order>120</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                            <comment><![CDATA[<strong>Bit.ly</strong> requires that you enter your account's API key here. You can find it on your <a href="http://bit.ly/account/">account</a> page. <strong>YOURLS</strong> requires that you enter your account password.]]></comment>
+		                        </shortener_api_key>
+	                    	</fields>
+                		</facebook>
+                		<twitter translate="label">
+	                    <label>Twitter Settings</label>
+	                    <sort_order>4</sort_order>
+	                    <show_in_default>1</show_in_default>
+	                    <show_in_website>1</show_in_website>
+	                    <show_in_store>1</show_in_store>
+		                    <fields>    
+			                    <twitter_info>
+		                            <frontend_model>sociable/system_config_twitterinfo</frontend_model>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                            <sort_order>1</sort_order>
+		                        </twitter_info>
+		                    	<enabled translate="label comment">
+		                            <label>Enable Automatic posting to Twitter</label>
+		                            <frontend_type>select</frontend_type>
+		                            <source_model>adminhtml/system_config_source_yesno</source_model>  
+		                            <sort_order>10</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                        </enabled>  
+		                        <!-- <twitter_url translate="label">
+		                            <label>Twitter Url</label>
+		                            <frontend_type>text</frontend_type>		                             
+		                            <sort_order>11</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                            <depends><enabled>1</enabled></depends>
+		                        </twitter_url>  -->
+		                        <consumer_key translate="label">
+		                            <label>Twitter Consumer key</label>
+		                            <frontend_type>text</frontend_type>		                             
+		                            <sort_order>12</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                            <depends><enabled>1</enabled></depends>
+		                        </consumer_key> 
+		                        <consumer_secret translate="label">
+		                            <label>Twitter Comsumer Secret</label>
+		                            <frontend_type>text</frontend_type>		                             
+		                            <sort_order>13</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                            <depends><enabled>1</enabled></depends>
+		                        </consumer_secret> 
+		                        <access_token translate="label">
+		                            <label>Access Token</label>
+		                            <frontend_type>text</frontend_type>		                             
+		                            <sort_order>14</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                            <depends><enabled>1</enabled></depends>
+		                        </access_token>
+		                        <access_token_secret translate="label comment">
+		                            <label>Access Token Secret</label>
+		                            <frontend_type>text</frontend_type>	
+		                            <sort_order>15</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                            <depends><enabled>1</enabled></depends>
+		                        </access_token_secret> 
+		                        <randompost translate="label">
+		                            <label>Random Post?</label>
+		                            <frontend_type>select</frontend_type>
+		                            <source_model>sociable/config_source_random</source_model>  
+		                            <sort_order>20</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                        </randompost>  
+		                        <randomtext translate="label">
+		                            <label>Random Product pre-text</label>
+		                            <frontend_type>text</frontend_type>		                             
+		                            <sort_order>21</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                        </randomtext>
+		                        <newproduct_enabled translate="label">
+		                            <label>Enable new product posting</label>
+		                            <frontend_type>select</frontend_type>
+		                            <source_model>adminhtml/system_config_source_yesno</source_model>  
+		                            <sort_order>30</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                        </newproduct_enabled>  
+		                        <newproductext translate="label">
+		                            <label>New Product pre-text</label>
+		                            <frontend_type>text</frontend_type>		                             
+		                            <sort_order>31</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                            <depends><newproduct_enabled>1</newproduct_enabled></depends>
+		                        </newproductext> 
+		                        <editedproduct_enabled translate="label">
+		                            <label>Enable edited product posting</label>
+		                            <frontend_type>select</frontend_type>
+		                            <source_model>adminhtml/system_config_source_yesno</source_model>  
+		                            <sort_order>40</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                        </editedproduct_enabled>
+		                        <editedproductext translate="label">
+		                            <label>Edited Product pre-text</label>
+		                            <frontend_type>text</frontend_type>		                             
+		                            <sort_order>41</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                            <depends><editedproduct_enabled>1</editedproduct_enabled></depends>
+		                        </editedproductext>
+		                        <soldproduct_enabled translate="label">
+		                            <label>Enable sold product posting</label>
+		                            <frontend_type>select</frontend_type>
+		                            <source_model>adminhtml/system_config_source_yesno</source_model>  
+		                            <sort_order>50</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                        </soldproduct_enabled>
+		                        <soldproductext translate="label">
+		                            <label>Sold Product pre-text</label>
+		                            <frontend_type>text</frontend_type>		                             
+		                            <sort_order>51</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                            <depends><soldproduct_enabled>1</soldproduct_enabled></depends>
+		                        </soldproductext>
+		                        <maxposts translate="label comment">
+		                            <label>Maximum number of daily posts</label>
+		                            <frontend_type>text</frontend_type>		                             
+		                            <sort_order>60</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                            <comment>Leave empty for unlimited</comment>
+		                        </maxposts>			
+		                        <withimage translate="label">
+		                            <label>Tweet with product image</label>
+		                            <frontend_type>select</frontend_type>	
+		                            <source_model>adminhtml/system_config_source_yesno</source_model> 	                             
+		                            <sort_order>61</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                        </withimage>	                        
+		                        <defaulttext translate="label">
+		                            <label>Default product text </label>
+		                            <frontend_type>select</frontend_type>
+		                            <source_model>sociable/config_source_defaulttext</source_model>  
+		                            <sort_order>70</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                        </defaulttext>  
+		                        <shortener translate="label">
+		                            <label>URL Shortener</label>
+		                            <frontend_type>select</frontend_type>	
+		                            <source_model>sociable/config_source_shortener</source_model>	                             
+		                            <sort_order>100</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                        </shortener>	
+		                        <shortener_login translate="label comment">
+		                            <label>Shortener Login </label>
+		                            <frontend_type>text</frontend_type>
+		                            <sort_order>110</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                            <comment><![CDATA[<strong>Bit.ly</strong> and <strong>J.mp</strong> require that you enter your username here. <strong>YOURLS</strong> requires that you enter your username and the domain/path of the install, in the form of <em>username@example.org</em>]]></comment>
+		                        </shortener_login>
+		                         <shortener_api_key translate="label comment">
+		                            <label>Shortener API Key</label>
+		                            <frontend_type>text</frontend_type>
+		                            <sort_order>120</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                            <comment><![CDATA[<strong>Bit.ly</strong> requires that you enter your account's API key here. You can find it on your <a href="http://bit.ly/account/">account</a> page. <strong>YOURLS</strong> requires that you enter your account password.]]></comment>
+		                        </shortener_api_key>
+	                    	</fields>
+                		</twitter>
+					</groups>
+		</besociable>
+	  </sections>
+</config>

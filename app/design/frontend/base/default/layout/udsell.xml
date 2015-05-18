@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+
+    <udsell_index_becomepro>
+        <update handle="udropship_vendor" />
+        <reference name="head">
+            <action method="setTitle"><title>Become Pro</title></action>
+        </reference>
+        <reference name="content">
+            <block type="core/template" template="unirgy/udsell/becomepro.phtml" />
+        </reference>
+    </udsell_index_becomepro>
+
+    <!--customer_account_create translate="label">
+        <reference name="customer_form_register">
+            <action method="setTemplate"><template>unirgy/udsell/customer/register.phtml</template></action>
+        </reference>
+    </customer_account_create-->
+
+    <customer_account>
+        <reference name="customer_account_navigation">
+            <action method="addLink" translate="label" module="udsell"><name>udsell_vendor</name><path helper="udsell/getCustomerVendorPortalUrl" /><label>Vendor Portal</label></action>
+        </reference>
+    </customer_account>
+
+    <udsell_index_sell translate="label">
+        <label>Sell Yours</label>
+        <update handle="udropship_vendor" />
+        <reference name="head">
+            <action method="addJs"><script>varien/product.js</script></action>
+            <action method="addItem"><type>js_css</type><name>calendar/calendar-win2k-1.css</name></action>
+            <action method="addItem"><type>js</type><name>calendar/calendar.js</name></action>
+            <action method="addItem"><type>js</type><name>calendar/calendar-setup.js</name></action>
+        </reference>
+        <reference name="content">
+            <block type="core/html_calendar" name="head.calendar" as="calendar" template="page/js/calendar.phtml"/>
+            <block type="udsell/productView" name="product.info" template="unirgy/udsell/product/view.phtml" />
+        </reference>
+    </udsell_index_sell>
+
+    <UDC2C_PRODUCT_TYPE_simple>
+        <reference name="product.info">
+            <block type="udsell/sellForm" name="udsell.product.sell" as="product.sell" template="unirgy/udsell/product/sell.phtml" />
+        </reference>
+    </UDC2C_PRODUCT_TYPE_simple>
+    <UDC2C_PRODUCT_TYPE_configurable>
+        <reference name="head">
+            <action method="addJs"><script>varien/product.js</script></action>
+            <action method="addJs"><script>unirgy/product.js</script></action>
+        </reference>
+        <reference name="product.info">
+            <block type="udsell/cfgSellForm" name="udsell.product.sell" as="product.sell" template="unirgy/udsell/product/cfg_sell.phtml" />
+        </reference>
+    </UDC2C_PRODUCT_TYPE_configurable>
+
+    <udsell_index_mysellsearch>
+        <update handle="__udsell_index_sellsearch" />
+    </udsell_index_mysellsearch>
+    <udsell_index_sellsearch>
+        <update handle="__udsell_index_sellsearch" />
+    </udsell_index_sellsearch>
+
+    <__udsell_index_sellsearch translate="label">
+        <update handle="udropship_vendor" />
+        <reference name="content">
+            <block type="udsell/result" name="search.result" template="unirgy/udsell/sell/result.phtml">
+                <block type="catalog/product_list" name="search_result_list" template="unirgy/udsell/sell/list.phtml">
+                    <block type="catalog/product_list_toolbar" name="product_list_toolbar" template="unirgy/udsell/sell/toolbar.phtml">
+                        <block type="page/html_pager" name="product_list_toolbar_pager"/>
+                    </block>
+                    <action method="addColumnCountLayoutDepend"><layout>empty</layout><count>6</count></action>
+                    <action method="addColumnCountLayoutDepend"><layout>one_column</layout><count>5</count></action>
+                    <action method="addColumnCountLayoutDepend"><layout>two_columns_left</layout><count>4</count></action>
+                    <action method="addColumnCountLayoutDepend"><layout>two_columns_right</layout><count>4</count></action>
+                    <action method="addColumnCountLayoutDepend"><layout>three_columns</layout><count>3</count></action>
+                    <action method="setToolbarBlockName"><name>product_list_toolbar</name></action>
+                </block>
+                <action method="setListCollection"/>
+            </block>
+        </reference>
+    </__udsell_index_sellsearch>
+</layout>

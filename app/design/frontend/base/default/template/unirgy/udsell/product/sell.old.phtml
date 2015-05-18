@@ -1,0 +1,92 @@
+<?php
+    $_hlp = Mage::helper('udsell');
+    $_udHlp = Mage::helper('udropship');
+    $_helper = $this->helper('catalog/output');
+    $_product = $this->getParentBlock()->getProduct();
+    $_mvData = new Varien_Object(Mage::registry('sell_yours_data_'.$_product->getId()));
+    $_pId = $_product->getId();
+?>
+    <form id="udsell-sell-<?php echo $_pId?>" method="post" action="<?php echo $this->getUrl('udsell/index/sellPost', array('id'=>$_product->getId()))?>">
+    	<div class="product-sell-option">
+			<h3><?php echo $this->__('Sell Yours') ?></h3>
+    		<div class="row-options-container">
+		        <div class="form-add">
+		            <ul class="form-list">
+		            <li>
+		            <div class="fields">
+		                <div class="field">
+		                    <label for="vendor_price-<?php echo $_pId?>"><?php echo $_hlp->__('Price') ?> <span class="required">*</span> </label><br />
+		                    <input name="vendor_price" value="<?php echo $_hlp->processFormVar($_mvData->getVendorPrice(), 1)?>" title="<?php echo $_hlp->__('Price') ?>" id="vendor_price-<?php echo $_pId?>" type="text" class="input-text required-entry" />
+		                </div>
+		                <div class="field">
+		                    <label for="stock_qty-<?php echo $_pId?>"><?php echo $_hlp->__('Stock Qty') ?></small> <span class="required">*</span></label><br />
+		                    <input name="stock_qty" value="<?php echo $_hlp->processFormVar($_mvData->getStockQty(), 1)?>" title="<?php echo $_hlp->__('Stock Qty') ?>" id="stock_qty-<?php echo $_pId?>" type="text" class="input-text required-entry validate-number" />
+		                </div>
+		            </div>
+		            </li>
+		            <li>
+		            <div class="fields">
+		                <div class="field">
+		                <label for="state-<?php echo $_pId?>"><?php echo $_hlp->__('State/Condition') ?> </label><br />
+		                <?php echo $this->getLayout()->createBlock('core/html_select')
+		                        ->setName('state')
+		                        ->setId("state-{$_pId}")
+		                        ->setTitle($_hlp->__('State/Condition'))
+		                        ->setValue($_mvData->getState())
+		                        ->setOptions(Mage::getSingleton('udmultiprice/source')->setPath('vendor_product_state')->toOptionArray())
+		                        ->getHtml();
+		                ?>
+		                </div>
+		                <div class="field">
+		                    <label for="state_descr-<?php echo $_pId?>"><?php echo $_hlp->__('State Description') ?> </label><br />
+		                    <input name="state_descr" value="<?php echo $_mvData->getStateDescr()?>" title="<?php echo $_hlp->__('State Description') ?>" id="state_descr-<?php echo $_pId?>" type="text" class="input-text" />
+		                </div>
+		            </div>
+		            </li>
+		            <li>
+		            <div class="fields">
+                        <?php /*
+		                <div class="field">
+		                    <label for="vendor_sku-<?php echo $_pId?>"><?php echo $_hlp->__('My SKU') ?> </label><br />
+		                    <input name="vendor_sku" value="<?php echo $_mvData->getVendorSku()?>" title="<?php echo $_hlp->__('My SKU') ?>" id="vendor_sku-<?php echo $_pId?>" type="text" class="input-text" />
+		                </div>
+                        */?>
+                        <div class="field">
+		                    <?php if (Mage::helper('udmulti')->isVendorProductShipping()): ?>
+		                    <label for="shipping_price-<?php echo $_pId?>"><?php echo $_hlp->__('Shipping Price') ?> </label><br />
+		                    <input name="shipping_price" value="<?php echo $_mvData->getShippingPrice()*1?>" title="<?php echo $_hlp->__('Shipping Price') ?>" id="shipping_price-<?php echo $_pId?>" type="text" class="input-text" />
+		                    <?php endif ?>
+		                </div>
+		                <div class="field">
+		                    <label for="vendor_title-<?php echo $_pId?>"><?php echo $_hlp->__('My Title') ?> </label><br />
+		                    <textarea name="vendor_title" title="<?php echo $_hlp->__('My Title') ?>" id="vendor_title-<?php echo $_pId?>" type="text" class="input-text"><?php echo $this->escapeHtml($_mvData->getVendorTitle())?></textarea>
+		                </div>
+		            </li>
+                        <?php /*
+		            <?php if (Mage::helper('udmulti')->isVendorProductShipping()): ?>
+		            <li>
+		            <div class="fields">
+		                <div class="field">
+		                    <?php if (Mage::helper('udmulti')->isVendorProductShipping()): ?>
+		                    <label for="shipping_price-<?php echo $_pId?>"><?php echo $_hlp->__('Shipping Price') ?> </label><br />
+		                    <input name="shipping_price" value="<?php echo $_mvData->getShippingPrice()*1?>" title="<?php echo $_hlp->__('Shipping Price') ?>" id="shipping_price-<?php echo $_pId?>" type="text" class="input-text" />
+		                    <?php endif ?>
+		                </div>
+		            </li>
+		            <?php endif ?>
+                        */?>
+		            </ul>
+		        </div>
+	        </div>
+		</div>
+	        <div class="buttons-set">
+	            <button type="submit" title="<?php echo $this->__('Submit') ?>" class="button"><span><?php echo $this->__('Submit') ?></span></button>
+	            <p class="required"><?php echo $this->__('* Required Fields') ?></p>
+	        </div>
+    </form>
+
+    <script type="text/javascript">
+    //<![CDATA[
+        var dataForm = new VarienForm('udsell-sell-<?php echo $_pId?>', true);
+    //]]>
+    </script>

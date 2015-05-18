@@ -1,0 +1,47 @@
+<!--@subject {{var store.getFrontendName()}}: Another Lucky Code of lucky draw program "{{var program.getName()}}" @-->
+<!--@vars
+{"store url=\"\"":"Store Url",
+"skin url=\"images/logo_email.gif\" _area='frontend'":"Email Logo Image",
+"var program.getName()":"Lucky Draw Program Name",
+"store url=\"customer/account/\"":"Customer Account Url",
+"var code.getDrawCode()":"Lucky Draw Code",
+"htmlescape var=$code.getName()":"User Name",
+"var code.getEmail()":"User Email"}
+@-->
+
+<!--@styles
+body,td { color:#2f2f2f; font:13px/1.35em Verdana, Arial, Helvetica, sans-serif; }
+@-->
+
+<div style="font:13px/1.35em Verdana, Arial, Helvetica, sans-serif;">
+    <table cellspacing="0" cellpadding="0" border="0" width="98%" style="margin-top:10px; font:13px/1.35em Verdana, Arial, Helvetica, sans-serif; margin-bottom:10px;">
+        <tr>
+            <td align="center" valign="top">
+                <!-- [ header starts here] -->
+                <table cellspacing="0" cellpadding="0" border="0" width="650">
+                    <tr>
+                        <td valign="top">
+                            <a href="{{store url=""}}"><img src="{{skin url="images/logo_email.gif" _area='frontend'}}" alt="{{var store.getFrontendName()}}"  style="margin-bottom:10px;" border="0"/></a></td>
+                    </tr>
+                </table>
+
+                <!-- [ middle starts here] -->
+                <table cellspacing="0" cellpadding="0" border="0" width="650">
+                    <tr>
+                        <td valign="top">
+                            <p><strong>Dear {{htmlescape var=$code.getName()}}</strong>,<br/>
+							Your referred friend has been registered for our lucky draw program "{{var program.getName()}}" thus you received another lucky code: <strong>{{var code.getDrawCode()}}</strong>. Good luck for you!
+							</p>
+                            <p>
+								If you have any questions or matters, please feel free to contact us at <a href="mailto:{{config path='trans_email/ident_support/email'}}" style="color:#1E7EC8;">{{config path='trans_email/ident_support/email'}}</a> 
+								or call us at <span class="nobr">{{config path='general/store_information/phone'}}</span> Monday - Friday, 8am - 5pm PST.
+							</p>
+                            <br/>
+							<p>Thank you,<br/><strong>{{var store.getFrontendName()}}</strong></p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>

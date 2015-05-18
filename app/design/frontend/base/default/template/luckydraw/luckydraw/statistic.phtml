@@ -1,0 +1,37 @@
+<?php 
+	/**
+	 * Lucky Draw Main Page template
+	 * 
+	 * @see Magestore_Luckydraw_Block_Luckydraw
+	 */
+?>
+<?php $program = $this->getProgram() ?>
+<?php if ($program->getStatus() > Magestore_Luckydraw_Model_Program::STATUS_PROCESSING): ?>
+<div class="luckydraw-countdown">
+	<div class="luckydraw-not-counting<?php if ($this->userIsWinner()): ?> luckydraw-winner<?php elseif ($this->getWinnerCode()): ?> luckydraw-win<?php endif ?>">
+		<div class="countdown-label">
+			<?php if ($program->getStatus() == Magestore_Luckydraw_Model_Program::STATUS_PAUSED): ?>
+				<?php echo $this->__('Lucky draw is not available at this time!') ?>
+			<?php elseif ($program->getStatus() == Magestore_Luckydraw_Model_Program::STATUS_DIALING): ?>
+				<?php echo $this->__('Please wait! We are drawing to find the winner!') ?>
+			<?php elseif ($program->getStatus() == Magestore_Luckydraw_Model_Program::STATUS_COMPLETE
+					|| $program->getStatus() == Magestore_Luckydraw_Model_Program::STATUS_CLOSED): ?>
+				<?php if ($this->getWinnerCode()): ?>
+					<?php if ($this->userIsWinner()): ?>
+						<?php echo $this->__("Congratulation! You're the winner") ?>
+					<?php else: ?>
+						<?php echo $this->__('Prize code') ?>
+					<?php endif ?>
+				<?php else: ?>
+					<?php echo $this->__('Not enough participants to play lucky draw') ?>
+				<?php endif ?>
+			<?php endif ?>
+		</div>
+		<?php if ($this->getWinnerCode()): ?>
+			<div class="countdown">
+				<span class="value"><?php echo $this->getWinnerCode()->getDrawCode() ?></span>
+			</div>
+		<?php endif ?>
+	</div>
+</div>
+<?php endif ?>

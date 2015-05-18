@@ -1,0 +1,53 @@
+<?php
+/**
+ * @see Enterprise_Reward_Block_Customer_Reward_History
+ */
+?>
+<div class="box">
+    <h2 class="sub-title"><?php echo $this->__('Balance History'); ?></h2>
+
+    <?php if ($history = $this->getHistory()):?>
+
+    <?php echo $this->getChildHtml('pager') ?>
+    <div class="data-table-holder">
+        <div id="reward-history" class="data-table">
+            <div class="thead">
+                <div class="tr-col">
+                    <div class="th-col"><?php echo $this->__('Balance'); ?></div>
+                    <div class="th-col"><?php echo $this->__('Amount'); ?></div>
+                    <div class="th-col"><?php echo $this->__('Points'); ?></div>
+                    <div class="th-col"><?php echo $this->__('Reason'); ?></div>
+                    <div class="th-col"><?php echo $this->__('Date'); ?></div>
+                </div>
+            </div>
+            <div class="tbody">
+                <?php foreach($history as $item): ?>
+                <div class="tr-col">
+                    <div class="td-col"><?php echo $this->getPointsBalance($item)?></div>
+                    <div class="td-col"><?php echo $this->getCurrencyBalance($item)?></div>
+                    <div class="td-col"><?php echo $this->getPointsDelta($item)?></div>
+                    <div class="td-col">
+                        <?php echo $this->escapeHtml($this->getMessage($item))?>
+                        <?php if ($explanation = $this->getExplanation($item)):?><br /><small><?php echo $this->escapeHtml($explanation);?></small><?php endif;?>
+                    </div>
+                    <div class="td-col">
+                        <span class="nobr"><?php echo $this->getDate($item)?></span>
+                        <?php if ($expirationDate = $this->getExpirationDate($item)):?>
+                        <small class="nobr"><?php echo $this->__('Expires on %s', $expirationDate);?></small>
+                        <?php endif;?>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">decorateTable('reward-history')</script>
+
+    <?php echo $this->getChildHtml('pager') ?>
+
+    <?php else:?>
+
+    <p><?php echo $this->__('There is no balance history yet.')?></p>
+
+    <?php endif;?>
+</div>

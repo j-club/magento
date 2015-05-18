@@ -1,0 +1,165 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Oro_Dropship>
+            <version>0.3.0</version>
+        </Oro_Dropship>
+    </modules>
+    <global>
+        <models>
+            <oro_dropship>
+                <class>Oro_Dropship_Model</class>
+            </oro_dropship>
+        </models>
+        <blocks>
+            <oro_dropship>
+                <class>Oro_Dropship_Block</class>
+            </oro_dropship>
+        </blocks>
+        <helpers>
+            <oro_dropship>
+                <class>Oro_Dropship_Helper</class>
+            </oro_dropship>
+        </helpers>
+        <resources>
+            <oro_dropship_setup>
+                <setup>
+                    <module>Oro_Dropship</module>
+                </setup>
+            </oro_dropship_setup>
+        </resources>
+        <events>
+            <udropship_adminhtml_vendor_edit_prepare_form>
+                <observers>
+                    <add_vendor_fields>
+                        <class>oro_dropship/observer</class>
+                        <method>addVendorFields</method>
+                    </add_vendor_fields>
+                </observers>
+            </udropship_adminhtml_vendor_edit_prepare_form>
+        </events>
+        <udropship>
+            <vendor>
+                <fields>
+                    <fein>
+                        <label>Federal Tax ID Number (FEIN)</label>
+                        <fieldset>vendor_info</fieldset>
+                        <type>text</type>
+                    </fein>
+                    <business_type>
+                        <label>Business Type</label>
+                        <fieldset>vendor_info</fieldset>
+                        <type>select</type>
+                        <source_model>oro_dropship/businesstype</source_model>
+                    </business_type>
+                    <other_business_type>
+                        <label>Other Business Type</label>
+                        <fieldset>vendor_info</fieldset>
+                        <type>text</type>
+                    </other_business_type>
+                    <organization>
+                        <label>State of Incorporation or Organization</label>
+                        <fieldset>vendor_info</fieldset>
+                        <type>text</type>
+                    </organization>
+                    <tax_filling_info>
+                        <label>Tax Filling Information</label>
+                        <fieldset>vendor_info</fieldset>
+                        <type>select</type>
+                        <source_model>oro_dropship/taxfillinginfo</source_model>
+                    </tax_filling_info>
+                    <business_address>
+                        <label>Business Address</label>
+                        <fieldset>vendor_info</fieldset>
+                        <type>text</type>
+                    </business_address>
+                    <company_website>
+                        <label>Company Website</label>
+                        <fieldset>vendor_info</fieldset>
+                        <type>text</type>
+                    </company_website>
+
+                    <contact_name>
+                        <label>Contact Name</label>
+                        <fieldset>vendor_info</fieldset>
+                        <type>text</type>
+                    </contact_name>
+                    <contact_title>
+                        <label>Title</label>
+                        <fieldset>vendor_info</fieldset>
+                        <type>text</type>
+                    </contact_title>
+                    <telephone_evening>
+                        <label>Phone Number (Evening)</label>
+                        <fieldset>vendor_info</fieldset>
+                        <type>text</type>
+                        <reg_class>validate-digits</reg_class>
+                    </telephone_evening>
+                    <fax>
+                        <label>Fax Number</label>
+                        <fieldset>vendor_info</fieldset>
+                        <type>text</type>
+                        <reg_class>validate-digits</reg_class>
+                    </fax>
+
+                    <bank_name>
+                        <label>Bank name</label>
+                        <fieldset>vendor_info</fieldset>
+                        <type>text</type>
+                    </bank_name>
+                    <bank_account_type>
+                        <label>Bank account type</label>
+                        <fieldset>vendor_info</fieldset>
+                        <type>text</type>
+                    </bank_account_type>
+                    <bank_address>
+                        <label>Bank address</label>
+                        <fieldset>vendor_info</fieldset>
+                        <type>text</type>
+                    </bank_address>
+                    <bank_contact_name>
+                        <label>Bank contact name</label>
+                        <fieldset>vendor_info</fieldset>
+                        <type>text</type>
+                    </bank_contact_name>
+                    <bank_contact_phone>
+                        <label>Bank contact phone</label>
+                        <fieldset>vendor_info</fieldset>
+                        <type>text</type>
+                    </bank_contact_phone>
+                    <bank_contact_email>
+                        <label>Bank contact email</label>
+                        <fieldset>vendor_info</fieldset>
+                        <type>text</type>
+                    </bank_contact_email>
+                    <bank_account_number>
+                        <label>Bank account no.</label>
+                        <fieldset>vendor_info</fieldset>
+                        <type>text</type>
+                    </bank_account_number>
+                    <bank_routing_number>
+                        <label>Bank routing no.</label>
+                        <fieldset>vendor_info</fieldset>
+                        <type>text</type>
+                    </bank_routing_number>
+
+                    <sign>
+                        <label>Sign</label>
+                        <fieldset>shipping_origin</fieldset>
+                        <type>text</type>
+                    </sign>
+                    <date>
+                        <label>Date</label>
+                        <fieldset>shipping_origin</fieldset>
+                        <type>date</type>
+                    </date>
+                    <authorized_person>
+                        <label>Authorized Person</label>
+                        <fieldset>shipping_origin</fieldset>
+                        <type>text</type>
+                    </authorized_person>
+                </fields>
+            </vendor>
+        </udropship>
+    </global>
+</config>

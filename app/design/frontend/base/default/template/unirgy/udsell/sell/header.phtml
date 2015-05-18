@@ -1,0 +1,30 @@
+<?php
+/**
+ * @category    design
+ * @package     monster_default
+ * @copyright   Copyright (c) 2012 Monster Market. (http://www.monstermarket.com)
+ */
+?>
+<?php
+$_session = Mage::getSingleton('udropship/session');
+$_dashboardUrl = Mage::helper('udropship')->isUdpoActive() ? $this->getUrl('udpo/vendor') : $this->getUrl('udropship/vendor');
+$_active = $this->getActivePage();
+?>
+<div class="header-container sellyours-header-container">
+	<div class="header">
+        <?php if ($this->getIsHomePage()):?>
+        <h1 class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></h1>
+        <?php else:?>
+        <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
+        <?php endif?>
+        <span class="logo-sub"><?php echo $this->__('Sell Your Product')?></span>
+	    <div class="utility-nav">
+	        <?php if ($_session->isLoggedIn()): ?>
+	        <strong><?php echo $this->htmlEscape($this->__('Logged in as %s', $_session->getVendor()->getVendorName())) ?></strong><span class="pipe">|</span>
+	        <a href="<?php echo $this->getUrl('udropship/vendor/logout')?>"><?php echo $this->__('Log out')?></a>
+	        <?php else: ?>
+	        <strong><?php echo $this->__('Welcome!') ?></strong>
+	        <?php endif ?>
+	    </div>
+	</div>
+</div>

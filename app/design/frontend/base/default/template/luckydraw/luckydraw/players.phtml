@@ -1,0 +1,37 @@
+<?php 
+	/**
+	 * Player List template
+	 * 
+	 * @see Magestore_Luckydraw_Block_Luckydraw_Players
+	 */
+?>
+<?php $collection = $this->getCollection() ?>
+
+<div id="luckydraw-all-player">
+    <div class="page-title">
+        <h2><?php echo $this->__('All Players') ?></h2>
+        <div title="<?php echo $this->__('Close') ?>" class="closepopup" onclick="TINY.box.hide();"></div>
+    </div>
+    <div class="box-content">
+        <div class="pager-title">
+            <h2><?php echo $this->__('Total %s player(s)',$collection->getSize()) ?></h2>
+        </div>
+        <table class="data-table" id="players-table">
+            <colgroup>
+                <col class="list-codes" style="text-align: left;" />
+                <col class="player-name" style="text-align: left;" />
+                <col class="play-at" style="text-align: right;" />
+            </colgroup>
+            <tbody>
+            <?php foreach ($collection as $user): ?>
+                <tr>
+                    <td><?php echo $user->getDrawCodes() ?></td>
+                    <td><?php echo $user->getName() ?></td>
+                    <td><?php echo $this->formatShowDate($user->getCreatedTime()) ?></td>
+                </tr>
+            <?php endforeach ?>
+            </tbody>
+        </table>
+        <?php echo $this->getChildHtml('luckydraw_pager') ?>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<layout>
+    <default>
+        <reference name="head">
+            <reference name="content">
+                <block type="itoris_viewmoreproducts/viewMore" name="itoris_viewmoreproducts"/>
+            </reference>
+        </reference>
+    </default>
+</layout>

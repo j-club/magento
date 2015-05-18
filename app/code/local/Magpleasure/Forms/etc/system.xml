@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <tabs>
+        <magpleasure translate="label" module="forms">
+            <label>MagPleasure Extensions</label>
+            <sort_order>300</sort_order>
+        </magpleasure>
+    </tabs>
+    <sections>
+        <forms module="forms" translate="label">
+            <label>Forms</label>
+            <tab>magpleasure</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>622</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <notify_admin>
+                    <label>Admin Notification</label>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <sort_order>10</sort_order>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <receiver translate="label">
+                            <label>Recipient</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>This will be used in the "To" field. If you use multiple separate by comma.</comment>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </receiver>
+                        <sender translate="label">
+                            <label>Sender</label>
+                            <comment>This will be used as "From"</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_identity</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sender>
+                        <template translate="label">
+                            <label>New Comment Notification</label>
+                            <comment>This email template will be used to sent a notification about new form submits</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </template>
+                    </fields>
+                </notify_admin>
+            </groups>
+        </forms>
+    </sections>
+</config>

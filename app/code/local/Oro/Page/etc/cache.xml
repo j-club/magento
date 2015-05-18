@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config>
+    <placeholders>
+        <purchased_button>
+            <block>core/template</block>
+            <template>page/html/popup.phtml</template>
+            <name>popup.subscribe</name>
+            <placeholder>SUBSCRIBER_POPUP</placeholder>
+            <container>Oro_Page_Model_Container_Footer</container>
+            <cache_lifetime>86400</cache_lifetime>
+        </purchased_button>
+    </placeholders>
+</config>

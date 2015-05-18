@@ -1,0 +1,26 @@
+<?php
+/**
+ * Template for filter items block
+ *
+ * @see Mage_Catalog_Block_Layer_Filter
+ */
+?>
+
+<ol <?php if (count($this->getItems()) > 5): ?> class="accordion-filter" <?php endif; ?>>
+<?php foreach ($this->getItems() as $_item): ?>
+    <li>
+        <?php if ($_item->getCount() > 0): ?>
+        <a href="<?php echo $this->urlEscape($_item->getUrl()) ?>"><?php echo $_item->getLabel() ?></a>
+        <?php else: echo $_item->getLabel() ?>
+        <?php endif; ?>
+        <?php if ($this->shouldDisplayProductCount()): ?>
+        <?php endif; ?>
+    </li>
+<?php endforeach ?>
+</ol>
+<?php if (count($this->getItems()) > 5): ?>
+<div class="open-close-filter">
+    <span class="show"><?php echo $this->__('Show more') ?></span>
+    <span style="display: none;" class="hide"><?php echo $this->__('Show less') ?></span>
+</div>
+<?php endif; ?>

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Oro_Catalog>
+            <version>0.1.0</version>
+        </Oro_Catalog>
+    </modules>
+    <global>
+        <models>
+            <oro_catalog>
+                <class>Oro_Catalog_Model</class>
+                <resourceModel>oro_catalog_resource</resourceModel>
+            </oro_catalog>
+            <oro_catalog_resource>
+                <class>Oro_Catalog_Model_Resource</class>
+            </oro_catalog_resource>
+            <catalog>
+                <rewrite>
+                    <product_url>Oro_Catalog_Model_Product_Url</product_url>
+                </rewrite>
+            </catalog>
+        </models>
+        <catalog>
+            <product>
+                <url>
+                    <model>oro_catalog/product_url</model>
+                </url>
+            </product>
+        </catalog>
+        <helpers>
+            <oro_catalog>
+                <class>Oro_Catalog_Helper</class>
+            </oro_catalog>
+        </helpers>
+    </global>
+</config>

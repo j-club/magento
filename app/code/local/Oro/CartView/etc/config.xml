@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * {magecore_license_notice}
+ *
+ * @category   Oro
+ * @package    Oro_CartView
+ * @copyright  {magecore_copyright}
+ * @license    {magecore_license}
+ */
+-->
+<config>
+    <modules>
+        <Oro_CartView>
+            <version>1.0.0</version>
+        </Oro_CartView>
+    </modules>
+    <global>
+        <resources>
+            <oro_cartview_setup>
+                <setup>
+                    <module>Oro_CartView</module>
+                    <class>Mage_Core_Model_Resource_Setup</class>
+                </setup>
+            </oro_cartview_setup>
+        </resources>
+    </global>
+    <frontend>
+        <layout>
+            <updates>
+                <oro_cartview>
+                    <file>oro/cartview.xml</file>
+                </oro_cartview>
+            </updates>
+        </layout>
+    </frontend>
+</config>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<layout>
+	<itoris_viewmoreproducts_admin_configuration_index>
+		<update handle="editor"/>
+		<reference name="left">
+			<block type="adminhtml/system_config_switcher" name="store_switcher" template="itoris/viewmoreproducts/switcher.phtml"/>
+		</reference>
+		<reference name="content">
+			<block type="itoris_viewmoreproducts/admin_settings_edit" name="setting_edit" />
+		</reference>
+		<reference name="head">
+			<action method="addJs">
+				<file>itoris/viewmoreproducts/admin/helper.js</file>
+			</action>
+		</reference>
+	</itoris_viewmoreproducts_admin_configuration_index>
+</layout>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+   
+    <customer_account_login>
+        <reference name="customer.form.login.extra">
+            <block type="fbintegrator/fb" template="fbintegrator/fb_login.phtml" name="fbintegrator.login-page-connect-container">
+                <block type="fbintegrator/connect" template="fbintegrator/fb_connect.phtml" name="fbintegrator.connect-button"/>
+            </block>
+        </reference>
+    </customer_account_login>
+    
+    <catalog_product_view>
+        <reference name="product.info">
+            <block type="fbintegrator/like" name="fbintegrator.like-button-on-product-page" template="fbintegrator/fb_like.phtml" as="other"/>
+        </reference>
+    </catalog_product_view>
+    
+    <default>
+        <reference name="head">
+            <action method="addCss">
+                <script>css/fbintegrator.css</script>
+            </action>
+            <block type="fbintegrator/meta" template="fbintegrator/fb_meta.phtml" name="fbintegrator.meta-tags"/>
+        </reference>
+        <reference name="content">
+            <block type="fbintegrator/fb" template="fbintegrator/fb_inc.phtml" before="-" name="fbintegrator.fb-inc"/>
+        </reference>
+    </default>
+    
+    <fbintegrator_facebook_form translate="label">
+        <reference name="content">
+            <block type="enterprise_customer/form" template="fbintegrator/fb_required_form.phtml" name="customer_form_user_attributes">
+                <action method="setEntityModelClass">
+                    <code>customer/customer</code>
+                </action>
+            </block>
+        </reference>
+        <update handle="customer_form_template_handle"/>
+    </fbintegrator_facebook_form>
+    
+</layout>

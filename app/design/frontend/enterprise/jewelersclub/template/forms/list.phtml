@@ -1,0 +1,80 @@
+<?php
+/**
+ * Magpleasure Ltd.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE-CE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magpleasure.com/LICENSE-CE.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This package designed for Magento COMMUNITY edition
+ * Magpleasure does not guarantee correct work of this extension
+ * on any other Magento edition except Magento COMMUNITY edition.
+ * Magpleasure does not provide extension support in case of
+ * incorrect edition usage.
+ * =================================================================
+ *
+ * @category   Magpleasure
+ * @package    Magpleasure_Forms
+ * @version    1.0.5
+ * @copyright  Copyright (c) 2011-2012 Magpleasure Ltd. (http://www.magpleasure.com)
+ * @license    http://www.magpleasure.com/LICENSE-CE.txt
+ */
+/** @var Magpleasure_Forms_Block_List $this */
+?>
+<div class="forms">
+    <div class="a-left"><h3><?php echo $this->escapeHtml($this->getForm()->getName()); ?></h3></div>
+    <?php if ($this->getExportEnabled()): ?>
+    <div class="a-right export">Export</div>
+    <?php endif; ?>
+    <div class="clear"></div>
+    <?php if ($this->getListCollection()->getSize()): ?>
+    <?php echo $this->getPagerHtml(); ?>
+    <div class="grid">
+    <table class="data-table box-table form-list<?php if ($this->isClickable()): ?> clickable<?php endif; ?>" id="<?php echo $this->getHtmlId(); ?>" cellspacing="0">
+<!--        <col width="30px" />-->
+        <?php foreach ($this->getForm()->getFields() as $field): ?>
+            <?php if ($field->getDisplayOnFront()): ?>
+            <col />
+            <?php endif; ?>
+        <?php endforeach; ?>
+        <thead>
+            <tr>
+                <?php foreach ($this->getForm()->getFields() as $field): ?>
+                    <?php if ($field->getDisplayOnFront()): ?>
+                    <th><?php echo $this->escapeHtml($field->getQuestion()) ?></th>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($this->getListCollection() as $list): ?>
+            <?php /** @var $list Magpleasure_Forms_Model_List */ ?>
+            <tr <?php if ($this->isClickable()): ?> onclick="setLocation('<?php echo $list->getPostUrl(); ?>');"<?php endif; ?>>
+                <?php foreach ($this->getForm()->getFields() as $field): ?>
+                    <?php if ($field->getDisplayOnFront()): ?>
+                        <?php $key = "field".$field->getId(); ?>
+                    <td><?php echo $this->escapeHtml( $list[$key] ); ?></td>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+    <script type="text/javascript">
+        decorateTable('<?php echo $this->getHtmlId(); ?>', ['odd', 'even', 'first', 'last']);
+    </script>
+    </div>
+    <?php echo $this->getPagerHtml(); ?>
+    <?php else: ?>
+        <?php echo $this->__('No records found.'); ?>
+    <?php endif; ?>
+</div>
+
+
+

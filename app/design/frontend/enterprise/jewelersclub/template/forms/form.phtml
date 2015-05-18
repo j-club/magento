@@ -1,0 +1,70 @@
+<?php
+/**
+ * Magpleasure Ltd.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE-CE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magpleasure.com/LICENSE-CE.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This package designed for Magento COMMUNITY edition
+ * Magpleasure does not guarantee correct work of this extension
+ * on any other Magento edition except Magento COMMUNITY edition.
+ * Magpleasure does not provide extension support in case of
+ * incorrect edition usage.
+ * =================================================================
+ *
+ * @category   Magpleasure
+ * @package    Magpleasure_Forms
+ * @version    1.0.5
+ * @copyright  Copyright (c) 2011-2012 Magpleasure Ltd. (http://www.magpleasure.com)
+ * @license    http://www.magpleasure.com/LICENSE-CE.txt
+ */
+/** @var Magpleasure_Forms_Block_Form $this */
+?>
+<?php if ($this->canDisplay()): ?>
+<div class="forms">
+    <h3><?php echo $this->escapeHtml($this->getForm()->getName()); ?></h3>
+    <?php if ($this->getForm()->getBeforeForm()): ?>
+        <div class="note"><?php echo $this->getForm()->getBeforeForm(); ?></div>
+    <?php endif; ?>
+    <?php if ($this->getSize()): ?>
+        <div class="note form-content"><?php echo $this->getFormHtml(); ?></div>
+    <?php endif; ?>
+    <?php if ($this->getForm()->getAfterForm()): ?>
+        <div class="note"><?php echo $this->getForm()->getAfterForm(); ?></div>
+    <?php endif; ?>
+    <?php if ($this->getSize()): ?>
+        <script type="text/javascript" >
+            var <?php echo $this->getJsObject(); ?> = new VarienForm('<?php echo $this->getForm()->getHtmlId(); ?>');
+            <?php echo $this->getJsObject(); ?>.submit = function(){
+                if(this.validator && this.validator.validate()){
+                    addHiddenFiledToForm('<?php echo $this->getHtmlId(); ?>', 'skey', '<?php echo $this->getSecurityKey(); ?>');
+                    addHiddenFiledToForm('<?php echo $this->getHtmlId(); ?>', 'fid', '<?php echo $this->getHtmlId(); ?>');
+                    addHiddenFiledToForm('<?php echo $this->getHtmlId(); ?>', 'oname', '<?php echo $this->getJsObject(); ?>');
+                    this.form.submit();
+                }
+                return false;
+           };
+        </script>
+        <?php ///TODO Select fields validator ?>
+        <?php ///TODO Submit when "Ctrl + Enter" ?>
+        <div class="buttons">
+        <?php if ($this->getCustomerSession()->isLoggedIn() || $this->getForm()->getGuestCanPost()): ?>
+            <button class="button" title="<?php echo $this->escapeHtml($this->getForm()->getSubmitButtonText()); ?>" type="" onclick="<?php echo $this->getJsObject(); ?>.submit(); return false;">
+                <span>
+                    <span><?php echo $this->escapeHtml($this->getForm()->getSubmitButtonText()); ?></span>
+                </span>
+            </button>
+        <?php else: ?>
+            <?php echo $this->_helper()->__("Please <a href='%s'>login</a> to submit the form", $this->getLoginUrl()); ?>
+        <?php endif; ?>
+        </div>
+    <?php endif; ?>
+</div>
+<?php endif; ?>

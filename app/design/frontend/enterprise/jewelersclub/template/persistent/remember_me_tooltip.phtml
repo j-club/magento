@@ -1,0 +1,43 @@
+<?php
+/**
+ * "Remember Me" popup template (when click on "What's this?")
+ *
+ */
+/** @var $this Mage_Core_Block_Template */
+?>
+<script type="text/javascript">
+//<![CDATA[
+    var showTooltip = function() {
+        this.rememberTip = new Enterprise.Widget.Dialog(
+            '<?php echo $this->__('What is this?');?>',
+            '<p><?php echo $this->__('Checking &quot;Remember Me&quot; will let you access your shopping cart on this computer when you are logged out')?></p>'+
+            '<div class="buttons-set"><button type="button" class="button btn-close"><span><span><?php echo $this->__('Close') ?></span></span></button></div>',
+            'popup-remember-tip'
+        ),
+        $(this.rememberTip.getContent()).select('button.btn-close')[0].onclick = this.rememberTip.hide.bind(this.rememberTip);
+        this.rememberTip.show();
+        return false;
+    }
+
+    var opener;
+    document.observe("dom:loaded", function() {
+        $$('#remember-me-box a').each(function(element) {
+            Event.observe(element, 'click', showTooltip);
+            opener = element;
+            opener.writeAttribute('href','javascript:;');
+        });
+    });
+
+    Enterprise.Widget.Dialog.prototype.place = function() {
+        $(document.body).insert(this._windowOverlay);
+        $(document.body).insert(this._node);
+        this._isPlaced = true;
+        if (opener.viewportOffset().top) {
+            $(this._node).setStyle({
+                margin: '0 0 0 0',
+                top: opener.viewportOffset().top+'px'
+            });
+        }
+    };
+//]]>
+</script>

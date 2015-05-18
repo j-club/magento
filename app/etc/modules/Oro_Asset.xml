@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @category   Oro
+ * @package    Oro_Asset
+ * @copyright  Copyright (c) 2014 Oro Inc. DBA MageCore (http://www.magecore.com)
+ */
+-->
+<config>
+    <modules>
+        <Oro_Asset>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Page />
+                <Mage_Adminhtml />
+            </depends>
+        </Oro_Asset>
+    </modules>
+</config>

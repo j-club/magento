@@ -1,0 +1,44 @@
+<?php
+/**
+ * Magpleasure Ltd.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE-CE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magpleasure.com/LICENSE-CE.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This package designed for Magento COMMUNITY edition
+ * Magpleasure does not guarantee correct work of this extension
+ * on any other Magento edition except Magento COMMUNITY edition.
+ * Magpleasure does not provide extension support in case of
+ * incorrect edition usage.
+ * =================================================================
+ *
+ * @category   Magpleasure
+ * @package    Magpleasure_Forms
+ * @version    1.0.5
+ * @copyright  Copyright (c) 2011-2012 Magpleasure Ltd. (http://www.magpleasure.com)
+ * @license    http://www.magpleasure.com/LICENSE-CE.txt
+ */
+/** @var Magpleasure_Forms_Block_View_Content $this */
+?>
+
+<table cellspacing="0" cellpadding="0" border="0" width="650" style="border:1px solid #EAEAEA;">
+    <col width="25%" />
+    <col />
+    <tbody>
+    <?php $i = 1; ?>
+    <?php foreach ($this->getPostData() as $_data): ?>
+        <tr>
+            <th align="left" bgcolor="#EAEAEA" style="font-size:13px; padding:3px 9px"><?php echo $this->htmlEscape($this->__($_data['label'])) ?></th>
+            <td <?php echo $i%2 ? ' bgcolor="#F6F6F6"' : '' ?> style="font-size:13px; padding:3px 9px"><?php echo $this->htmlEscape($_data['value']) ?></td>
+        </tr>
+        <?php $i++; ?>
+    <?php endforeach;  ?>
+    </tbody>
+</table>

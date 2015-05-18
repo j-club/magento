@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * {magecore_license_notice}
+ *
+ * @category   Oro
+ * @package    Oro_Sociable
+ * @copyright  {magecore_copyright}
+ * @license    {magecore_license}
+ */
+-->
+<config>
+    <modules>
+        <Oro_Sociable>
+            <version>1.0.1</version>
+        </Oro_Sociable>
+    </modules>
+    <global>
+        <models>
+            <oro_sociable>
+                <class>Oro_Sociable_Model</class>
+            </oro_sociable>
+            <sociable>
+                <rewrite>
+                    <observer>Oro_Sociable_Model_Observer</observer>
+                </rewrite>
+            </sociable>
+        </models>
+        <resources>
+            <oro_sociable_setup>
+                <setup>
+                    <module>Oro_Sociable</module>
+                    <class>Mage_Catalog_Model_Resource_Setup</class>
+                </setup>
+            </oro_sociable_setup>
+        </resources>
+    </global>
+    <adminhtml>
+        <events>
+            <catalog_product_save_before>
+                <observers>
+                    <oro_sociable_catalog_product_save_before>
+                        <class>oro_sociable/observer</class>
+                        <method>productSaveBefore</method>
+                    </oro_sociable_catalog_product_save_before>
+                </observers>
+            </catalog_product_save_before>
+            <catalog_product_save_after>
+                <observers>
+                    <oro_sociable_catalog_product_save_after>
+                        <class>oro_sociable/observer</class>
+                        <method>productSaveAfter</method>
+                    </oro_sociable_catalog_product_save_after>
+                </observers>
+            </catalog_product_save_after>
+        </events>
+    </adminhtml>
+    <crontab>
+        <jobs>
+            <sociable_processqueue>
+                <schedule>
+                    <cron_expr />
+                </schedule>
+            </sociable_processqueue>
+            <oro_sociable_processqueue>
+                <run>
+                    <model>oro_sociable/observer::processQueue</model>
+                </run>
+            </oro_sociable_processqueue>
+        </jobs>
+    </crontab>
+</config>

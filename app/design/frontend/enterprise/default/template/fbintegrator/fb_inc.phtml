@@ -1,0 +1,109 @@
+<?php
+/**
+ * aheadWorks Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://ecommerce.aheadworks.com/AW-LICENSE.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This package designed for Magento enterprise edition
+ * aheadWorks does not guarantee correct work of this extension
+ * on any other Magento edition except Magento enterprise edition.
+ * aheadWorks does not provide extension support in case of
+ * incorrect edition usage.
+ * =================================================================
+ *
+ * @category   AW
+ * @package    AW_FBIntegrator
+ * @version    2.2.0
+ * @copyright  Copyright (c) 2010-2012 aheadWorks Co. (http://www.aheadworks.com)
+ * @license    http://ecommerce.aheadworks.com/AW-LICENSE.txt
+ */
+?><div id="fb-root"></div>
+<form id="fb-connect" method="post" action="<?php echo Mage::getUrl('fbintegrator/facebook/connect') ?>"></form>
+
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({ appId: '<?php echo Mage::helper('fbintegrator')->getAppKey() ?>', 
+            status: true, 
+            cookie: true,
+            xfbml: true,
+            oauth: true});
+        
+<?php if (Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+            var aw_fb_code='<?php echo Mage::helper('fbintegrator')->getUrlSecretCode(); ?>';
+            var aw_fb_like_url = '<?php echo $this->getUrl('fbintegrator/facebook/like') ?>';                
+                            
+            FB.Event.subscribe('edge.create',
+            function(response) {
+                new Ajax.Request(aw_fb_like_url, {
+                    method: 'post',
+                    parameters: {url:response, action:'like', code:aw_fb_code},
+                    onSuccess: function(transport){aw_fb_like_response(transport); }
+                });
+            }
+        );
+            FB.Event.subscribe('edge.remove',
+            function(response) {
+                new Ajax.Request(aw_fb_like_url, {
+                    method: 'post',
+                    parameters: {url:response, action:'unlike', code:aw_fb_code},
+                    onSuccess: function(transport){aw_fb_like_response(transport); }
+                });
+            }
+        );
+<?php endif; ?>
+    
+    };
+    
+    function aw_fb_like_response(transport){
+        var json = transport.responseText.evalJSON(true);
+        if("message" in json){
+             $$('.fb-points').first().update('<p>'+json.message+'</p>');
+        }
+    }
+
+    (function() {
+        var e = document.createElement('script'); e.async = true;
+        e.src = document.location.protocol 
+            + '//connect.facebook.net/<?php echo $this->getLocaleCode() ?>/all.js';
+        document.getElementById('fb-root').appendChild(e);
+    }());
+    function aw_fb_login(){
+       
+        FB.getLoginStatus(function(response) {
+            $('fb-loader').setStyle({ display: 'block' });
+            if (response.status === 'connected') {
+                aw_fb_login_a(response);       
+            }else{
+                FB.login(function(response) {
+                    if (response.authResponse) {
+                        aw_fb_login_a(response);
+                    } else {
+                        $('fb-loader').setStyle({ display: 'none' });
+                    }
+                },{scope:'publish_stream,user_birthday,email'});
+            }
+        });
+    }
+
+    function aw_fb_login_a(response){
+
+        if (response.authResponse) {
+            for(var key in response.authResponse) {
+                var hiddenField = document.createElement("input");
+                hiddenField.setAttribute("type", "hidden");
+                hiddenField.setAttribute("name", key);
+                hiddenField.setAttribute("value", response.authResponse[key]);
+                $('fb-connect').appendChild(hiddenField);
+            }
+        }
+        $('fb-connect').submit();
+    }
+</script>

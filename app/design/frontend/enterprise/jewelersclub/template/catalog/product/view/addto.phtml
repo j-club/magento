@@ -1,0 +1,22 @@
+<?php
+/**
+ *
+ * @category   MageCore
+ * @copyright  Copyright (c) 2014 Oro Inc. DBA MageCore (http://www.magecore.com)
+ */
+?>
+
+<?php $_product = $this->getProduct(); ?>
+<?php $_wishlistSubmitUrl = $this->helper('wishlist')->getAddUrl($_product); ?>
+
+<ul class="add-to-links">
+<?php if ($this->helper('wishlist')->isAllow()) : ?>
+    <li><a href="<?php echo $_wishlistSubmitUrl ?>" onclick="productAddToCartForm.submitLight(this, this.href); return false;" class="link-wishlist"><span></span><?php echo $this->__('Add to Wishlist') ?></a></li>
+<?php endif; ?>
+<?php
+    $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
+?>
+<?php if($_compareUrl) : ?>
+
+<?php endif; ?>
+</ul>

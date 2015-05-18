@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<widgets>
+    <forms_button type="forms/button" translate="name description" module="forms">
+        <name>Forms: Link to Form</name>
+        <description>Link to the Form.</description>
+        <parameters>
+            <form_id>
+                <label>Select Form</label>
+                <type>select</type>
+                <visible>1</visible>
+                <required>1</required>
+                <source_model>forms/form</source_model>
+            </form_id>
+        </parameters>
+    </forms_button>
+    <forms_form type="forms/form" translate="name description" module="forms">
+        <name>Forms: Form</name>
+        <description>Content of the Form.</description>
+        <parameters>
+            <form_id>
+                <label>Select Form</label>
+                <type>select</type>
+                <visible>1</visible>
+                <required>1</required>
+                <source_model>forms/form</source_model>
+            </form_id>
+        </parameters>
+    </forms_form>
+    <forms_grid type="forms/list" translate="name description" module="forms">
+        <name>Forms: Grid</name>
+        <description>Grid with results of the Form.</description>
+        <parameters>
+            <form_id>
+                <label>Select Form</label>
+                <type>select</type>
+                <visible>1</visible>
+                <required>1</required>
+                <source_model>forms/form</source_model>
+            </form_id>
+        </parameters>
+    </forms_grid>
+</widgets>

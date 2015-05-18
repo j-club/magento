@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Oro_PageCache>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Enterprise_PageCache/>
+            </depends>
+        </Oro_PageCache>
+    </modules>
+</config>

@@ -1,0 +1,17 @@
+<?php
+/**
+ *
+ * @category   MageCore
+ * @copyright  Copyright (c) 2014 Oro Inc. DBA MageCore (http://www.magecore.com)
+ */
+/** @var $this Enterprise_TargetRule_Block_Catalog_Product_Item */
+$_item = $this->getItem();
+if ($_item):
+    ?>
+    <a href="<?php echo $this->getProductUrl($_item) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_item, 'small_image')->resize(135) ?>" width="135" height="135" alt="<?php echo $this->escapeHtml($_item->getName()) ?>" title="<?php echo $this->escapeHtml($_item->getName()) ?>" /></a>
+    <div class="product-container">
+        <h3 class="product-name"><a href="<?php echo $this->getProductUrl($_item) ?>"><?php echo $this->escapeHtml($_item->getName()) ?></a></h3>
+        <?php echo $this->getReviewsSummaryHtml($_item, 'short') ?>
+        <?php echo $this->getPriceHtml($_item, true, '-upsell') ?>
+    </div>
+<?php endif;?>

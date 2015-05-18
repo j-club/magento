@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category   Oro
+ * @package    Oro_GoogleTrustedStore
+ */
+-->
+<config>
+    <modules>
+        <Oro_GoogleTrustedStore>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Adminhtml/>
+                <Mage_Checkout/>
+            </depends>
+        </Oro_GoogleTrustedStore>
+    </modules>
+</config>

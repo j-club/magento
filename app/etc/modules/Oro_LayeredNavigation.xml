@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Oro_LayeredNavigation>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Itoris_LayeredNavigation/>
+            </depends>
+        </Oro_LayeredNavigation>
+    </modules>
+</config>

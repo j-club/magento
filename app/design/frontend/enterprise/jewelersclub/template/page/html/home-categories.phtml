@@ -1,0 +1,66 @@
+<?php /** @var $this Oro_Category_Block_List */ ?>
+<?php /** @var $categories Mage_Catalog_Model_Resource_Category_Collection */ ?>
+<?php $categories = $this->getListCategories(); ?>
+<?php $count=0; ?>
+<div class="row">
+	<div class="col-10">
+    	<div id="product-images">
+   			<ul class="row">
+				<?php foreach ($categories as $category): ?>
+				
+				<?php if($count%4==0 && $count !=0) 
+				echo '</ul><ul class="row">';
+				?>
+				<li class="col-3">
+					<div class="product-box">
+					<div class="product-img">
+					    <?php if ($category->getThumbnail()): ?>
+					        <?php $_thumbUrl = Mage::getBaseUrl('media').'catalog/category/'.$category->getThumbnail(); ?>
+					        <img src="<?php echo $_thumbUrl; ?>"/>
+					    <?php else: ?>
+					        <img src="<?php echo $this->getSkinUrl(); ?>images/img-20.png"/>
+					    <?php endif; ?>
+					</div>
+					<a href="<?php echo $category->getUrl();?>" class="product-cat-name"><span><?php echo $category->getName(); ?></span></a>
+					<figcaption class="hidden-md hidden-sm hidden-xs">
+					    <span class="fill"></span>
+					    <span class="fill"></span>
+					</figcaption>
+					<?php
+					if ($subCategories = $category->getSubcategories()):
+					    $i=1;
+					    ?>
+					    <div class="overlay hidden-md hidden-sm hidden-xs">
+					    	<div class="padding-box">
+					            <div class="content mCustomScrollbar">
+					                <ul>
+										<?php  foreach ($subCategories as $_item): ?>
+					                		<li><a href="<?php echo $_item->getUrl();?>"><?php echo $_item->getName(); ?></a></li>
+					            		<?php  endforeach; ?>                                           
+					                </ul>
+					            </div>
+					        </div>
+					    </div>
+					<?php else: ?>
+					    <div class="view-products overlay hidden-md hidden-sm hidden-xs">
+					    	<div><a href="<?php echo $category->getUrl();?>">View All</a></div>
+					    </div>
+					<?php endif; ?>
+					</div>
+				</li>   
+				<?php $count++; ?>
+				<?php endforeach; ?>
+			</ul> 
+		</div>
+	</div>
+	<div class="col-2">
+     	<div class="advt-banner hidden-md hidden-sm">
+        	<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('homeadds1')->toHtml();?> 
+        </div>
+    </div>
+    <div class="col-4 visible-xlg">
+    	<div class="xlg-advt-banner">
+    		<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('homeadds2')->toHtml();?> 
+        </div>
+    </div>  
+</div>

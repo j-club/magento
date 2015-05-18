@@ -1,0 +1,111 @@
+<?php
+$itemsCollection = $this->getItemsCollection();
+$processor = $this->helper('cms')->getBlockTemplateProcessor();
+if ($itemsCollection->count()):
+?>
+
+<script type="text/javascript">var lsjQuery = jQuery;var curSkin = 'glass';</script>
+<script type="text/javascript">
+    lsjQuery(document).ready(function() {
+                    if(typeof lsjQuery.fn.layerSlider == "undefined") { lsShowNotice('layerslider_1','jquery'); }
+                        else if(typeof lsjQuery.transit == "undefined" || typeof lsjQuery.transit.modifiedForLayerSlider == "undefined") { lsShowNotice('layerslider_1', 'transit'); }
+                            else {
+                                lsjQuery("#layerslider_1").layerSlider({
+                                    width : '100%',
+                                    height : '420px',
+                                    responsive : true,
+                                    responsiveUnder : 0,
+                                    sublayerContainer : 0,
+                                    autoStart : true,
+                                    pauseOnHover : true,
+                                    firstLayer : 1,
+                                    animateFirstLayer : true,
+                                    randomSlideshow : false,
+                                    twoWaySlideshow : true,
+                                    loops : 0,
+                                    forceLoopNum : true,
+                                    autoPlayVideos : false,
+                                    autoPauseSlideshow : 'auto',
+                                    youtubePreview : 'maxresdefault.jpg',
+                                    keybNav : true,
+                                    touchNav : true,
+                                    skin : 'glass',
+                                    skinsPath : '<?php echo $this->getSkinUrl('css/LayerSlider/skins') ?>',
+                                    globalBGColor : 'transparent',
+                                    navPrevNext : true,
+                                    navStartStop : true,
+                                    navButtons : true,
+                                    hoverPrevNext : true,
+                                    hoverBottomNav : true,
+                                    showBarTimer : false,
+                                    showCircleTimer : false,
+                                    thumbnailNavigation : 'hover',
+                                    tnWidth : 100,
+                                    tnHeight : 60,
+                                    tnContainerWidth : '60%',
+                                    tnActiveOpacity : 35,
+                                    tnInactiveOpacity : 100,
+                                    imgPreload : true,
+                                    yourLogo : false,
+                                    yourLogoStyle : 'left: 10px; top: 10px;',
+                                    yourLogoLink : false,
+                                    yourLogoTarget : '_self',
+                                    cbStart : function(data) { },
+                                    cbStop : function(data) { },
+                                    cbPause : function(data) { },
+                                    cbAnimStart : function(data) { },
+                                    cbAnimStop : function(data) { },
+                                    cbPrev : function(data) { },
+                                    cbNext : function(data) { }
+                                });
+                            }
+                                                    
+                });
+            </script>
+<div class="col-1">
+	<div class="main-banner">
+      	<div class="slider-container">
+			<div class="sizer"> 
+				<div id="layerslider_1" class="ls-wp-container">   
+				<?php foreach ($itemsCollection as $item): ?>
+                  <?php echo $processor->filter($item->getContent()); ?>
+                <?php endforeach; ?>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--div class="col-2">
+	<div class="col-12">
+		<div class="feature-img-1">
+			<a href="#">
+				<div class="col-l zoom_img hidden-md"><img src="{{media url="wysiwyg/side-banner-ring1.png"}}" alt=""></div>
+				<div class="col-r">
+				<div class="cap1 border-b">Diamond Jewellery</div>
+					<div class="cap2">Discover fashion</div>
+				</div>
+			</a>
+		</div>
+	</div>
+	<div class="col-3 hidden-md">
+		<div class="feature-img-2">
+			<a href="#">
+			<div class="cap3"><Span>Special Collection</Span></div>
+			<div class="zoom_img"><img src="{{media url="wysiwyg/side-banner-bangel1.png"}}" width="187" height="106"></div>
+			</a>
+		</div>
+	</div>
+	<div class="col-3">
+		<div class="feature-img-3">
+			<a href="#">
+			<div class="cap3"><Span>Special Collection</Span></div>
+			<div class="zoom_img"><img src="{{media url="wysiwyg/side-banner-earring1.png"}}" width="156" height="111"></div>
+			</a>
+		</div>
+	</div>
+</div-->
+
+<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('homesliderright')->toHtml();?>
+
+<?php endif; ?>

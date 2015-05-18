@@ -1,0 +1,54 @@
+<?php
+/**
+ * aheadWorks Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://ecommerce.aheadworks.com/AW-LICENSE.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This package designed for Magento enterprise edition
+ * aheadWorks does not guarantee correct work of this extension
+ * on any other Magento edition except Magento enterprise edition.
+ * aheadWorks does not provide extension support in case of
+ * incorrect edition usage.
+ * =================================================================
+ *
+ * @category   AW
+ * @package    AW_Advancednewsletter
+ * @version    2.3.2
+ * @copyright  Copyright (c) 2010-2012 aheadWorks Co. (http://www.aheadworks.com)
+ * @license    http://ecommerce.aheadworks.com/AW-LICENSE.txt
+ */
+?><?php
+?>
+<?php if ($this->displayEmail()): ?>
+    <label for="email_an" class="an-data"><?php echo $this->__('Email') ?><span class="required">*</span></label>
+    <input name="email" type="text" id="email_an" class="an-data validate-email required-entry"/>
+<?php endif; ?>
+<?php if ($this->displaySalutation()): ?>
+    <?php 
+    $selected0 = $selected1 = '';
+    $this->getSubscriber()->getSalutation() == 1 ? $selected1 = 'selected="selected"' : $selected0 = 'selected="selected"';
+        ?>
+    <label for="salutation_an" class="an-data"><?php echo $this->__('Salutation') ?><span class="required">*</span></label>
+    <select name="salutation" id="salutation_an" class="an-data required-entry">
+        <option <?php echo $selected0 ?> value="0"><?php echo Mage::getStoreConfig(AW_Advancednewsletter_Block_Subscribe::SALUTATION_FIRST) ?></option>
+        <option <?php echo $selected1 ?> value="1"><?php echo Mage::getStoreConfig(AW_Advancednewsletter_Block_Subscribe::SALUTATION_SECOND) ?></option>
+    </select>
+<?php endif; ?>
+<?php if ($this->displayNames()): ?>
+    <label for="firstname_an" class="an-data"><?php echo $this->__('First name') ?><span class="required">*</span></label>
+    <input name="first_name" type="text" id="firstname_an" class="an-data required-entry"/>
+    <label for="lastname_an" class="an-data"><?php echo $this->__('Last name') ?><span class="required">*</span></label>
+    <input name="last_name" type="text" id="lastname_an" class="an-data required-entry"/>
+<?php endif; ?>
+<?php if($this->displayPhone()): ?>
+    <label for="phone_an" class="an-data"><?php echo $this->__('Phone') ?><span class="required">*</span></label>
+    <input name="phone" type="text" id="phone_an" class="an-data required-entry" value="<?php echo $this->getSubscriber()->getPhone() ?>" />
+<?php endif; ?>

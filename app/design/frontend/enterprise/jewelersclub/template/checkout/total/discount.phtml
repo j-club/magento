@@ -1,0 +1,19 @@
+<?php
+/**
+ *
+ * @category   MageCore
+ * @copyright  Copyright (c) 2014 Oro Inc. DBA MageCore (http://www.magecore.com)
+ */
+?>
+<tr class="discount">
+    <td colspan="<?php echo $this->getColspan(); ?>" style="<?php echo $this->getTotal()->getStyle() ?>" class="a-right">
+        <?php if ($this->getRenderingArea() == $this->getTotal()->getArea()): ?><strong><?php endif; ?>
+            <?php echo $this->escapeHtml($this->getTotal()->getTitle()); ?>
+            <?php if ($this->getRenderingArea() == $this->getTotal()->getArea()): ?></strong><?php endif; ?>
+    </td>
+    <td style="<?php echo $this->getTotal()->getStyle() ?>" class="a-right">
+        <?php if ($this->getRenderingArea() == $this->getTotal()->getArea()): ?><strong><?php endif; ?>
+            <?php echo $this->helper('checkout')->formatPrice($this->getTotal()->getValue()) ?>
+            <?php if ($this->getRenderingArea() == $this->getTotal()->getArea()): ?></strong><?php endif; ?>
+    </td>
+</tr>

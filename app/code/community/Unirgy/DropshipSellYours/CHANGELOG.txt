@@ -1,0 +1,15 @@
+===== 1.1.1 =====
+  * Fixed breadcrumbs in sell yours form page
+
+===== 1.1.0 =====
+  * Added "My Sell List" menu item
+  * Added downloadable, virtual to filters/options
+
+===== 1.0.2 =====
+  * Fixed wrong reference to microsite
+
+===== 1.0.1 =====
+  * Show "Select and Sell" menu item in vendor portal
+  * Fixed compatibility with IE9 dynamic rows js
+
+===== 1.0 - Initial release =====

@@ -1,0 +1,47 @@
+<?php
+/**
+ *
+ * @category   MageCore
+ * @copyright  Copyright (c) 2014 Oro Inc. DBA MageCore (http://www.magecore.com)
+ */
+?>
+<?php
+/** @var $this Itoris_LayeredNavigation_Block_Layer_View */
+?>
+<?php if($this->canShowBlock() && $this->getLayer()->getProductCollection()->getSize()): ?>
+<form id="itoris_layered_navigation_form" action="">
+	<div class="block itoris_laynav">
+		<div class="block-title">
+			<div>
+				<strong><span><?php echo $this->__('Shop By') ?></span></strong>
+                <a class="opener-mobile" href="#">opener</a>
+			</div>
+		</div>
+		<div class="block-content">
+			<?php include dirname(__FILE__).'/view/content.phtml' ?>
+		</div>
+	</div>
+
+	<div style="display:none;" class="ln-loader-back">
+		<div class="ln-loader-image"></div>
+		<div class="ln-loader-title"><?php echo $this->__('Loading... Please wait'); ?></div>
+	</div>
+</form>
+<?php endif; ?>
+<?php if ($block = $this->getLayout()->getBlock('layer_filter_price_range')) {
+	/** @var $block Itoris_LayeredNavigation_Block_Layer_Filter_Price_Range */
+	?>
+	<script type="text/javascript">
+		//<![CDATA[
+		LayNav.PriceRange.init(<?php echo Mage::helper('core')->jsonEncode($block->getConfig()) ?>);
+        LayNav.canUseCache = <?php echo Mage::getStoreConfig('system/page_cache/allowed_depth') ? 1 : 0 ?>;
+		//]]>
+	</script>
+<?php } ?>
+<?php if ($this->getRequest()->getPost('restore_fragment')) { ?>
+	<script type="text/javascript">
+		//<![CDATA[
+		Event.observe(window, 'load', LayNav.updateUrlFragment.bind(LayNav));
+		//]]>
+	</script>
+<?php } ?>

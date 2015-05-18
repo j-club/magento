@@ -1,0 +1,56 @@
+<?php
+/**
+ * aheadWorks Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://ecommerce.aheadworks.com/AW-LICENSE.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This package designed for Magento enterprise edition
+ * aheadWorks does not guarantee correct work of this extension
+ * on any other Magento edition except Magento enterprise edition.
+ * aheadWorks does not provide extension support in case of
+ * incorrect edition usage.
+ * =================================================================
+ *
+ * @category   AW
+ * @package    AW_FBIntegrator
+ * @version    2.2.0
+ * @copyright  Copyright (c) 2010-2012 aheadWorks Co. (http://www.aheadworks.com)
+ * @license    http://ecommerce.aheadworks.com/AW-LICENSE.txt
+ */
+?><div class="fb-fb_required_form">
+    <h1><?php echo $this->__('Create an Account') ?></h1>
+    <form id="form-validate" method="post" action="<?php echo $this->getUrl('fbintegrator/facebook/connect'); ?>">
+        <input type="hidden" name="from-required-form" value="1">
+        <div class="fieldset">
+            <h2 class="legend"><?php echo $this->__('Personal Information') ?></h2>
+            <ul class="form-list">
+                <?php
+                $customerAttributes = Mage::helper('fbintegrator')->getRequiredAttributes();
+                foreach ($customerAttributes as $attr) {
+                    $attributeContent = $this->getAttributeHtml($attr);
+                    if ($attributeContent) {
+                        echo '<li>' . $attributeContent . '</li>';
+                    }
+                }
+                ?>
+            </ul>
+        </div>
+        <div class="buttons-set">
+            <p class="required">* <?php echo $this->__('Required Fields') ?></p>
+            <button class="button" title="<?php echo $this->__('Submit') ?>" type="submit"><span><span><?php echo $this->__('Submit') ?></span></span></button>
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    //<![CDATA[
+    var dataForm = new VarienForm('form-validate', true);
+    //]]>
+</script>

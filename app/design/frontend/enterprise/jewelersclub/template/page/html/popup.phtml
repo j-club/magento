@@ -1,0 +1,36 @@
+<?php if($this->helper('oro_page')->isNewUser()):?>
+    <a class="lightbox" href="#popup1" style="display: none"></a>
+    <div class="popup-holder">
+        <div id="popup1" class="lightbox">
+            <div class="popup-frame">
+                <?php echo $this->getChildHtml('subscribe-popup-body'); ?>
+                <form id="advancednewsletter-form-2" method="post" action="<?php echo $this->getUrl('advancednewsletter/index/subscribe', array('_secure'=>Mage::app()->getStore(true)->isCurrentlySecure())) ?>">
+                    <fieldset>
+                        <div class="row">
+                            <?php echo $this->getBlockHtml('advancednewsletter.options.' . Mage::getStoreConfig(AW_Advancednewsletter_Block_Subscribe::STYLES_PATH)); ?>
+                        </div>
+                        <div class="row">
+                            <label for="txt1"><?php echo $this->__('Enter your email and we`ll send a promo code to your inbox.') ?></label>
+                            <div class="holder-form">
+                                <div class="holder">
+                                    <input id="txt1" name="email" type="text" class="text validate-email required-entry"/>
+                                    <input type="submit" value="Sign up" class="submit" />
+                                </div>
+                            </div>
+                        </div>
+                        <p><?php echo $this->getChildHtml('subscribe-popup'); ?></p>
+                        <span class="link-close"><a class="close" href="#"><?php echo $this->__('No Thanks. Take me to the site!') ?></a></span>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var advancednewsletterForm1 = new VarienForm('advancednewsletter-form-2');
+        Mage.Cookies.set('<?php echo Oro_Page_Helper_Data::POPUP_SUBSCRIPTION_COOKIE ?>', 1);
+        setTimeout(function(){
+                jQuery("a.lightbox").click()
+            }
+            ,100);
+    </script>
+<?php endif ?>

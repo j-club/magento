@@ -1,0 +1,81 @@
+<?php
+/**
+ * {magecore_license_notice}
+ *
+ * @category   design
+ * @package    enterprise_default
+ * @copyright  {magecore_copyright}
+ * @license    {magecore_license}
+ */
+/**
+ * @var $this Oro_ProductQuickView_Block_Popup
+ */
+?>
+<?php $_product = $this->getProduct(); ?>
+<?php $_helper = $this->helper('catalog/output'); ?>
+<?php $mediaBlock = $this->getChild('media')->setProduct($_product); ?>
+<?php $_imageSize = 200; ?>
+<?php $_smallImageSize = 68; ?>
+
+<div class="product-img-box">
+    <p class="product-image" id="popup-image-<?php echo $_product->getId(); ?>-0">
+    <?php
+    $_img = '<img src="'.$this->helper('catalog/image')->init($_product, 'image')->resize($_imageSize).'" alt="'.$this->escapeHtml($_product->getImageLabel()).'" title="'.$this->escapeHtml($_product->getImageLabel()).'" />';
+    echo $_helper->productAttribute($_product, $_img, 'image');
+    ?>
+    </p>
+    <?php if (count($mediaBlock->getGalleryImages()) > 0): ?>
+        <?php foreach ($mediaBlock->getGalleryImages() as $_image): ?>
+            <p class="product-image" id="popup-image-<?php echo $_product->getId(); ?>-<?php echo $_image->getValueId() ?>" style="display:none">
+                <img src="<?php echo $this->helper('catalog/image')->init($mediaBlock->getProduct(), 'image', $_image->getFile())->resize($_imageSize); ?>" width="<?php echo $_imageSize ?>" height="<?php echo $_imageSize ?>" alt="<?php echo $this->escapeHtml($_image->getLabel()) ?>" />
+            </p>
+        <?php endforeach; ?>
+        <div class="more-views">
+            <ul>
+                <?php foreach ($mediaBlock->getGalleryImages() as $_image): ?>
+                    <li>
+                        <a href="javascript:;" id="popup-gallery-<?php echo $_product->getId(); ?>-<?php echo $_image->getValueId() ?>" title="<?php echo $this->escapeHtml($_image->getLabel()) ?>">
+                            <img src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->resize($_smallImageSize); ?>" width="<?php echo $_smallImageSize ?>" height="<?php echo $_smallImageSize ?>" alt="<?php echo $this->escapeHtml($_image->getLabel()) ?>" />
+                        </a>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    <?php endif; ?>
+</div>
+<div class="description-tab-section">
+    <div class="product-name">
+        <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+    </div>
+    <?php echo $this->getReviewsSummaryHtml($_product, false, true) ?>
+    <?php echo $this->getPriceHtml($_product, true) ?>
+    <?php if($_product->isSaleable()): ?>
+        <div class="add-to-cart">
+            <div class="holder-add-to-cart qtu-holder-cart">
+                <?php if(!$_product->isGrouped()): ?>
+                    <label for="qty"><?php echo $this->__('Qty:') ?></label>
+                    <?php $_defaultQty = $this->getProductDefaultQty() * 1; ?>
+                    <input type="text" name="qty" id="qty" maxlength="12" value="<?php echo $_defaultQty ? $_defaultQty : 1; ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
+                <?php endif; ?>
+            </div>
+            <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="$('product_addtocart_form_<?php echo $_product->getId() ?>').submit()"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+        </div>
+    <?php endif; ?>
+    <ul class="add-to-links">
+        <?php if ($this->helper('wishlist')->isAllow()) : ?>
+            <li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
+        <?php endif; ?>
+        <li><a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>" class="link-friend"><?php echo $this->__('Tell A Friend') ?></a></li>
+    </ul>
+    <div class="social-plugin" id="social-plugin-<?php echo $_product->getId() ?>">
+        <div class="social-hold">
+            <a href="//www.pinterest.com/pin/create/button/?url=<?php echo urlencode($_product->getProductUrl()) ?>&media=<?php echo $this->helper('catalog/image')->init($_product, 'image') ?>&description=<?php echo urlencode($_product->getName()) ?>" data-pin-do="buttonPin" data-pin-config="above"><img src="<?php echo $this->getSkinUrl('images/pinit.png') ?>" /></a>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-url="<?php echo $_product->getProductUrl(); ?>" data-text="<?php echo $_product->getName()?>">Tweet</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        </div>
+        <div class="iframe-holder">
+            <iframe src="//www.facebook.com/plugins/like.php?href=<?php echo urlencode($_product->getProductUrl()); ?>&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:21px; width: 110px; float: left;" allowTransparency="true"></iframe>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,39 @@
+<?php
+/**
+ *
+ * @category   MageCore
+ * @copyright  Copyright (c) 2014 Oro Inc. DBA MageCore (http://www.magecore.com)
+ */
+/**
+ * @var $this Mage_Tax_Block_Checkout_Grandtotal
+ * @see Mage_Tax_Block_Checkout_Grandtotal
+ */
+?>
+<?php if ($this->includeTax() && $this->getTotalExclTax()>=0):?>
+    <tr>
+        <td style="<?php echo $this->getStyle() ?>" class="a-right" colspan="<?php echo $this->getColspan(); ?>">
+            <strong><?php echo $this->helper('tax')->__('Grand Total Excl. Tax')?>11</strong>
+        </td>
+        <td style="<?php echo $this->getStyle() ?>" class="a-right">
+            <strong><?php echo $this->helper('checkout')->formatPrice($this->getTotalExclTax()) ?></strong>
+        </td>
+    </tr>
+    <?php echo $this->renderTotals('taxes', $this->getColspan()); ?>
+    <tr>
+        <td style="<?php echo $this->getStyle() ?>" class="a-right" colspan="<?php echo $this->getColspan(); ?>">
+            <strong><?php echo $this->helper('tax')->__('Grand Total Incl. Tax')?></strong>
+        </td>
+        <td style="<?php echo $this->getStyle() ?>" class="a-right">
+            <strong><?php echo $this->helper('checkout')->formatPrice($this->getTotal()->getValue()) ?></strong>
+        </td>
+    </tr>
+<?php else:?>
+    <tr>
+        <td style="<?php echo $this->getStyle() ?>" class="a-right" colspan="<?php echo $this->getColspan(); ?>">
+            <strong><?php echo $this->getTotal()->getTitle() ?></strong>
+        </td>
+        <td style="<?php echo $this->getStyle() ?>" class="a-right">
+            <strong><?php echo $this->helper('checkout')->formatPrice($this->getTotal()->getValue()) ?></strong>
+        </td>
+    </tr>
+<?php endif;?>

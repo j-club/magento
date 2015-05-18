@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Oro_Conf>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Amasty_Conf/>
+
+            </depends>
+        </Oro_Conf>
+    </modules>
+</config>

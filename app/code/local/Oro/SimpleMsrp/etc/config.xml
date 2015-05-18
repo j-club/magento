@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * {magecore_license_notice}
+ *
+ * @category   Oro
+ * @package    Oro_SimpleMsrp
+ * @copyright  {magecore_copyright}
+ * @license    {magecore_license}
+ */
+-->
+<config>
+    <modules>
+        <Oro_SimpleMsrp>
+            <version>1.0.0</version>
+        </Oro_SimpleMsrp>
+    </modules>
+    <global>
+        <helpers>
+            <oro_simplemsrp>
+                <class>Oro_SimpleMsrp_Helper</class>
+            </oro_simplemsrp>
+        </helpers>
+        <blocks>
+            <oro_simplemsrp>
+                <class>Oro_SimpleMsrp_Block</class>
+            </oro_simplemsrp>
+            <onsale>
+                <rewrite>
+                    <product_label>Oro_SimpleMsrp_Block_Product_Label</product_label>
+                </rewrite>
+            </onsale>
+        </blocks>
+        <resources>
+            <oro_simplemsrp_setup>
+                <setup>
+                    <module>Oro_SimpleMsrp</module>
+                    <class>Mage_Catalog_Model_Resource_Setup</class>
+                </setup>
+            </oro_simplemsrp_setup>
+        </resources>
+    </global>
+</config>

@@ -1,0 +1,39 @@
+<?php
+/**
+ *
+ * @category   MageCore
+ * @copyright  Copyright (c) 2014 Oro Inc. DBA MageCore (http://www.magecore.com)
+ */
+?>
+<?php /* @var $this Mage_Catalog_Block_Product_View_Abstract */ ?>
+<?php
+$_product = $this->getProduct();
+?>
+<?php $vendors = Mage::helper('udmulti/data')->getMultiVendorData(array($_product), true); ?>
+
+
+<?php echo $this->getChildHtml('product_type_data_extra') ?>
+<?php echo $this->getPriceHtml($_product) ?>
+<?php echo $this->getChildHtml('earn_points') ?>
+<?php echo $this->getChildHtml('other');?>
+<div class="sold">
+        <?php foreach ($vendors as $id => $vendor): ?>
+            <?php
+            $vendor = Mage::helper('udropship/data')->getVendor($vendor->getVendorName());
+            Mage::helper('udratings')->useMyEt();
+            Mage::getModel('review/review')->getEntitySummary($vendor, Mage::app()->getStore()->getId(), true);
+            Mage::helper('udratings')->resetEt();
+            ?>
+
+    <div class="sold-holder">
+            <span><?php echo $this->__('Sold by '); ?><a
+                    href="<?php echo Mage::helper('umicrosite')->getVendorBaseUrl($vendor); ?>"><?php echo $vendor->getVendorName() ?></a></span>
+            <div class="ratings sold-rating">
+                <div class="rating-box">
+                    <div style="width:<?php echo $vendor->getRatingSummary()->getRatingSummary() ?>%;" class="rating"></div>
+                </div>
+            </div>
+    </div>
+        <?php endforeach ?>
+
+</div>

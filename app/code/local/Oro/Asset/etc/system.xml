@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/**
+ * @category   Oro
+ * @package    Oro_Asset
+ * @copyright  Copyright (c) 2014 Oro Inc. DBA MageCore (http://www.magecore.com)
+ */
+-->
+<config>
+    <sections>
+        <dev>
+            <groups>
+                <oro_asset translate="label" module="oro_asset">
+                    <label>Media Assets Optimization</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>200</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enable</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </enabled>
+                        <style translate="label">
+                            <label>Mode</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>oro_asset/system_config_source_style</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </style>
+                        <auto_increment translate="label comment">
+                            <label>Auto Increment</label>
+                            <comment><![CDATA[Automatically increment version after clearing media cache.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </auto_increment>
+                        <js_version translate="label">
+                            <label>JavaScript Version</label>
+                            <frontend_type>label</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </js_version>
+                        <css_version translate="label">
+                            <label>CSS Version</label>
+                            <frontend_type>label</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </css_version>
+                        <updated_at translate="label">
+                            <label>Version Updated At</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>oro_asset/adminhtml_system_config_date</frontend_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </updated_at>
+                        <increment translate="label">
+                            <frontend_type>button</frontend_type>
+                            <frontend_model>oro_asset/adminhtml_system_config_increment</frontend_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </increment>
+                    </fields>
+                </oro_asset>
+            </groups>
+        </dev>
+    </sections>
+</config>

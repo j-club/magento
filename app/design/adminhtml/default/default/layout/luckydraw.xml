@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<luckydrawadmin_adminhtml_program_index>
+		<reference name="content">
+			<block type="luckydraw/adminhtml_program" name="luckydraw_program" />
+		</reference>
+	</luckydrawadmin_adminhtml_program_index>
+	<luckydrawadmin_adminhtml_program_edit>
+		<reference name="head">
+			<action method="addJs"><script>prototype/tooltip.js</script></action>
+			<action method="addJs"><script>prototype/tooltip_manager.js</script></action>
+			<action method="setCanLoadTinyMce"><flag>1</flag></action>
+			<action method="addJs"><script>mage/adminhtml/variables.js</script></action>
+			<action method="addJs"><script>mage/adminhtml/wysiwyg/widget.js</script></action>
+			<action method="addJs"><script>lib/flex.js</script></action>
+			<action method="addJs"><script>lib/FABridge.js</script></action>
+			<action method="addJs"><script>mage/adminhtml/flexuploader.js</script></action>
+			<action method="addJs"><script>mage/adminhtml/browser.js</script></action>
+			<action method="addJs"><script>prototype/window.js</script></action>
+			<action method="addItem"><type>js_css</type><name>prototype/windows/themes/default.css</name></action>
+			<action method="addItem"><type>js_css</type><name>prototype/windows/themes/magento.css</name></action>
+			<action method="addItem"><type>js</type><name>mage/adminhtml/wysiwyg/tiny_mce/setup.js</name><params/></action>
+			<action method="addItem"><type>js</type><name>tiny_mce/tiny_mce.js</name><params/></action>
+		</reference>
+	</luckydrawadmin_adminhtml_program_edit>
+	
+	<luckydrawadmin_adminhtml_code_index>
+		<reference name="content">
+			<block type="luckydraw/adminhtml_code" name="luckydraw_code" />
+		</reference>
+	</luckydrawadmin_adminhtml_code_index>
+	
+	<adminhtml_sales_order_view>
+		<reference name="order_totals">
+			<block type="luckydraw/sales_luckydrawtotal" />
+		</reference>
+	</adminhtml_sales_order_view>
+	<adminhtml_sales_order_invoice_new>
+		<reference name="invoice_totals">
+			<block type="luckydraw/sales_luckydrawtotal" />
+		</reference>
+	</adminhtml_sales_order_invoice_new>
+	<adminhtml_sales_order_invoice_view>
+		<reference name="invoice_totals">
+			<block type="luckydraw/sales_luckydrawtotal" />
+		</reference>
+	</adminhtml_sales_order_invoice_view>
+	<adminhtml_sales_order_creditmemo_new>
+		<reference name="creditmemo_totals">
+			<block type="luckydraw/sales_luckydrawtotal" />
+		</reference>
+	</adminhtml_sales_order_creditmemo_new>
+	<adminhtml_sales_order_creditmemo_view>
+		<reference name="creditmemo_totals">
+			<block type="luckydraw/sales_luckydrawtotal" />
+		</reference>
+	</adminhtml_sales_order_creditmemo_view>
+</layout>

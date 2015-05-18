@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <action method="addCss"><styles>forms/css/styles.css</styles></action>
+            <action method="addJs"><script>magpleasure/common.js</script></action>
+        </reference>
+    </default>
+    <forms_index_index>
+        <reference name="content">
+            <block type="forms/form" as="forms.form" name="forms.form" >
+                <action method="setFormPageLayout" />
+            </block>
+        </reference>
+    </forms_index_index>
+
+    <forms_index_view>
+        <reference name="content">
+            <block type="forms/view" as="forms.view" name="forms.view" >
+                <action method="setFormPageLayout" />
+            </block>
+        </reference>
+    </forms_index_view>
+</layout>

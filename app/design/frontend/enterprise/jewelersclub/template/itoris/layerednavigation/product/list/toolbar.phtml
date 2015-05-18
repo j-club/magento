@@ -1,0 +1,47 @@
+<?php
+/**
+ *
+ * @category   MageCore
+ * @copyright  Copyright (c) 2014 Oro Inc. DBA MageCore (http://www.magecore.com)
+ */
+?>
+<?php /** @var $this Mage_Catalog_Block_Product_List_Toolbar */ ?>
+<?php if(count($this->getCollection()->getAllIds())): ?>
+<?php
+	$params = array(
+		'limit' => $this->getLimit(),
+		'mode'  => $this->getCurrentMode(),
+		'order' => $this->getCurrentOrder(),
+		'dir'   => $this->getCurrentDirection(),
+		'p'     => $this->getCurrentPage(),
+	);
+?>
+<script type="text/javascript">
+	LayNav.toolbarParams = <?php echo Zend_Json::encode($params) ?>;
+</script>
+<div class="toolbar">
+    <div class="pager">
+        <p class="amount">
+            <?php if($this->getLastPageNum()>1): ?>
+                <?php echo $this->__('Items %s-%s of %s', $this->getFirstNum(), $this->getLastNum(), $this->getTotalNum()) ?>
+            <?php else: ?>
+                <?php echo $this->__('%s Item(s)', $this->getTotalNum()) ?>
+            <?php endif; ?>
+        </p>
+
+        <div class="limiter">
+            <label><?php echo $this->__('Show') ?></label>
+            <select onchange="LayNav.sendWithAdditionalParams({limit : this.value })">
+            <?php foreach ($this->getAvailableLimit() as  $_key=>$_limit): ?>
+                <option value="<?php echo $_key ?>"<?php if($this->isLimitCurrent($_key)): ?> selected="selected"<?php endif ?>>
+                    <?php echo $_limit ?>
+                </option>
+            <?php endforeach; ?>
+            </select> <?php echo $this->__('per page') ?>
+        </div>
+
+        <?php echo $this->getPagerHtml() ?>
+
+    </div>
+</div>
+<?php endif ?>

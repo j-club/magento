@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento Enterprise Edition
+ */
+-->
+<layout version="0.1.0">
+    <default>
+        <reference name="root">
+            <reference name="top.links">
+                <action method="removeLinkByUrl">
+                    <url helper="customer/getAccountUrl"/>
+                </action>
+            </reference>
+        </reference>
+        <reference name="head">
+            <action method="addJs">
+                <file>jquery/jquery-1.10.2.min.js</file>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/open-close.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/clear.js</name>
+                <params/>
+                <if></if>
+            </action>
+            <block type="core/text" name="pinterest">
+                <action method="setText">
+                    <text>
+                        <![CDATA[<script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>]]>
+                    </text>
+                </action>
+            </block>
+            <action method="addItem"><type>skin_js</type><name>js/jquery.fitvids.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/main.js</name></action>
+            <action method="addCss"><stylesheet>css/fancybox.css</stylesheet></action>
+        </reference>
+        <reference name="footer">
+            <block type="core/template" name="newsletter" as="newsletter" template="newsletter/subscribe.phtml"/>
+        </reference>
+        <reference name="right">
+            <remove name="right.permanent.callout"/>
+            <remove name="right.poll"/>
+            <remove name="paypal.partner.right.logo"/>
+            <!--remove name="catalog.compare.sidebar"/-->
+            <remove name="right.reports.product.viewed"/>
+            <remove name="right.reports.product.compared"/>
+            <remove name="wishlist_sidebar"/>
+            <block type="cms/block" name="sidebar.block">
+                <action method="setBlockId">
+                    <block_id>sidebar_block</block_id>
+                </action>
+            </block>
+            <remove name="sale.reorder.sidebar"/>
+        </reference>
+        <reference name="left">
+            <remove name="tags_popular"/>
+            <action method="unsetChild">
+                <name>cart_sidebar</name>
+            </action>
+        </reference>
+    </default>
+    <cms_index_index>
+        <reference name="footer">
+            <block type="core/template" name="footer-plugin" template="page/html/footer-plugin.phtml"/>
+        </reference>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/jquery.carouFredSel-6.2.1-packed.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/gallery.js</name>
+                <params/>
+                <if></if>
+            </action>
+        </reference>
+    </cms_index_index>
+    <catalog_category_default>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/jquery.carouFredSel-6.2.1-packed.js</name>
+                <params/>
+                <if></if>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/gallery.js</name>
+                <params/>
+                <if></if>
+            </action>
+        </reference>
+    </catalog_category_default>
+    <catalog_product_view>
+        <reference name="product.info.additional">
+            <remove name="product_tag_list"/>
+        </reference>
+    </catalog_product_view>
+    <PRODUCT_TYPE_configurable>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/configurable.js</name>
+                <params/>
+                <if></if>
+            </action>
+        </reference>
+    </PRODUCT_TYPE_configurable>
+</layout>

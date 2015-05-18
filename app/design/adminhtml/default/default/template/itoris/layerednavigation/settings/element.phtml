@@ -1,0 +1,140 @@
+<?php 
+/**
+ * ITORIS
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the ITORIS's Magento Extensions License Agreement
+ * which is available through the world-wide-web at this URL:
+ * http://www.itoris.com/magento-extensions-license.html
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to sales@itoris.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade the extensions to newer
+ * versions in the future. If you wish to customize the extension for your
+ * needs please refer to the license agreement or contact sales@itoris.com for more information.
+ *
+ * @category   ITORIS
+ * @package    ITORIS_LAYEREDNAVIGATION
+ * @copyright  Copyright (c) 2012 ITORIS INC. (http://www.itoris.com)
+ * @license    http://www.itoris.com/magento-extensions-license.html  Commercial License
+ */
+?>
+<?php /** @var $_element Mage_Adminhtml_Block_Widget_Form_Renderer_Fieldset_Element */
+$_element = $this->getElement();
+$_note    = $_element->getNote();
+$_trId    = $_element->getHtmlContainerId();
+$_class   = $_element->getFieldsetHtmlClass();
+?>
+<?php if (!$_element->getNoDisplay()) { ?>
+<tr<?php if($_trId){ ?> id="<?php echo $_trId ?>"<?php } ?>>
+    <?php if ($_element->getType()=='hidden') { ?>
+    <td colspan="2" class="hidden"><?php echo trim($_element->getElementHtml()) ?></td>
+    <?php } else { ?>
+    <td class="label<?php echo $_class ? " {$_class}-label" : ''?>"><?php echo trim($_element->getLabelHtml()) ?></td>
+    <td class="<?php echo $_element->hasValueClass() ? $_element->getValueClass() : 'value' ?><?php echo $_class ? " {$_class}-value" : ''?>">
+        <?php echo trim($_element->getElementHtml()) ?>
+        <input type="hidden" name="settings[<?php echo $_element->getId() ?>][type]" value="<?php echo $_element->getDataType() ?>" />
+
+        <?php if ($_note) { ?>
+            <p class="note<?php echo $_class ? " {$_class}-note" : ''?>" id="note_<?php echo $_element->getId()?>"><span><?php echo $_note ?></span></p>
+        <?php } ?>
+		<?php
+			if (Mage::app()->getRequest()->getParam('store')) {
+				$whatUse = Mage::helper('itoris_layerednavigation')->__('Use Website');
+			} elseif (Mage::app()->getRequest()->getParam('website')) {
+				$whatUse = Mage::helper('itoris_layerednavigation')->__('Use Default');
+			}
+			?>
+    </td>
+
+   <td style="padding:5px;">
+        <?php if(isset($whatUse)) {	?>
+				<input type="checkbox" id="check_<?php echo $_element->getId() ?>" name="settings[<?php echo $_element->getId() ?>][use_parent]"
+				    onclick="itorisToggleValueElements(this, $('<?php echo $_element->getId() ?>').up(), ['img'])"
+					<?php if($_element->getUseParentValue()) {?>checked="checked"<?php } ?> />
+
+                <label for="check_<?php echo $_element->getId() ?>"><?php echo $whatUse ?></label>
+				<script type="text/javascript">
+					Event.observe(window, 'load', function() {
+						window.setTimeout(function() {
+							itorisToggleValueElements($('check_<?php echo $_element->getId() ?>'),$('<?php echo $_element->getId() ?>').up(), ['img']);
+						}, 200);
+					});
+				</script>
+		<?php } ?>
+	</td>
+
+
+    <td class="scope-label">
+        [STORE VIEW]
+    </td>
+    <?php } ?>
+</tr>
+<?php } ?>
+<script type="text/javascript">
+//<![CDATA[
+if (typeof(itorisToggleValueElements) == 'undefined') {
+
+	function itorisToggleValueElements(checkbox, container, excludedElements, checked){
+		if(container && checkbox){
+			var ignoredElements = [checkbox];
+			if (typeof excludedElements != 'undefined') {
+				if (Object.prototype.toString.call(excludedElements) != '[object Array]') {
+					excludedElements = [excludedElements];
+				}
+				for (var i = 0; i < excludedElements.length; i++) {
+					ignoredElements.push(excludedElements[i]);
+				}
+			}
+			//var elems = container.select('select', 'input');
+			var elems = Element.select(container, ['select', 'input', 'textarea', 'button', 'img']);
+			var isDisabled = (checked != undefined ? checked : checkbox.checked);
+			elems.each(function (elem) {
+				if (typeof(checkByProductPriceType) == "undefined" || checkByProductPriceType(elem)) {
+					var isIgnored = false;
+					for (var i = 0; i < ignoredElements.length; i++) {
+						if (elem == ignoredElements[i]) {
+							isIgnored = true;
+							break;
+						}
+					}
+					if (isIgnored) {
+						return;
+					}
+					elem.disabled=isDisabled;
+					if (isDisabled) {
+						itorisTinyMceToggle(elem.id, true);
+						elem.addClassName('disabled');
+					} else {
+						itorisTinyMceToggle(elem.id, false);
+						elem.removeClassName('disabled');
+					}
+
+					if(elem.tagName == 'IMG') {
+						isDisabled ? elem.hide() : elem.show();
+					}
+				}
+			})
+		}
+	}
+
+	function itorisTinyMceToggle(id, disabled) {
+		var inst = tinyMCE.get(id);
+		if (inst) {
+			inst.getDoc().designMode = disabled ? 'Off' : 'On';
+
+			if (disabled) {
+				$$('#'+id+'_tbl .mceToolbar')[0].style.display = 'none';
+			} else {
+				$$('#'+id+'_tbl .mceToolbar')[0].style.display = '';
+			}
+		}
+	}
+
+}
+//]]>
+</script>

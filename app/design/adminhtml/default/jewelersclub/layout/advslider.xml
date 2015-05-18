@@ -1,0 +1,30 @@
+<layout>
+    <adminhtml_catalog_category_edit>
+        <reference name="tabs">
+            <block type="oro_advslider/adminhtml_catalog_category_tab_banners" name="category.banner.grid">
+                <block type="oro_advslider/adminhtml_catalog_category_tab_banners_grid" name="related_category_banners_grid"/>
+                <block type="adminhtml/widget_grid_serializer" name="banners_grid_serializer">
+                    <reference name="banners_grid_serializer">
+                        <action method="initSerializerBlock">
+                            <grid_block_name>related_category_banners_grid</grid_block_name>
+                            <data_callback>getRelatedBannersByCategory</data_callback>
+                            <hidden_input_name>related_banners</hidden_input_name>
+                            <reload_param_name>selected_category_banners</reload_param_name>
+                        </action>
+                        <action method="addColumnInputName">
+                            <input_name>position</input_name>
+                        </action>
+                    </reference>
+                </block>
+            </block>
+            <action method="addTab"><name>banners_section</name><block>category.banner.grid</block></action>
+            <block type="oro_advslider/adminhtml_permission_monitor" name="bannner.permission.monitor"/>
+        </reference>
+    </adminhtml_catalog_category_edit>
+
+    <!-- Binding Banners Grid for Category -->
+    <adminhtml_advslider_categorybannersgrid>
+        <remove name="root"/>
+        <block type="oro_advslider/adminhtml_catalog_category_tab_banners_grid" name="related_category_banners_grid" output="toHtml"/>
+    </adminhtml_advslider_categorybannersgrid>
+</layout>

@@ -1,0 +1,33 @@
+<?php
+/**
+ * aheadWorks Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://ecommerce.aheadworks.com/AW-LICENSE.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This package designed for Magento enterprise edition
+ * aheadWorks does not guarantee correct work of this extension
+ * on any other Magento edition except Magento enterprise edition.
+ * aheadWorks does not provide extension support in case of
+ * incorrect edition usage.
+ * =================================================================
+ *
+ * @category   AW
+ * @package    AW_FBIntegrator
+ * @version    2.2.0
+ * @copyright  Copyright (c) 2010-2012 aheadWorks Co. (http://www.aheadworks.com)
+ * @license    http://ecommerce.aheadworks.com/AW-LICENSE.txt
+ */
+?><div class="aw-fb-login">
+    <a class="aw-fb-login-button" href="#" onclick="aw_fb_login(); return false;"><?php echo $this->helper('fbintegrator')->__('Login via Facebook'); ?></a>
+</div>
+<div id="fb-loader" style="display:none;">
+    <p class="loader" id="loading_mask_loader"><img src="<?php echo $this->getSkinUrl('images/zoomloader.gif') ?>" alt="<?php echo Mage::helper('adminhtml')->__('Loading...') ?>" /><br /><?php echo Mage::helper('adminhtml')->__('Please wait...') ?></p>
+</div>

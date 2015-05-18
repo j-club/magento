@@ -1,0 +1,158 @@
+.packages-table tr:hover, #products-table tr:hover{
+	background:#CFD9DF;
+	cursor:pointer;
+}
+
+.packages-table tr:hover td.first
+{
+	background:#284D93;
+	border:1px solid #284D93;
+	color:#FFFFFF;
+}
+
+.packages-table tr:hover td.first a
+{
+	color:#FFFFFF;
+}
+
+.packages-table tr th:hover, #products-table tr th:hover{
+	cursor:default;
+}
+/*
+.membership-steps ol li {
+    background: none repeat scroll 0 0 #EBF2F6;
+    color: #333537;
+}
+*/
+.membership-steps ol li.first {
+    -moz-border-radius-bottomleft: 5px;
+    -moz-border-radius-topleft: 5px;
+}
+
+.membership-steps ol li.step1, .membership-steps ol li.step2 {
+    border-right: 0 none;
+}
+
+
+.membership-steps ol li {
+    background: none repeat scroll 0 0 #F2F2F2;
+    border: 1px solid #CFD9DF;
+    color: #1E4369;
+    display: block;
+    float: left;
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: 0 !important;
+    padding: 5px 45px 5px 10px;
+}
+
+
+
+.membership-steps ol li span.number {
+    -moz-border-radius: 5px 5px 5px 5px;
+    background: none repeat scroll 0 0 #0D4588;
+    color: #FFFFFF;
+    margin-right: 5px;
+    padding: 0 7px;
+}
+
+.membership-steps ol li span {
+    display: block;
+    float: left;
+    line-height: 24px;
+}
+
+table.packages-table 
+{
+	width: 100%;
+	border-spacing:0;
+
+	border: none;
+
+}
+
+.packages-table th {
+    background-color:#8BC53E;  
+    border-right: 1px solid #CCCCCC;
+    border-top:1px solid #F0F0F0;    
+	 border-bottom:1px solid #F0F0F0;    
+    color: #1E4369;
+    font-size: 14px;
+    height: 12px;
+    line-height: 1.2;
+    padding: 15px 8px 15px 8px;
+    text-align: center;    
+    vertical-align: top;
+	font-weight:bold;
+}
+
+.packages-table th.first{
+    border-left: 1px solid #CCCCCC;
+	
+}
+
+.packages-table td.first {
+    border-left: 1px solid #CCCCCC;
+	background-color:#CFD9DF;
+}
+
+.packages-table  td 
+{
+	height:20px;
+	padding:15px;
+	
+	border-right: 1px solid #CCCCCC;
+    border-bottom:1px solid #F0F0F0;    
+	border-top:0;  
+    
+    line-height: 1.2;
+    padding: 15px 8px 15px 8px;
+    text-align: center;    
+    vertical-align: top;
+	
+	
+}
+
+.packages-table  td .action
+{
+  -moz-border-radius: 5px 5px 5px 5px;
+    background: none repeat scroll 0 0 #0D4588;
+    color: #FFFFFF;
+    margin-right: 5px;
+    padding: 3px 7px 3px 7px;
+}
+
+.packages-table  td .action a
+{
+	text-decoration:none;
+	color:#FFFFFF;
+	font-weight:normal;
+}
+
+.planinfo
+{
+	margin-left: 0;
+	padding-left: 0;
+	list-style: none;
+	line-height:25px;
+}
+
+.planinfo li.yes
+{
+	padding-left: 25px;
+	background-image: url(images/yes-check.gif);
+	background-repeat: no-repeat;
+	background-position: 0 .5em;
+	text-align:left;
+	vertical-align:middle;
+}
+
+.planinfo li.no
+{
+	padding-left: 25px;
+	background-image: url(images/no-x.gif);
+	background-repeat: no-repeat;
+	background-position: 0 .5em;
+	text-align:left;
+	vertical-align:middle;
+}

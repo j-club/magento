@@ -1,0 +1,49 @@
+<?php
+/**
+ * Magpleasure Ltd.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE-CE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magpleasure.com/LICENSE-CE.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This package designed for Magento COMMUNITY edition
+ * Magpleasure does not guarantee correct work of this extension
+ * on any other Magento edition except Magento COMMUNITY edition.
+ * Magpleasure does not provide extension support in case of
+ * incorrect edition usage.
+ * =================================================================
+ *
+ * @category   Magpleasure
+ * @package    Magpleasure_Forms
+ * @version    1.0.5
+ * @copyright  Copyright (c) 2011-2012 Magpleasure Ltd. (http://www.magpleasure.com)
+ * @license    http://www.magpleasure.com/LICENSE-CE.txt
+ */
+/** @var Magpleasure_Forms_Block_Render_Element $this */
+?>
+<dt>
+    <label class="<?php echo $this->getIsRequire() ? " required" : ""?>">
+        <?php echo $this->escapeHtml($this->getQuestion()); ?>
+        <?php if ($this->getIsRequire()): ?>
+           <em>*</em>
+        <?php endif; ?>
+    </label>
+</dt>
+<dd>
+    <div class="hint"><?php echo $this->escapeHtml($this->getHint()); ?></div>
+    <?php echo $this->renderField(); ?>
+    <?php if ($this->getField()->isSelectType() && $this->getEnableOther() ): ?>
+    <input class="input-text other"
+            type="text"
+            name="<?php echo $this->getOtherName(); ?>"
+            id="<?php echo $this->getOtherId(); ?>"
+            value="<?php echo $this->getOtherValue(); ?>"
+            >
+    <?php endif; ?>
+</dd>
