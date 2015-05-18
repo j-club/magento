@@ -1,0 +1,26 @@
+# IDE settings
+.project
+.metadata/
+.settings/
+.buildpath
+.classpath
+.idea/
+*.iml
+nbproject/
+
+# Magento
+app/etc/local.xml
+app/etc/enterprise.xml
+app/etc/local.xml.07-08-15.runingwithoutmemcache.bak
+app/etc/local.xml.changes.bak
+app/etc/local.xml.template
+app/etc/config.xml
+app/etc/local.xml
+app/etc/local.xml-18feb2015.bak
+app/etc/local.xml.additional
+app/etc/local.xml-live-13feb15.bak
+app/etc/local.xml.woking.bak
+media/*
+var/*
+google*.html
+

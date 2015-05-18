@@ -1,2 +1,0 @@
-# magento
-jclub magento files
