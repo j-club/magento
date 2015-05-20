@@ -36,6 +36,7 @@ class Itoris_LayeredNavigation_Model_Observer {
 	 * @throws Exception
 	 */
 	public function addLayeredNavigationHandle($observer) {
+		
 		if (!($observer->getAction() instanceof Mage_Catalog_CategoryController || $observer->getAction() instanceof Mage_CatalogSearch_ResultController)) {
 			return;
 		}
